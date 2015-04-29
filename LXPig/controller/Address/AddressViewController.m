@@ -9,6 +9,7 @@
 #import "AddressViewController.h"
 
 @interface AddressViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *addAddressBtn;
 
 @end
 
@@ -17,12 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
+    self.addAddressBtn.layer.masksToBounds = YES;
+    self.addAddressBtn.layer.cornerRadius = 5;
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)addNewAddress:(id)sender {
 }
 
 /*

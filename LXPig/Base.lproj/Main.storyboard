@@ -2293,7 +2293,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="127" id="L9K-54-pUM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="新增收货地址">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2307,14 +2307,17 @@
                                                 <include reference="L9K-54-pUM"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="addNewAddress:" destination="0K1-JV-lsX" eventType="touchUpOutside" id="O1Y-k9-HfM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="ohh-Xd-jbL" secondAttribute="centerX" id="3td-1n-gmw"/>
-                                    <constraint firstItem="ohh-Xd-jbL" firstAttribute="top" secondItem="WT4-6C-oR4" secondAttribute="top" constant="18" id="4fq-8g-TnK"/>
+                                    <constraint firstItem="ohh-Xd-jbL" firstAttribute="top" secondItem="WT4-6C-oR4" secondAttribute="top" constant="13" id="4fq-8g-TnK"/>
                                     <constraint firstAttribute="height" constant="65" id="Xym-iI-yAc"/>
-                                    <constraint firstAttribute="bottom" secondItem="ohh-Xd-jbL" secondAttribute="bottom" constant="17" id="gGh-7c-auV"/>
+                                    <constraint firstAttribute="bottom" secondItem="ohh-Xd-jbL" secondAttribute="bottom" constant="13" id="gGh-7c-auV"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -2387,6 +2390,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="addAddressBtn" destination="ohh-Xd-jbL" id="ECv-Np-Ueu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxB-16-EtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3200,7 +3206,7 @@
         <!--收货地址-->
         <scene sceneID="BDg-Gh-laD">
             <objects>
-                <tableViewController id="pVv-gh-Vcj" userLabel="收货地址" sceneMemberID="viewController">
+                <tableViewController id="pVv-gh-Vcj" userLabel="收货地址" customClass="AddressTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sWL-hq-qPt">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

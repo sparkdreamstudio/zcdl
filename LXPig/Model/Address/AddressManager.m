@@ -43,7 +43,7 @@ static AddressManager* singleton = nil;
 
 -(void)getAddressArraySuccess:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
-    [[NetWorkClient shareInstance]postUrl:SERVICE_SHIPADDRESS With:@{@"action":@"list",@"session":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance]postUrl:SERVICE_SHIPADDRESS With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.addressArray = [self parseData:[responseObj objectForKey:@"data"]];
         if (sucess) {
             sucess(responseObj,timeSp);

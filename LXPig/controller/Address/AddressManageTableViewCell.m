@@ -32,7 +32,7 @@
 {
     self.nameLabel.text = address.contact;
     self.mobile.text = address.tel;
-    self.mobile.text = address.isDefault == 1? address.address:[NSString stringWithFormat:@"[默认]%@",address.address];
+    self.address.text = address.isDefault == 0? address.address:[NSString stringWithFormat:@"[默认]%@",address.address];
 }
 
 

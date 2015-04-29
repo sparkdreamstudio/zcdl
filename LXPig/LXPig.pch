@@ -1,0 +1,50 @@
+//
+//  LXPig.pch
+//  LXPig
+//
+//  Created by leexiang on 15/4/11.
+//
+//
+
+#ifndef LXPig_LXPig_pch
+#define LXPig_LXPig_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#pragma mark -3rd class-
+#import "AFNetWorking.h"
+#import "POP.h"
+#import "FMDB.h"
+#import "SDWebImageManager.h"
+#import "UIButton+WebCache.h"
+#import "UIImage+GIF.h"
+#import "UIImage+MultiFormat.h"
+#import "UIImageView+HighlightedWebCache.h"
+#import "UIImageView+WebCache.h"
+#import "UIView+WebCacheOperation.h"
+#import "TPKeyboardAvoidingTableView.h"
+#import "TPKeyboardAvoidingCollectionView.h"
+#import "TPKeyboardAvoidingScrollView.h"
+#import "UIScrollView+TPKeyboardAvoidingAdditions.h"
+#import "JGProgressHUD.h"
+#import "JGProgressHUDErrorIndicatorView.h"
+#import "JGProgressHUDFadeAnimation.h"
+#import "JGProgressHUDFadeZoomAnimation.h"
+#import "JGProgressHUDIndeterminateIndicatorView.h"
+#import "JGProgressHUDIndicatorView.h"
+#import "JGProgressHUDPieIndicatorView.h"
+#import "JGProgressHUDRingIndicatorView.h"
+#import "JGProgressHUDSuccessIndicatorView.h"
+#import "UIImage+ImageEffects.h"
+#import "ImagePlayerView.h"
+
+
+#pragma mark -class-
+#import "LXPIGDefine.h"
+#import "Utils.h"
+#import "LXPigTableVIewController.h"
+#import "LxPigViewController.h"
+#import "UserManagerObject.h"
+#import "UIViewController+LXPig.h"
+#endif

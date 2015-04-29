@@ -2342,7 +2342,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-ut-0vk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <connections>
-                                    <segue destination="pVv-gh-Vcj" kind="embed" id="JjY-7F-6IW"/>
+                                    <segue destination="pVv-gh-Vcj" kind="embed" identifier="segue_address_table" id="JjY-7F-6IW"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -3206,7 +3206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="73" id="6Pn-sT-ZcW" customClass="AddressManageTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="73" id="6Pn-sT-ZcW" customClass="AddressManageTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Pn-sT-ZcW" id="gSu-qE-QgW">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -3315,7 +3315,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaz-Iu-OiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4851" y="817.5"/>
+            <point key="canvasLocation" x="4962" y="763.5"/>
         </scene>
         <!--商品详情-->
         <scene sceneID="aq2-Qc-WPB">

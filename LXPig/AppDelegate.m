@@ -10,6 +10,7 @@
 #import "NetWorkClient.h"
 #import "UserManagerObject.h"
 #import "PigCart.h"
+#import "AddressManager.h"
 @interface AppDelegate ()
 
 @end
@@ -23,6 +24,7 @@
     [self setApperanceAndFlatWithIos6];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
         [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+        [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         self.window.rootViewController = [storyboad instantiateInitialViewController];

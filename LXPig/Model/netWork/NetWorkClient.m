@@ -92,19 +92,22 @@ static NetWorkClient* singleton = nil;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [self.operationDic removeObjectForKey:timeSp];
-        if (error.code != NSURLErrorCancelled) {
-            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nerror:%@",urlString,params,error);
-            NSDictionary *dic = @{@"message":@"请求超时"};
-            if (failure) {
-                failure(dic,timeSp);
-            }
+        if (failure) {
+            failure(@{@"message":@"网络不给力"},timeSp);
         }
-        else
-        {
-            if (failure) {
-                failure(nil,timeSp);
-            }
-        }
+//        if (error.code != NSURLErrorCancelled) {
+//            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nerror:%@",urlString,params,error);
+//            NSDictionary *dic = @{@"message":@"请求超时"};
+//            if (failure) {
+//                failure(dic,timeSp);
+//            }
+//        }
+//        else
+//        {
+//            if (failure) {
+//                failure(nil,timeSp);
+//            }
+//        }
     }];
     [self.operationDic setObject:operation forKey:timeSp];
 }

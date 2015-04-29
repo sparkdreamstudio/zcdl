@@ -7,7 +7,7 @@
 //
 
 #import "AddressManageTableViewCell.h"
-
+#import "AddressManager.h"
 @implementation AddressManageTableViewCell
 
 - (void)awakeFromNib {
@@ -27,5 +27,13 @@
     
     // Configure the view for the selected state
 }
+
+-(void)loadAddress:(Address*)address
+{
+    self.nameLabel.text = address.contact;
+    self.mobile.text = address.tel;
+    self.mobile.text = address.isDefault == 1? address.address:[NSString stringWithFormat:@"[默认]%@",address.address];
+}
+
 
 @end

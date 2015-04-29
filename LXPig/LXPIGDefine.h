@@ -19,6 +19,7 @@
 #define SERVICE_VISIT @"visitservice.do"
 #define SERVICE_COMMENT @"commentservice.do"
 #define SERVICE_CART    @"cartservice.do"
+#define SERVICE_SHIPADDRESS @"shipaddressservice.do"
 
 #pragma mark -ui value-
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width

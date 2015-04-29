@@ -6,31 +6,35 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C3844B36-6A53-47A5-B099-1FC6B4BA5E88</string>
+	<key>IDESourceControlProjectName</key>
+	<string>LXPig</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5F4AF306D94F14DDC53420855DA126B888653148</key>
-		<string>https://github.com/ldandersen/STUtils.git</string>
+		<key>109E6DA1582EBCA612A40D206EC1A48EDF444F64</key>
+		<string>https://github.com/sparkdreamstudio/zcdl.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LXPig.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5F4AF306D94F14DDC53420855DA126B888653148</key>
-		<string>STUtils/</string>
+		<key>109E6DA1582EBCA612A40D206EC1A48EDF444F64</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ldandersen/STUtils.git</string>
+	<string>https://github.com/sparkdreamstudio/zcdl.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5F4AF306D94F14DDC53420855DA126B888653148</string>
+	<string>109E6DA1582EBCA612A40D206EC1A48EDF444F64</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5F4AF306D94F14DDC53420855DA126B888653148</string>
+			<string>109E6DA1582EBCA612A40D206EC1A48EDF444F64</string>
 			<key>IDESourceControlWCCName</key>
-			<string>STUtils</string>
+			<string>LXPig</string>
 		</dict>
 	</array>
 </dict>

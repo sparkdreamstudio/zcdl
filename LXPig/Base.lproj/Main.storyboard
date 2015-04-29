@@ -3206,7 +3206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="73" id="6Pn-sT-ZcW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="73" id="6Pn-sT-ZcW" customClass="AddressManageTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Pn-sT-ZcW" id="gSu-qE-QgW">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -3229,7 +3229,7 @@
                                             <color key="textColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-uF-T1F">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="address_table_cell_selected" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-uF-T1F">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="23" id="NKM-dT-IyE"/>
@@ -3299,6 +3299,12 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="address" destination="lZo-QO-QxM" id="tRT-l4-TJB"/>
+                                    <outlet property="mobile" destination="J6J-Bf-aoa" id="YzK-8Q-qef"/>
+                                    <outlet property="nameLabel" destination="MNG-S4-mHu" id="3wV-E9-f2L"/>
+                                    <outlet property="selectedImageView" destination="6LH-uF-T1F" id="6yu-JE-CFv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -7045,6 +7051,7 @@
     </scenes>
     <resources>
         <image name="add_item_count" width="30" height="30"/>
+        <image name="address_table_cell_selected" width="22" height="22"/>
         <image name="chart_arrow" width="20" height="20"/>
         <image name="chart_done" width="50" height="50"/>
         <image name="chart_location" width="20" height="20"/>

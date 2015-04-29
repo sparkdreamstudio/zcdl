@@ -71,6 +71,8 @@
 		D0B522FF1AF13EEC00E809AA /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522ED1AF13EEC00E809AA /* VOSegment.m */; };
 		D0B523001AF13EEC00E809AA /* VOSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522EF1AF13EEC00E809AA /* VOSegmentedControl.m */; };
 		D0B523031AF13F2200E809AA /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B523021AF13F2200E809AA /* Utils.m */; };
+		D0B523061AF1473E00E809AA /* AddressManageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B523051AF1473E00E809AA /* AddressManageTableViewCell.m */; };
+		D0B5230A1AF1494B00E809AA /* AddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B523091AF1494B00E809AA /* AddressManager.m */; };
 		D0BF56721AE957B800D5CDAF /* demo_head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0BF56711AE957B800D5CDAF /* demo_head.jpg */; };
 		D0C98AAC1ADEC2540060C257 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0C98AAB1ADEC2540060C257 /* login_bg.jpg */; };
 /* End PBXBuildFile section */
@@ -217,6 +219,10 @@
 		D0B522EF1AF13EEC00E809AA /* VOSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOSegmentedControl.m; sourceTree = "<group>"; };
 		D0B523011AF13F2200E809AA /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = util/Utils.h; sourceTree = "<group>"; };
 		D0B523021AF13F2200E809AA /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = util/Utils.m; sourceTree = "<group>"; };
+		D0B523041AF1473E00E809AA /* AddressManageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressManageTableViewCell.h; path = controller/Address/AddressManageTableViewCell.h; sourceTree = "<group>"; };
+		D0B523051AF1473E00E809AA /* AddressManageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressManageTableViewCell.m; path = controller/Address/AddressManageTableViewCell.m; sourceTree = "<group>"; };
+		D0B523081AF1494B00E809AA /* AddressManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressManager.h; path = Model/Address/AddressManager.h; sourceTree = "<group>"; };
+		D0B523091AF1494B00E809AA /* AddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressManager.m; path = Model/Address/AddressManager.m; sourceTree = "<group>"; };
 		D0BF56711AE957B800D5CDAF /* demo_head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_head.jpg; sourceTree = "<group>"; };
 		D0C98AAB1ADEC2540060C257 /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -488,6 +494,8 @@
 				D0B522701AF1395A00E809AA /* AddressViewController.m */,
 				D0B522721AF13A8300E809AA /* AddressTableViewController.h */,
 				D0B522731AF13A8300E809AA /* AddressTableViewController.m */,
+				D0B523041AF1473E00E809AA /* AddressManageTableViewCell.h */,
+				D0B523051AF1473E00E809AA /* AddressManageTableViewCell.m */,
 			);
 			name = Address;
 			sourceTree = "<group>";
@@ -610,6 +618,15 @@
 			path = VOSegmentedControl;
 			sourceTree = "<group>";
 		};
+		D0B523071AF1491D00E809AA /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				D0B523081AF1494B00E809AA /* AddressManager.h */,
+				D0B523091AF1494B00E809AA /* AddressManager.m */,
+			);
+			name = Address;
+			sourceTree = "<group>";
+		};
 		D0C592FC1AED528800467693 /* cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +675,7 @@
 		D0D7A5B21ADBF79500600DDA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0B523071AF1491D00E809AA /* Address */,
 				D0B522BD1AF13E8900E809AA /* user */,
 				D0B522C01AF13E8900E809AA /* netWork */,
 				D0C592FF1AED6F4600467693 /* cart */,
@@ -857,7 +875,9 @@
 				D0B522B61AF13DD200E809AA /* PigCart.m in Sources */,
 				D0B522791AF13B6400E809AA /* SignUpController.m in Sources */,
 				D01A652F1AEE81BC00DA9034 /* CartTableViewCell.m in Sources */,
+				D0B5230A1AF1494B00E809AA /* AddressManager.m in Sources */,
 				D0B522AF1AF13D7200E809AA /* LXPigTableVIewController.m in Sources */,
+				D0B523061AF1473E00E809AA /* AddressManageTableViewCell.m in Sources */,
 				D0B5227A1AF13B6400E809AA /* LoginTableViewController.m in Sources */,
 				D0B522F11AF13EEC00E809AA /* LPLabel.m in Sources */,
 				D0B522711AF1395A00E809AA /* AddressViewController.m in Sources */,

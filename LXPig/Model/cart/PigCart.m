@@ -70,13 +70,14 @@ static PigCart* singleton = nil;
         self.itemsArray = [NSMutableArray array];
         [[responseObj objectForKey:@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             CartItems *items = [[CartItems alloc] init];
+            items.enterpriseKeyId = [[obj objectForKey:@"enterprise"] objectForKey:@"id"];
             items.enterpriseName = [[obj objectForKey:@"enterprise"] objectForKey:@"name"];
             items.totalNumber = [obj objectForKey:@"totalNum"];
             items.totalPrice = [obj objectForKey:@"totalPrice"];
             [[obj objectForKey:@"list"] enumerateObjectsUsingBlock:^(id subObj, NSUInteger idx, BOOL *stop) {
                 CartItem* item = [[CartItem alloc]init];
                 item.name = [[subObj objectForKey:@"product"] objectForKey:@"name"];
-                item.keyId = [[subObj objectForKey:@"id"] longLongValue];
+                item.keyId = [[[subObj objectForKey:@"product"] objectForKey:@"id"] longLongValue];
                 item.num = [subObj objectForKey:@"num"];
                 item.productImage = [[subObj objectForKey:@"product"] objectForKey:@"smallImg"];
                 item.salePrice = [[subObj objectForKey:@"product"] objectForKey:@"salePrice"];
@@ -84,13 +85,14 @@ static PigCart* singleton = nil;
                 [items.itemlist addObject:item];
             }];
             [self.itemsArray addObject:items];
-            if (sucess) {
-                sucess();
-            }
-            if (self.delegate && [self.delegate respondsToSelector:@selector(pigCartRefresh:)]) {
-                [self.delegate pigCartRefresh:self];
-            }
+            
         }];
+        if (sucess) {
+            sucess();
+        }
+        if (self.delegate && [self.delegate respondsToSelector:@selector(pigCartRefresh:)]) {
+            [self.delegate pigCartRefresh:self];
+        }
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         if (failure) {
             failure([responseObj objectForKey:@"message"]);

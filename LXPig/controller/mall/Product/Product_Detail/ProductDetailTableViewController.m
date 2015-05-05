@@ -184,7 +184,6 @@
     NSString *width_str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth"];
     int height = [height_str intValue];
     CGFloat width = [width_str floatValue];
-    CGRect frame = CGRectMake(0,0,SCREEN_WIDTH,height*SCREEN_WIDTH/width);
     webView.frame = CGRectMake(0,0,SCREEN_WIDTH,height);
     NSLog(@"height: %@", [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"]);
     

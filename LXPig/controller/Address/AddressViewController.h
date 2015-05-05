@@ -9,5 +9,5 @@
 #import "LxPigViewController.h"
 
 @interface AddressViewController : LxPigViewController
-
+@property (assign,nonatomic)NSInteger   model;
 @end

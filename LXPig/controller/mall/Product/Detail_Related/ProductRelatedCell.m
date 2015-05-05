@@ -29,9 +29,9 @@
 {
     [self.productImage sd_setImageWithURL:[NSURL URLWithString:info.smallImg] placeholderImage:nil completed:nil];
     self.productName.text = info.name;
-    self.marketPrice.text = [NSString stringWithFormat:@"￥%ld",info.marketPrice];
-    self.salePrice.text = [NSString stringWithFormat:@"%ld",info.salePrice];
+    self.marketPrice.text = [NSString stringWithFormat:@"￥%ld",(long)info.marketPrice];
+    self.salePrice.text = [NSString stringWithFormat:@"%ld",(long)info.salePrice];
     self.praise.text = info.praise;
-    self.orderCount.text = [NSString stringWithFormat:@"%ld",info.orderCnt];
+    self.orderCount.text = [NSString stringWithFormat:@"%ld",(long)info.orderCnt];
 }
 @end

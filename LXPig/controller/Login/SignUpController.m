@@ -7,6 +7,8 @@
 //
 
 #import "SignUpController.h"
+#import "AddressManager.h"
+#import "PigCart.h"
 #define JG_LOGIN_SUCCESS_TAG 1
 #define TIME_COUNT 60
 
@@ -52,7 +54,10 @@
     }
     UIView* hud = [self showNormalHudNoDimissWithString:@"正在注册"];
     [[UserManagerObject shareInstance]regWithName:mobile AndPassWord:password AndVerifyCode:verifyCode success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         [self dismissHUD:hud WithSuccessString:@"注册成功"];
+        [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+        [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;
         if (responseObj) {
@@ -84,7 +89,7 @@
     }
     else
     {
-        NSString *btnString =[NSString stringWithFormat:@"%ld秒后重新获取",time];
+        NSString *btnString =[NSString stringWithFormat:@"%ld秒后重新获取",(unsigned long)time];
         [self.getConfirmCodeBtn setTitle:btnString forState:UIControlStateNormal];
         [self.getConfirmCodeBtnWidth setConstant:[Utils getSizeOfString:btnString WithSize:CGSizeMake(SCREEN_WIDTH, 30) AndSystemFontSize:10].width+10];
         time--;

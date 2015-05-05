@@ -10,7 +10,7 @@
 #define LXPig_LXPIGDefine_h
 
 
-#pragma mark -http server-
+#pragma mark -http server & api url-
 #define SERVER_URL @"http://203.93.210.77:9504/zcdl/api"
 #define SERVICE_MEMBER @"memberservice.do"
 #define SERVICE_PRODUCT @"productservice.do"
@@ -20,6 +20,12 @@
 #define SERVICE_COMMENT @"commentservice.do"
 #define SERVICE_CART    @"cartservice.do"
 #define SERVICE_SHIPADDRESS @"shipaddressservice.do"
+#define SERVICE_AREAR @"arearservice.do"
+#define SERVICE_ORDER @"orderservice.do"
+#define SERVICE_MESSAGE @"messageservice.do"
+#define SERVICE_PAPER @"paperservice.do"
+#define SERVICE_PROBLEM @"problemservice.do"
+
 
 #pragma mark -ui value-
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
@@ -32,4 +38,9 @@
 
 #pragma mark -image name-
 #define BackButtomImageName @"common_back"
+
+#pragma mark -notification name-
+#define NTF_SETORDERADDRESS @"NTF_SETORDERADDRESS"
+#define NTF_ADD_ORDER @"NTF_CHANGE_ORDER_INFO"
+#define NTF_REMOVE_ORDER        @"NTF_REMOVE_ORDER"
 #endif

@@ -9,6 +9,8 @@
 #import "LXPigTabBarController.h"
 #import "EnterpriseListViewController.h"
 #import "ProductDetailViewController.h"
+#import "AppDelegate.h"
+#import "SlideViewController.h"
 @interface LXPigTabBarController ()
 
 @end
@@ -33,6 +35,17 @@
             case 1:
             {
                 if (IOS_SYSTEM_VERSION < 7.0f) {
+                    [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_q&a"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_q&a_selected"]];
+                }
+                else
+                {
+                    [[self.viewControllers[index] tabBarItem] setImage:[UIImage imageNamed:@"tab_q&a"]];
+                }
+                break;
+            }
+            case 2:
+            {
+                if (IOS_SYSTEM_VERSION < 7.0f) {
                     [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_person_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_person"]];
                 }
                 else
@@ -46,6 +59,20 @@
         }
     }
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    SlideViewController* controller = ((AppDelegate*)[[UIApplication sharedApplication]delegate]).mainController;
+    controller.panGesture.enabled = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    SlideViewController* controller = ((AppDelegate*)[[UIApplication sharedApplication]delegate]).mainController;
+    controller.panGesture.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

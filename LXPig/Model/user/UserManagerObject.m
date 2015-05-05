@@ -27,8 +27,20 @@ static UserManagerObject* singleton = nil;
             singleton = [super allocWithZone:zone];
             return singleton;
         }
+        else
+        {
+            return singleton;
+        }
     }
-    return nil;
+}
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        self.userType = 0;
+    }
+    return self;
 }
 
 -(void)regWithName:(NSString*)name AndPassWord:(NSString*)password AndVerifyCode:(NSString*)verifyCode success:(void(^)(NSDictionary* responseObj,NSString* timeSp))success failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
@@ -86,7 +98,7 @@ static UserManagerObject* singleton = nil;
     self.integral = [[dic objectForKey:@"integral"] integerValue];
     self.name = [dic objectForKey:@"name"];
     self.nickName = [dic objectForKey:@"nickName"];
-    self.photoFile = [dic objectForKey:@"photoPath"];
+    self.photoFile = [NSString stringWithFormat:@"http://203.93.210.77:9504/zcdl%@",[dic objectForKey:@"photoPath"]];
     self.qq = [dic objectForKey:@"qq"];
     self.regTime = [dic objectForKey:@"regTime"];
     self.sex = [dic objectForKey:@"sex"];
@@ -168,4 +180,27 @@ static UserManagerObject* singleton = nil;
     }];
 }
 
+-(void)changeHeadImage:(UIImage*)image Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
+{
+//    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"modify",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"photoFile":UIImagePNGRepresentation(image)} success:^(NSDictionary *responseObj, NSString *timeSp) {
+//        [self getUserInfo:[responseObj objectForKey:@"data"]];
+//        if (sucess) {
+//            sucess(responseObj,timeSp);
+//        }
+//    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+//        if (failure) {
+//            failure(responseObj,timeSp);
+//        }
+//    }];
+    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"modify",@"sessionid":[[UserManagerObject shareInstance]sessionid]} AndFileName:@"photoFile" AndData:UIImagePNGRepresentation(image) success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self getUserInfo:[responseObj objectForKey:@"data"]];
+        if (sucess) {
+            sucess(responseObj,timeSp);
+        }
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        if (failure) {
+            failure(responseObj,timeSp);
+        }
+    }];
+}
 @end

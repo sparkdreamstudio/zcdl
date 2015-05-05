@@ -8,3 +8,4 @@ pod 'SDWebImage', '~>3.7'
 pod 'Masonry'
 pod 'ImagePlayerView'
 pod "UIViewController-KeyboardAdditions"
+pod 'VIPhotoView', '~> 0.1'

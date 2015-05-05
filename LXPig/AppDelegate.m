@@ -11,6 +11,7 @@
 #import "UserManagerObject.h"
 #import "PigCart.h"
 #import "AddressManager.h"
+#import "SlideViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -23,13 +24,18 @@
     [self initModel];
     [self setApperanceAndFlatWithIos6];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
-        [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
-        [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+        if (islogin) {
+            [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+            [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+        }
+
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = [storyboad instantiateInitialViewController];
+        self.mainController = (SlideViewController*)self.window.rootViewController;
         [self.window makeKeyAndVisible];
     }];
+
     return YES;
 }
 

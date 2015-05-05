@@ -83,14 +83,14 @@ static NetWorkClient* singleton = nil;
         }
         else
         {
-            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nresponse:%@",urlString,params,responseObject);
+//            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nresponse:%@",urlString,params,responseObject);
             if (sucess) {
                 sucess(responseObject,timeSp);
             }
         }
         [self.operationDic removeObjectForKey:timeSp];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        NSLog(@"×××××××post request error %@×××××××\nparams:%@\nerror:%@",urlString,params,error);
         [self.operationDic removeObjectForKey:timeSp];
         if (failure) {
             failure(@{@"message":@"网络不给力"},timeSp);
@@ -115,5 +115,35 @@ static NetWorkClient* singleton = nil;
 -(void)syncPostUrl:(NSString*)urlString With:(NSDictionary*)param success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
     
+}
+
+-(void)postUrl:(NSString *)urlString With:(NSDictionary *)param AndFileName:(NSString*)fileName AndData:(NSData*)data  success:(void (^)(NSDictionary *, NSString *))sucess failure:(void (^)(NSDictionary *, NSString *))failure
+{
+    NSString* timeSp = [Utils getTimeSp];//@"photoFile"
+    AFHTTPRequestOperation* operation = [self.networkManager POST:urlString parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:data name:fileName fileName:@"File.png" mimeType:@"image/png"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result == 0) {
+            NSLog(@"×××××××post request failed %@×××××××\nparams:%@\nresponse:%@",urlString,param,responseObject);
+            if (failure) {
+                failure(responseObject,timeSp);
+            }
+        }
+        else
+        {
+            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nresponse:%@",urlString,param,responseObject);
+            if (sucess) {
+                sucess(responseObject,timeSp);
+            }
+        }
+        [self.operationDic removeObjectForKey:timeSp];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.operationDic removeObjectForKey:timeSp];
+        if (failure) {
+            failure(@{@"message":@"网络不给力"},timeSp);
+        }
+    }];
+    [self.operationDic setObject:operation forKey:timeSp];
 }
 @end

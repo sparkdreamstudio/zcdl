@@ -115,7 +115,7 @@
     [self.tagArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString* string = [[obj valueForKey:@"label"] stringByReplacingOccurrencesOfString:@"\r" withString:@""];
         string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        [tagStringArray addObject:[NSString stringWithFormat:@"%@( %ld )",string,[[obj valueForKey:@"cnt"] integerValue]]];
+        [tagStringArray addObject:[NSString stringWithFormat:@"%@( %ld )",string,(long)[[obj valueForKey:@"cnt"] integerValue]]];
     }];
 //    //Add Tags
     [tagStringArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
@@ -168,7 +168,7 @@
     {
         ProductCommentCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
         NSDictionary* dic = self.commentArray[indexPath.row - 1];
-        NSString * string =  [dic[@"members"] objectForKey:@"userName"];
+//        NSString * string =  [dic[@"members"] objectForKey:@"userName"];
         cell.name.text = [dic[@"members"] objectForKey:@"userName"];
         cell.date.text = dic[@"date"];
         cell.comment.text = dic[@"content"];

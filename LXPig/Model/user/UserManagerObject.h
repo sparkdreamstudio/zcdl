@@ -26,7 +26,7 @@
 @property (strong,nonatomic) NSString* userName;
 @property (strong,nonatomic) NSString* sessionid;
 @property (strong,nonatomic) NSString* password;
-
+@property (assign,nonatomic) NSInteger userType;
 
 
 +(id)shareInstance;
@@ -37,4 +37,6 @@
 -(void)changeInfo:(NSString*)property Value:(NSString*)value Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
 -(void)autoLoginResult:(void(^)(BOOL))result;
 -(void)changePassword:(NSString*)newPassword OldPassWord:(NSString*)oldPassword Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
+
+-(void)changeHeadImage:(UIImage*)image Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
 @end

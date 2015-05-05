@@ -7,6 +7,8 @@
 //
 
 #import "LoginTableViewController.h"
+#import "AddressManager.h"
+#import "PigCart.h"
 #define JG_LOGIN_SUCCESS_TAG 1
 
 
@@ -88,6 +90,8 @@
     UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
     [[UserManagerObject shareInstance]loginWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
         hud.tag = JG_LOGIN_SUCCESS_TAG;
+        [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+        [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         [self dismissHUD:hud WithSuccessString:@"登陆成功"];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;

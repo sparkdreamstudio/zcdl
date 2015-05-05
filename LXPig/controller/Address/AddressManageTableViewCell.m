@@ -16,14 +16,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.selectedImageView.hidden = !selected;
-    if (selected) {
-        [self setBackgroundColor:[UIColor whiteColor]];
-    }
-    else
-    {
-        [self setBackgroundColor:[UIColor colorWithRed:0xf3/255.f green:0xf3/255.f blue:0xf3/255.f alpha:1]];
-    }
+    
     
     // Configure the view for the selected state
 }
@@ -32,7 +25,17 @@
 {
     self.nameLabel.text = address.contact;
     self.mobile.text = address.tel;
-    self.address.text = address.isDefault == 0? address.address:[NSString stringWithFormat:@"[默认]%@",address.address];
+    NSString *strAddress = [NSString stringWithFormat:@"%@%@%@%@",address.province,address.city,address.district,address.address];
+    self.address.text = address.isDefault == 0? strAddress:[NSString stringWithFormat:@"[默认]%@",strAddress];
+    
+    self.selectedImageView.hidden = !address.isDefault;
+    if (address.isDefault != 0) {
+        [self setBackgroundColor:[UIColor whiteColor]];
+    }
+    else
+    {
+        [self setBackgroundColor:[UIColor colorWithRed:0xf3/255.f green:0xf3/255.f blue:0xf3/255.f alpha:1]];
+    }
 }
 
 

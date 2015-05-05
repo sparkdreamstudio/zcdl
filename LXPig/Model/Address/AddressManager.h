@@ -22,8 +22,9 @@
 @end
 @interface AddressManager : NSObject
 
-@property (nonatomic,readonly) NSArray* addressArray;
+@property (nonatomic,readonly) NSMutableArray* addressArray;
 +(id)shareInstance;
 -(void)getAddressArraySuccess:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
-
+-(void)setAddressInfo:(Address*)address Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
+-(void)deleteAddress:(Address*)address Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
 @end

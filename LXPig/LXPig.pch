@@ -38,7 +38,7 @@
 #import "JGProgressHUDSuccessIndicatorView.h"
 #import "UIImage+ImageEffects.h"
 #import "ImagePlayerView.h"
-
+#import "VIPhotoView.h"
 
 #pragma mark -class-
 #import "LXPIGDefine.h"
@@ -47,4 +47,5 @@
 #import "LxPigViewController.h"
 #import "UserManagerObject.h"
 #import "UIViewController+LXPig.h"
+#import "NSString+ToJson.h"
 #endif

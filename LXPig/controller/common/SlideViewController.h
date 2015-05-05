@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SlideViewController : UIViewController
-
+@property (weak,nonatomic) IBOutlet UIPanGestureRecognizer* panGesture;
 @end

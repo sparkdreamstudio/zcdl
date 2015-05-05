@@ -30,7 +30,7 @@
 @end
 
 @interface CartItems : NSObject
-
+@property (strong,nonatomic) NSNumber* enterpriseKeyId;
 @property (strong,nonatomic) NSString* enterpriseName;
 @property (strong,nonatomic) NSMutableArray* itemlist;
 @property (strong,nonatomic) NSNumber* totalPrice;
@@ -39,6 +39,8 @@
 @property (assign,nonatomic) BOOL      selectedToDelete;
 
 @end
+
+
 
 @interface PigCart : NSObject
 

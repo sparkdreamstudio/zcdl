@@ -9,7 +9,7 @@
 #import "PersonalInfoViewController.h"
 #import "ChangeInfoViewController.h"
 
-@interface PersonalInfoViewController ()<UIActionSheetDelegate>
+@interface PersonalInfoViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -24,6 +24,8 @@
     [super viewDidLoad];
     [self addBackButton];
     
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 25;
     // Do any additional setup after loading the view.
 }
 
@@ -46,6 +48,13 @@
 {
     if (indexPath.section == 0) {
         switch (indexPath.row) {
+            case 0:
+            {
+                UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"更换头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"照片库",@"相机", nil];
+                sheet.tag = 2;
+                [sheet showInView:self.view];
+                break;
+            }
             case 1:
                 [self performSegueWithIdentifier:@"change_property" sender:@{@"nickName":@"修改昵称"}];
                 break;
@@ -71,10 +80,11 @@
 {
     if (buttonIndex!=actionSheet.cancelButtonIndex) {
         switch (actionSheet.tag) {
+            
             case 1:
             {
                 UIView* hud = [self showNormalHudNoDimissWithString:@"提交信息中"];
-                [[UserManagerObject shareInstance]changeInfo:@"sex" Value:[NSString stringWithFormat:@"%ld",buttonIndex] Success:^(NSDictionary *responseObj, NSString *timeSp) {
+                [[UserManagerObject shareInstance]changeInfo:@"sex" Value:[NSString stringWithFormat:@"%ld",(long)buttonIndex] Success:^(NSDictionary *responseObj, NSString *timeSp) {
                     [self dismissHUD:hud];
                     self.sexual.text = [[[UserManagerObject shareInstance]sex]integerValue]==0?@"男":@"女";
                 } failure:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -86,6 +96,15 @@
                         [self dismissHUD:hud WithErrorString:@"网络不给力哦"];
                     }
                 }];
+                break;
+            }
+            case 2:
+            {
+                
+                UIImagePickerController* controller =[self showImagePickerByType:buttonIndex];
+                controller.delegate = self;
+                [self presentViewController:controller animated:YES completion:nil];
+                
                 break;
             }
             default:
@@ -110,5 +129,16 @@
     }
 }
 
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [[UserManagerObject shareInstance]changeHeadImage:[info objectForKey:UIImagePickerControllerOriginalImage] Success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self.tableView reloadData];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        
+    }];
+}
 
 @end

@@ -22,8 +22,9 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
 @interface SlideViewController ()<UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *rightMenuContainer;
 @property (weak, nonatomic) IBOutlet UIView *mainViewContainer;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewTrail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewCenter;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+
 
 @property (nonatomic, assign) SlideViewState      slideViewState;
 -(void) showRightView;
@@ -80,42 +81,34 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
             [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
             animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
             animation.duration = 0.2;
-            animation.fromValue = @(self.mainViewTrail.constant);
+            animation.fromValue = @(self.mainViewCenter.constant);
             animation.toValue = @(0);
             animation.completionBlock = ^(POPAnimation *anim, BOOL finished)
             {
                 if (finished) {
-                    self.mainViewTrail.constant = 0;
+                    self.mainViewCenter.constant = 0;
                 }
             };
-            [self.mainViewTrail pop_addAnimation:animation forKey:@"show_main_trail"];
+            [self.mainViewCenter pop_addAnimation:animation forKey:@"show_main_trail"];
             break;
         }
         case SlideViewStateRightShow:
         {
             self.tapGesture.enabled = YES;
-            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+            
+            
+            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
+            animation.duration = 0.2;
+            animation.fromValue = @(self.mainViewCenter.constant);
+            animation.toValue = @(-MAX_RIGHT_TRAIL/2);
+            [self.mainViewCenter pop_addAnimation:animation forKey:@"show_main_trail"];
+            
+            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
             animation.duration = 0.2;
             animation.fromValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
             animation.toValue = [NSValue valueWithCGSize:CGSizeMake(MAX_SCALE, MAX_SCALE)];
-            animation.completionBlock = ^(POPAnimation *anim, BOOL finished)
-            {
-                if (finished) {
-                    self.mainViewContainer.transform = CGAffineTransformScale(CGAffineTransformIdentity, MAX_SCALE, MAX_SCALE);
-                }
-            };
             [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
-            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-            animation.duration = 0.2;
-            animation.fromValue = @(self.mainViewTrail.constant);
-            animation.toValue = @(MAX_RIGHT_TRAIL);
-            animation.completionBlock = ^(POPAnimation *anim, BOOL finished)
-            {
-                if (finished) {
-                    self.mainViewTrail.constant = MAX_RIGHT_TRAIL;
-                }
-            };
-            [self.mainViewTrail pop_addAnimation:animation forKey:@"show_main_trail"];
+            
         }
             
         default:

@@ -38,9 +38,9 @@
     [self.productImageView sd_setImageWithURL:[NSURL URLWithString:info.smallImg] placeholderImage:nil completed:nil];
     self.companyNameLabel.text = info.enterprise.name;
     self.productName.text = info.name;
-    self.marketPriceLable.text = [NSString stringWithFormat:@"￥%ld",info.marketPrice];
-    self.salePriceLabel.text = [NSString stringWithFormat:@"%ld",info.salePrice];
-    self.saleCount.text = [NSString stringWithFormat:@"%ld",info.orderCnt];
+    self.marketPriceLable.text = [NSString stringWithFormat:@"￥%ld",(long)info.marketPrice];
+    self.salePriceLabel.text = [NSString stringWithFormat:@"%ld",(long)info.salePrice];
+    self.saleCount.text = [NSString stringWithFormat:@"%ld",(long)info.orderCnt];
     self.praiseLabel.text = info.praise;
 }
 @end

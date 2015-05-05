@@ -29,7 +29,6 @@
 -(void)showNormalHudDimissWithString:(NSString*)string
 {
     JGProgressHUD *HUD = [self prototypeHUD];
-    HUD = [self prototypeHUD];
     HUD.textLabel.text = string;
 //    HUD.square = YES;
     [HUD showInView:self.view];
@@ -39,7 +38,6 @@
 -(void)showErrorHudDimissWithString:(NSString*)string
 {
     JGProgressHUD *HUD = [self prototypeHUD];
-    HUD = [self prototypeHUD];
     HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
     HUD.textLabel.text = string;
 //    HUD.square = YES;
@@ -50,7 +48,17 @@
 -(UIView*)showNormalHudNoDimissWithString:(NSString*)string
 {
     JGProgressHUD *HUD = [self prototypeHUD];
-    HUD = [self prototypeHUD];
+    HUD.textLabel.text = string;
+    //HUD.square = YES;
+    [HUD showInView:self.view];
+    
+    return HUD;
+}
+
+-(JGProgressHUD*)showProgressHudNoDimissWithString:(NSString*)string
+{
+    JGProgressHUD *HUD = [self prototypeHUD];
+    HUD.indicatorView = [[JGProgressHUDRingIndicatorView alloc]init];
     HUD.textLabel.text = string;
     //HUD.square = YES;
     [HUD showInView:self.view];
@@ -81,6 +89,13 @@
 {
     JGProgressHUD* HUD = (JGProgressHUD*)hud;
     [HUD dismiss];
+}
+
+-(UIImagePickerController*)showImagePickerByType:(UIImagePickerControllerSourceType)type
+{
+    UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+    picker.sourceType = type;
+    return picker;
 }
 
 //-(UIView*)showErrorHudNoDimissWithString:(NSString*)string

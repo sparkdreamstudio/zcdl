@@ -81,7 +81,7 @@
 {
     if(sender.tag == 0)
     {
-        
+        [self performSegueWithIdentifier:@"show_confirm_order" sender:nil];
     }
     else if (sender.tag == 1)
     {
@@ -106,7 +106,7 @@
     for (CartItems* item in [[PigCart shareInstance]itemsArray]) {
         total+=[item.totalPrice integerValue];
     }
-    self.allItemPrice.text =[NSString stringWithFormat:@"%ld",total];
+    self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
 }
 
 #pragma mark - Navigation

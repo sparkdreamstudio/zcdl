@@ -9,5 +9,5 @@
 #import "LXPigTableVIewController.h"
 
 @interface AddressTableViewController : LXPigTableVIewController
-
+@property (assign,nonatomic)NSInteger   model;
 @end

@@ -93,7 +93,7 @@
         UILabel* label = (UILabel*)[cell.contentView viewWithTag:1];
         label.text = [message objectForKey:@"createTime"];
         label = (UILabel*)[cell.contentView viewWithTag:2];
-        label.text = [message objectForKey:@"createTime"];
+        label.text = [message objectForKey:@"content"];
         return cell;
     }
     else

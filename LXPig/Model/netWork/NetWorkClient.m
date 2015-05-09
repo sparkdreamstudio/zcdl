@@ -83,7 +83,7 @@ static NetWorkClient* singleton = nil;
         }
         else
         {
-//            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nresponse:%@",urlString,params,responseObject);
+            NSLog(@"√√√√√√√post request succeed %@√√√√√√√\nparams:%@\nresponse:%@",urlString,params,responseObject);
             if (sucess) {
                 sucess(responseObject,timeSp);
             }

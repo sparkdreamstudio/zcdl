@@ -9,6 +9,8 @@
 #import "OrderDetailViewController.h"
 #import "OrderDetailTableViewController.h"
 #import "NetWorkClient.h"
+#import "OrderCommentViewController.h"
+#import "AddServiceViewController.h"
 @interface OrderDetailViewController ()<JGProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *canelOrderBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentOrderBtn;
@@ -117,7 +119,14 @@
     }];
 }
 - (IBAction)commentOrder:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"show_comment" sender:self.orderInfo];
 }
+
+-(IBAction)addService:(id)sender
+{
+    [self performSegueWithIdentifier:@"show_service" sender:self.orderInfo];
+}
+
 - (IBAction)cancelOrder2:(UIButton *)sender {
     UIView* hud = [self showNormalHudNoDimissWithString:@"取消订单中"];
     [[NetWorkClient shareInstance] postUrl:SERVICE_ORDER With:@{@"action":@"cancel",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -159,6 +168,17 @@
     if ([segue.identifier isEqualToString:@"embed_order_table"]) {
         self.controller = [segue destinationViewController];
         self.controller.orderInfo = self.orderInfo;
+        self.controller.controller = self;
+    }
+    else if ([segue.identifier isEqualToString:@"show_comment"])
+    {
+        OrderCommentViewController* controller = [segue destinationViewController];
+        controller.orderInfo = sender;
+    }
+    else if ([segue.identifier isEqualToString:@"show_service"])
+    {
+        AddServiceViewController* controller = [segue destinationViewController];
+        controller.orderInfo = self.orderInfo;
     }
 }
 

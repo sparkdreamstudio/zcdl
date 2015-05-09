@@ -47,6 +47,7 @@
             flagCount = 2;
             self.segmentcontrol = [[UISegmentedControl alloc]initWithItems:@[@"已交易",@"已服务"]];
             self.segmentcontrol.translatesAutoresizingMaskIntoConstraints = NO;
+            [self.segmentcontrol addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
             [self.scrollView setContentOffset:CGPointMake(3*SCREEN_WIDTH, 0)];
             break;
         }
@@ -55,6 +56,7 @@
             flagCount = 2;
             self.segmentcontrol = [[UISegmentedControl alloc]initWithItems:@[@"待受理",@"已受理"]];
             self.segmentcontrol.translatesAutoresizingMaskIntoConstraints = NO;
+             [self.segmentcontrol addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
             [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0)];
             break;
         }

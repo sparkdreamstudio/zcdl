@@ -28,17 +28,22 @@
     showPager =  ((userType == 0 && (flag == 2 || flag == 3 || flag == 4)) || (userType == 3 && flag == 2));
     showAddPager = (userType == 0 && flag == 2);
     if (showPager) {
-        [[NetWorkClient shareInstance]postUrl:SERVICE_PAPER With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
-            NSArray* array = [responseObj objectForKey:@"data"];
-            if (array.count > 0) {
-                self.paperArray = [NSMutableArray arrayWithArray:array];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:4]  withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
-        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-            
-        }];
+        [self loadPaper];
     }
     
+}
+
+-(void)loadPaper
+{
+    [[NetWorkClient shareInstance]postUrl:SERVICE_PAPER With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        NSArray* array = [responseObj objectForKey:@"data"];
+        if (array.count > 0) {
+            self.paperArray = [NSMutableArray arrayWithArray:array];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:4]  withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,7 +116,7 @@
         {
             BillTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"billCell"];
             [cell loadCell:self.paperArray WithAddButton:showAddPager];
-            return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
         }
         default:
             return 0;
@@ -166,16 +171,13 @@
         case 2:
         {
             UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
-            NSDictionary* address = [self.orderInfo objectForKey:@"shipAddress"];
-            if([address isKindOfClass:[NSDictionary class]])
-            {
-                UILabel* label = (UILabel*)[cell viewWithTag:1];
-                label.text = [address objectForKey:@"contact"];
+            
+            UILabel* label = (UILabel*)[cell viewWithTag:1];
+                label.text = [self.orderInfo objectForKey:@"contact"];
                 label = (UILabel*)[cell viewWithTag:2];
-                label.text = [address objectForKey:@"tel"];
+                label.text = [self.orderInfo objectForKey:@"tel"];
                 label = (UILabel*)[cell viewWithTag:3];
-                label.text = [NSString stringWithFormat:@"%@%@%@%@",[address objectForKey:@"province"],[address objectForKey:@"city"],[address objectForKey:@"district"],[address objectForKey:@"address"]];
-            }
+                label.text = [self.orderInfo objectForKey:@"address"];
             
             return cell;
         }
@@ -254,10 +256,14 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData* data=UIImagePNGRepresentation(image);
+    UIView* hud = [self.controller showNormalHudNoDimissWithString:@"上传票据"];
     [[NetWorkClient shareInstance] postUrl:SERVICE_PAPER With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} AndFileName:@"imgFile" AndData:data success:^(NSDictionary *dic, NSString *timeSp) {
+        [self.controller dismissHUD:hud WithSuccessString:@"上传成功"];
+        [self loadPaper];
         NSLog(@"%@",[dic objectForKey:@"message"]);
     } failure:^(NSDictionary *dic, NSString *timeSp) {
         NSLog(@"%@",[dic objectForKey:@"message"]);
+        [self.controller dismissHUD:hud WithSuccessString:[dic objectForKey:@"message"]];
     }];
 }
 

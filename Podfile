@@ -9,3 +9,4 @@ pod 'Masonry'
 pod 'ImagePlayerView'
 pod "UIViewController-KeyboardAdditions"
 pod 'VIPhotoView', '~> 0.1'
+pod 'EDStarRating'

@@ -12,6 +12,7 @@
 
 #pragma mark -http server & api url-
 #define SERVER_URL @"http://203.93.210.77:9504/zcdl/api"
+#define SERVICE_USER    @"userservice.do"
 #define SERVICE_MEMBER @"memberservice.do"
 #define SERVICE_PRODUCT @"productservice.do"
 #define SERVICE_ENTERPRISE @"enterpriseservice.do"
@@ -25,6 +26,8 @@
 #define SERVICE_MESSAGE @"messageservice.do"
 #define SERVICE_PAPER @"paperservice.do"
 #define SERVICE_PROBLEM @"problemservice.do"
+#define SERVICE_SERVICE @"serservice.do"
+
 
 
 #pragma mark -ui value-

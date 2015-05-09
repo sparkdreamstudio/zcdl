@@ -13,6 +13,9 @@
 		D01A65291AEE818400DA9034 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01A65261AEE818400DA9034 /* CartTableViewController.m */; };
 		D01A652C1AEE81A800DA9034 /* CartTableViewCellBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = D01A652B1AEE81A800DA9034 /* CartTableViewCellBottom.m */; };
 		D01A652F1AEE81BC00DA9034 /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D01A652E1AEE81BC00DA9034 /* CartTableViewCell.m */; };
+		D024470B1AFA870B00FFD55F /* OrderCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D024470A1AFA870B00FFD55F /* OrderCommentTableViewCell.m */; };
+		D024470E1AFA874D00FFD55F /* OrderCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D024470D1AFA874D00FFD55F /* OrderCommentViewController.m */; };
+		D02447111AFA876600FFD55F /* OrderCommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D02447101AFA876600FFD55F /* OrderCommentTableViewController.m */; };
 		D0541FE01AF3EFBC00D4FFD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06DA1FA1AD2647B00430A00 /* Main.storyboard */; };
 		D0541FE31AF3FCA100D4FFD3 /* SearchEnterpriseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0541FE21AF3FCA100D4FFD3 /* SearchEnterpriseController.m */; };
 		D06DA1F31AD2647A00430A00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D06DA1F21AD2647A00430A00 /* main.m */; };
@@ -29,6 +32,9 @@
 		D0790B981AF5231A00960BE0 /* OrderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0790B971AF5231A00960BE0 /* OrderListTableViewController.m */; };
 		D07C9D9F1AF6680B00C874DD /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07C9D9E1AF6680B00C874DD /* OrderDetailViewController.m */; };
 		D07C9DA21AF6682300C874DD /* OrderDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07C9DA11AF6682300C874DD /* OrderDetailTableViewController.m */; };
+		D08BFD6A1AFBC08B00608D3C /* AddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD691AFBC08B00608D3C /* AddServiceViewController.m */; };
+		D08BFD6D1AFBC62700608D3C /* OrderServiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD6C1AFBC62700608D3C /* OrderServiceTableViewController.m */; };
+		D08BFD701AFBD03700608D3C /* OrderServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD6F1AFBD03700608D3C /* OrderServiceTableViewCell.m */; };
 		D0A21B001AF3A0A200676487 /* ConfirmOrdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21AFF1AF3A0A200676487 /* ConfirmOrdViewController.m */; };
 		D0A21B031AF3A13500676487 /* ConfirmOrderContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21B021AF3A13500676487 /* ConfirmOrderContainerViewController.m */; };
 		D0A21B061AF3A15800676487 /* ConfirmOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21B051AF3A15800676487 /* ConfirmOrderTableViewController.m */; };
@@ -127,6 +133,12 @@
 		D01A652B1AEE81A800DA9034 /* CartTableViewCellBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartTableViewCellBottom.m; path = controller/mall/cart/CartTableViewCellBottom.m; sourceTree = "<group>"; };
 		D01A652D1AEE81BC00DA9034 /* CartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartTableViewCell.h; path = controller/mall/cart/CartTableViewCell.h; sourceTree = "<group>"; };
 		D01A652E1AEE81BC00DA9034 /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartTableViewCell.m; path = controller/mall/cart/CartTableViewCell.m; sourceTree = "<group>"; };
+		D02447091AFA870B00FFD55F /* OrderCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCommentTableViewCell.h; path = controller/order/OrderCommentTableViewCell.h; sourceTree = "<group>"; };
+		D024470A1AFA870B00FFD55F /* OrderCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCommentTableViewCell.m; path = controller/order/OrderCommentTableViewCell.m; sourceTree = "<group>"; };
+		D024470C1AFA874D00FFD55F /* OrderCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCommentViewController.h; path = controller/order/OrderCommentViewController.h; sourceTree = "<group>"; };
+		D024470D1AFA874D00FFD55F /* OrderCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCommentViewController.m; path = controller/order/OrderCommentViewController.m; sourceTree = "<group>"; };
+		D024470F1AFA876600FFD55F /* OrderCommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCommentTableViewController.h; path = controller/order/OrderCommentTableViewController.h; sourceTree = "<group>"; };
+		D02447101AFA876600FFD55F /* OrderCommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCommentTableViewController.m; path = controller/order/OrderCommentTableViewController.m; sourceTree = "<group>"; };
 		D0541FDD1AF3ECCB00D4FFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D0541FE11AF3FCA100D4FFD3 /* SearchEnterpriseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchEnterpriseController.h; path = controller/mall/SearchEnterpriseController.h; sourceTree = "<group>"; };
 		D0541FE21AF3FCA100D4FFD3 /* SearchEnterpriseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchEnterpriseController.m; path = controller/mall/SearchEnterpriseController.m; sourceTree = "<group>"; };
@@ -161,6 +173,12 @@
 		D07C9DA11AF6682300C874DD /* OrderDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderDetailTableViewController.m; path = controller/order/OrderDetailTableViewController.m; sourceTree = "<group>"; };
 		D08257671AD8FD800031A480 /* LXPig.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXPig.pch; sourceTree = "<group>"; };
 		D08257681AD8FDAD0031A480 /* LXPIGDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXPIGDefine.h; sourceTree = "<group>"; };
+		D08BFD681AFBC08B00608D3C /* AddServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddServiceViewController.h; path = controller/order/AddServiceViewController.h; sourceTree = "<group>"; };
+		D08BFD691AFBC08B00608D3C /* AddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddServiceViewController.m; path = controller/order/AddServiceViewController.m; sourceTree = "<group>"; };
+		D08BFD6B1AFBC62700608D3C /* OrderServiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderServiceTableViewController.h; path = controller/order/OrderServiceTableViewController.h; sourceTree = "<group>"; };
+		D08BFD6C1AFBC62700608D3C /* OrderServiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderServiceTableViewController.m; path = controller/order/OrderServiceTableViewController.m; sourceTree = "<group>"; };
+		D08BFD6E1AFBD03700608D3C /* OrderServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderServiceTableViewCell.h; path = controller/order/OrderServiceTableViewCell.h; sourceTree = "<group>"; };
+		D08BFD6F1AFBD03700608D3C /* OrderServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderServiceTableViewCell.m; path = controller/order/OrderServiceTableViewCell.m; sourceTree = "<group>"; };
 		D0A21AFE1AF3A0A200676487 /* ConfirmOrdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmOrdViewController.h; path = controller/mall/cart/ConfirmOrdViewController.h; sourceTree = "<group>"; };
 		D0A21AFF1AF3A0A200676487 /* ConfirmOrdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmOrdViewController.m; path = controller/mall/cart/ConfirmOrdViewController.m; sourceTree = "<group>"; };
 		D0A21B011AF3A13500676487 /* ConfirmOrderContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmOrderContainerViewController.h; path = controller/mall/cart/ConfirmOrderContainerViewController.h; sourceTree = "<group>"; };
@@ -560,6 +578,18 @@
 				D0C9B2651AF7A3E200829800 /* BillTableViewCell.xib */,
 				D0CA1BE41AF9116800D0E7D4 /* ViewPaperViewController.h */,
 				D0CA1BE51AF9116800D0E7D4 /* ViewPaperViewController.m */,
+				D02447091AFA870B00FFD55F /* OrderCommentTableViewCell.h */,
+				D024470A1AFA870B00FFD55F /* OrderCommentTableViewCell.m */,
+				D024470C1AFA874D00FFD55F /* OrderCommentViewController.h */,
+				D024470D1AFA874D00FFD55F /* OrderCommentViewController.m */,
+				D024470F1AFA876600FFD55F /* OrderCommentTableViewController.h */,
+				D02447101AFA876600FFD55F /* OrderCommentTableViewController.m */,
+				D08BFD681AFBC08B00608D3C /* AddServiceViewController.h */,
+				D08BFD691AFBC08B00608D3C /* AddServiceViewController.m */,
+				D08BFD6B1AFBC62700608D3C /* OrderServiceTableViewController.h */,
+				D08BFD6C1AFBC62700608D3C /* OrderServiceTableViewController.m */,
+				D08BFD6E1AFBD03700608D3C /* OrderServiceTableViewCell.h */,
+				D08BFD6F1AFBD03700608D3C /* OrderServiceTableViewCell.m */,
 			);
 			name = order;
 			sourceTree = "<group>";
@@ -802,10 +832,10 @@
 		D0D518EA1AD901B300176CD0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				D0B522751AF13B6400E809AA /* SignUpController.m */,
+				D0B522781AF13B6400E809AA /* LoginTableViewController.h */,
 				D0B522761AF13B6400E809AA /* LoginTableViewController.m */,
 				D0B522771AF13B6400E809AA /* SignUpController.h */,
-				D0B522781AF13B6400E809AA /* LoginTableViewController.h */,
+				D0B522751AF13B6400E809AA /* SignUpController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -988,15 +1018,18 @@
 				D0B522941AF13CC100E809AA /* ProductRelatedCell.m in Sources */,
 				D0B522821AF13BEF00E809AA /* ProductCommentCell.m in Sources */,
 				D01A65231AEE814C00DA9034 /* CartTableViewCellHead.m in Sources */,
+				D024470B1AFA870B00FFD55F /* OrderCommentTableViewCell.m in Sources */,
 				D0B522951AF13CC100E809AA /* ProductRelatedController.m in Sources */,
 				D0B522A31AF13D2900E809AA /* EnterpriseListViewController.m in Sources */,
 				D0CA1BED1AF92C9300D0E7D4 /* QAndATableViewController.m in Sources */,
+				D08BFD6D1AFBC62700608D3C /* OrderServiceTableViewController.m in Sources */,
 				D0B522A21AF13D2900E809AA /* ProductInfoTableViewCell.m in Sources */,
 				D0B522F21AF13EEC00E809AA /* FilterView.m in Sources */,
 				D0C9B2661AF7A3E200829800 /* BillTableViewCell.m in Sources */,
 				D0B522FD1AF13EEC00E809AA /* VOContentLayer.m in Sources */,
 				D0B522671AF11DA300E809AA /* PersonalInfoViewController.m in Sources */,
 				D0790B951AF51F7F00960BE0 /* OrderViewController.m in Sources */,
+				D08BFD701AFBD03700608D3C /* OrderServiceTableViewCell.m in Sources */,
 				D06DA1F61AD2647A00430A00 /* AppDelegate.m in Sources */,
 				D0D688AA1AF37A36006C8BA4 /* DistrictViewController.m in Sources */,
 				D07C9D9F1AF6680B00C874DD /* OrderDetailViewController.m in Sources */,
@@ -1006,6 +1039,7 @@
 				D0D688A41AF375C5006C8BA4 /* ProvinceViewController.m in Sources */,
 				D0B522811AF13BEF00E809AA /* ProductCommentController.m in Sources */,
 				D0B5228C1AF13C5A00E809AA /* EnterpriseDetailController.m in Sources */,
+				D08BFD6A1AFBC08B00608D3C /* AddServiceViewController.m in Sources */,
 				D0A21B061AF3A15800676487 /* ConfirmOrderTableViewController.m in Sources */,
 				D0B522F81AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.m in Sources */,
 				D06DA1F31AD2647A00430A00 /* main.m in Sources */,
@@ -1013,6 +1047,7 @@
 				D0B523031AF13F2200E809AA /* Utils.m in Sources */,
 				D0B522F01AF13EEC00E809AA /* UIImage+ImageEffects.m in Sources */,
 				D0B522F31AF13EEC00E809AA /* PullDownMenu.m in Sources */,
+				D02447111AFA876600FFD55F /* OrderCommentTableViewController.m in Sources */,
 				D0B522F41AF13EEC00E809AA /* SKTag.m in Sources */,
 				D0B522FA1AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m in Sources */,
 				D0B522FB1AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1061,6 +1096,7 @@
 				D0B522B21AF13D7200E809AA /* SlideViewController.m in Sources */,
 				D0B522FC1AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				D0B522891AF13C3900E809AA /* ReturnVisitCell.m in Sources */,
+				D024470E1AFA874D00FFD55F /* OrderCommentViewController.m in Sources */,
 				D0790B981AF5231A00960BE0 /* OrderListTableViewController.m in Sources */,
 				D0CA1BEA1AF923DC00D0E7D4 /* QAndAViewController.m in Sources */,
 				D0B522F61AF13EEC00E809AA /* SKTagView.m in Sources */,

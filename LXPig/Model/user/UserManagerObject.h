@@ -39,4 +39,5 @@
 -(void)changePassword:(NSString*)newPassword OldPassWord:(NSString*)oldPassword Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
 
 -(void)changeHeadImage:(UIImage*)image Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
+-(void)loginOtherWithName:(NSString *)name AndPassWord:(NSString *)password success:(void (^)(NSDictionary *, NSString *))success failure:(void (^)(NSDictionary *, NSString *))failure;
 @end

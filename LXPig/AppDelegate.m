@@ -24,7 +24,7 @@
     [self initModel];
     [self setApperanceAndFlatWithIos6];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
-        if (islogin) {
+        if (islogin && [[UserManagerObject shareInstance]userType]==0) {
             [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
             [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         }

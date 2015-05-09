@@ -10,4 +10,5 @@
 
 @interface OrderDetailTableViewController : LXPigTableVIewController
 @property (strong,nonatomic) NSDictionary* orderInfo;
+@property (weak,nonatomic) UIViewController* controller;
 @end

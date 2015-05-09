@@ -134,7 +134,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    [[UserManagerObject shareInstance]changeHeadImage:[info objectForKey:UIImagePickerControllerOriginalImage] Success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[UserManagerObject shareInstance]changeHeadImage:[Utils imageWithImage:[info objectForKey:UIImagePickerControllerOriginalImage] scaledToSize:CGSizeMake(100, 100)] Success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self.tableView reloadData];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         

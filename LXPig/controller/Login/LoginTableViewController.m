@@ -105,6 +105,30 @@
         [self dismissHUD:hud WithErrorString:message];
     }];
 }
+- (IBAction)userLogin:(id)sender {
+    NSString* userName = self.userNameInput.text;
+    NSString* password = self.passwordInput.text;
+    
+    if (![Utils validateMobile:userName]) {
+        [self showErrorHudDimissWithString:@"错误手机号码"];
+        return;
+    }
+    UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
+    [[UserManagerObject shareInstance]loginOtherWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
+        hud.tag = JG_LOGIN_SUCCESS_TAG;
+        [self dismissHUD:hud WithSuccessString:@"登陆成功"];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        NSString* message;
+        if (responseObj) {
+            message = [responseObj objectForKey:@"message"];
+        }
+        else
+        {
+            message = @"取消登录";
+        }
+        [self dismissHUD:hud WithErrorString:message];
+    }];
+}
 
 #pragma mark jgpogress delegate
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view

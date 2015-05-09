@@ -30,9 +30,10 @@
 {
     JGProgressHUD *HUD = [self prototypeHUD];
     HUD.textLabel.text = string;
+    HUD.indicatorView = nil;
 //    HUD.square = YES;
     [HUD showInView:self.view];
-    [HUD dismissAfterDelay:1];
+    [HUD dismissAfterDelay:1.5];
 }
 
 -(void)showErrorHudDimissWithString:(NSString*)string

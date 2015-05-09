@@ -19,6 +19,8 @@
 
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
+
 //邮箱
 + (BOOL) validateEmail:(NSString *)email;
 //手机号码验证

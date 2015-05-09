@@ -77,6 +77,7 @@ static UserManagerObject* singleton = nil;
         {
             [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"USERNAME"];
             [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"PASSWORD"];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:self.userType] forKey:@"USERTYPE"];
             [[NSUserDefaults standardUserDefaults]synchronize];
             success(responseObj,timeSp);
         }
@@ -103,15 +104,29 @@ static UserManagerObject* singleton = nil;
     self.regTime = [dic objectForKey:@"regTime"];
     self.sex = [dic objectForKey:@"sex"];
     self.userName = [dic objectForKey:@"userName"];
-    self.sessionid = [dic objectForKey:@"sessionid"];
+    if([dic objectForKey:@"sessionid"])
+    {
+        self.sessionid = [dic objectForKey:@"sessionid"];
+    }
     self.password = [dic objectForKey:@"password"];
+    if ([dic objectForKey:@"type"]) {
+        self.userType = [[dic objectForKey:@"type"]integerValue];
+    }
 }
 
 -(void)getDetailSuccess:(void(^)(NSDictionary* responseObj,NSString* timeSp))success failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
+    NSString *url;
+    if (self.userType == 0) {
+        url = SERVICE_MEMBER;
+    }
+    else
+    {
+        url = SERVICE_USER;
+    }
     NSDictionary* params = @{@"action":@"detail",
                              @"sessionid":self.sessionid};
-    [[NetWorkClient shareInstance] postUrl:SERVICE_MEMBER With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance] postUrl:url With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self getUserInfo:[responseObj objectForKey:@"data"]];
         if(success)
         {
@@ -128,6 +143,7 @@ static UserManagerObject* singleton = nil;
 {
     NSString* username = [[NSUserDefaults standardUserDefaults]objectForKey:@"USERNAME"];
     NSString* password = [[NSUserDefaults standardUserDefaults]objectForKey:@"PASSWORD"];
+    NSInteger type = [[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTYPE"]integerValue];
     if (username == nil || password == nil)
     {
         if(result)
@@ -137,23 +153,47 @@ static UserManagerObject* singleton = nil;
     }
     else
     {
-        [self loginWithName:username AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
-            if(result)
-            {
-                result(YES);
-            }
-        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-            if(result)
-            {
-                result(NO);
-            }
-        }];
+        if (type == 0) {
+            [self loginWithName:username AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
+                if(result)
+                {
+                    result(YES);
+                }
+            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+                if(result)
+                {
+                    result(NO);
+                }
+            }];
+        }
+        else{
+            [self loginOtherWithName:username AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
+                if(result)
+                {
+                    result(YES);
+                }
+            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+                if(result)
+                {
+                    result(NO);
+                }
+            }];
+        }
+        
     }
 }
 
 -(void)changeInfo:(NSString*)property Value:(NSString*)value Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
-    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"modify",@"sessionid":self.sessionid,property:value} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSString *url;
+    if (self.userType == 0) {
+        url = SERVICE_MEMBER;
+    }
+    else
+    {
+        url = SERVICE_USER;
+    }
+    [[NetWorkClient shareInstance]postUrl:url With:@{@"action":@"modify",@"sessionid":self.sessionid,property:value} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self setValue:value forKey:property];
         if (sucess) {
             sucess(responseObj,timeSp);
@@ -167,7 +207,15 @@ static UserManagerObject* singleton = nil;
 
 -(void)changePassword:(NSString*)newPassword OldPassWord:(NSString*)oldPassword Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
-    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"changePwd",@"sessionid":self.sessionid,@"oriPassword":oldPassword,@"newPassword":newPassword} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSString *url;
+    if (self.userType == 0) {
+        url = SERVICE_MEMBER;
+    }
+    else
+    {
+        url = SERVICE_USER;
+    }
+    [[NetWorkClient shareInstance]postUrl:url With:@{@"action":@"changePwd",@"sessionid":self.sessionid,@"oriPassword":oldPassword,@"newPassword":newPassword} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [[NSUserDefaults standardUserDefaults] setObject:newPassword forKey:@"PASSWORD"];
         self.password = newPassword;
         if (sucess) {
@@ -182,17 +230,15 @@ static UserManagerObject* singleton = nil;
 
 -(void)changeHeadImage:(UIImage*)image Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
-//    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"modify",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"photoFile":UIImagePNGRepresentation(image)} success:^(NSDictionary *responseObj, NSString *timeSp) {
-//        [self getUserInfo:[responseObj objectForKey:@"data"]];
-//        if (sucess) {
-//            sucess(responseObj,timeSp);
-//        }
-//    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-//        if (failure) {
-//            failure(responseObj,timeSp);
-//        }
-//    }];
-    [[NetWorkClient shareInstance]postUrl:SERVICE_MEMBER With:@{@"action":@"modify",@"sessionid":[[UserManagerObject shareInstance]sessionid]} AndFileName:@"photoFile" AndData:UIImagePNGRepresentation(image) success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSString *url;
+    if (self.userType == 0) {
+        url = SERVICE_MEMBER;
+    }
+    else
+    {
+        url = SERVICE_USER;
+    }
+    [[NetWorkClient shareInstance]postUrl:url With:@{@"action":@"modify",@"sessionid":[[UserManagerObject shareInstance]sessionid]} AndFileName:@"photoFile" AndData:UIImagePNGRepresentation(image) success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self getUserInfo:[responseObj objectForKey:@"data"]];
         if (sucess) {
             sucess(responseObj,timeSp);
@@ -203,4 +249,28 @@ static UserManagerObject* singleton = nil;
         }
     }];
 }
+
+-(void)loginOtherWithName:(NSString *)name AndPassWord:(NSString *)password success:(void (^)(NSDictionary *, NSString *))success failure:(void (^)(NSDictionary *, NSString *))failure
+{
+    NSDictionary* params = @{@"action":@"login",
+                             @"userName":name,
+                             @"password":password};
+    
+    [[NetWorkClient shareInstance] postUrl:SERVICE_USER With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self getUserInfo:[responseObj objectForKey:@"data"]];
+        if(success)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"USERNAME"];
+            [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"PASSWORD"];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:self.userType] forKey:@"USERTYPE"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            success(responseObj,timeSp);
+        }
+    } failure:^(NSDictionary *responseObj, NSString *timeSp){
+        if (failure) {
+            failure(responseObj,timeSp);
+        }
+    }];
+}
+
 @end

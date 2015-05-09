@@ -97,7 +97,10 @@
             lineButtonNum = 1;
         }
     }
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:lineFirstButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-BOTTOM_INSET]];
+    if (lineFirstButton) {
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:lineFirstButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-BOTTOM_INSET]];
+    }
+    
 }
 
 -(CGFloat)getLineWidth:(NSInteger)num

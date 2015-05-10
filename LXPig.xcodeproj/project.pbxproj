@@ -35,6 +35,11 @@
 		D08BFD6A1AFBC08B00608D3C /* AddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD691AFBC08B00608D3C /* AddServiceViewController.m */; };
 		D08BFD6D1AFBC62700608D3C /* OrderServiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD6C1AFBC62700608D3C /* OrderServiceTableViewController.m */; };
 		D08BFD701AFBD03700608D3C /* OrderServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D08BFD6F1AFBD03700608D3C /* OrderServiceTableViewCell.m */; };
+		D09553C91AFDEDDF00E3BB3D /* QAndADetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09553C81AFDEDDF00E3BB3D /* QAndADetailTableViewController.m */; };
+		D09553CC1AFDEE4E00E3BB3D /* QAndADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09553CB1AFDEE4E00E3BB3D /* QAndADetailViewController.m */; };
+		D09553CF1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D09553CE1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m */; };
+		D09553D21AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D09553D11AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m */; };
+		D09553D51AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D09553D41AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m */; };
 		D0A21B001AF3A0A200676487 /* ConfirmOrdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21AFF1AF3A0A200676487 /* ConfirmOrdViewController.m */; };
 		D0A21B031AF3A13500676487 /* ConfirmOrderContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21B021AF3A13500676487 /* ConfirmOrderContainerViewController.m */; };
 		D0A21B061AF3A15800676487 /* ConfirmOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A21B051AF3A15800676487 /* ConfirmOrderTableViewController.m */; };
@@ -179,6 +184,16 @@
 		D08BFD6C1AFBC62700608D3C /* OrderServiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderServiceTableViewController.m; path = controller/order/OrderServiceTableViewController.m; sourceTree = "<group>"; };
 		D08BFD6E1AFBD03700608D3C /* OrderServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderServiceTableViewCell.h; path = controller/order/OrderServiceTableViewCell.h; sourceTree = "<group>"; };
 		D08BFD6F1AFBD03700608D3C /* OrderServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderServiceTableViewCell.m; path = controller/order/OrderServiceTableViewCell.m; sourceTree = "<group>"; };
+		D09553C71AFDEDDF00E3BB3D /* QAndADetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndADetailTableViewController.h; path = "controller/q&a/QAndADetailTableViewController.h"; sourceTree = "<group>"; };
+		D09553C81AFDEDDF00E3BB3D /* QAndADetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndADetailTableViewController.m; path = "controller/q&a/QAndADetailTableViewController.m"; sourceTree = "<group>"; };
+		D09553CA1AFDEE4E00E3BB3D /* QAndADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndADetailViewController.h; path = "controller/q&a/QAndADetailViewController.h"; sourceTree = "<group>"; };
+		D09553CB1AFDEE4E00E3BB3D /* QAndADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndADetailViewController.m; path = "controller/q&a/QAndADetailViewController.m"; sourceTree = "<group>"; };
+		D09553CD1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndAProblemTableViewCell.h; path = "controller/q&a/QAndAProblemTableViewCell.h"; sourceTree = "<group>"; };
+		D09553CE1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndAProblemTableViewCell.m; path = "controller/q&a/QAndAProblemTableViewCell.m"; sourceTree = "<group>"; };
+		D09553D01AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndAReplyCntTableViewCell.h; path = "controller/q&a/QAndAReplyCntTableViewCell.h"; sourceTree = "<group>"; };
+		D09553D11AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndAReplyCntTableViewCell.m; path = "controller/q&a/QAndAReplyCntTableViewCell.m"; sourceTree = "<group>"; };
+		D09553D31AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndAReplyTableViewCell.h; path = "controller/q&a/QAndAReplyTableViewCell.h"; sourceTree = "<group>"; };
+		D09553D41AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndAReplyTableViewCell.m; path = "controller/q&a/QAndAReplyTableViewCell.m"; sourceTree = "<group>"; };
 		D0A21AFE1AF3A0A200676487 /* ConfirmOrdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmOrdViewController.h; path = controller/mall/cart/ConfirmOrdViewController.h; sourceTree = "<group>"; };
 		D0A21AFF1AF3A0A200676487 /* ConfirmOrdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmOrdViewController.m; path = controller/mall/cart/ConfirmOrdViewController.m; sourceTree = "<group>"; };
 		D0A21B011AF3A13500676487 /* ConfirmOrderContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmOrderContainerViewController.h; path = controller/mall/cart/ConfirmOrderContainerViewController.h; sourceTree = "<group>"; };
@@ -825,6 +840,16 @@
 				D0CA1BE91AF923DC00D0E7D4 /* QAndAViewController.m */,
 				D0CA1BEB1AF92C9300D0E7D4 /* QAndATableViewController.h */,
 				D0CA1BEC1AF92C9300D0E7D4 /* QAndATableViewController.m */,
+				D09553C71AFDEDDF00E3BB3D /* QAndADetailTableViewController.h */,
+				D09553C81AFDEDDF00E3BB3D /* QAndADetailTableViewController.m */,
+				D09553CA1AFDEE4E00E3BB3D /* QAndADetailViewController.h */,
+				D09553CB1AFDEE4E00E3BB3D /* QAndADetailViewController.m */,
+				D09553CD1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.h */,
+				D09553CE1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m */,
+				D09553D01AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.h */,
+				D09553D11AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m */,
+				D09553D31AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.h */,
+				D09553D41AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m */,
 			);
 			name = "q&a";
 			sourceTree = "<group>";
@@ -1025,6 +1050,7 @@
 				D08BFD6D1AFBC62700608D3C /* OrderServiceTableViewController.m in Sources */,
 				D0B522A21AF13D2900E809AA /* ProductInfoTableViewCell.m in Sources */,
 				D0B522F21AF13EEC00E809AA /* FilterView.m in Sources */,
+				D09553CF1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m in Sources */,
 				D0C9B2661AF7A3E200829800 /* BillTableViewCell.m in Sources */,
 				D0B522FD1AF13EEC00E809AA /* VOContentLayer.m in Sources */,
 				D0B522671AF11DA300E809AA /* PersonalInfoViewController.m in Sources */,
@@ -1051,6 +1077,7 @@
 				D0B522F41AF13EEC00E809AA /* SKTag.m in Sources */,
 				D0B522FA1AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m in Sources */,
 				D0B522FB1AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m in Sources */,
+				D09553C91AFDEDDF00E3BB3D /* QAndADetailTableViewController.m in Sources */,
 				D0790B8E1AF48AC400960BE0 /* MessageDetailViewController.m in Sources */,
 				D0B522B11AF13D7200E809AA /* UIViewController+LXPig.m in Sources */,
 				D0B5226D1AF1316C00E809AA /* ChangePasswordController.m in Sources */,
@@ -1080,6 +1107,7 @@
 				D0B522B61AF13DD200E809AA /* PigCart.m in Sources */,
 				D0B522791AF13B6400E809AA /* SignUpController.m in Sources */,
 				D01A652F1AEE81BC00DA9034 /* CartTableViewCell.m in Sources */,
+				D09553D51AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m in Sources */,
 				D0B5230A1AF1494B00E809AA /* AddressManager.m in Sources */,
 				D0D6889D1AF3599C006C8BA4 /* EditAddressTableViewController.m in Sources */,
 				D0B522AF1AF13D7200E809AA /* LXPigTableVIewController.m in Sources */,
@@ -1093,12 +1121,14 @@
 				D0B522831AF13BEF00E809AA /* CommentTagCell.m in Sources */,
 				D0A21B151AF3BBE600676487 /* NSString+ToJson.m in Sources */,
 				D0B522F71AF13EEC00E809AA /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				D09553D21AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m in Sources */,
 				D0B522B21AF13D7200E809AA /* SlideViewController.m in Sources */,
 				D0B522FC1AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				D0B522891AF13C3900E809AA /* ReturnVisitCell.m in Sources */,
 				D024470E1AFA874D00FFD55F /* OrderCommentViewController.m in Sources */,
 				D0790B981AF5231A00960BE0 /* OrderListTableViewController.m in Sources */,
 				D0CA1BEA1AF923DC00D0E7D4 /* QAndAViewController.m in Sources */,
+				D09553CC1AFDEE4E00E3BB3D /* QAndADetailViewController.m in Sources */,
 				D0B522F61AF13EEC00E809AA /* SKTagView.m in Sources */,
 				D0B522FE1AF13EEC00E809AA /* VOIndicatorAnimation.m in Sources */,
 				D07C9DA21AF6682300C874DD /* OrderDetailTableViewController.m in Sources */,

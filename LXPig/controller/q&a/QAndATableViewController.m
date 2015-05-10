@@ -8,6 +8,7 @@
 
 #import "QAndATableViewController.h"
 #import "NetWorkClient.h"
+#import "QAndADetailViewController.h"
 @interface QAndATableViewController ()
 @property (nonatomic,strong) NSMutableArray * problemArray;
 @property (assign,nonatomic) NSInteger currentPage;
@@ -20,6 +21,7 @@
     [self addPullRefresh];
     [self addInfinitScorll];
     [self startRefresh];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
 }
 
@@ -114,6 +116,10 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
     }
+    UIView* view = [cell viewWithTag:5];
+    view.layer.borderWidth = 1;
+    view.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
+    view.layer.masksToBounds = YES;
     UILabel* label = (UILabel*)[cell viewWithTag:1];
     label.text = [NSString stringWithFormat:@"%@提问",dic[@"members"][@"name"]];
     label = (UILabel*)[cell viewWithTag:2];
@@ -125,14 +131,25 @@
     return cell;
 }
 
-/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* dic = self.problemArray[indexPath.row];
+    [self performSegueWithIdentifier:@"show_problem_detail" sender:dic];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"show_problem_detail"]) {
+        QAndADetailViewController* controller = [segue destinationViewController];
+        controller.problem = sender;
+        controller.qAndAType = self.qAndAType;
+    }
 }
-*/
+
 
 @end

@@ -34,7 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-    
+    if ([[UserManagerObject shareInstance]userType] != 0) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 
     [self.segmentcontrol setBackgroundImage:[UIImage imageNamed:@"segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.segmentcontrol setBackgroundImage:[UIImage imageNamed:@"segment_bg"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];

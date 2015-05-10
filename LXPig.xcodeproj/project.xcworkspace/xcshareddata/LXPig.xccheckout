@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E818B98C-FA68-4C0F-9861-BFA1BB16F11F</string>
+	<string>016ED62A-84C8-40F0-B6FC-10D96D0EED7D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>LXPig</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>109E6DA1582EBCA612A40D206EC1A48EDF444F64</key>
 		<string>https://github.com/sparkdreamstudio/zcdl.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LXPig.xcworkspace</string>
+	<string>LXPig.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>109E6DA1582EBCA612A40D206EC1A48EDF444F64</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sparkdreamstudio/zcdl.git</string>

@@ -27,6 +27,7 @@
 #define SERVICE_PAPER @"paperservice.do"
 #define SERVICE_PROBLEM @"problemservice.do"
 #define SERVICE_SERVICE @"serservice.do"
+#define SERVICE_PROBLEMREPLY @"problemreplyservice.do"
 
 
 
@@ -36,7 +37,7 @@
 
 #define NavigationBarColor [UIColor colorWithRed:0xcf/255.f green:0 blue:0x0d/255.f alpha:1]
 #define TextGrayColor   [UIColor colorWithRed:0x61/255.f green:0x61/255.f blue:0x61/255.f alpha:1]
-
+#define HEXCOLOR(x) [Utils colorWithHexString:x]
 #define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
 #pragma mark -image name-

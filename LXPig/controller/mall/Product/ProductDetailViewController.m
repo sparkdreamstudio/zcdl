@@ -16,6 +16,7 @@
 #import "ProductCommentController.h"
 #import "PigCart.h"
 #import "ConfirmOrdViewController.h"
+#import "AddressManager.h"
 @interface ProductDetailViewController ()
 
 @property (strong, nonatomic) UIImageView* bottomLine;
@@ -135,6 +136,10 @@
 //    } failure:^(NSString *message) {
 //        [weakself dismissHUD:hud WithErrorString:message];
 //    }];
+    if ([[AddressManager shareInstance] addressArray].count == 0) {
+        [self showNormalHudDimissWithString:@"请先完善收货地址"];
+        return;
+    }
     ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
     controller.qianGouProduct =self.info;
     [self.navigationController pushViewController:controller animated:YES];
@@ -154,6 +159,10 @@
 
 -(IBAction)buyImmediatelyBtnClick:(id)sender
 {
+    if ([[AddressManager shareInstance] addressArray].count == 0) {
+        [self showNormalHudDimissWithString:@"请先完善收货地址"];
+        return;
+    }
     ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
     controller.qianGouProduct =self.info;
     [self.navigationController pushViewController:controller animated:YES];

@@ -58,9 +58,9 @@
         {
             UIView* hud = [self showNormalHudNoDimissWithString:@"提交信息"];
             [[AddressManager shareInstance]setAddressInfo:self.controller.temp Success:^(NSDictionary *responseObj, NSString *timeSp) {
-                [self dismissHUD:hud WithSuccessString:@"完成"];
-            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
                 [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
+            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+                [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
             }];
             break;
         }
@@ -69,9 +69,9 @@
             UIView* hud = [self showNormalHudNoDimissWithString:@"正在删除"];
             [[AddressManager shareInstance] deleteAddress:self.controller.address Success:^(NSDictionary *responseObj, NSString *timeSp) {
                 hud.tag = 1;
-                [self dismissHUD:hud WithSuccessString:@"完成"];
+                [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
             } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-                [self dismissHUD:hud WithSuccessString:@"删除失败，请重试"];
+                [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
             }];
             break;
         }

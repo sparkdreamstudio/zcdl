@@ -9,7 +9,7 @@
 #import "CartViewController.h"
 #import "PigCart.h"
 #import "CartTableViewController.h"
-
+#import "AddressManager.h"
 @interface CartViewController ()
 {
     BOOL editModel;
@@ -94,6 +94,10 @@
 {
     if(sender.tag == 0)
     {
+        if ([[AddressManager shareInstance] addressArray].count == 0) {
+            [self showNormalHudDimissWithString:@"请先完善收货地址"];
+            return;
+        }
         [self performSegueWithIdentifier:@"show_confirm_order" sender:nil];
     }
     else if (sender.tag == 1)
@@ -122,6 +126,16 @@
                 total += item.salePrice.integerValue*item.num.integerValue;
             }
         }
+    }
+    if(total == 0)
+    {
+        [self.button setEnabled:NO];
+        [self.button setBackgroundColor:[UIColor lightGrayColor]];
+    }
+    else
+    {
+        [self.button setEnabled:YES];
+        [self.button setBackgroundColor:NavigationBarColor];
     }
     self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
 }

@@ -44,7 +44,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    self.model = 0;
     if ([segue.identifier isEqualToString:@"segue_address_table"]) {
         self.controller = [segue destinationViewController];
         self.controller.model = self.model;

@@ -117,10 +117,6 @@
         self.temp.isDefault = self.checkBtn.isSelected;
         
     }
-//    else if (indexPath.row == 2)
-//    {
-//        
-//    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

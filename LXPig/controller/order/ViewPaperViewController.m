@@ -7,8 +7,8 @@
 //
 
 #import "ViewPaperViewController.h"
-
-@interface ViewPaperViewController ()
+#import "NetWorkClient.h"
+@interface ViewPaperViewController ()<JGProgressHUDDelegate>
 
 @end
 
@@ -17,7 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteImage:)];
     // Do any additional setup after loading the view.
+}
+
+-(void)deleteImage:(UIBarButtonItem*)item
+{
+    UIView* hud = [self showNormalHudNoDimissWithString:@"删除票据"];
+    [[NetWorkClient shareInstance] postUrl:SERVICE_PAPER With:@{@"action":@"delete",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"id":self.paperInfo[@"id"]}  success:^(NSDictionary *dic, NSString *timeSp) {
+        hud.tag = 1;
+        [self dismissHUD:hud WithSuccessString:@"删除成功"];
+
+        NSLog(@"%@",[dic objectForKey:@"message"]);
+    } failure:^(NSDictionary *dic, NSString *timeSp) {
+        NSLog(@"%@",[dic objectForKey:@"message"]);
+        [self dismissHUD:hud WithSuccessString:[dic objectForKey:@"message"]];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -40,6 +55,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view
+{
+    if (progressHUD.tag == 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*

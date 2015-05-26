@@ -31,7 +31,7 @@
     self.productName.text = info.name;
     self.marketPrice.text = [NSString stringWithFormat:@"￥%ld",(long)info.marketPrice];
     self.salePrice.text = [NSString stringWithFormat:@"%ld",(long)info.salePrice];
-    self.praise.text = info.praise;
+    self.praise.text = [NSString stringWithFormat:@"%.1f%%",info.praise.floatValue];
     self.orderCount.text = [NSString stringWithFormat:@"%ld",(long)info.orderCnt];
 }
 @end

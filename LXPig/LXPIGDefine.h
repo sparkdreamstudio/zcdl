@@ -28,7 +28,14 @@
 #define SERVICE_PROBLEM @"problemservice.do"
 #define SERVICE_SERVICE @"serservice.do"
 #define SERVICE_PROBLEMREPLY @"problemreplyservice.do"
-
+#define SERVICE_FOCUSNEWS   @"focusnewsservice.do"
+#define SERVICE_WEBNEWS     @"webnewsservice.do"
+#define SERVICE_TOOLHELP @"toolhelpservice.do"
+#define SERVICE_AD          @"newsservice.do"
+#define SERVICE_SMS         @"smsservice.do"
+#define SERVICE_LIMITTIME   @"limittimeservice.do"
+#define SERVICE_LIMITNUMB   @"limitnumservice.do"
+#define SERVICE_LIMITGROUP  @"limitgroupservice.do"
 
 
 #pragma mark -ui value-
@@ -47,4 +54,5 @@
 #define NTF_SETORDERADDRESS @"NTF_SETORDERADDRESS"
 #define NTF_ADD_ORDER @"NTF_CHANGE_ORDER_INFO"
 #define NTF_REMOVE_ORDER        @"NTF_REMOVE_ORDER"
+#define NTF_SHOW_LOGIN  @"NTF_SHOW_LOGIN"
 #endif

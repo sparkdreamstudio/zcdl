@@ -10,7 +10,7 @@
 
 @class OrderCommentViewController;
 
-@interface OrderCommentTableViewController : UITableViewController
+@interface OrderCommentTableViewController : LXPigTableVIewController
 @property (strong,nonatomic) NSDictionary* orderInfo;
 @property (strong,nonatomic) OrderCommentViewController* controller;
 @end

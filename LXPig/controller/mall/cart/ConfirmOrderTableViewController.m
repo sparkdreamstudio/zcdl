@@ -14,7 +14,7 @@
 #import "ConfirmOrderAddressCell.h"
 #import "AddressManager.h"
 #import "AddressViewController.h"
-
+#import "ProductInfo.h"
 @implementation ConfirmOrderItem
 -(id)init
 {
@@ -53,28 +53,48 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setAddress:) name:NTF_SETORDERADDRESS object:nil];
     self.arrayProduct = [NSMutableArray array];
     self.address = [[AddressManager shareInstance] addressArray][0];
-    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+    if (self.qianGouProduct) {
         ConfirmOrderItems* orderItems = [[ConfirmOrderItems alloc]init];
-        for (CartItem *item in items.itemlist) {
-            if (item.selected) {
-                ConfirmOrderItem* orderItem = [[ConfirmOrderItem alloc]init];
-                orderItem.keyId = item.keyId;
-                orderItem.marketPrice = item.marketPrice;
-                orderItem.salePrice = item.salePrice;
-                orderItem.productImage = item.productImage;
-                orderItem.num = item.num;
-                orderItem.name  = item.name;
-                orderItems.totalPrice += [item.salePrice integerValue]*[item.num integerValue];
-                orderItems.totalNumber += [item.num integerValue];
-                [orderItems.itemlist addObject:orderItem];
+        ConfirmOrderItem* orderItem = [[ConfirmOrderItem alloc]init];
+        orderItem.keyId = self.qianGouProduct.keyId;
+        orderItem.marketPrice = @(self.qianGouProduct.marketPrice);
+        orderItem.salePrice = @(self.qianGouProduct.salePrice);
+        orderItem.productImage = self.qianGouProduct.smallImg;
+        orderItem.num = @(1);
+        orderItem.name  = self.qianGouProduct.name;
+        orderItems.totalPrice = self.qianGouProduct.salePrice;
+        orderItems.totalNumber = 1;
+        orderItems.enterpriseKeyId = @(self.qianGouProduct.enterprise.keyId);
+        orderItems.enterpriseName = self.qianGouProduct.enterprise.name;
+        [orderItems.itemlist addObject:orderItem];
+        [self.arrayProduct addObject:orderItems];
+    }
+    else
+    {
+        for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+            ConfirmOrderItems* orderItems = [[ConfirmOrderItems alloc]init];
+            for (CartItem *item in items.itemlist) {
+                if (item.selected) {
+                    ConfirmOrderItem* orderItem = [[ConfirmOrderItem alloc]init];
+                    orderItem.keyId = item.keyId;
+                    orderItem.marketPrice = item.marketPrice;
+                    orderItem.salePrice = item.salePrice;
+                    orderItem.productImage = item.productImage;
+                    orderItem.num = item.num;
+                    orderItem.name  = item.name;
+                    orderItems.totalPrice += [item.salePrice integerValue]*[item.num integerValue];
+                    orderItems.totalNumber += [item.num integerValue];
+                    [orderItems.itemlist addObject:orderItem];
+                }
+            }
+            if (orderItems.totalNumber > 0) {
+                orderItems.enterpriseKeyId = items.enterpriseKeyId;
+                orderItems.enterpriseName = items.enterpriseName;
+                [self.arrayProduct addObject:orderItems];
             }
         }
-        if (orderItems.totalNumber > 0) {
-            orderItems.enterpriseKeyId = items.enterpriseKeyId;
-            orderItems.enterpriseName = items.enterpriseName;
-            [self.arrayProduct addObject:orderItems];
-        }
     }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -27,7 +27,7 @@
     self.btnView.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     self.btnView.layer.borderWidth = 1;
     self.btnView.layer.cornerRadius = 4;
-    if ([self.problem[@"isSolve"] integerValue]==1) {
+    if ([self.problem[@"isSolve"] integerValue]==1 || [[self.problem[@"members"] objectForKey:@"id"]longLongValue] == [[UserManagerObject shareInstance]userId]) {
         self.bottomVertical.constant = -65;
     }
 }

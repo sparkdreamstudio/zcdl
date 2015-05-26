@@ -10,4 +10,6 @@
 
 @interface QAndATableViewController : LXPigTableVIewController
 @property (strong,nonatomic) NSArray* qAndAType;
+@property (strong,nonatomic) NSNumber* codeId;
+@property (strong,nonatomic) NSNumber* isSolve;
 @end

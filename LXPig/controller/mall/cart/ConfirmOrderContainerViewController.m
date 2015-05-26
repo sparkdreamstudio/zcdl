@@ -11,6 +11,7 @@
 #import "PigCart.h"
 #import "NetWorkClient.h"
 #import "AddressManager.h"
+#import "ProductInfo.h"
 @interface ConfirmOrderContainerViewController ()<NSURLConnectionDelegate>
 @property (weak,nonatomic)ConfirmOrderTableViewController* controller;
 @property (weak,nonatomic)IBOutlet UILabel* totalPrice;
@@ -23,14 +24,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSInteger price = 0;
-    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
-        for (CartItem *item in items.itemlist) {
-            if (item.selected) {
-                price += ([item.salePrice integerValue] *[item.num integerValue]);
+    if (self.qianGouProduct) {
+        price = self.qianGouProduct.salePrice;
+    }
+    else
+    {
+        for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+            for (CartItem *item in items.itemlist) {
+                if (item.selected) {
+                    price += ([item.salePrice integerValue] *[item.num integerValue]);
+                }
+                
             }
-
         }
     }
+    
     self.totalPrice.text  =[NSString stringWithFormat:@"%ld",(long)price];
 }
 
@@ -98,6 +106,7 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"confirm_order_table"]) {
         self.controller = [segue destinationViewController];
+        self.controller.qianGouProduct = self.qianGouProduct;
     }
     
 }

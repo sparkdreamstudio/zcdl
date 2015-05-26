@@ -64,7 +64,8 @@
         else
         {
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button setTitle:@"添加" forState:UIControlStateNormal];
+            [button setTitle:@"+" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [button addTarget:self action:@selector(addButton:) forControlEvents:UIControlEventTouchUpInside];
         }
         button.translatesAutoresizingMaskIntoConstraints = NO;

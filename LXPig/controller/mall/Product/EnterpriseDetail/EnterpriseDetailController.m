@@ -8,7 +8,7 @@
 
 #import "EnterpriseDetailController.h"
 #import "ProductInfo.h"
-@interface EnterpriseDetailController ()<UIWebViewDelegate>
+@interface EnterpriseDetailController ()<UIWebViewDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phone;
 @property (weak, nonatomic) IBOutlet UILabel *fax;
@@ -124,5 +124,19 @@
 //
 //    webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight);
 //    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:5 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(IBAction)callEnterprise:(id)sender
+{
+    
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"拨打电话%@",self.info.fax] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.info.fax]]];
+    }
 }
 @end

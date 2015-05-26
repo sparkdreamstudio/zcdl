@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     _slideViewState = SlideViewStateCenterShow;
     _tapGesture.delegate =self;
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLogIn:) name:NTF_SHOW_LOGIN object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,6 +47,11 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     if (![[UserManagerObject shareInstance] sessionid]) {
         [self performSegueWithIdentifier:@"ShowLogin" sender:self];
     }
+}
+
+-(void)showLogIn:(NSNotification*)ntf
+{
+    [self performSegueWithIdentifier:@"ShowLogin" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {

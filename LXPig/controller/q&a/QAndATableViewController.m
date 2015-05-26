@@ -39,7 +39,13 @@
     [params setValue:@"list" forKey:@"action"];
     [params setValue:@"10" forKey:@"pageSize"];
     [params setValue:[NSNumber numberWithInteger:self.currentPage] forKey:@"currentPageNo"];
-    [params setValue:[[UserManagerObject shareInstance]sessionid] forKey:@"sessionid"];
+//    [params setValue:[[UserManagerObject shareInstance]sessionid] forKey:@"sessionid"];
+    if (self.codeId) {
+        [params setValue:self.codeId forKey:@"codeId"];
+    }
+    if (self.isSolve) {
+        [params setValue:self.isSolve forKey:@"isSolve"];
+    }
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         self.problemArray = [NSMutableArray arrayWithArray:[responseObj objectForKey:@"data"]];
@@ -63,7 +69,13 @@
     [params setValue:@"list" forKey:@"action"];
     [params setValue:@"10" forKey:@"pageSize"];
     [params setValue:[NSNumber numberWithInteger:self.currentPage] forKey:@"currentPageNo"];
-    [params setValue:[[UserManagerObject shareInstance]sessionid] forKey:@"sessionid"];
+//    [params setValue:[[UserManagerObject shareInstance]sessionid] forKey:@"sessionid"];
+    if (self.codeId) {
+        [params setValue:self.codeId forKey:@"codeId"];
+    }
+    if (self.isSolve) {
+        [params setValue:self.isSolve forKey:@"isSolve"];
+    }
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         NSMutableArray* array = [NSMutableArray arrayWithArray:[responseObj objectForKey:@"data"]];
@@ -101,7 +113,8 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 153;
+    NSDictionary* dic = self.problemArray[indexPath.row];
+    return 130+[Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-30, NSIntegerMax) AndSystemFontSize:13].height;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

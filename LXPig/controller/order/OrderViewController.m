@@ -25,13 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-//    self.scrollView = [[UIScrollView alloc]init];
-//    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-//    self.scrollView.scrollEnabled = NO;
-//    self.scrollView.pagingEnabled = YES;
-//    self.scrollView.backgroundColor = [UIColor blueColor];
-//    self.scrollView.bounces = NO;
-//    NSMutableArray* array = [NSMutableArray array];
     switch ([[UserManagerObject shareInstance] userType]) {
         case 0:
         {
@@ -113,9 +106,9 @@
                                            forState:UIControlStateSelected];
     }
 //    [self.scrollView needsUpdateConstraints];
-    for (OrderListTableViewController* controller  in self.controllerArray) {
-        [controller startRefresh];
-    }
+//    for (OrderListTableViewController* controller  in self.controllerArray) {
+//        [controller startRefresh];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

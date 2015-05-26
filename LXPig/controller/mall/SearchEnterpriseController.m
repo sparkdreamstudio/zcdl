@@ -26,7 +26,7 @@
     self.searchBar.delegate = self;
     [self.searchBar becomeFirstResponder];
     [self addInfinitScorll];
-
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIBarButtonItem *flexSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                target:self
                                                                                action:nil];
@@ -152,7 +152,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 98;
+    return 112;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -35,6 +35,8 @@
     {
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addOrder:) name:NTF_ADD_ORDER object:nil];
     }
+    
+    [self startRefresh];
  
 }
 

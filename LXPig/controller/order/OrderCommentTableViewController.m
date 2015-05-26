@@ -10,7 +10,7 @@
 #import "OrderCommentTableViewCell.h"
 #import "NetWorkClient.h"
 #import "OrderCommentViewController.h"
-@interface OrderCommentTableViewController ()<OrderCommentTableViewCellDelegate,UIActionSheetDelegate,JGProgressHUDDelegate>
+@interface OrderCommentTableViewController ()<OrderCommentTableViewCellDelegate,UIActionSheetDelegate,JGProgressHUDDelegate,UITextViewDelegate>
 @property (strong,nonatomic)NSMutableArray *commentArray;
 @property (strong,nonatomic)NSArray* labelArray;
 @end
@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableFooterView = nil;
     self.tableView.tableFooterView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 65);
     [self initCommentObjects];
     [[NetWorkClient shareInstance]postUrl:SERVICE_CODESERVICE With:@{@"action":@"listByParentId",@"parentId":@"2"} success:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -92,7 +93,17 @@
 {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         CommentObject* object = self.commentArray[actionSheet.tag];
-        object.label = [self.labelArray[buttonIndex-1] objectForKey:@"name"];
+        if(object.label.length == 0)
+        {
+            object.label = [self.labelArray[buttonIndex-1] objectForKey:@"name"];
+        }
+        else
+        {
+            object.label = [object.label stringByAppendingFormat:@",%@",[self.labelArray[buttonIndex-1] objectForKey:@"name"]];
+        }
+        NSMutableString* mutableString = [NSMutableString stringWithString:object.content];
+        [mutableString insertString:[NSString stringWithFormat:@"%@,",[self.labelArray[buttonIndex-1] objectForKey:@"name"]] atIndex:0];
+        object.content = mutableString;
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:actionSheet.tag inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -119,6 +130,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     [cell loadData:[self.commentArray objectAtIndex:indexPath.row]];
+    cell.comment.delegate = self;
     return cell;
 }
 
@@ -142,10 +154,10 @@
             [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请填写对%@的评论",object.name]];
             return;
         }
-        if (object.label.length == 0 || object.label == nil) {
-            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的评论标签",object.name]];
-            return;
-        }
+//        if (object.label.length == 0 || object.label == nil) {
+//            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的评论标签",object.name]];
+//            return;
+//        }
         
     }
     UIView* hud = [self.controller showNormalHudNoDimissWithString:@"提交评论"];
@@ -177,7 +189,10 @@
     return str;
 }
 
-
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self.tableView reloadData];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

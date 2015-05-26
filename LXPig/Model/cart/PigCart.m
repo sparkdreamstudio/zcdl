@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        self.selected = YES;
+        self.selected = NO;
         self.selectedToDelete = NO;
     }
     return self;
@@ -29,7 +29,7 @@
     self = [super init];
     if (self) {
         self.itemlist = [NSMutableArray array];
-        self.selected = YES;
+        self.selected = NO;
         self.selectedToDelete = NO;
     }
     return self;
@@ -102,7 +102,7 @@ static PigCart* singleton = nil;
 
 -(void)addProductToChart:(long long)productId Success:(void(^)(void))sucess failure:(void(^)(NSString* message))failure
 {
-    [[NetWorkClient shareInstance] postUrl:SERVICE_CART With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"num":@"1",@"productId":[NSNumber numberWithLongLong:productId]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance] postUrl:SERVICE_CART With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"num":@"30",@"productId":[NSNumber numberWithLongLong:productId]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         if (sucess) {
             sucess();
         }

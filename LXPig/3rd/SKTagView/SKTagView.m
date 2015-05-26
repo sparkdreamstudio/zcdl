@@ -273,6 +273,16 @@
         }
         self.didClickTagAtIndex([self.subviews indexOfObject:btn]);
     }
+}
+
+-(void)longPressBtn:(UILongPressGestureRecognizer*)gesture
+{
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        if (self.didPressLongTagAtIndex) {
+            self.didPressLongTagAtIndex([self.subviews indexOfObject:gesture.view]);
+        }
+    }
     
 }
 
@@ -281,6 +291,9 @@
 {
     SKTagButton *btn = [SKTagButton buttonWithTag:tag];
     [btn addTarget:self action:@selector(onTag:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer* longGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressBtn:)];
+    longGesture.minimumPressDuration = 0.5;
+    [btn addGestureRecognizer:longGesture];
     [self addSubview:btn];
     [self.tags addObject:tag];
     
@@ -298,6 +311,9 @@
     {
         SKTagButton *btn = [SKTagButton buttonWithTag:tag];
         [btn addTarget:self action:@selector(onTag:) forControlEvents:UIControlEventTouchUpInside];
+        UILongPressGestureRecognizer* longGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressBtn:)];
+        longGesture.minimumPressDuration = 0.5;
+        [btn addGestureRecognizer:longGesture];
         [self insertSubview:btn atIndex:index];
         [self.tags insertObject:tag atIndex:index];
         

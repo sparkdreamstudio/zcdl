@@ -30,7 +30,7 @@
 @property (nonatomic,strong) NSString* intro;// 详细介绍(html格式)
 @property (nonatomic,assign) NSInteger status;//状态 0上架  1下架
 @property (nonatomic,assign) NSInteger seq;//排序
-@property (nonatomic,strong) NSString* praise;//好评率
+@property (nonatomic,strong) NSNumber* praise;//好评率
 @property (nonatomic,assign) NSInteger orderCnt;//已售笔数
 
 @end

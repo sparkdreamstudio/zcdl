@@ -15,9 +15,10 @@
 {
     self = [super init];
     if (self) {
-        self.priceStar = 0;
-        self.ruttingStar = 0;
-        self.serviceStar = 0;
+        self.priceStar = 5;
+        self.ruttingStar = 5;
+        self.serviceStar = 5;
+        self.content = @"";
     }
     return self;
 }
@@ -29,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *salePrice;
 @property (weak, nonatomic) IBOutlet UILabel *orderCnt;
-@property (weak, nonatomic) IBOutlet UITextView *comment;
+
 @property (weak, nonatomic) IBOutlet UIButton *tagBtn;
 @property (weak, nonatomic) IBOutlet EDStarRating *priceRating;
 @property (weak, nonatomic) IBOutlet UILabel *priceRatingLabel;
@@ -54,7 +55,7 @@
     self.comment.layer.borderWidth =1;
     self.comment.layer.cornerRadius = 5;
     self.comment.delegate = self;
-    [self.tagBtn setTitle:@"请选择" forState:UIControlStateNormal];
+    //[self.tagBtn setTitle:@"请选择" forState:UIControlStateNormal];
 }
 
 -(void)setRatingApperance:(EDStarRating*)rating
@@ -66,7 +67,7 @@
     rating.horizontalMargin = 9;
     rating.editable = YES;
     rating.displayMode = EDStarRatingDisplayFull;
-    rating.rating = 0;
+    rating.rating = 5;
     
     self.tagBtn.layer.masksToBounds = YES;
     self.tagBtn.layer.borderColor = [UIColor colorWithRed:0xcd/255.f green:0xcd/255.f blue:0xcd/255.f alpha:1].CGColor;
@@ -94,10 +95,10 @@
     self.serviceRating.rating = object.serviceStar;
     self.serviceRatingLable.text = [NSString stringWithFormat:@"%ld分",(long)object.serviceStar];
     self.comment.text = object.content;
-    [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
-    if (object.label && object.label.length > 0) {
-        [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
-    }
+    //[self.tagBtn setTitle:object.label forState:UIControlStateNormal];
+//    if (object.label && object.label.length > 0) {
+//        [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
+//    }
     
 }
 

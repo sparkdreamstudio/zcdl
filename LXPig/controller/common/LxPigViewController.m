@@ -18,10 +18,18 @@
 
 @implementation LxPigViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    if(IOS_SYSTEM_VERSION >= 7.f)
+    {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

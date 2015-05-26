@@ -9,6 +9,7 @@
 #import "SignUpController.h"
 #import "AddressManager.h"
 #import "PigCart.h"
+#import "NetWorkClient.h"
 #define JG_LOGIN_SUCCESS_TAG 1
 #define TIME_COUNT 60
 
@@ -76,6 +77,17 @@
     [self.getConfirmCodeBtn setEnabled:NO];
     time = TIME_COUNT;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(confirmTimer) userInfo:nil repeats:YES];
+    [self getVerifiedCode:self.mobileNumberInput.text];
+}
+
+-(void)getVerifiedCode:(NSString*)mobile
+{
+    [[NetWorkClient shareInstance]postUrl:SERVICE_SMS With:@{@"action":@"send",@"userName":mobile,@"type":@"1"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self showNormalHudDimissWithString:@"已向您发送验证码"];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self showNormalHudDimissWithString:@"获取验证码失败"];
+        time=0;
+    }];
 }
 
 -(void)confirmTimer

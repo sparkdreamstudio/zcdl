@@ -35,6 +35,7 @@
     self.navigationItem.rightBarButtonItem = self.editButton;
     self.doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editBtnClick:)];
     self.doneButton.tag = 1;
+    [self.checkAllButton addTarget:self action:@selector(checkBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
     
 }
@@ -55,6 +56,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)checkBtnClick:(UIButton*)btn
+{
+    btn.selected = !btn.selected;
+    if (btn.selected) {
+        [self.tableController checkAll];
+    }
+    else
+    {
+        [self.tableController unCheckAll];
+    }
 }
 
 -(void)editBtnClick:(UIBarButtonItem*)sender
@@ -103,8 +116,12 @@
 -(void)loadTotalPrice
 {
     NSInteger total = 0;
-    for (CartItems* item in [[PigCart shareInstance]itemsArray]) {
-        total+=[item.totalPrice integerValue];
+    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+        for (CartItem *item in items.itemlist) {
+            if (item.selected) {
+                total += item.salePrice.integerValue*item.num.integerValue;
+            }
+        }
     }
     self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
 }

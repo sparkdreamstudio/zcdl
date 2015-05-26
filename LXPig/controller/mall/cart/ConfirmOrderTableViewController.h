@@ -8,7 +8,7 @@
 
 #import "LXPigTableVIewController.h"
 
-
+@class ProductInfo;
 @class Address;
 @interface ConfirmOrderItem : NSObject
 
@@ -32,5 +32,6 @@
 
 @interface ConfirmOrderTableViewController : LXPigTableVIewController
 @property (strong,nonatomic) NSMutableArray* arrayProduct;
+@property (assign,nonatomic) ProductInfo* qianGouProduct;
 @property (assign,nonatomic) Address *address;
 @end

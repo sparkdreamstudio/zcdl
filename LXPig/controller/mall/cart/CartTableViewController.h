@@ -15,5 +15,6 @@
 @property (assign, nonatomic)BOOL editModel;
 @property (weak,nonatomic) CartViewController* cartViewController;
 
-
+-(void)checkAll;
+-(void)unCheckAll;
 @end

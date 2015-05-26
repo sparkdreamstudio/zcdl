@@ -93,7 +93,14 @@
     else if (indexPath.row == count+1)
     {
         CartTableViewCellBottom* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
-        cell.totalPrice.text = [items.totalPrice stringValue];
+        NSInteger price = 0;
+        for (CartItem *item in items.itemlist) {
+            if (item.selected) {
+                price += item.salePrice.integerValue*item.num.integerValue;
+            }
+        }
+        cell.totalPrice.text = [NSString stringWithFormat:@"%ld",(long)price];
+//        cell.totalPrice.text = [items.totalPrice stringValue];
         return cell;
     }
     else
@@ -148,13 +155,44 @@
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     CartItem* item = [[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist] objectAtIndex:indexPath.row-1];
+    CartItems* items = [[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section];
     if (self.editModel) {
         item.selectedToDelete = check;
+        
+        if (check == YES) {
+            items.selectedToDelete = YES;
+            for (CartItem *subItem in items.itemlist) {
+                if (subItem.selectedToDelete == NO) {
+                    items.selectedToDelete = NO;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            items.selectedToDelete = NO;
+        }
     }
     else
     {
         item.selected = check;
+        
+        if (check == YES) {
+            items.selected = YES;
+            for (CartItem *subItem in items.itemlist) {
+                if (subItem.selected == NO) {
+                    items.selected = NO;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            items.selected = NO;
+        }
+        [self.cartViewController loadTotalPrice];
     }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(void)cartTableViewCellHead:(CartTableViewCellHead *)head isCheck:(BOOL)checked
@@ -173,52 +211,60 @@
         [items.itemlist enumerateObjectsUsingBlock:^(CartItem* obj, NSUInteger idx, BOOL *stop) {
             obj.selected = checked;
         }];
+        [self.cartViewController loadTotalPrice];
     }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
     
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)checkAll
+{
+    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+        if (self.editModel) {
+            items.selectedToDelete = YES;
+        }
+        else
+        {
+            items.selected = YES;
+        }
+        
+        for (CartItem *item in items.itemlist) {
+            if (self.editModel) {
+                item.selectedToDelete = YES;
+            }
+            else
+            {
+                item.selected = YES;
+            }
+        }
+    }
+    [self.cartViewController loadTotalPrice];
+    [self.tableView reloadData];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)unCheckAll
+{
+    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+        if (self.editModel) {
+            items.selectedToDelete = NO;
+        }
+        else
+        {
+            items.selected = NO;
+        }
+        
+        for (CartItem *item in items.itemlist) {
+            if (self.editModel) {
+                item.selectedToDelete = NO;
+            }
+            else
+            {
+                item.selected = NO;
+            }
+        }
+    }
+    [self.cartViewController loadTotalPrice];
+    [self.tableView reloadData];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

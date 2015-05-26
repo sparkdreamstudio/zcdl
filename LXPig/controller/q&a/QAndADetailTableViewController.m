@@ -34,7 +34,8 @@
 -(void)pullRfresh
 {
     self.currentPage = 1;
-    [[NetWorkClient shareInstance] postUrl:SERVICE_PROBLEMREPLY With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"problemId":self.problem[@"id"],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"problemId":self.problem[@"id"],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20"}];
+    [[NetWorkClient shareInstance] postUrl:SERVICE_PROBLEMREPLY With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         self.replyArray = [[responseObj objectForKey:@"data"]objectForKey:@"list"];
         self.problem = [[responseObj objectForKey:@"data"]objectForKey:@"problem"];
@@ -54,7 +55,8 @@
 -(void)infinitScorll
 {
     self.currentPage++;
-    [[NetWorkClient shareInstance] postUrl:SERVICE_PROBLEMREPLY With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"problemId":self.problem[@"id"],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"problemId":self.problem[@"id"],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20"}];
+    [[NetWorkClient shareInstance] postUrl:SERVICE_PROBLEMREPLY With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopInfinitScorll];
         NSArray* array = [[responseObj objectForKey:@"data"]objectForKey:@"list"];
         if (array.count == 0) {
@@ -99,9 +101,6 @@
 {
     if (indexPath.row == 0) {
         return [Utils getSizeOfString:self.problem[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-40, NSIntegerMax) AndSystemFontSize:14].height + 132;
-//        QAndAProblemTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell0"];
-//        [cell loadCell:self.problem];
-//        return [cell.contentView systemLayoutSizeFittingSize:CGSizeMake(SCREEN_WIDTH, NSIntegerMax)].height + 1;
     }
     else if (indexPath.row == 1)
     {
@@ -110,9 +109,6 @@
     else
     {
         return [Utils getSizeOfString:self.replyArray[indexPath.row-2][@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height+70;
-//        QAndAReplyCntTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
-//        [cell loadCell:self.replyArray[indexPath.row-2]];
-//        return [cell.contentView systemLayoutSizeFittingSize:CGSizeMake(SCREEN_WIDTH, NSIntegerMax)].height + 1;
     }
 }
 

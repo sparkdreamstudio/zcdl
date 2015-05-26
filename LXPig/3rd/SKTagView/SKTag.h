@@ -8,6 +8,7 @@
 
 @interface SKTag : NSObject
 
+@property (nonatomic, assign) BOOL selected;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *selectedTextColor;

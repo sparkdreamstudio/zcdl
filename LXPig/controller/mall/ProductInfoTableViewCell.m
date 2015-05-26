@@ -41,6 +41,6 @@
     self.marketPriceLable.text = [NSString stringWithFormat:@"￥%ld",(long)info.marketPrice];
     self.salePriceLabel.text = [NSString stringWithFormat:@"%ld",(long)info.salePrice];
     self.saleCount.text = [NSString stringWithFormat:@"%ld",(long)info.orderCnt];
-    self.praiseLabel.text = info.praise;
+    self.praiseLabel.text = [NSString stringWithFormat:@"%.1f%%",info.praise.floatValue];
 }
 @end

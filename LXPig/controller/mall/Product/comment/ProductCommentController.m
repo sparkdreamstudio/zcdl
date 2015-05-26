@@ -13,7 +13,7 @@
 #import "ProductCommentCell.h"
 #import <Masonry/Masonry.h>
 #define DEFAULT_TAG @"全部"
-@interface ProductCommentController ()
+@interface ProductCommentController () 
 @property (strong,nonatomic)NSString* currentTagString;
 @property (strong,nonatomic)NSMutableArray* commentArray;
 @property (strong,nonatomic)NSArray* tagArray;
@@ -104,17 +104,25 @@
 {
     cell.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
     cell.tagView.padding    = UIEdgeInsetsMake(9, 12, 9, 12);
-    cell.tagView.backgroundColor = [UIColor colorWithRed:0xd5/255.f green:0xd5/255.f blue:0xd5/255.f alpha:1];
+    cell.tagView.backgroundColor = [UIColor colorWithRed:0xf5/255.f green:0xf5/255.f blue:0xf5/255.f alpha:1];
     cell.tagView.insets    = 15;
     cell.tagView.lineSpace = 16;
     cell.tagView.didClickTagAtIndex = ^(NSUInteger index){
         
     };
     [cell.tagView removeAllTags];
+    [cell.tagView setDidClickTagAtIndex:^(NSUInteger i) {
+        self.currentTagString = [[self.tagArray objectAtIndex:i] valueForKey:@"label"];
+        [self startRefresh];
+    }];
     NSMutableArray* tagStringArray = [NSMutableArray array];
+    __block NSInteger selectedIndex = -1;
     [self.tagArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString* string = [[obj valueForKey:@"label"] stringByReplacingOccurrencesOfString:@"\r" withString:@""];
         string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if ([self.currentTagString isEqualToString:string]) {
+            selectedIndex = idx;
+        }
         [tagStringArray addObject:[NSString stringWithFormat:@"%@( %ld )",string,(long)[[obj valueForKey:@"cnt"] integerValue]]];
     }];
 //    //Add Tags
@@ -122,7 +130,7 @@
      {
          SKTag *tag = [SKTag tagWithText:obj];
          tag.textColor = [UIColor colorWithRed:0x5a/255.f green:0x63/255.f blue:0x6c/255.f alpha:1];
-         tag.fontSize = 10;
+         tag.fontSize = 13;
          tag.selectedTextColor = [UIColor whiteColor];;
          tag.padding = UIEdgeInsetsMake(8, 8, 8, 8);
          tag.bgImg = [Utils imageWithColor:[UIColor colorWithRed:0xfe/255.f green:0xfe/255.f blue:0xfe/255.f alpha:1]];
@@ -130,7 +138,9 @@
          tag.borderColor = [UIColor colorWithRed:0xd5/255.f green:0xd5/255.f blue:0xd5/255.f alpha:1];
          tag.borderWidth = 1;
          tag.cornerRadius = 5;
-         
+         if (idx == selectedIndex) {
+             tag.selected = YES;
+         }
          [cell.tagView addTag:tag];
      }];
 }
@@ -169,7 +179,16 @@
         ProductCommentCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
         NSDictionary* dic = self.commentArray[indexPath.row - 1];
 //        NSString * string =  [dic[@"members"] objectForKey:@"userName"];
-        cell.name.text = [dic[@"members"] objectForKey:@"userName"];
+        if ([[dic[@"members"] objectForKey:@"nickName"] length]>0) {
+            cell.name.text = [dic[@"members"] objectForKey:@"nickName"];
+        }
+        else
+        {
+            NSMutableString* str = [NSMutableString stringWithString:[dic[@"members"] objectForKey:@"userName"]];
+            [str replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+            cell.name.text = str;
+        }
+        
         cell.date.text = dic[@"date"];
         cell.comment.text = dic[@"content"];
         NSInteger star = [dic[@"star"] integerValue];

@@ -27,9 +27,7 @@
     NSInteger flag =  [[self.orderInfo objectForKey:@"flag"] integerValue];
     showPager =  ((userType == 0 && (flag == 2 || flag == 3 || flag == 4)) || (userType == 3 && flag == 2));
     showAddPager = (userType == 0 && flag == 2);
-    if (showPager) {
-        [self loadPaper];
-    }
+    
     
 }
 
@@ -41,6 +39,10 @@
             self.paperArray = [NSMutableArray arrayWithArray:array];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:4]  withRowAnimation:UITableViewRowAnimationAutomatic];
         }
+        else{
+            self.paperArray = [NSMutableArray array];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:4]  withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];
@@ -49,6 +51,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (showPager) {
+        [self loadPaper];
+    }
 }
 
 #pragma mark - Table view data source

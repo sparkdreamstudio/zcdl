@@ -14,4 +14,5 @@
 @property (strong,nonatomic) NSDictionary* problem;
 @property (strong,nonatomic) QAndADetailViewController* controller;
 @property (strong,nonatomic) NSArray* qAndAType;
+
 @end

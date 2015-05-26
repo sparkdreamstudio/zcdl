@@ -47,7 +47,8 @@ static UserManagerObject* singleton = nil;
 {
     NSDictionary* params = @{@"action":@"reg",
                              @"userName":name,
-                             @"password":password};
+                             @"password":password,
+                             @"code":verifyCode};
     
     [[NetWorkClient shareInstance] postUrl:SERVICE_MEMBER With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self getUserInfo:[responseObj objectForKey:@"data"]];
@@ -88,6 +89,30 @@ static UserManagerObject* singleton = nil;
     }];
 }
 
+-(void)logOut
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"USERNAME"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"PASSWORD"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"USERTYPE"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    self.address = nil;
+    self.province = nil;
+    self.city = nil;
+    self.district = nil;
+    self.email = nil;
+    self.userId = -1;
+    self.integral = -1;
+    self.name = nil;
+    self.nickName = nil;
+    self.photoFile = nil;
+    self.qq = nil;
+    self.regTime = nil;
+    self.sex = nil;
+    self.userName = nil;
+    self.sessionid = nil;
+    [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
+}
+
 -(void)getUserInfo:(NSDictionary*)dic
 {
     self.address = [dic objectForKey:@"address"];
@@ -111,6 +136,10 @@ static UserManagerObject* singleton = nil;
     self.password = [dic objectForKey:@"password"];
     if ([dic objectForKey:@"type"]) {
         self.userType = [[dic objectForKey:@"type"]integerValue];
+    }
+    else
+    {
+        self.userType = 0;
     }
 }
 

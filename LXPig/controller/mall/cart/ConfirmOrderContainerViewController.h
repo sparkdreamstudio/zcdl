@@ -7,7 +7,9 @@
 //
 
 #import "LxPigViewController.h"
-
+@class ProductInfo;
 @interface ConfirmOrderContainerViewController : LxPigViewController
+
+@property (assign,nonatomic) ProductInfo* qianGouProduct;
 
 @end

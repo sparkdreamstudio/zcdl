@@ -9,5 +9,6 @@
 #import "LXPigTableVIewController.h"
 @class ProductInfo;
 @interface ProductDetailViewController : LxPigViewController
-@property (weak,nonatomic)ProductInfo* info;
+@property (strong,nonatomic)ProductInfo* info;
+@property (assign, nonatomic)NSInteger type;
 @end

@@ -15,6 +15,7 @@
 #import "ReturnVisitController.h"
 #import "ProductCommentController.h"
 #import "PigCart.h"
+#import "ConfirmOrdViewController.h"
 @interface ProductDetailViewController ()
 
 @property (strong, nonatomic) UIImageView* bottomLine;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addTochart;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIButton *buyImmediatelyBtn;
 
 @end
 
@@ -51,6 +53,19 @@
     self.buyNowBtn.layer.cornerRadius = 5;
     self.addTochart.layer.masksToBounds = YES;
     self.addTochart.layer.cornerRadius = 5;
+    self.buyImmediatelyBtn.layer.masksToBounds = YES;
+    self.buyImmediatelyBtn.layer.cornerRadius = 5;
+    if (self.type == 1) {
+        self.buyImmediatelyBtn.hidden = NO;
+        self.addTochart.hidden = YES;
+        self.buyNowBtn.hidden = YES;
+    }
+    else
+    {
+        self.buyImmediatelyBtn.hidden = YES;
+        self.addTochart.hidden = NO;
+        self.buyNowBtn.hidden = NO;
+    }
     
     
     if (SCREEN_WIDTH == 320) {
@@ -100,26 +115,29 @@
     [self.imageLeft pop_addAnimation:animation forKey:@"animation"];
     [self.scrollView setContentOffset:CGPointMake(index*SCREEN_WIDTH, 0)];
     if (index == 0 || index == 3 || index == 4) {
-        self.bottomViewHeight.constant = 75;
+        self.bottomViewHeight.constant = 0;
         self.bottomView.hidden = NO;
     }
     else
     {
-        self.bottomViewHeight.constant = 0;
+        self.bottomViewHeight.constant = -(self.view.frame.size.height*0.129);
         self.bottomView.hidden = YES;
     }
 }
 
 -(IBAction)buyNow:(id)sender
 {
-    __weak ProductDetailViewController *weakself = self;
-    UIView* hud = [self showNormalHudNoDimissWithString:@"添加到购物车"];
-    [[PigCart shareInstance]addProductToChart:self.info.keyId Success:^{
-        [weakself dismissHUD:hud];
-        [weakself performSegueWithIdentifier:@"product_show_chart" sender:nil];
-    } failure:^(NSString *message) {
-        [weakself dismissHUD:hud WithErrorString:message];
-    }];
+//    __weak ProductDetailViewController *weakself = self;
+//    UIView* hud = [self showNormalHudNoDimissWithString:@"添加到购物车"];
+//    [[PigCart shareInstance]addProductToChart:self.info.keyId Success:^{
+//        [weakself dismissHUD:hud];
+//        [weakself performSegueWithIdentifier:@"product_show_chart" sender:nil];
+//    } failure:^(NSString *message) {
+//        [weakself dismissHUD:hud WithErrorString:message];
+//    }];
+    ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
+    controller.qianGouProduct =self.info;
+    [self.navigationController pushViewController:controller animated:YES];
     
 }
 
@@ -132,6 +150,13 @@
     } failure:^(NSString *message) {
         [weakself dismissHUD:hud WithErrorString:message];
     }];
+}
+
+-(IBAction)buyImmediatelyBtnClick:(id)sender
+{
+    ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
+    controller.qianGouProduct =self.info;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Navigation

@@ -17,7 +17,7 @@
     btn.titleLabel.font = [UIFont systemFontOfSize:tag.fontSize];
     btn.backgroundColor = tag.bgColor;
     btn.contentEdgeInsets = tag.padding;
-    
+    btn.selected = tag.selected;
     if (tag.selectedTextColor) {
         [btn setTitleColor:tag.selectedTextColor forState:UIControlStateHighlighted];
         [btn setTitleColor:tag.selectedTextColor forState:UIControlStateSelected];

@@ -40,4 +40,5 @@
 
 -(void)changeHeadImage:(UIImage*)image Success:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure;
 -(void)loginOtherWithName:(NSString *)name AndPassWord:(NSString *)password success:(void (^)(NSDictionary *, NSString *))success failure:(void (^)(NSDictionary *, NSString *))failure;
+-(void)logOut;
 @end

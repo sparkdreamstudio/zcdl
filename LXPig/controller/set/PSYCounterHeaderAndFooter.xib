@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-b0-dmE">
+                    <rect key="frame" x="12" y="20" width="351" height="130"/>
+                    <string key="text">PYS---母猪每年提供断奶仔猪头数，是衡量猪场的管理水平和盈利能力的一个关键指标。随着养猪的发展进步，品种的改良，配种进步和饲养管理水平的提高，良种母猪的平均窝仔数已经达到了较高的水平（12头左右），但在养猪过程中，发现很多猪场母猪难产、产程过长等情况非常普通，产死胎率明显偏高，达到10%以上，部分严重的猪场达到30%，这就大大影响了母猪应有的生产力，提高了肥猪的单位成本，使猪场盈利能力大大下降</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjf-yW-FSy">
+                    <rect key="frame" x="0.0" y="177" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="H4a-jm-M6j"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="g08-b0-dmE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="OXU-sr-N4q"/>
+                <constraint firstItem="fjf-yW-FSy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UUB-HS-UjS"/>
+                <constraint firstAttribute="bottom" secondItem="g08-b0-dmE" secondAttribute="bottom" constant="28" id="ZYy-Tp-EH4"/>
+                <constraint firstAttribute="trailing" secondItem="g08-b0-dmE" secondAttribute="trailing" constant="12" id="bGK-YU-ACU"/>
+                <constraint firstItem="g08-b0-dmE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="f5J-dI-4Wx"/>
+                <constraint firstAttribute="bottom" secondItem="fjf-yW-FSy" secondAttribute="bottom" id="gMD-LM-zGl"/>
+                <constraint firstAttribute="trailing" secondItem="fjf-yW-FSy" secondAttribute="trailing" id="zrh-ad-Ouz"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="233.5" y="278"/>
+        </view>
+        <view contentMode="scaleToFill" id="AjV-Na-tEb">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qig-gN-li7">
+                    <rect key="frame" x="60" y="41" width="255" height="49"/>
+                    <color key="backgroundColor" red="0.82352941180000006" green="0.1019607843" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="DzK-pA-lty"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="计算">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qig-gN-li7" secondAttribute="trailing" constant="60" id="7zJ-9Y-S9z"/>
+                <constraint firstAttribute="bottom" secondItem="Qig-gN-li7" secondAttribute="bottom" constant="10" id="bnS-BD-Sej"/>
+                <constraint firstItem="Qig-gN-li7" firstAttribute="leading" secondItem="AjV-Na-tEb" secondAttribute="leading" constant="60" id="e6J-4D-kdj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="268.5" y="482"/>
+        </view>
+    </objects>
+</document>

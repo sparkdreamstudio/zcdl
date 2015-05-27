@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeTop;
     self.tableView.tableFooterView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 100);
     self.logOutBtn.layer.masksToBounds = YES;
     self.logOutBtn.layer.cornerRadius = 4;

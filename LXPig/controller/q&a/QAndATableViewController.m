@@ -134,7 +134,19 @@
     view.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     view.layer.masksToBounds = YES;
     UILabel* label = (UILabel*)[cell viewWithTag:1];
-    label.text = [NSString stringWithFormat:@"%@提问",dic[@"members"][@"name"]];
+    if(dic[@"members"][@"nickName"] && [dic[@"members"][@"nickName"] length]>0 )
+    {
+        label.text = [NSString stringWithFormat:@"%@提问",dic[@"members"][@"nickName"]];
+    }
+    else{
+        
+        NSMutableString* userName = [NSMutableString  stringWithString:[NSString stringWithFormat:@"%@提问",dic[@"members"][@"name"]]];
+        if (userName.length > 7) {
+            [userName replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        }
+        label.text = userName;
+    }
+    
     label = (UILabel*)[cell viewWithTag:2];
     label.text = dic[@"content"];
     label = (UILabel*)[cell viewWithTag:3];

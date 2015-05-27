@@ -26,7 +26,7 @@
     self.typeBtn.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     self.typeBtn.layer.borderWidth = 1;
     self.typeBtn.layer.cornerRadius = 1;
-    
+    self.codeId = @(-1);
     self.commitBtn.layer.masksToBounds = YES;
     self.commitBtn.layer.cornerRadius = 1;
     if(IOS_SYSTEM_VERSION >= 7.f)
@@ -61,7 +61,14 @@
 }
 
 - (IBAction)commitQuestion:(id)sender {
-    UIView* hud = [self showNormalHudNoDimissWithString:@"提及哦啊问题"];
+    if (self.textView.text.length == 0) {
+        [self showNormalHudDimissWithString:@"请填写问题"];
+        return;
+    }
+    if (self.codeId.integerValue == -1) {
+        [self showNormalHudDimissWithString:@"请选择标签"];
+    }
+    UIView* hud = [self showNormalHudNoDimissWithString:@"提交中，请稍等"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"codeId":self.codeId,@"content":self.textView.text} success:^(NSDictionary *responseObj, NSString *timeSp) {
         hud.tag = 1;
         [self dismissHUD:hud WithSuccessString:@"完成"];

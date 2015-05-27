@@ -107,13 +107,13 @@
                     <exclude reference="uLz-9F-Hoy"/>
                     <exclude reference="Xod-f2-yVS"/>
                     <exclude reference="ewu-TO-PBL"/>
-                    <exclude reference="Npj-E8-MGX"/>
-                    <exclude reference="Xt2-Qc-50d"/>
-                    <exclude reference="h47-uR-VEe"/>
                     <exclude reference="KQc-Pu-DTM"/>
                     <exclude reference="WHW-D5-jxQ"/>
                     <exclude reference="g6z-cK-Zsj"/>
                     <exclude reference="q0U-fC-AFA"/>
+                    <exclude reference="Npj-E8-MGX"/>
+                    <exclude reference="Xt2-Qc-50d"/>
+                    <exclude reference="h47-uR-VEe"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -129,13 +129,13 @@
                     <include reference="uLz-9F-Hoy"/>
                     <include reference="Xod-f2-yVS"/>
                     <include reference="ewu-TO-PBL"/>
-                    <include reference="Npj-E8-MGX"/>
-                    <include reference="Xt2-Qc-50d"/>
-                    <include reference="h47-uR-VEe"/>
                     <include reference="KQc-Pu-DTM"/>
                     <include reference="WHW-D5-jxQ"/>
                     <include reference="g6z-cK-Zsj"/>
                     <include reference="q0U-fC-AFA"/>
+                    <include reference="Npj-E8-MGX"/>
+                    <include reference="Xt2-Qc-50d"/>
+                    <include reference="h47-uR-VEe"/>
                 </mask>
             </variation>
         </view>

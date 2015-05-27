@@ -1051,10 +1051,12 @@
 		D0CA1BE71AF923BE00D0E7D4 /* q&a */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA1BE81AF923DC00D0E7D4 /* QAndAViewController.h */,
-				D0CA1BE91AF923DC00D0E7D4 /* QAndAViewController.m */,
-				D0CA1BEB1AF92C9300D0E7D4 /* QAndATableViewController.h */,
-				D0CA1BEC1AF92C9300D0E7D4 /* QAndATableViewController.m */,
+				D00474DD1AFF299E00F9C461 /* PostQuestionViewController.h */,
+				D00474DE1AFF299E00F9C461 /* PostQuestionViewController.m */,
+				D00474DF1AFF299E00F9C461 /* PostQuestionViewController.xib */,
+				D00474D41AFF219D00F9C461 /* Q&ASearchViewController.h */,
+				D00474D51AFF219D00F9C461 /* Q&ASearchViewController.m */,
+				D00474D61AFF219D00F9C461 /* Q&ASearchViewController.xib */,
 				D09553C71AFDEDDF00E3BB3D /* QAndADetailTableViewController.h */,
 				D09553C81AFDEDDF00E3BB3D /* QAndADetailTableViewController.m */,
 				D09553CA1AFDEE4E00E3BB3D /* QAndADetailViewController.h */,
@@ -1065,14 +1067,12 @@
 				D09553D11AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m */,
 				D09553D31AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.h */,
 				D09553D41AFDFC2C00E3BB3D /* QAndAReplyTableViewCell.m */,
-				D00474D41AFF219D00F9C461 /* Q&ASearchViewController.h */,
-				D00474D51AFF219D00F9C461 /* Q&ASearchViewController.m */,
-				D00474D61AFF219D00F9C461 /* Q&ASearchViewController.xib */,
-				D00474D91AFF24A400F9C461 /* QAndQSearchUsefulCell.xib */,
 				D00474DB1AFF250100F9C461 /* QAndASearchCell.xib */,
-				D00474DD1AFF299E00F9C461 /* PostQuestionViewController.h */,
-				D00474DE1AFF299E00F9C461 /* PostQuestionViewController.m */,
-				D00474DF1AFF299E00F9C461 /* PostQuestionViewController.xib */,
+				D0CA1BEB1AF92C9300D0E7D4 /* QAndATableViewController.h */,
+				D0CA1BEC1AF92C9300D0E7D4 /* QAndATableViewController.m */,
+				D0CA1BE81AF923DC00D0E7D4 /* QAndAViewController.h */,
+				D0CA1BE91AF923DC00D0E7D4 /* QAndAViewController.m */,
+				D00474D91AFF24A400F9C461 /* QAndQSearchUsefulCell.xib */,
 			);
 			name = "q&a";
 			sourceTree = "<group>";
@@ -1536,6 +1536,7 @@
 			baseConfigurationReference = C2850C8003EC4DF09EF918BA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhiguo li (329WSF4K5V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhiguo li (329WSF4K5V)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1553,6 +1554,7 @@
 			baseConfigurationReference = 58B7DF4C40EA25D50C361F4B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan farms Power Information Technology Co., Ltd. (L65752DTRX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hunan farms Power Information Technology Co., Ltd. (L65752DTRX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

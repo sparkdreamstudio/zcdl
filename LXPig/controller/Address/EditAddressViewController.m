@@ -56,6 +56,28 @@
     switch (sender.tag) {
         case 0:
         {
+            if (self.controller.temp.contact.length == 0) {
+                [self showNormalHudDimissWithString:@"请输入联系人"];
+                return;
+            }
+            if (self.controller.temp.tel.length != 11)
+            {
+                [self showNormalHudDimissWithString:@"请输入11位手机号码"];
+                return;
+            }
+            if (self.controller.temp.province.length == 0) {
+                [self showNormalHudDimissWithString:@"请选择省市区"];
+                return;
+            }
+            if (self.controller.temp.address.length == 0) {
+                [self showNormalHudDimissWithString:@"请输入详细地址"];
+                return;
+            }
+            if (self.controller.temp.zipcode.length != 6) {
+                [self showNormalHudDimissWithString:@"请输入6位邮政编码"];
+                return;
+            }
+            
             UIView* hud = [self showNormalHudNoDimissWithString:@"提交信息"];
             [[AddressManager shareInstance]setAddressInfo:self.controller.temp Success:^(NSDictionary *responseObj, NSString *timeSp) {
                 [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];

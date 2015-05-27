@@ -34,14 +34,14 @@
     [self.segmentControl setDividerImage:[UIImage imageNamed:@"segment_divider"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     
     [self.segmentControl setTitleTextAttributes:@{
-                                                  UITextAttributeTextColor: TextGrayColor,
-                                                  UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                  UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                  NSForegroundColorAttributeName: TextGrayColor,
+                                                  NSFontAttributeName: [UIFont systemFontOfSize:13]
+                                                }
                                        forState:UIControlStateNormal];
     [self.segmentControl setTitleTextAttributes:@{
-                                                  UITextAttributeTextColor: NavigationBarColor,
-                                                  UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                  UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                  NSForegroundColorAttributeName: NavigationBarColor,
+                                                  NSFontAttributeName: [UIFont systemFontOfSize:13]
+                                                  }
                                        forState:UIControlStateSelected];
     if ([[UserManagerObject shareInstance]userType]==0) {
         UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithTitle:@"提问" style:UIBarButtonItemStylePlain target:self action:@selector(showPostQestion:)];
@@ -82,10 +82,12 @@
 {
     self.typeBtn.enabled = NO;
     self.segmentControl.enabled =NO;
+    self.segmentControl.selectedSegmentIndex = -1;
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.translatesAutoresizingMaskIntoConstraints = NO;
     tableView.delegate = self;
     tableView.dataSource = self;
+    [tableView setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)]];
     [self.view addSubview:tableView];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.segmentControl attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomLayoutGuide attribute:NSLayoutAttributeTop multiplier:1 constant:0]];

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *salePriceLabel;
 @property (weak, nonatomic) IBOutlet LPLabel *marketPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *count;
+@property (weak, nonatomic) ConfirmOrderItem* item;
 
 @end
 
@@ -32,11 +33,24 @@
 
 -(void)loadItem:(ConfirmOrderItem *)item
 {
+    self.item = item;
     self.name.text =item.name;
     [self.productImage sd_setImageWithURL:[NSURL URLWithString:item.productImage] placeholderImage:nil];
     self.salePriceLabel.text = [item.salePrice stringValue];
     self.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@",item.marketPrice];
-    self.count.text = [NSString stringWithFormat:@"x%@",item.num];
+    self.count.text = [NSString stringWithFormat:@"%@",item.num];
+}
+
+-(IBAction)additemCount:(id)sender
+{
+    self.item.num = [NSNumber numberWithInteger:self.item.num.integerValue-1];
+    self.count.text = [NSString stringWithFormat:@"x%@",self.item.num];
+}
+
+-(IBAction)decreaseItemCount:(id)sender
+{
+    self.item.num = [NSNumber numberWithInteger:self.item.num.integerValue-1];
+    self.count.text = [NSString stringWithFormat:@"x%@",self.item.num];
 }
 
 @end

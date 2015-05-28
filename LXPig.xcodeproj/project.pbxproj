@@ -161,6 +161,12 @@
 		D0D688A41AF375C5006C8BA4 /* ProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A31AF375C5006C8BA4 /* ProvinceViewController.m */; };
 		D0D688A71AF37936006C8BA4 /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A61AF37936006C8BA4 /* CityViewController.m */; };
 		D0D688AA1AF37A36006C8BA4 /* DistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A91AF37A36006C8BA4 /* DistrictViewController.m */; };
+		F15603181B16F3E90099BCDE /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F15603161B16F3E90099BCDE /* SelectAddressViewController.m */; };
+		F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */; };
+		F156031D1B16F5110099BCDE /* SelectedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F156031B1B16F5110099BCDE /* SelectedTableViewController.m */; };
+		F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */; };
+		F15603221B16F5B30099BCDE /* SelectAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */; };
+		F15603231B16F5B30099BCDE /* SelectAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +468,15 @@
 		D0D688A61AF37936006C8BA4 /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityViewController.m; path = controller/SelectLocation/CityViewController.m; sourceTree = "<group>"; };
 		D0D688A81AF37A36006C8BA4 /* DistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistrictViewController.h; path = controller/SelectLocation/DistrictViewController.h; sourceTree = "<group>"; };
 		D0D688A91AF37A36006C8BA4 /* DistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistrictViewController.m; path = controller/SelectLocation/DistrictViewController.m; sourceTree = "<group>"; };
+		F15603151B16F3E90099BCDE /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAddressViewController.h; path = controller/Address/SelectAddressViewController.h; sourceTree = "<group>"; };
+		F15603161B16F3E90099BCDE /* SelectAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAddressViewController.m; path = controller/Address/SelectAddressViewController.m; sourceTree = "<group>"; };
+		F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectAddressViewController.xib; path = controller/Address/SelectAddressViewController.xib; sourceTree = "<group>"; };
+		F156031A1B16F5110099BCDE /* SelectedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectedTableViewController.h; path = controller/Address/SelectedTableViewController.h; sourceTree = "<group>"; };
+		F156031B1B16F5110099BCDE /* SelectedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectedTableViewController.m; path = controller/Address/SelectedTableViewController.m; sourceTree = "<group>"; };
+		F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectedTableViewController.xib; path = controller/Address/SelectedTableViewController.xib; sourceTree = "<group>"; };
+		F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAddressTableViewCell.h; path = controller/Address/SelectAddressTableViewCell.h; sourceTree = "<group>"; };
+		F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAddressTableViewCell.m; path = controller/Address/SelectAddressTableViewCell.m; sourceTree = "<group>"; };
+		F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectAddressTableViewCell.xib; path = controller/Address/SelectAddressTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,6 +866,15 @@
 				D0D688991AF35972006C8BA4 /* EditAddressViewController.m */,
 				D0D6889B1AF3599C006C8BA4 /* EditAddressTableViewController.h */,
 				D0D6889C1AF3599C006C8BA4 /* EditAddressTableViewController.m */,
+				F15603151B16F3E90099BCDE /* SelectAddressViewController.h */,
+				F15603161B16F3E90099BCDE /* SelectAddressViewController.m */,
+				F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */,
+				F156031A1B16F5110099BCDE /* SelectedTableViewController.h */,
+				F156031B1B16F5110099BCDE /* SelectedTableViewController.m */,
+				F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */,
+				F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */,
+				F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */,
+				F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */,
 			);
 			name = Address;
 			sourceTree = "<group>";
@@ -1218,6 +1242,7 @@
 				D06DA2011AD2647B00430A00 /* LaunchScreen.xib in Resources */,
 				D00474E61AFF3CB000F9C461 /* MyQuestionTableViewController.xib in Resources */,
 				D07639001B00F227008763B1 /* InfoViewTableViewCell.xib in Resources */,
+				F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */,
 				D00474DA1AFF24A400F9C461 /* QAndQSearchUsefulCell.xib in Resources */,
 				D00474DC1AFF250100F9C461 /* QAndASearchCell.xib in Resources */,
 				D0C4AD4B1B0B7A2A008295E8 /* LimitPromotionTableViewCell.xib in Resources */,
@@ -1230,12 +1255,14 @@
 				D03CEC9A1B04E44800DD73B7 /* SetListInfoTableViewCell.xib in Resources */,
 				D0C4AD501B0B8408008295E8 /* LimitNotStartTableViewCell.xib in Resources */,
 				D023231A1B0730380064E93E /* PSYCountIntputTableViewCell.xib in Resources */,
+				F15603231B16F5B30099BCDE /* SelectAddressTableViewCell.xib in Resources */,
 				D06DA1FE1AD2647B00430A00 /* Images.xcassets in Resources */,
 				D00474D81AFF219D00F9C461 /* Q&ASearchViewController.xib in Resources */,
 				D02323211B077E1C0064E93E /* PSYResultViewController.xib in Resources */,
 				D0BF56721AE957B800D5CDAF /* demo_head.jpg in Resources */,
 				D023230D1B0728E80064E93E /* PSYCounterHeaderAndFooter.xib in Resources */,
 				D00474FA1AFF899C00F9C461 /* MyQuestionDetailReplyCnt.xib in Resources */,
+				F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */,
 				D02323151B072D1E0064E93E /* PSYButtonTableViewCell.xib in Resources */,
 				D07639081B0106A1008763B1 /* InfoDetailViewController.xib in Resources */,
 			);
@@ -1341,6 +1368,7 @@
 				D0B522741AF13A8300E809AA /* AddressTableViewController.m in Sources */,
 				D03CECA31B05039D00DD73B7 /* SetListInfoTableViewController.m in Sources */,
 				D09F646F1AFFA5C00005AE19 /* InfoViewTypeCustomTableViewController.m in Sources */,
+				F15603181B16F3E90099BCDE /* SelectAddressViewController.m in Sources */,
 				D0C4AD4F1B0B8408008295E8 /* LimitNotStartTableViewCell.m in Sources */,
 				D07639031B00F736008763B1 /* InfoListTableViewController.m in Sources */,
 				D00474D71AFF219D00F9C461 /* Q&ASearchViewController.m in Sources */,
@@ -1369,6 +1397,7 @@
 				D0B522881AF13C3900E809AA /* ReturnVisitController.m in Sources */,
 				D0B523001AF13EEC00E809AA /* VOSegmentedControl.m in Sources */,
 				D0B522BB1AF13DEC00E809AA /* ProductInfoList.m in Sources */,
+				F156031D1B16F5110099BCDE /* SelectedTableViewController.m in Sources */,
 				D0B522B61AF13DD200E809AA /* PigCart.m in Sources */,
 				D0BF11C31B08E1C3007A879D /* ForgetPasswordFirstViewController.m in Sources */,
 				D0B522791AF13B6400E809AA /* SignUpController.m in Sources */,
@@ -1382,6 +1411,7 @@
 				D0B5227A1AF13B6400E809AA /* LoginTableViewController.m in Sources */,
 				D0BF11C61B08E1ED007A879D /* ForgetPasswordSecViewController.m in Sources */,
 				D0B522F11AF13EEC00E809AA /* LPLabel.m in Sources */,
+				F15603221B16F5B30099BCDE /* SelectAddressTableViewCell.m in Sources */,
 				D0CA1BE61AF9116800D0E7D4 /* ViewPaperViewController.m in Sources */,
 				D0B522711AF1395A00E809AA /* AddressViewController.m in Sources */,
 				D01A652C1AEE81A800DA9034 /* CartTableViewCellBottom.m in Sources */,

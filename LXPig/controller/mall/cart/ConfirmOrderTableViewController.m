@@ -15,6 +15,7 @@
 #import "AddressManager.h"
 #import "AddressViewController.h"
 #import "ProductInfo.h"
+#import "SelectAddressViewController.h"
 @implementation ConfirmOrderItem
 -(id)init
 {
@@ -52,7 +53,14 @@
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setAddress:) name:NTF_SETORDERADDRESS object:nil];
     self.arrayProduct = [NSMutableArray array];
-    self.address = [[AddressManager shareInstance] addressArray][0];
+    if([[[AddressManager shareInstance] addressArray] count] == 0)
+    {
+        self.address = nil;
+    }
+    else{
+       self.address = [[AddressManager shareInstance] addressArray][0]; 
+    }
+    
     if (self.qianGouProduct) {
         ConfirmOrderItems* orderItems = [[ConfirmOrderItems alloc]init];
         ConfirmOrderItem* orderItem = [[ConfirmOrderItem alloc]init];
@@ -152,13 +160,30 @@
         }
         else
         {
-            ConfirmOrderCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell_item" forIndexPath:indexPath];
+            NSString *identifier = @"";
+            if (self.qianGouProduct) {
+                identifier = @"cell_item0";
+            }
+            else
+            {
+                identifier = @"cell_item";
+            }
+            ConfirmOrderCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
             [cell loadItem:[self.arrayProduct[indexPath.section-1] itemlist][indexPath.row-1]];
             return cell;
         }
     }
     return nil;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        SelectAddressViewController* selectedAddressController = [[SelectAddressViewController alloc]initWithNibName:@"SelectAddressViewController" bundle:nil];
+        [self.navigationController pushViewController:selectedAddressController animated:YES];
+    }
+}
+
 -(void)ConfirmOrderBottomCell:(ConfirmOrderBottomCell *)cell isTest:(BOOL)test
 {
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];

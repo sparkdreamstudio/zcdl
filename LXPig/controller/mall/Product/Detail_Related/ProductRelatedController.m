@@ -9,6 +9,7 @@
 #import "ProductRelatedController.h"
 #import "ProductInfoList.h"
 #import "ProductRelatedCell.h"
+#import "ProductDetailViewController.h"
 @interface ProductRelatedController ()<ProductInfoListDelegate>
 @property (strong,nonatomic) ProductInfoList* productInfoList;
 @end
@@ -82,6 +83,14 @@
     ProductRelatedCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     [cell loadProductInfo:[self.productInfoList getProductInfo:indexPath.row]];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductInfo* info = [self.productInfoList getProductInfo:indexPath.row];
+    ProductDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"product_detail"];
+    controller.info = info;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

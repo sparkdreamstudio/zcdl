@@ -140,7 +140,7 @@
     }
     else{
         
-        NSMutableString* userName = [NSMutableString  stringWithString:[NSString stringWithFormat:@"%@提问",dic[@"members"][@"name"]]];
+        NSMutableString* userName = [NSMutableString  stringWithString:[NSString stringWithFormat:@"%@提问",dic[@"members"][@"userName"]]];
         if (userName.length > 7) {
             [userName replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         }

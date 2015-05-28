@@ -94,10 +94,6 @@
 {
     if(sender.tag == 0)
     {
-        if ([[AddressManager shareInstance] addressArray].count == 0) {
-            [self showNormalHudDimissWithString:@"请先完善收货地址"];
-            return;
-        }
         [self performSegueWithIdentifier:@"show_confirm_order" sender:nil];
     }
     else if (sender.tag == 1)

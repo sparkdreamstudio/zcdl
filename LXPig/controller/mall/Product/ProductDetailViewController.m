@@ -37,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
+    self.title = @"详情";
     if ([[UserManagerObject shareInstance]userType] != 0) {
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -71,27 +72,24 @@
     
     if (SCREEN_WIDTH == 320) {
         [self.segmentcontrol setTitleTextAttributes:@{
-                                                      UITextAttributeTextColor: TextGrayColor,
-                                                      UITextAttributeFont: [UIFont systemFontOfSize:12],
-                                                      UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                      NSForegroundColorAttributeName: TextGrayColor,
+                                                      NSFontAttributeName: [UIFont systemFontOfSize:12]
+                                                      }
                                            forState:UIControlStateNormal];
         [self.segmentcontrol setTitleTextAttributes:@{
-                                                      UITextAttributeTextColor: NavigationBarColor,
-                                                      UITextAttributeFont: [UIFont systemFontOfSize:12],
-                                                      UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                      NSForegroundColorAttributeName: NavigationBarColor,
+                                                      NSFontAttributeName: [UIFont systemFontOfSize:12]}
                                            forState:UIControlStateSelected];
     }
     else
     {
         [self.segmentcontrol setTitleTextAttributes:@{
-                                                      UITextAttributeTextColor: TextGrayColor,
-                                                      UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                      UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                      NSForegroundColorAttributeName: TextGrayColor,
+                                                      NSFontAttributeName: [UIFont systemFontOfSize:14]}
                                            forState:UIControlStateNormal];
         [self.segmentcontrol setTitleTextAttributes:@{
-                                                      UITextAttributeTextColor: NavigationBarColor,
-                                                      UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                      UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                      NSForegroundColorAttributeName: NavigationBarColor,
+                                                      NSFontAttributeName: [UIFont systemFontOfSize:14]}
                                            forState:UIControlStateSelected];
     }
     
@@ -116,12 +114,12 @@
     [self.imageLeft pop_addAnimation:animation forKey:@"animation"];
     [self.scrollView setContentOffset:CGPointMake(index*SCREEN_WIDTH, 0)];
     if (index == 0 || index == 3 || index == 4) {
-        self.bottomViewHeight.constant = 0;
+        self.bottomViewHeight.constant = 77;
         self.bottomView.hidden = NO;
     }
     else
     {
-        self.bottomViewHeight.constant = -(self.view.frame.size.height*0.129);
+        self.bottomViewHeight.constant = 0;
         self.bottomView.hidden = YES;
     }
 }
@@ -136,10 +134,6 @@
 //    } failure:^(NSString *message) {
 //        [weakself dismissHUD:hud WithErrorString:message];
 //    }];
-    if ([[AddressManager shareInstance] addressArray].count == 0) {
-        [self showNormalHudDimissWithString:@"请先完善收货地址"];
-        return;
-    }
     ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
     controller.qianGouProduct =self.info;
     [self.navigationController pushViewController:controller animated:YES];
@@ -159,10 +153,6 @@
 
 -(IBAction)buyImmediatelyBtnClick:(id)sender
 {
-    if ([[AddressManager shareInstance] addressArray].count == 0) {
-        [self showNormalHudDimissWithString:@"请先完善收货地址"];
-        return;
-    }
     ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
     controller.qianGouProduct =self.info;
     [self.navigationController pushViewController:controller animated:YES];

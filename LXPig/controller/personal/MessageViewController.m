@@ -24,7 +24,7 @@
     
     [self addPullRefresh];
     [self addInfinitScorll];
-    [self startRefresh];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -32,6 +32,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self startRefresh];
 }
 
 -(void)pullRfresh{
@@ -87,7 +93,7 @@
     NSDictionary* message = self.messagesArray[indexPath.row];
     if ([[message objectForKey:@"isRead"] integerValue]==0) {
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
-        UIView* unreadView = [cell.contentView viewWithTag:0];
+        UIView* unreadView = [cell.contentView viewWithTag:3];
         unreadView.layer.masksToBounds = YES;
         unreadView.layer.cornerRadius = 5;
         UILabel* label = (UILabel*)[cell.contentView viewWithTag:1];

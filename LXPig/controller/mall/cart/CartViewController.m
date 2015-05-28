@@ -135,7 +135,28 @@
     }
     self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
 }
-
+-(void)loadDelete
+{
+    BOOL enableDelete = NO;
+    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+        for (CartItem *item in items.itemlist) {
+            if (item.selectedToDelete) {
+                enableDelete = YES;
+                break;
+            }
+        }
+    }
+    if(!enableDelete)
+    {
+        [self.button setEnabled:NO];
+        [self.button setBackgroundColor:[UIColor lightGrayColor]];
+    }
+    else
+    {
+        [self.button setEnabled:YES];
+        [self.button setBackgroundColor:NavigationBarColor];
+    }
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

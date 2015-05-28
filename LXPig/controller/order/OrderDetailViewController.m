@@ -59,6 +59,9 @@
 {
     NSInteger flag  = [self.orderInfo[@"flag"]integerValue];
     switch (flag) {
+        case 0:
+            self.bottomViewHeight.constant = 0;
+            break;
         case 1:
             self.canelOrderBtn.hidden = false;
             break;

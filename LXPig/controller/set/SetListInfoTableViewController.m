@@ -9,7 +9,7 @@
 #import "SetListInfoTableViewController.h"
 #import "NetWorkClient.h"
 #import "SetListInfoTableViewCell.h"
-#import "AdWebViewController.h"
+#import "SetDetailInfoViewController.h"
 @interface SetListInfoTableViewController ()
 @property (nonatomic,strong) NSMutableArray* listArray;
 @property (assign,nonatomic) NSInteger currentPage;
@@ -110,8 +110,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AdWebViewController* controller = [[AdWebViewController alloc]initWithNibName:@"AdWebViewController" bundle:nil];
-    controller.adInfo =  self.listArray[indexPath.row];
+    NSDictionary* dic = self.listArray[indexPath.row];
+    SetDetailInfoViewController* controller = [[SetDetailInfoViewController alloc]initWithNibName:@"SetDetailInfoViewController" bundle:nil];
+    controller.htmlString = dic[@"intro"];
+    controller.dic = dic;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

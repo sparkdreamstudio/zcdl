@@ -106,7 +106,9 @@
     NSDictionary* dic = self.newsArray[indexPath.row];
     InfoDetailViewController* controller = [[InfoDetailViewController alloc]initWithNibName:@"InfoDetailViewController" bundle:nil];
     controller.htmlString = dic[@"newstext"];
+    controller.dic = dic;
     [self.controller.navigationController pushViewController:controller animated:YES];
+
 }
 
 

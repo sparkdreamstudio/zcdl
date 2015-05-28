@@ -132,7 +132,9 @@
         item.num = [NSNumber numberWithInteger:--count];
         items.totalPrice = [NSNumber numberWithInteger:totoalPrice-price];
         [self.tableView reloadRowsAtIndexPaths:@[indexPath,[NSIndexPath indexPathForRow:[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
-        [self.cartViewController loadTotalPrice];
+        if (!self.editModel) {
+            [self.cartViewController loadTotalPrice];
+        }
     }
 }
 
@@ -148,7 +150,9 @@
     item.num = [NSNumber numberWithInteger:++count];
     items.totalPrice = [NSNumber numberWithInteger:totoalPrice+price];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath,[NSIndexPath indexPathForRow:[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
-    [self.cartViewController loadTotalPrice];
+    if (!self.editModel) {
+        [self.cartViewController loadTotalPrice];
+    }
 }
 
 -(void)cartTableViewCell:(CartTableViewCell *)cell isCheck:(BOOL)check
@@ -172,6 +176,7 @@
         {
             items.selectedToDelete = NO;
         }
+        [self.cartViewController loadDelete];
     }
     else
     {
@@ -204,6 +209,7 @@
         [items.itemlist enumerateObjectsUsingBlock:^(CartItem* obj, NSUInteger idx, BOOL *stop) {
             obj.selectedToDelete = checked;
         }];
+        [self.cartViewController loadDelete];
     }
     else
     {
@@ -238,7 +244,13 @@
             }
         }
     }
-    [self.cartViewController loadTotalPrice];
+    if(self.editModel)
+    {
+        [self.cartViewController loadDelete];
+    }
+    else{
+        [self.cartViewController loadTotalPrice];
+    }
     [self.tableView reloadData];
 }
 
@@ -263,7 +275,13 @@
             }
         }
     }
-    [self.cartViewController loadTotalPrice];
+    if (self.editModel) {
+        [self.cartViewController loadDelete];
+    }
+    else
+    {
+        [self.cartViewController loadTotalPrice];
+    }
     [self.tableView reloadData];
 }
 

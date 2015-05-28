@@ -7,7 +7,7 @@
 //
 
 #import "MessageDetailViewController.h"
-
+#import "NetWorkClient.h"
 @interface MessageDetailViewController ()
 @property (weak,nonatomic) IBOutlet UILabel* time;
 @property (weak,nonatomic) IBOutlet UILabel* content;
@@ -17,8 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.time.text = self.message[@"createTime"];
-    self.content.text = self.message[@"content"];
+    [self addBackButton];
+    [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"view",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"id":self.message[@"id"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        NSDictionary* data= [responseObj objectForKey:@"data"];
+        self.time.text = data[@"createTime"];
+        self.content.text = data[@"content"];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        
+    }];
+    
     // Do any additional setup after loading the view.
 }
 

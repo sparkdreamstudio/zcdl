@@ -1,27 +1,25 @@
 //
-//  InfoDetailViewController.m
+//  SetDetailInfoViewController.m
 //  LXPig
 //
-//  Created by leexiang on 15/5/11.
+//  Created by leexiang on 15/5/28.
 //
 //
 
-#import "InfoDetailViewController.h"
+#import "SetDetailInfoViewController.h"
 
-@interface InfoDetailViewController ()
+@interface SetDetailInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-
 @end
 
-@implementation InfoDetailViewController
+@implementation SetDetailInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-    self.title =@"资讯详情";
+    self.title =@"内容详情";
     self.titleLabel.text = self.dic[@"title"];
-    self.timeLabel.text = self.dic[@"newstime"];
+    self.timeLabel.text = self.dic[@"createTime"];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
 }

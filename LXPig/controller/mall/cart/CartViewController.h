@@ -10,4 +10,5 @@
 
 @interface CartViewController : LxPigViewController
 -(void)loadTotalPrice;
+-(void)loadDelete;
 @end

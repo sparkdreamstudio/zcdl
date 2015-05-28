@@ -142,6 +142,11 @@
             UILabel* label = (UILabel*)[cell viewWithTag:1];
             NSInteger flag = [[self.orderInfo objectForKey:@"flag"] integerValue];
             switch (flag) {
+                case 0:
+                {
+                    label.text = @"已取消";
+                    break;
+                }
                 case 1:
                 {
                     label.text = @"待受理";

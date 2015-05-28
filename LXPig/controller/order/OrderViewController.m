@@ -116,9 +116,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
+    for (OrderListTableViewController* controller in self.controllerArray) {
+        [controller startRefresh];
+    }
 }
 
 -(void)makeContraint:(NSArray*)array

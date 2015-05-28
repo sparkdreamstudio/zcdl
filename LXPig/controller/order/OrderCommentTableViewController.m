@@ -101,9 +101,6 @@
         {
             object.label = [object.label stringByAppendingFormat:@",%@",[self.labelArray[buttonIndex-1] objectForKey:@"name"]];
         }
-        NSMutableString* mutableString = [NSMutableString stringWithString:object.content];
-        [mutableString insertString:[NSString stringWithFormat:@"%@,",[self.labelArray[buttonIndex-1] objectForKey:@"name"]] atIndex:0];
-        object.content = mutableString;
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:actionSheet.tag inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }

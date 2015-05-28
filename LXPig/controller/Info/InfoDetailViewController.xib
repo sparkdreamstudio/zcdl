@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoDetailViewController">
             <connections>
+                <outlet property="timeLabel" destination="6zP-83-GZV" id="NDh-bQ-9pP"/>
+                <outlet property="titleLabel" destination="c33-Pc-aEp" id="PWU-FY-Ctb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="Ng3-sW-Nwe" id="cHp-YB-Bnb"/>
             </connections>
@@ -17,15 +19,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ng3-sW-Nwe">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c33-Pc-aEp">
+                    <rect key="frame" x="14" y="20" width="572" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.23921568627450981" green="0.28235294117647058" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-83-GZV">
+                    <rect key="frame" x="14" y="54" width="572" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Ng3-sW-Nwe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PnK-we-l4d"/>
+                <constraint firstItem="6zP-83-GZV" firstAttribute="top" secondItem="c33-Pc-aEp" secondAttribute="bottom" constant="16" id="1Oh-Rv-PZN"/>
+                <constraint firstAttribute="trailing" secondItem="6zP-83-GZV" secondAttribute="trailing" constant="14" id="1fe-1e-031"/>
                 <constraint firstAttribute="trailing" secondItem="Ng3-sW-Nwe" secondAttribute="trailing" id="bp4-Zn-Ynn"/>
+                <constraint firstItem="c33-Pc-aEp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="iaX-AI-2VY"/>
+                <constraint firstItem="c33-Pc-aEp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="l5G-LD-dfv"/>
+                <constraint firstAttribute="trailing" secondItem="c33-Pc-aEp" secondAttribute="trailing" constant="14" id="lRQ-wa-fIE"/>
+                <constraint firstItem="Ng3-sW-Nwe" firstAttribute="top" secondItem="6zP-83-GZV" secondAttribute="bottom" constant="20" id="mnR-bE-Gxx"/>
                 <constraint firstItem="Ng3-sW-Nwe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n9i-kN-oLJ"/>
+                <constraint firstItem="6zP-83-GZV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="nP0-4n-viw"/>
                 <constraint firstAttribute="bottom" secondItem="Ng3-sW-Nwe" secondAttribute="bottom" id="xbn-5y-gGL"/>
             </constraints>
         </view>

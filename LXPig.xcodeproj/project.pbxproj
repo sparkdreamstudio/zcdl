@@ -38,6 +38,8 @@
 		D024470B1AFA870B00FFD55F /* OrderCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D024470A1AFA870B00FFD55F /* OrderCommentTableViewCell.m */; };
 		D024470E1AFA874D00FFD55F /* OrderCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D024470D1AFA874D00FFD55F /* OrderCommentViewController.m */; };
 		D02447111AFA876600FFD55F /* OrderCommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D02447101AFA876600FFD55F /* OrderCommentTableViewController.m */; };
+		D03888B81B17555B00FA2FDC /* SetDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03888B61B17555B00FA2FDC /* SetDetailInfoViewController.m */; };
+		D03888B91B17555B00FA2FDC /* SetDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03888B71B17555B00FA2FDC /* SetDetailInfoViewController.xib */; };
 		D03C07CE1AFF9200008B05AD /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03C07CD1AFF9200008B05AD /* InfoViewController.m */; };
 		D03CEC941B04E1EB00DD73B7 /* SetListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CEC921B04E1EB00DD73B7 /* SetListTableViewCell.m */; };
 		D03CEC951B04E1EB00DD73B7 /* SetListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03CEC931B04E1EB00DD73B7 /* SetListTableViewCell.xib */; };
@@ -231,6 +233,9 @@
 		D024470D1AFA874D00FFD55F /* OrderCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCommentViewController.m; path = controller/order/OrderCommentViewController.m; sourceTree = "<group>"; };
 		D024470F1AFA876600FFD55F /* OrderCommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCommentTableViewController.h; path = controller/order/OrderCommentTableViewController.h; sourceTree = "<group>"; };
 		D02447101AFA876600FFD55F /* OrderCommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCommentTableViewController.m; path = controller/order/OrderCommentTableViewController.m; sourceTree = "<group>"; };
+		D03888B51B17555B00FA2FDC /* SetDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetDetailInfoViewController.h; path = controller/set/SetDetailInfoViewController.h; sourceTree = "<group>"; };
+		D03888B61B17555B00FA2FDC /* SetDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetDetailInfoViewController.m; path = controller/set/SetDetailInfoViewController.m; sourceTree = "<group>"; };
+		D03888B71B17555B00FA2FDC /* SetDetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetDetailInfoViewController.xib; path = controller/set/SetDetailInfoViewController.xib; sourceTree = "<group>"; };
 		D03C07CC1AFF9200008B05AD /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoViewController.h; path = controller/Info/InfoViewController.h; sourceTree = "<group>"; };
 		D03C07CD1AFF9200008B05AD /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoViewController.m; path = controller/Info/InfoViewController.m; sourceTree = "<group>"; };
 		D03CEC911B04E1EB00DD73B7 /* SetListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetListTableViewCell.h; path = controller/set/SetListTableViewCell.h; sourceTree = "<group>"; };
@@ -564,6 +569,9 @@
 				D023231D1B077E1C0064E93E /* PSYResultViewController.h */,
 				D023231E1B077E1C0064E93E /* PSYResultViewController.m */,
 				D023231F1B077E1C0064E93E /* PSYResultViewController.xib */,
+				D03888B51B17555B00FA2FDC /* SetDetailInfoViewController.h */,
+				D03888B61B17555B00FA2FDC /* SetDetailInfoViewController.m */,
+				D03888B71B17555B00FA2FDC /* SetDetailInfoViewController.xib */,
 			);
 			name = set;
 			sourceTree = "<group>";
@@ -1265,6 +1273,7 @@
 				F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */,
 				D02323151B072D1E0064E93E /* PSYButtonTableViewCell.xib in Resources */,
 				D07639081B0106A1008763B1 /* InfoDetailViewController.xib in Resources */,
+				D03888B91B17555B00FA2FDC /* SetDetailInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1346,7 @@
 				D06DA1F61AD2647A00430A00 /* AppDelegate.m in Sources */,
 				D0D688AA1AF37A36006C8BA4 /* DistrictViewController.m in Sources */,
 				D00474EE1AFF4D1B00F9C461 /* MyQuestionDetailTableViewController.m in Sources */,
+				D03888B81B17555B00FA2FDC /* SetDetailInfoViewController.m in Sources */,
 				D07C9D9F1AF6680B00C874DD /* OrderDetailViewController.m in Sources */,
 				D0B522981AF13CE200E809AA /* ProductDetailViewController.m in Sources */,
 				D0B522FF1AF13EEC00E809AA /* VOSegment.m in Sources */,

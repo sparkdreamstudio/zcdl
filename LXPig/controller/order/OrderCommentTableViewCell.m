@@ -96,9 +96,9 @@
     self.serviceRatingLable.text = [NSString stringWithFormat:@"%ld分",(long)object.serviceStar];
     self.comment.text = object.content;
     //[self.tagBtn setTitle:object.label forState:UIControlStateNormal];
-//    if (object.label && object.label.length > 0) {
-//        [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
-//    }
+    if (object.label && object.label.length > 0) {
+        [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
+    }
     
 }
 

@@ -1,14 +1,14 @@
 //
-//  InfoDetailViewController.h
+//  SetDetailInfoViewController.h
 //  LXPig
 //
-//  Created by leexiang on 15/5/11.
+//  Created by leexiang on 15/5/28.
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "LxPigViewController.h"
 
-@interface InfoDetailViewController : LxPigViewController
+@interface SetDetailInfoViewController : LxPigViewController
 @property (weak,nonatomic)NSString* htmlString;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

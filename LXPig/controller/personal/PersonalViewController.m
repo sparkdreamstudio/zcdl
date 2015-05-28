@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeTop;
     self.tableView.tableFooterView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 100);
     self.logOutBtn.layer.masksToBounds = YES;
     self.logOutBtn.layer.cornerRadius = 4;
@@ -33,6 +32,8 @@
     
     // Do any additional setup after loading the view.
     self.adImageView.imagePlayerViewDelegate = self;
+    self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36);
+    //self.adImageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36);
     [[NetWorkClient shareInstance]postUrl:SERVICE_AD With:@{@"action":@"advlist",@"type":@"2"} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.adArray = [responseObj objectForKey:@"data"];
         [self.adImageView reloadData];
@@ -52,106 +53,30 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:nil];
-    self.userName.text = [[UserManagerObject shareInstance]name];
+    if ([[UserManagerObject shareInstance]nickName]&&[[UserManagerObject shareInstance]nickName].length > 0) {
+        self.userName.text = [[UserManagerObject shareInstance]nickName];
+    }
+    else
+    {
+        self.userName.text = [[UserManagerObject shareInstance]userName];
+    }
+    
 }
 
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    if ([[UserManagerObject shareInstance]userType] == 0) {
-//        return 8;
-//    }
-//    else
-//    {
-//        return 3;
-//    }
-//}
-//
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([[UserManagerObject shareInstance]userType] == 0) {
-//        switch (indexPath.row) {
-//            case 0:
-//                return 135;
-//                break;
-//            case 1:
-//                return 88;
-//                break;
-//            case 2:
-//                return 58;
-//                break;
-//            case 3:
-//                return 58;
-//                break;
-//            case 4:
-//                return 58;
-//                break;
-//            case 5:
-//                return 58;
-//                break;
-//            case 6:
-//                return 60;
-//                break;
-//            case 7:
-//                return 55;
-//                break;
-//            default:
-//                return 0;
-//                break;
-//        }
-//    }
-//    else
-//    {
-//        switch (indexPath.row) {
-//            case 0:
-//                return 58;
-//                break;
-//            case 1:
-//                return 60;
-//                break;
-//            case 2:
-//                return 58;
-//                break;
-//            default:
-//                return 0;
-//                break;
-//        }
-//    }
-//}
-//
-//-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([[UserManagerObject shareInstance]userType] == 0) {
-//        NSString *identifier = [NSString stringWithFormat:@"cell%ld",(long)indexPath.row];
-//        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//        return cell;
-//    }
-//    else
-//    {
-//        NSString *identifier = @"";
-//        switch (indexPath.row) {
-//            case 0:
-//                identifier = @"cell2";
-//                break;
-//            case 1:
-//                identifier = @"cell6";
-//                break;
-//            case 2:
-//                identifier = @"cell7";
-//                break;
-//            default:
-//                return nil;
-//                break;
-//        }
-//        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//        return cell;
-//    }
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.view.frame = CGRectMake(0, -20, SCREEN_WIDTH, self.view.frame.size.height+20);
+}
+
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
     }
 }

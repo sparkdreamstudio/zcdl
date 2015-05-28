@@ -180,6 +180,11 @@
         label = (UILabel*)[cell viewWithTag:2];
         NSInteger flag = [[self.orderArray[indexPath.section] objectForKey:@"flag"] integerValue];
         switch (flag) {
+            case 0:
+            {
+                label.text = @"已取消";
+                break;
+            }
             case 1:
             {
                 label.text = @"待受理";

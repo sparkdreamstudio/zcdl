@@ -11,7 +11,7 @@
 
 
 #pragma mark -http server & api url-
-#define SERVER_URL @"http://203.93.210.77:9504/zcdl/api"
+#define SERVER_URL @"http://112.74.98.66/api"
 #define SERVICE_USER    @"userservice.do"
 #define SERVICE_MEMBER @"memberservice.do"
 #define SERVICE_PRODUCT @"productservice.do"

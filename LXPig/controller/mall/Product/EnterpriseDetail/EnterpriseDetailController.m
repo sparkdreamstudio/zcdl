@@ -23,7 +23,16 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.nameLabel.text = self.info.name;
+    /*******Ashen*********/
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, self.nameLabel.frame.origin.y, SCREEN_WIDTH, self.nameLabel.frame.size.height)];
+    
+    label.text = self.info.name;
+    self.nameLabel.hidden = YES;
+    //self.nameLabel.text = self.info.name;
+    label.font = [UIFont systemFontOfSize:15];
+    [self.view addSubview:label];
+    /*******Ashen*********/
+    
     self.phone.text = self.info.tel;
     self.fax.text = self.info.fax;
     self.address.text = self.info.address;
@@ -79,6 +88,9 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '230%'";
+    [webView stringByEvaluatingJavaScriptFromString:str];
 
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
     

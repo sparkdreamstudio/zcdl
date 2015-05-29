@@ -30,6 +30,12 @@
 
 @implementation ProductDetailTableViewController
 
+- (void)initAshen {
+    self.productNameLabel.font = [UIFont systemFontOfSize:15];
+    self.salePriceLabel.font = [UIFont systemFontOfSize:15];
+    self.marketPriceLabel.font = [UIFont systemFontOfSize:13];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,6 +46,9 @@
     self.imagePlayer.imagePlayerViewDelegate = self;
     self.imagePlayer.pageControlPosition = ICPageControlPosition_BottomCenter;
     self.imagePlayer.hidePageControl = NO;
+    
+    [self initAshen];
+    
     self.urlArray = [NSMutableArray array];
     __weak ProductDetailTableViewController* weakself = self;
     UIView* view = [self showNormalHudNoDimissWithString:@"加载中"];
@@ -74,15 +83,19 @@
              {
                  
                  SKTag *tag = [SKTag tagWithText:[obj objectForKey:@"val"]];
+                 tag.fontSize = 13;
                  tag.textColor = TextGrayColor;
                  tag.selectedTextColor = TextGrayColor;
-                 tag.fontSize = 13;
-                 tag.padding = UIEdgeInsetsMake(10, 3, 10, 3);
+                 /*****************Ashen*************************/
+                 tag.padding = UIEdgeInsetsMake(7, 10, 7, 10);
+                 /*****************Ashen*************************/
                  tag.bgImg = [Utils imageWithColor:[UIColor whiteColor]];
                  tag.selectedBgImg = [Utils imageWithColor:[UIColor whiteColor]];
                  tag.borderColor = [UIColor colorWithRed:0xd7/255.f green:0xd7/255.f blue:0xd7/255.f alpha:1];
                  tag.borderWidth = 1;
-                 tag.cornerRadius = 5;
+                 /*****************Ashen*************************/
+                 tag.cornerRadius = 4;
+                 /*****************Ashen*************************/
                  
                  [weakself.tagView addTag:tag];
              }];
@@ -178,6 +191,9 @@
 //    frame.size = webView.scrollView.contentSize;
 //    webView.frame = frame;
 //    NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
+    NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '230%'";
+    [webView stringByEvaluatingJavaScriptFromString:str];
+    
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
 
     NSString *width_str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth"];

@@ -28,6 +28,7 @@
 {
     self.replyUserLabel.text = [NSString stringWithFormat:@"%@回答",[dic[@"members"] objectForKey:@"name"]];
     self.replyTime.text = dic[@"replyTime"];
+    self.replyTime.font = [UIFont systemFontOfSize:13];
     self.content.text = dic[@"content"];
     self.isAcceptLabel.hidden = [dic[@"isAccept"] integerValue]==0;
 }

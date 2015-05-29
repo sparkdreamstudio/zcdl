@@ -103,10 +103,10 @@
 - (void)configureCell:(CommentTagCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
-    cell.tagView.padding    = UIEdgeInsetsMake(9, 12, 9, 12);
+    cell.tagView.padding    = UIEdgeInsetsMake(9, 8, 9, 8);
     cell.tagView.backgroundColor = [UIColor colorWithRed:0xf5/255.f green:0xf5/255.f blue:0xf5/255.f alpha:1];
     cell.tagView.insets    = 15;
-    cell.tagView.lineSpace = 16;
+    cell.tagView.lineSpace = 8;
     cell.tagView.didClickTagAtIndex = ^(NSUInteger index){
         
     };
@@ -132,12 +132,12 @@
          tag.textColor = [UIColor colorWithRed:0x5a/255.f green:0x63/255.f blue:0x6c/255.f alpha:1];
          tag.fontSize = 13;
          tag.selectedTextColor = [UIColor whiteColor];;
-         tag.padding = UIEdgeInsetsMake(8, 8, 8, 8);
+         tag.padding = UIEdgeInsetsMake(8, 10, 8, 10);
          tag.bgImg = [Utils imageWithColor:[UIColor colorWithRed:0xfe/255.f green:0xfe/255.f blue:0xfe/255.f alpha:1]];
          tag.selectedBgImg = [Utils imageWithColor:NavigationBarColor];
          tag.borderColor = [UIColor colorWithRed:0xd5/255.f green:0xd5/255.f blue:0xd5/255.f alpha:1];
          tag.borderWidth = 1;
-         tag.cornerRadius = 5;
+         tag.cornerRadius = 4;
          if (idx == selectedIndex) {
              tag.selected = YES;
          }

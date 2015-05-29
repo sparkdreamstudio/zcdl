@@ -39,9 +39,18 @@
                             <constraint firstAttribute="height" constant="23" id="vhl-kx-UWP"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="El8-mo-UE3">
+                        <rect key="frame" x="12" y="71" width="576" height="1"/>
+                        <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="GIh-hE-lmN"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wxX-5f-xwW" firstAttribute="leading" secondItem="tzq-pP-mbT" secondAttribute="leading" constant="15" id="3fi-Ao-s3M"/>
+                    <constraint firstAttribute="trailing" secondItem="El8-mo-UE3" secondAttribute="trailing" constant="12" id="4Kv-WM-TZp"/>
+                    <constraint firstAttribute="bottom" secondItem="El8-mo-UE3" secondAttribute="bottom" id="9XR-Yt-zTd"/>
                     <constraint firstItem="wxX-5f-xwW" firstAttribute="centerY" secondItem="Fwo-2Z-A0h" secondAttribute="centerY" id="BAP-XW-ueJ"/>
                     <constraint firstAttribute="centerY" secondItem="wxX-5f-xwW" secondAttribute="centerY" multiplier="1.5" id="CdI-P3-0us"/>
                     <constraint firstAttribute="trailing" secondItem="3W1-yv-cdn" secondAttribute="trailing" constant="15" id="DH3-5y-037"/>
@@ -50,6 +59,7 @@
                     <constraint firstItem="wxX-5f-xwW" firstAttribute="centerY" secondItem="G5y-JK-1h2" secondAttribute="centerY" multiplier="0.5" id="WwD-SK-ChE"/>
                     <constraint firstItem="wxX-5f-xwW" firstAttribute="leading" secondItem="G5y-JK-1h2" secondAttribute="leading" id="iXi-jk-bxY"/>
                     <constraint firstItem="3W1-yv-cdn" firstAttribute="leading" secondItem="Fwo-2Z-A0h" secondAttribute="trailing" constant="3" id="mBw-60-L2Z"/>
+                    <constraint firstItem="El8-mo-UE3" firstAttribute="leading" secondItem="tzq-pP-mbT" secondAttribute="leading" constant="12" id="rSn-xV-tor"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

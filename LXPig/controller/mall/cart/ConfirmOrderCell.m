@@ -43,14 +43,17 @@
 
 -(IBAction)additemCount:(id)sender
 {
-    self.item.num = [NSNumber numberWithInteger:self.item.num.integerValue-1];
-    self.count.text = [NSString stringWithFormat:@"x%@",self.item.num];
+    self.item.num = [NSNumber numberWithInteger:self.item.num.integerValue+1];
+    self.count.text = [NSString stringWithFormat:@"%@",self.item.num];
 }
 
 -(IBAction)decreaseItemCount:(id)sender
 {
+    if (self.item.num.integerValue == 1) {
+        return;
+    }
     self.item.num = [NSNumber numberWithInteger:self.item.num.integerValue-1];
-    self.count.text = [NSString stringWithFormat:@"x%@",self.item.num];
+    self.count.text = [NSString stringWithFormat:@"%@",self.item.num];
 }
 
 @end

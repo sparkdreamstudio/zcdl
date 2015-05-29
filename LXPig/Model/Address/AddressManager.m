@@ -87,7 +87,7 @@ static AddressManager* singleton = nil;
     [params setValue:[NSNumber numberWithInteger:address.isDefault] forKey:@"isDefault"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_SHIPADDRESS With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         if (address.keyId == -1) {
-            address.keyId = [[responseObj valueForKey:@"id"]longLongValue];
+            address.keyId = [[[responseObj valueForKey:@"data"] valueForKey:@"id"]longLongValue];
             
             if(address.isDefault == 0)
             {
@@ -174,7 +174,7 @@ static AddressManager* singleton = nil;
         address.keyId = [[obj valueForKey:@"id"]longLongValue];
         address.contact = [obj valueForKey:@"contact"];
         address.tel = [obj valueForKey:@"tel"];
-        address.zipcode = [obj valueForKey:@"ziocode"];
+        address.zipcode = [obj valueForKey:@"zipcode"];
         address.province = [obj valueForKey:@"province"];
         address.city = [obj valueForKey:@"city"];
         address.district = [obj valueForKey:@"district"];

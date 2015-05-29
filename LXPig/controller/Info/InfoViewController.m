@@ -10,24 +10,33 @@
 #import "NetWorkClient.h"
 #import "InfoViewTypeCustomTableViewController.h"
 #import "InfoListTableViewController.h"
-@interface InfoViewController ()<UIScrollViewDelegate>
+#import "NetWorkClient.h"
+@interface InfoViewController ()<UIScrollViewDelegate,ImagePlayerViewDelegate>
 @property (strong,nonatomic)NSArray *newsView;
 @property (strong,nonatomic)UIScrollView* topScrollView;
 @property (strong,nonatomic)UIScrollView* newsScrollView;
 @property (strong,nonatomic)UISegmentedControl* segmentedControll;
 @property (strong,nonatomic)NSMutableArray* controllerArray;
+@property (strong,nonatomic)NSMutableArray* infoArray;
 @end
 
 @implementation InfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ImagePlayerView* playerView = [[ImagePlayerView alloc]init];
+    playerView.translatesAutoresizingMaskIntoConstraints = NO;
+    playerView.imagePlayerViewDelegate = self;
+    [self.view addSubview:playerView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[playerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(playerView)]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:158]];
     self.controllerArray = [NSMutableArray array];
     self.topScrollView = [[UIScrollView alloc]init];
     self.topScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.topScrollView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topScrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_topScrollView)]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
     self.newsScrollView = [[UIScrollView alloc]init];
     self.newsScrollView.pagingEnabled = YES;
@@ -39,6 +48,13 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.newsScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomLayoutGuide attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
     
     [self loadNews];
+    
+    [[NetWorkClient shareInstance]postUrl:SERVICE_WEBNEWS With:@{@"action":@"list",} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        self.infoArray = [responseObj objectForKey:@"data"];
+        [playerView reloadData];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -107,14 +123,12 @@
     [self.segmentedControll setDividerImage:[UIImage imageNamed:@"segment_divider"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.segmentedControll setDividerImage:[UIImage imageNamed:@"segment_divider"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [self.segmentedControll setTitleTextAttributes:@{
-                                                  UITextAttributeTextColor: TextGrayColor,
-                                                  UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                  UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                  NSForegroundColorAttributeName: TextGrayColor,
+                                                  NSFontAttributeName: [UIFont systemFontOfSize:15] }
                                        forState:UIControlStateNormal];
     [self.segmentedControll setTitleTextAttributes:@{
-                                                  UITextAttributeTextColor: NavigationBarColor,
-                                                  UITextAttributeFont: [UIFont systemFontOfSize:15],
-                                                  UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
+                                                  NSForegroundColorAttributeName: NavigationBarColor,
+                                                  NSFontAttributeName: [UIFont systemFontOfSize:15]}
                                        forState:UIControlStateSelected];
     self.segmentedControll.translatesAutoresizingMaskIntoConstraints = NO;
     [self.topScrollView addSubview:self.segmentedControll];
@@ -158,6 +172,17 @@
     {
         [self.controllerArray[0] startRefresh];
     }
+}
+
+-(NSInteger)numberOfItems
+{
+    return self.infoArray.count;
+}
+
+- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index
+{
+    NSDictionary* dic = [self.infoArray objectAtIndex:index];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"titlepic"]] placeholderImage:nil];
 }
 /*
 #pragma mark - Navigation

@@ -37,7 +37,6 @@
     self.marketPriceLabel.strikeThroughColor = self.marketPriceLabel.textColor;
     self.marketPriceLabel.strikeThroughEnabled = YES;
     self.introWebView.scrollView.scrollEnabled = NO;
-    self.introWebView.scalesPageToFit = YES;
     self.imagePlayer.imagePlayerViewDelegate = self;
     self.imagePlayer.pageControlPosition = ICPageControlPosition_BottomCenter;
     self.imagePlayer.hidePageControl = NO;

@@ -22,7 +22,7 @@
 
 -(void)loadCell:(NSDictionary*)dic
 {
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:dic[@"titlepic"]] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:dic[@"titlepic"]] placeholderImage:[UIImage imageNamed:@"info_null"]];
     self.title.text = dic[@"title"];
     self.content.text = dic[@"smalltext"];
     self.time.text = dic[@"newstime"];

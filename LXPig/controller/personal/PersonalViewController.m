@@ -55,7 +55,7 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:nil];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:[UIImage imageNamed:@"user_default"]];
     if ([[UserManagerObject shareInstance]nickName]&&[[UserManagerObject shareInstance]nickName].length > 0) {
         self.userName.text = [[UserManagerObject shareInstance]nickName];
     }

@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:nil];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:[UIImage imageNamed:@"user_default"]];
     self.name.text = [[UserManagerObject shareInstance] name];
     self.nickName.text = [[UserManagerObject shareInstance]nickName];
     self.sexual.text = [[[UserManagerObject shareInstance]sex]integerValue]==0?@"男":@"女";

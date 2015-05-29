@@ -58,7 +58,7 @@
     UIView* view = [self.parentViewController showNormalHudNoDimissWithString:@"提交订单"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_ORDER With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:view WithSuccessString:[responseObj objectForKey:@"message"]];
-        [self.view setHidden:YES];
+        [self.view.superview removeFromSuperview];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:view WithErrorString:[responseObj objectForKey:@"message"]];
     }];

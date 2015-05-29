@@ -28,7 +28,6 @@
     self.fax.text = self.info.fax;
     self.address.text = self.info.address;
     self.infoWebView.scrollView.scrollEnabled = NO;
-    self.infoWebView.scalesPageToFit = YES;
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -83,12 +82,11 @@
 
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
     
-    NSString *width_str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth"];
+    NSString *width_str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"];
     int height = [height_str intValue];
     CGFloat width = [width_str floatValue];
-    CGRect frame = CGRectMake(0,0,SCREEN_WIDTH,height*SCREEN_WIDTH/width);
+    CGRect frame = CGRectMake(0,0,SCREEN_WIDTH,height);
     webView.frame = frame;
-    NSLog(@"height: %@", [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"]);
 //    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:5 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.tableView reloadData];

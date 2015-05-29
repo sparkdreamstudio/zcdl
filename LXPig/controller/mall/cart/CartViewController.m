@@ -30,6 +30,7 @@
     editModel = NO;
     [super viewDidLoad];
     [self addBackButton];
+    self.title = @"购物车";
     self.editButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editBtnClick:)];
     self.editButton.tag = 0;
     self.navigationItem.rightBarButtonItem = self.editButton;

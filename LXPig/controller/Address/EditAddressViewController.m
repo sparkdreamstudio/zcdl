@@ -80,6 +80,7 @@
             
             UIView* hud = [self showNormalHudNoDimissWithString:@"提交信息"];
             [[AddressManager shareInstance]setAddressInfo:self.controller.temp Success:^(NSDictionary *responseObj, NSString *timeSp) {
+                hud.tag = 1;
                 [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
             } failure:^(NSDictionary *responseObj, NSString *timeSp) {
                 [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];

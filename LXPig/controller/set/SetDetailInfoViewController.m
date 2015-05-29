@@ -8,8 +8,9 @@
 
 #import "SetDetailInfoViewController.h"
 
-@interface SetDetailInfoViewController ()
+@interface SetDetailInfoViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* webViewHeight;
 @end
 
 @implementation SetDetailInfoViewController
@@ -20,13 +21,23 @@
     self.title =@"内容详情";
     self.titleLabel.text = self.dic[@"title"];
     self.timeLabel.text = self.dic[@"createTime"];
+    self.webView.delegate = self;
+    self.webView.scrollView.scrollEnabled = false;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
+    NSInteger height = [height_str integerValue];
+    self.webViewHeight.constant = height+20;
 }
 
 /*

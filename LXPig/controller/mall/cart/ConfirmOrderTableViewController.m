@@ -51,7 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setAddress:) name:NTF_SETORDERADDRESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setAddressNtf:) name:NTF_SETORDERADDRESS object:nil];
     self.arrayProduct = [NSMutableArray array];
     if([[[AddressManager shareInstance] addressArray] count] == 0)
     {
@@ -68,7 +68,7 @@
         orderItem.marketPrice = @(self.qianGouProduct.marketPrice);
         orderItem.salePrice = @(self.qianGouProduct.salePrice);
         orderItem.productImage = self.qianGouProduct.smallImg;
-        orderItem.num = @(1);
+        orderItem.num = @(30);
         orderItem.name  = self.qianGouProduct.name;
         orderItems.totalPrice = self.qianGouProduct.salePrice;
         orderItems.totalNumber = 1;
@@ -102,15 +102,21 @@
             }
         }
     }
-    
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)setAddressNtf:(NSNotification*)ntf
+{
+    self.address = ntf.object;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
--(void)dealloc
-{
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 -(void)setOrderAddress:(NSNotification*)ntf
 {

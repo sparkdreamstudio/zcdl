@@ -51,6 +51,11 @@
 
 -(IBAction)cofirmOrder:(id)sender
 {
+    if(self.controller.address == nil)
+    {
+        [self showNormalHudDimissWithString:@"请选择收货地址"];
+        return;
+    }
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     [params setValue:@"save" forKey:@"action"];
     [params setValue:[self getJson] forKey:@"data"];

@@ -46,6 +46,13 @@
     [[NetWorkClient shareInstance]postUrl:SERVICE_ENTERPRISE With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         NSArray* array = [responseObj objectForKey:@"data"];
         [weakself.enterpriseList removeAllObjects];
+        if (array.count < 20) {
+            [self setInfinitScorllHidden:YES];
+        }
+        else
+        {
+            [self setInfinitScorllHidden:NO];
+        }
         for (NSDictionary*dic in array) {
             EnterpriseInfo* info = [[EnterpriseInfo alloc]init];
             info.keyId = [[dic objectForKey:@"id"]longLongValue];
@@ -76,6 +83,13 @@
     [params setValue:@"20" forKey:@"pageSize"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_ENTERPRISE With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         NSArray* array = [responseObj objectForKey:@"data"];
+        if (array.count < 20) {
+            [self setInfinitScorllHidden:YES];
+        }
+        else
+        {
+            [self setInfinitScorllHidden:NO];
+        }
         NSMutableArray* infoArray = [NSMutableArray array];
         for (NSDictionary*dic in array) {
             EnterpriseInfo* info = [[EnterpriseInfo alloc]init];
@@ -90,7 +104,7 @@
         [weakself.enterpriseList addObjectsFromArray:infoArray];
         [weakself.tableView beginUpdates];
         NSMutableArray* indexpathArray = [NSMutableArray array];
-        for (NSUInteger index = weakself.enterpriseList.count-infoArray.count-1; index<weakself.enterpriseList.count-1; index++) {
+        for (NSUInteger index = weakself.enterpriseList.count-infoArray.count; index<weakself.enterpriseList.count; index++) {
             [indexpathArray addObject:[NSIndexPath indexPathForRow:index+1 inSection:0]];
         }
         [weakself.tableView insertRowsAtIndexPaths:indexpathArray withRowAnimation:UITableViewRowAnimationNone];

@@ -10,9 +10,11 @@
 #import "MyQuestionTableViewController.h"
 #import "NetWorkClient.h"
 #import "AdWebViewController.h"
+#import "AboutViewController.h"
 @interface PersonalViewController ()<ImagePlayerViewDelegate>
 @property (weak, nonatomic) IBOutlet ImagePlayerView *adImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel* unReadLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIButton* logOutBtn;
 @property (strong, nonatomic) NSArray* adArray;
@@ -64,6 +66,11 @@
         self.userName.text = [[UserManagerObject shareInstance]userName];
     }
     
+    [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"total",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        self.unReadLabel.text = [NSString stringWithFormat:@"%@条未读",[[responseObj objectForKey:@"data"]objectForKey:@"cnt"]];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -78,6 +85,10 @@
 {
     if (indexPath.row == 4) {
         [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
+    }
+    else if (indexPath.row  == 6)
+    {
+        [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
     }
 }
 -(IBAction)logOut:(id)sender

@@ -18,6 +18,7 @@
     NSInteger param3;
     NSInteger param4;
 }
+@property (weak,nonatomic)UIButton *btn;
 
 @end
 
@@ -57,6 +58,7 @@
 
 -(void)psyButtonClickCell:(PSYButtonTableViewCell *)cell
 {
+    [self.tableView endEditing:YES];
     UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"选择测定周期" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"一周",@"一月",@"3个月",@"半年",@"一年", nil];
     [sheet showInView:self.view];
 }
@@ -85,6 +87,8 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.cancelButtonIndex != buttonIndex) {
+        NSArray* array = @[@"一周",@"一月",@"3个月",@"半年",@"一年"];
+        [self.btn setTitle:[array objectAtIndex:buttonIndex] forState:UIControlStateNormal];
         param0 = buttonIndex;
     }
 }
@@ -176,6 +180,7 @@
     else if (indexPath.row == 1) {
         PSYButtonTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PSYButtonTableViewCell" forIndexPath:indexPath];
         cell.delegate = self;
+        self.btn = cell.textButton;
         return cell;
     }
     else{

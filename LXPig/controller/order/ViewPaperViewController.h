@@ -11,5 +11,5 @@
 @interface ViewPaperViewController : LxPigViewController
 
 @property (weak,nonatomic) NSDictionary* paperInfo;
-
+@property (assign,nonatomic) NSInteger orderTag;
 @end

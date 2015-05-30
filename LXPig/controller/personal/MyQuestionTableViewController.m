@@ -97,7 +97,7 @@
         }
         [self.problemArray addObjectsFromArray:array];
         NSMutableArray* indexPathArray = [NSMutableArray array];
-        for (NSInteger index = (self.problemArray.count - array.count -1); index < self.problemArray.count; index++) {
+        for (NSInteger index = (self.problemArray.count - array.count); index < self.problemArray.count; index++) {
             [indexPathArray addObject:[NSIndexPath indexPathForRow:index inSection:0]];
         }
         

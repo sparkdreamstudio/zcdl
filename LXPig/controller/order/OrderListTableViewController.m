@@ -133,7 +133,7 @@
         }
         if (array.count != 0) {
             [self.tableView beginUpdates];
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.orderArray.count-array.count-1,array.count)] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.orderArray.count-array.count,array.count)] withRowAnimation:UITableViewRowAnimationNone];
             [self.tableView endUpdates];
         }
         

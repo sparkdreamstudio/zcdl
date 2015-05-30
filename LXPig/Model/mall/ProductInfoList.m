@@ -99,7 +99,7 @@ static ProductInfoList* singleton = nil;
         if (weakself.delegate) {
             if ([weakself.delegate respondsToSelector:@selector(productInfoListRefreshSuccess:)]) {
                 
-                [weakself.delegate productInfoList:self NextInfos:NSMakeRange(weakself.infos.count-array.count-1, array.count)];
+                [weakself.delegate productInfoList:self NextInfos:NSMakeRange(weakself.infos.count-array.count, array.count)];
             }
         }
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {

@@ -88,7 +88,7 @@
         weakself.tagArray = [responseObj[@"data"] valueForKey:@"labelList"];
         [weakself.commentArray addObjectsFromArray:array];
         NSMutableArray* arrayIndexPath = [NSMutableArray array];
-        for (NSUInteger i = weakself.commentArray.count-array.count-1; i < array.count; i++) {
+        for (NSUInteger i = weakself.commentArray.count-array.count; i < array.count; i++) {
             [arrayIndexPath addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         }
         [arrayIndexPath addObject:[NSIndexPath indexPathForRow:0 inSection:0]];

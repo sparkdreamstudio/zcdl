@@ -10,6 +10,7 @@
 #import "NetWorkClient.h"
 #import "BillTableViewCell.h"
 #import "ViewPaperViewController.h"
+#import "LPLabel.h"
 @interface OrderDetailTableViewController ()<BillTableViewCellDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate>
 {
     BOOL showPager;
@@ -217,6 +218,9 @@
                 label.text = [[product objectForKey:@"salePrice"] stringValue];
                 label = (UILabel*)[cell viewWithTag:4];
                 label.text = [NSString stringWithFormat:@"x%@",[dic objectForKey:@"num"]];
+                
+                LPLabel *lpLabel = (LPLabel*)[cell viewWithTag:5];
+                lpLabel.text = [[product objectForKey:@"marketPrice"] stringValue];
                 return cell;
             }
         }
@@ -291,6 +295,7 @@
     if ([segue.identifier isEqualToString:@"show_paper"]) {
         ViewPaperViewController* controller = [segue destinationViewController];
         controller.paperInfo = sender;
+        controller.orderTag = [[self.orderInfo objectForKey:@"flag"] integerValue];
     }
 }
 

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UIButton *acceptBtn;
+@property (weak, nonatomic) IBOutlet UILabel *acceptLabel;
 
 @end
 
@@ -20,6 +21,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.acceptLabel.layer.masksToBounds = YES;
+    self.acceptLabel.layer.borderColor = [UIColor colorWithRed:0x01/255.f green:0xcc/255.f blue:0x1a/255.f alpha:1].CGColor;
+    self.acceptLabel.layer.borderWidth = 1;
+    self.acceptLabel.layer.cornerRadius = 3;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -37,12 +42,31 @@
 {
     if (solve == 0) {
         self.acceptBtn.hidden = NO;
+        self.acceptLabel.hidden = YES;
     }
     else
     {
         self.acceptBtn.hidden = YES;
+        if([dic[@"isAccept"] integerValue] == 1)
+        {
+            self.acceptLabel.hidden = NO;
+        }
+        else{
+            self.acceptLabel.hidden = YES;
+        }
     }
-    self.answerUser.text = dic[@"members"][@"name"];
+    
+    if(dic[@"members"][@"nickName"] && [dic[@"members"][@"nickName"] length]>0)
+    {
+        self.answerUser.text = dic[@"members"][@"nickName"];
+    }
+    else
+    {
+        NSMutableString* userName = [NSMutableString stringWithString:self.answerUser.text = dic[@"members"][@"userName"]];
+        [userName replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        self.answerUser.text = userName;
+    }
+    
     self.content.text = dic[@"content"];
     self.time.text = dic[@"createTime"];
 }

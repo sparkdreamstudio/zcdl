@@ -66,7 +66,7 @@
         }
         [weakself.infoArray addObjectsFromArray:array];
         NSMutableArray* arrayIndexPath = [NSMutableArray array];
-        for (NSUInteger i = weakself.infoArray.count-array.count-1; i < array.count; i++) {
+        for (NSUInteger i = weakself.infoArray.count-array.count; i < array.count; i++) {
             [arrayIndexPath addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         }
         [self.tableView beginUpdates];

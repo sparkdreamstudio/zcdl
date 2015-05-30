@@ -11,6 +11,7 @@
 #import "InfoViewTypeCustomTableViewController.h"
 #import "InfoListTableViewController.h"
 #import "NetWorkClient.h"
+#import "InfoDetailViewController.h"
 @interface InfoViewController ()<UIScrollViewDelegate,ImagePlayerViewDelegate>
 @property (strong,nonatomic)NSArray *newsView;
 @property (strong,nonatomic)UIScrollView* topScrollView;
@@ -30,7 +31,7 @@
     [self.view addSubview:playerView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[playerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(playerView)]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:158]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:SCREEN_WIDTH*0.36]];
     self.controllerArray = [NSMutableArray array];
     self.topScrollView = [[UIScrollView alloc]init];
     self.topScrollView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -183,6 +184,16 @@
 {
     NSDictionary* dic = [self.infoArray objectAtIndex:index];
     [imageView sd_setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"titlepic"]] placeholderImage:nil];
+}
+
+-(void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index
+{
+    NSDictionary* dic = self.infoArray[index];
+    InfoDetailViewController* controller = [[InfoDetailViewController alloc]initWithNibName:@"InfoDetailViewController" bundle:nil];
+    controller.htmlString = dic[@"newstext"];
+    controller.dic = dic;
+    [self.navigationController pushViewController:controller animated:YES];
+
 }
 /*
 #pragma mark - Navigation

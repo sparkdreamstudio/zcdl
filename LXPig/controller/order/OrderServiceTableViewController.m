@@ -35,7 +35,7 @@
 -(void)pullRfresh
 {
     self.currentPage = 1;
-    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":@"1",@"pageSize":@"20"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":@"1",@"pageSize":@"20",@"oderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         self.serviceArray = [responseObj objectForKey:@"data"];
         if (self.serviceArray.count < 20) {
@@ -71,7 +71,7 @@
         }
         [self.serviceArray addObjectsFromArray:array];
         NSMutableArray *indexPathArray = [NSMutableArray array];
-        for (NSInteger index = self.serviceArray.count - array.count -1; index < self.serviceArray.count; index++) {
+        for (NSInteger index = self.serviceArray.count - array.count; index < self.serviceArray.count; index++) {
             [indexPathArray addObject:[NSIndexPath indexPathForRow:index inSection:0]];
         }
         [self.tableView beginUpdates];

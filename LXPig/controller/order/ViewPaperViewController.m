@@ -17,7 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteImage:)];
+    if (self.orderTag != 3 && self.orderTag == 4) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteImage:)];
+    }
+    
     // Do any additional setup after loading the view.
 }
 

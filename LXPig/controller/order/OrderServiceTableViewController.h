@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderServiceTableViewController : LXPigTableVIewController
-
+@property (strong,nonatomic) NSDictionary* orderInfo;
 @end

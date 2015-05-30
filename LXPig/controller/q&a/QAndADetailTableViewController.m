@@ -12,7 +12,7 @@
 #import "QAndAProblemTableViewCell.h"
 #import "QAndAReplyCntTableViewCell.h"
 #import "QAndAReplyTableViewCell.h"
-@interface QAndADetailTableViewController ()
+@interface QAndADetailTableViewController ()<QAndAProblemTableViewCellDelegate>
 @property (strong,nonatomic)NSMutableArray* replyArray;
 @property (assign,nonatomic)NSInteger currentPage;
 @end
@@ -73,7 +73,7 @@
             [self setInfinitScorllHidden:NO];
         }
         NSMutableArray* indexPathArray = [NSMutableArray array];
-        for (NSInteger index = self.replyArray.count - array.count -1; index < self.replyArray.count; index++) {
+        for (NSInteger index = self.replyArray.count - array.count; index < self.replyArray.count; index++) {
             [indexPathArray addObject:[NSIndexPath indexPathForRow:index inSection:0]];
         }
         [self.tableView beginUpdates];
@@ -122,6 +122,7 @@
                 break;
             }
         }
+        cell.delegate = self;
         cell.typeLabel.text = [NSString stringWithFormat:@" %@ ",type];
         [cell loadCell:self.problem];
         return cell;
@@ -134,10 +135,24 @@
     }
     else
     {
-        QAndAReplyCntTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
+        QAndAReplyTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
         [cell loadCell:self.replyArray[indexPath.row-2]];
         return cell;
     }
+}
+
+-(void)QAndAProblemTableViewCellUserClick:(QAndAProblemTableViewCell *)cell
+{
+    if ([[UserManagerObject shareInstance]userType] == 0) {
+        UIView* hud = [self.controller showNormalHudNoDimissWithString:nil];
+        [[NetWorkClient shareInstance] postUrl:SERVICE_PROBLEM With:@{@"action":@"clickuseful",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"problemId":self.problem[@"id"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+            [self.controller dismissHUD:hud];
+            [self startRefresh];
+        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+            [self.controller dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
+        }];
+    }
+    
 }
 
 

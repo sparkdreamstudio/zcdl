@@ -117,6 +117,7 @@
         hud.tag = 1;
         [self dismissHUD:hud WithSuccessString:@"取消成功"];
         [[NSNotificationCenter defaultCenter]postNotificationName:NTF_REMOVE_ORDER object:nil userInfo:@{@"order":self.orderInfo}];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
     }];
@@ -136,6 +137,7 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:NTF_REMOVE_ORDER object:nil userInfo:@{@"order":self.orderInfo}];
         hud.tag = 1;
         [self dismissHUD:hud WithSuccessString:@"取消成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
     }];
@@ -149,6 +151,7 @@
         self.orderInfo = dic;
         [[NSNotificationCenter defaultCenter]postNotificationName:NTF_ADD_ORDER object:nil userInfo:@{@"order":self.orderInfo}];
         [self dismissHUD:hud WithSuccessString:@"受理成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
     }];

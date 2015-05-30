@@ -105,10 +105,8 @@
                                                       UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)] }
                                            forState:UIControlStateSelected];
     }
-//    [self.scrollView needsUpdateConstraints];
-//    for (OrderListTableViewController* controller  in self.controllerArray) {
-//        [controller startRefresh];
-//    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,6 +120,24 @@
     for (OrderListTableViewController* controller in self.controllerArray) {
         [controller startRefresh];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    switch ([[UserManagerObject shareInstance]userType]) {
+        case 0:
+            [self.scrollView setContentOffset:CGPointMake(0, 0)];
+            break;
+        case 2:
+            [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*3, 0)];
+            break;
+        case 3:
+            [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*1, 0)];
+            break;
+        default:
+            break;
+    };
 }
 
 -(void)makeContraint:(NSArray*)array

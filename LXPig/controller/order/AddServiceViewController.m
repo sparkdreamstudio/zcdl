@@ -127,6 +127,7 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"show_service_table"]) {
         self.controller = [segue destinationViewController];
+        self.controller.orderInfo = self.orderInfo;
     }
 }
 

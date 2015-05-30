@@ -215,7 +215,7 @@
         [self setInfinitScorllHidden:YES];
     }
     NSMutableArray* array = [NSMutableArray array];
-    for (NSUInteger i = range.location; i < range.length; i++) {
+    for (NSUInteger i = range.location; i < (range.location+range.length); i++) {
         [array addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     [self.tableView beginUpdates];

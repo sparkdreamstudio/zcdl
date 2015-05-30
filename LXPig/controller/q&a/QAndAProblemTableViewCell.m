@@ -14,8 +14,8 @@
     // Initialization code
     self.typeLabel.layer.masksToBounds = YES;
     self.typeLabel.layer.cornerRadius = 3;
-    self.usefulCnt.layer.masksToBounds = YES;
-    self.usefulCnt.layer.cornerRadius = 3;
+    self.usefulCntBtn.layer.masksToBounds = YES;
+    self.usefulCntBtn.layer.cornerRadius = 3;
     self.backView.layer.masksToBounds = YES;
     self.backView.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     self.backView.layer.borderWidth = 1;
@@ -32,7 +32,7 @@
     NSLog(@"problem: %@",dic);
     self.contentLabel.text = dic[@"content"];
     self.createTime.text = dic[@"createTime"];
-    self.usefulCnt.text = [NSString stringWithFormat:@" 可用%@ ",dic[@"usefulCnt"]];
+    [self.usefulCntBtn setTitle:[NSString stringWithFormat:@" 有用%@ ",dic[@"usefulCnt"]] forState:UIControlStateNormal];
     self.resultLabel.text = [dic[@"isSolve"] integerValue]==0?@"待解决":@"已解决";
     if ([dic[@"isSolve"] integerValue]==0) {
         self.resultLabel.textColor = NavigationBarColor;
@@ -53,6 +53,13 @@
         self.userLabel.text = userName;
     }
     
+}
+
+-(IBAction)usefulClick:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(QAndAProblemTableViewCellUserClick:)]) {
+        [self.delegate QAndAProblemTableViewCellUserClick:self];
+    }
 }
 
 @end

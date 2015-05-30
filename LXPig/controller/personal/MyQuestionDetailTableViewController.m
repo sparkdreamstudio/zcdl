@@ -80,7 +80,7 @@
             [self setInfinitScorllHidden:NO];
         }
         NSMutableArray* indexPathArray = [NSMutableArray array];
-        for (NSInteger index = self.replyArray.count - array.count -1; index < self.replyArray.count; index++) {
+        for (NSInteger index = self.replyArray.count - array.count; index < self.replyArray.count; index++) {
             [indexPathArray addObject:[NSIndexPath indexPathForRow:index inSection:0]];
         }
         [self.tableView beginUpdates];

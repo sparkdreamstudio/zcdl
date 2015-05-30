@@ -163,6 +163,10 @@
 		D0D688A41AF375C5006C8BA4 /* ProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A31AF375C5006C8BA4 /* ProvinceViewController.m */; };
 		D0D688A71AF37936006C8BA4 /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A61AF37936006C8BA4 /* CityViewController.m */; };
 		D0D688AA1AF37A36006C8BA4 /* DistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A91AF37A36006C8BA4 /* DistrictViewController.m */; };
+		D0DF773A1B1A1F3500A18DE5 /* PSYImproveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DF77381B1A1F3500A18DE5 /* PSYImproveViewController.m */; };
+		D0DF773B1B1A1F3500A18DE5 /* PSYImproveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DF77391B1A1F3500A18DE5 /* PSYImproveViewController.xib */; };
+		D0DF77441B1A226C00A18DE5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DF77421B1A226C00A18DE5 /* AboutViewController.m */; };
+		D0DF77451B1A226C00A18DE5 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DF77431B1A226C00A18DE5 /* AboutViewController.xib */; };
 		F15603181B16F3E90099BCDE /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F15603161B16F3E90099BCDE /* SelectAddressViewController.m */; };
 		F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */; };
 		F156031D1B16F5110099BCDE /* SelectedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F156031B1B16F5110099BCDE /* SelectedTableViewController.m */; };
@@ -473,6 +477,12 @@
 		D0D688A61AF37936006C8BA4 /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityViewController.m; path = controller/SelectLocation/CityViewController.m; sourceTree = "<group>"; };
 		D0D688A81AF37A36006C8BA4 /* DistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistrictViewController.h; path = controller/SelectLocation/DistrictViewController.h; sourceTree = "<group>"; };
 		D0D688A91AF37A36006C8BA4 /* DistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistrictViewController.m; path = controller/SelectLocation/DistrictViewController.m; sourceTree = "<group>"; };
+		D0DF77371B1A1F3500A18DE5 /* PSYImproveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSYImproveViewController.h; path = controller/set/PSYImproveViewController.h; sourceTree = "<group>"; };
+		D0DF77381B1A1F3500A18DE5 /* PSYImproveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSYImproveViewController.m; path = controller/set/PSYImproveViewController.m; sourceTree = "<group>"; };
+		D0DF77391B1A1F3500A18DE5 /* PSYImproveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PSYImproveViewController.xib; path = controller/set/PSYImproveViewController.xib; sourceTree = "<group>"; };
+		D0DF77411B1A226C00A18DE5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = controller/personal/AboutViewController.h; sourceTree = "<group>"; };
+		D0DF77421B1A226C00A18DE5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = controller/personal/AboutViewController.m; sourceTree = "<group>"; };
+		D0DF77431B1A226C00A18DE5 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = controller/personal/AboutViewController.xib; sourceTree = "<group>"; };
 		F15603151B16F3E90099BCDE /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAddressViewController.h; path = controller/Address/SelectAddressViewController.h; sourceTree = "<group>"; };
 		F15603161B16F3E90099BCDE /* SelectAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAddressViewController.m; path = controller/Address/SelectAddressViewController.m; sourceTree = "<group>"; };
 		F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectAddressViewController.xib; path = controller/Address/SelectAddressViewController.xib; sourceTree = "<group>"; };
@@ -572,6 +582,9 @@
 				D03888B51B17555B00FA2FDC /* SetDetailInfoViewController.h */,
 				D03888B61B17555B00FA2FDC /* SetDetailInfoViewController.m */,
 				D03888B71B17555B00FA2FDC /* SetDetailInfoViewController.xib */,
+				D0DF77371B1A1F3500A18DE5 /* PSYImproveViewController.h */,
+				D0DF77381B1A1F3500A18DE5 /* PSYImproveViewController.m */,
+				D0DF77391B1A1F3500A18DE5 /* PSYImproveViewController.xib */,
 			);
 			name = set;
 			sourceTree = "<group>";
@@ -790,6 +803,9 @@
 				D00474F51AFF51B000F9C461 /* MyQuestionDetailTableViewCell.m */,
 				D00474F71AFF51C600F9C461 /* MyQuestionDetailTableViewCell.xib */,
 				D00474F91AFF899C00F9C461 /* MyQuestionDetailReplyCnt.xib */,
+				D0DF77411B1A226C00A18DE5 /* AboutViewController.h */,
+				D0DF77421B1A226C00A18DE5 /* AboutViewController.m */,
+				D0DF77431B1A226C00A18DE5 /* AboutViewController.xib */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -1253,6 +1269,7 @@
 				F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */,
 				D00474DA1AFF24A400F9C461 /* QAndQSearchUsefulCell.xib in Resources */,
 				D00474DC1AFF250100F9C461 /* QAndASearchCell.xib in Resources */,
+				D0DF773B1B1A1F3500A18DE5 /* PSYImproveViewController.xib in Resources */,
 				D0C4AD4B1B0B7A2A008295E8 /* LimitPromotionTableViewCell.xib in Resources */,
 				D09F647C1AFFA7970005AE19 /* InfoViewCustomTableViewCell.xib in Resources */,
 				D03CEC951B04E1EB00DD73B7 /* SetListTableViewCell.xib in Resources */,
@@ -1273,6 +1290,7 @@
 				F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */,
 				D02323151B072D1E0064E93E /* PSYButtonTableViewCell.xib in Resources */,
 				D07639081B0106A1008763B1 /* InfoDetailViewController.xib in Resources */,
+				D0DF77451B1A226C00A18DE5 /* AboutViewController.xib in Resources */,
 				D03888B91B17555B00FA2FDC /* SetDetailInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1346,12 +1364,14 @@
 				D06DA1F61AD2647A00430A00 /* AppDelegate.m in Sources */,
 				D0D688AA1AF37A36006C8BA4 /* DistrictViewController.m in Sources */,
 				D00474EE1AFF4D1B00F9C461 /* MyQuestionDetailTableViewController.m in Sources */,
+				D0DF77441B1A226C00A18DE5 /* AboutViewController.m in Sources */,
 				D03888B81B17555B00FA2FDC /* SetDetailInfoViewController.m in Sources */,
 				D07C9D9F1AF6680B00C874DD /* OrderDetailViewController.m in Sources */,
 				D0B522981AF13CE200E809AA /* ProductDetailViewController.m in Sources */,
 				D0B522FF1AF13EEC00E809AA /* VOSegment.m in Sources */,
 				D076FED41AEFC8CD00407B30 /* LXPigTabBarController.m in Sources */,
 				D0C4AD541B0B84B5008295E8 /* LimitEndTableViewCell.m in Sources */,
+				D0DF773A1B1A1F3500A18DE5 /* PSYImproveViewController.m in Sources */,
 				D0D688A41AF375C5006C8BA4 /* ProvinceViewController.m in Sources */,
 				D0B522811AF13BEF00E809AA /* ProductCommentController.m in Sources */,
 				D0B5228C1AF13C5A00E809AA /* EnterpriseDetailController.m in Sources */,
@@ -1585,7 +1605,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a2f1500-7314-4be3-8762-b583b8fff073";
+				PROVISIONING_PROFILE = "8e3ad09b-6542-48af-889b-3b28eaaadd3a";
 			};
 			name = Debug;
 		};
@@ -1603,7 +1623,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1e3071d6-7922-49ab-b4d3-b8a58973ace8";
+				PROVISIONING_PROFILE = "c9b41cdf-1e51-460d-a26e-d8b617b314c8";
 			};
 			name = Release;
 		};

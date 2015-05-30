@@ -27,9 +27,16 @@
     self.btnView.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     self.btnView.layer.borderWidth = 1;
     self.btnView.layer.cornerRadius = 4;
-    if ([self.problem[@"isSolve"] integerValue]==1 || [[self.problem[@"members"] objectForKey:@"id"]longLongValue] == [[UserManagerObject shareInstance]userId]) {
+    if ([[UserManagerObject shareInstance]userType] != 0) {
         self.bottomVertical.constant = -65;
     }
+    else
+    {
+        if ([self.problem[@"isSolve"] integerValue]==1 || [[self.problem[@"members"] objectForKey:@"id"]longLongValue] == [[UserManagerObject shareInstance]userId]) {
+            self.bottomVertical.constant = -65;
+        }
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

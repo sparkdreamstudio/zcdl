@@ -21,7 +21,7 @@
     [self addPullRefresh];
     [self addInfinitScorll];
     [self startRefresh];
-    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setBackgroundColor:HEXCOLOR(@"f3f3f3")];
     // Do any additional setup after loading the view.
 }
 
@@ -93,7 +93,7 @@
         }
         [self.problemArray addObjectsFromArray:array];
         NSMutableArray* indexPathArray = [NSMutableArray array];
-        for (NSInteger index = (self.problemArray.count - array.count -1); index < self.problemArray.count; index++) {
+        for (NSInteger index = (self.problemArray.count - array.count); index < self.problemArray.count; index++) {
             [indexPathArray addObject:[NSIndexPath indexPathForRow:index inSection:0]];
         }
         

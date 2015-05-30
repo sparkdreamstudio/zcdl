@@ -59,7 +59,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
+    
+    if([[UserManagerObject shareInstance]userType]==0)
+    {
+        self.tabBarController.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
+    }
+    else
+    {
+        self.tabBarController.navigationItem.rightBarButtonItem = nil;
+    }
     self.tabBarController.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem;
     self.tabBarController.title = self.title;
 }
@@ -134,10 +142,13 @@
 {
     if (indexPath.row == 0) {
         self.controller.codeId = nil;
+        [self.typeBtn setTitle:@"类别" forState:UIControlStateNormal];
     }
     else{
         self.controller.codeId = self.qAndAType[indexPath.row-1][@"id"];
+        [self.typeBtn setTitle:self.qAndAType[indexPath.row - 1][@"name"] forState:UIControlStateNormal];
     }
+    
     self.controller.isSolve = nil;
     self.typeBtn.enabled = YES;
     self.segmentControl.enabled =YES;

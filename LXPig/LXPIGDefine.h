@@ -36,7 +36,7 @@
 #define SERVICE_LIMITTIME   @"limittimeservice.do"
 #define SERVICE_LIMITNUMB   @"limitnumservice.do"
 #define SERVICE_LIMITGROUP  @"limitgroupservice.do"
-
+#define SERVICE_OTHERSERVICE @"otherservice.do"
 
 #pragma mark -ui value-
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width

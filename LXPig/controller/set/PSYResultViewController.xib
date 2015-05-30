@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,6 +12,9 @@
                 <outlet property="result2" destination="JtR-Tw-cid" id="UTO-hS-cC1"/>
                 <outlet property="result3" destination="CRs-M2-54d" id="L2E-cu-4gW"/>
                 <outlet property="result4" destination="PmM-Ib-GNo" id="wIf-mf-bgL"/>
+                <outlet property="upOne" destination="iZD-2f-RUW" id="NhN-pL-jRX"/>
+                <outlet property="upThree" destination="TnD-Hv-4Dt" id="CQ8-E4-5dU"/>
+                <outlet property="upTwo" destination="QJX-gi-VKW" id="3JP-Jb-wOC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -129,7 +132,25 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgw-ae-4IH">
                             <rect key="frame" x="434" y="55" width="143" height="53"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZD-2f-RUW">
+                                    <rect key="frame" x="15" y="11" width="113" height="30"/>
+                                    <color key="backgroundColor" red="0.81176470590000005" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="提升">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="upClick:" destination="-1" eventType="touchUpInside" id="t3i-Rm-hEi"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="iZD-2f-RUW" secondAttribute="trailing" constant="15" id="Ave-CL-Oo9"/>
+                                <constraint firstAttribute="centerY" secondItem="iZD-2f-RUW" secondAttribute="centerY" id="BYH-Vl-Cay"/>
+                                <constraint firstItem="iZD-2f-RUW" firstAttribute="leading" secondItem="Jgw-ae-4IH" secondAttribute="leading" constant="15" id="V5f-tv-KwK"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgy-vZ-QbR">
                             <rect key="frame" x="1" y="109" width="143" height="52"/>
@@ -189,7 +210,25 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1an-S4-hsf">
                             <rect key="frame" x="434" y="109" width="143" height="52"/>
+                            <subviews>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJX-gi-VKW">
+                                    <rect key="frame" x="15" y="11" width="113" height="30"/>
+                                    <color key="backgroundColor" red="0.81176470590000005" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="提升">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="upClick:" destination="-1" eventType="touchUpInside" id="thj-sM-KJR"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="QJX-gi-VKW" secondAttribute="trailing" constant="15" id="079-21-HfR"/>
+                                <constraint firstItem="QJX-gi-VKW" firstAttribute="leading" secondItem="1an-S4-hsf" secondAttribute="leading" constant="15" id="POI-gE-UOl"/>
+                                <constraint firstAttribute="centerY" secondItem="QJX-gi-VKW" secondAttribute="centerY" id="QKf-97-G0a"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSl-LX-5RV">
                             <rect key="frame" x="1" y="162" width="143" height="53"/>
@@ -249,7 +288,25 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyF-3k-2MY">
                             <rect key="frame" x="434" y="162" width="143" height="53"/>
+                            <subviews>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnD-Hv-4Dt">
+                                    <rect key="frame" x="15" y="12" width="113" height="30"/>
+                                    <color key="backgroundColor" red="0.81176470590000005" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="提升">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="upClick:" destination="-1" eventType="touchUpInside" id="e8Y-fL-tfk"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="TnD-Hv-4Dt" firstAttribute="leading" secondItem="xyF-3k-2MY" secondAttribute="leading" constant="15" id="EXO-85-PJP"/>
+                                <constraint firstAttribute="trailing" secondItem="TnD-Hv-4Dt" secondAttribute="trailing" constant="15" id="geI-q6-viZ"/>
+                                <constraint firstAttribute="centerY" secondItem="TnD-Hv-4Dt" secondAttribute="centerY" id="jqe-iD-Xom"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-jt-IAi">
                             <rect key="frame" x="1" y="216" width="143" height="53"/>
@@ -310,11 +367,19 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jb7-Lz-fZY">
                             <rect key="frame" x="434" y="216" width="143" height="53"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以上三项" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3F5-EG-YBY">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以上三项" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3F5-EG-YBY">
                                     <rect key="frame" x="45" y="19" width="52" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="y8N-bl-GG8"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="y8N-bl-GG8"/>
+                                        </mask>
+                                    </variation>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdWebViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
-                <outlet property="adWebView" destination="9nx-On-Q9c" id="LRX-K0-t4a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="E4y-X2-SvN" id="lqG-PK-bjY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,17 +16,17 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nx-On-Q9c">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4y-X2-SvN">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9nx-On-Q9c" secondAttribute="bottom" id="Nu0-Me-eu3"/>
-                <constraint firstItem="9nx-On-Q9c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZFh-0P-gCy"/>
-                <constraint firstItem="9nx-On-Q9c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zhj-CA-KjU"/>
-                <constraint firstAttribute="trailing" secondItem="9nx-On-Q9c" secondAttribute="trailing" id="zPY-nO-toi"/>
+                <constraint firstItem="E4y-X2-SvN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OSX-rm-i5X"/>
+                <constraint firstAttribute="trailing" secondItem="E4y-X2-SvN" secondAttribute="trailing" id="PMo-8e-HBA"/>
+                <constraint firstItem="E4y-X2-SvN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cYl-Wm-4EF"/>
+                <constraint firstAttribute="bottom" secondItem="E4y-X2-SvN" secondAttribute="bottom" id="vSG-Qv-nBY"/>
             </constraints>
         </view>
     </objects>

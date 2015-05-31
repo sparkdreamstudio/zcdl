@@ -39,6 +39,7 @@ static UserManagerObject* singleton = nil;
     self = [super init];
     if (self) {
         self.userType = 0;
+        self.sessionid = @"";
     }
     return self;
 }
@@ -109,7 +110,7 @@ static UserManagerObject* singleton = nil;
     self.regTime = nil;
     self.sex = nil;
     self.userName = nil;
-    self.sessionid = nil;
+    self.sessionid = @"";
     [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
 }
 
@@ -124,7 +125,7 @@ static UserManagerObject* singleton = nil;
     self.integral = [[dic objectForKey:@"integral"] integerValue];
     self.name = [dic objectForKey:@"name"];
     self.nickName = [dic objectForKey:@"nickName"];
-    self.photoFile = [NSString stringWithFormat:@"http:/112.74.98.66%@",[dic objectForKey:@"photoPath"]];
+    self.photoFile = [NSString stringWithFormat:@"http:/112.74.98.66:8080%@",[dic objectForKey:@"photoPath"]];
     self.qq = [dic objectForKey:@"qq"];
     self.regTime = [dic objectForKey:@"regTime"];
     self.sex = [dic objectForKey:@"sex"];

@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self initModel];
     [self setApperanceAndFlatWithIos6];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
@@ -29,7 +30,7 @@
             [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         }
 
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
         UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = [storyboad instantiateInitialViewController];
         self.mainController = (SlideViewController*)self.window.rootViewController;

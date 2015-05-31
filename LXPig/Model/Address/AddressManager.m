@@ -56,6 +56,14 @@ static AddressManager* singleton = nil;
 }
 
 
+-(id)init
+{
+    if (self=[super init]) {
+        self.addressArray = [NSMutableArray array];
+    }
+    return self;
+}
+
 -(void)getAddressArraySuccess:(void(^)(NSDictionary* responseObj,NSString* timeSp))sucess failure:(void(^)(NSDictionary* responseObj,NSString* timeSp))failure
 {
     [[NetWorkClient shareInstance]postUrl:SERVICE_SHIPADDRESS With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {

@@ -75,6 +75,11 @@ static NetWorkClient* singleton = nil;
     NSString* timeSp = [Utils getTimeSp];
     AFHTTPRequestOperation* operation = [self.networkManager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if ([[responseObject objectForKey:@"code"] integerValue] == 202) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_TIMEOUT object:nil];
+            failure(responseObject,timeSp);
+            return ;
+        }
         if (result == 0) {
             NSLog(@"×××××××post request failed %@×××××××\nparams:%@\nresponse:%@",urlString,params,responseObject);
             if (failure) {
@@ -124,10 +129,16 @@ static NetWorkClient* singleton = nil;
         [formData appendPartWithFileData:data name:fileName fileName:@"File.png" mimeType:@"image/png"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if ([[responseObject objectForKey:@"code"] integerValue] == 202) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_TIMEOUT object:nil];
+            failure(responseObject,timeSp);
+            return ;
+        }
         if (result == 0) {
             NSLog(@"×××××××post request failed %@×××××××\nparams:%@\nresponse:%@",urlString,param,responseObject);
             if (failure) {
                 failure(responseObject,timeSp);
+                [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_TIMEOUT object:nil];
             }
         }
         else

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExhibitionDetailViewController">
+            <connections>
+                <outlet property="tableView" destination="FeI-4J-roG" id="nl6-li-DZJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKP-8v-kcs">
+                    <rect key="frame" x="0.0" y="531" width="600" height="69"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXo-Ae-uxb">
+                            <rect key="frame" x="300" y="11" width="1" height="47"/>
+                            <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="xYb-1m-Dyf"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-bY-jmn">
+                            <rect key="frame" x="100" y="0.0" width="100" height="69"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="5E4-E2-hRy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="联系我们" image="exhibition_call_us">
+                                <color key="titleColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="callUs:" destination="-1" eventType="touchUpInside" id="HdT-NN-F17"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4n-28-FUu">
+                            <rect key="frame" x="400" y="0.0" width="100" height="69"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="Y1Z-n1-7Ki"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="contentEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="我要报名" image="exhibition_enlist">
+                                <color key="titleColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="enList:" destination="-1" eventType="touchUpInside" id="eDm-gy-6Hg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="j4n-28-FUu" secondAttribute="centerX" multiplier="0.666" id="3GO-fE-EbU"/>
+                        <constraint firstAttribute="bottom" secondItem="j4n-28-FUu" secondAttribute="bottom" id="69I-Oc-haE"/>
+                        <constraint firstItem="uXo-Ae-uxb" firstAttribute="top" secondItem="RKP-8v-kcs" secondAttribute="top" constant="11" id="9m3-OR-EBG"/>
+                        <constraint firstItem="j4n-28-FUu" firstAttribute="top" secondItem="RKP-8v-kcs" secondAttribute="top" id="Ag6-iI-LjV"/>
+                        <constraint firstAttribute="bottom" secondItem="uXo-Ae-uxb" secondAttribute="bottom" constant="11" id="LGm-Sf-Mcq"/>
+                        <constraint firstAttribute="centerX" secondItem="uXo-Ae-uxb" secondAttribute="centerX" id="REl-aJ-MCk"/>
+                        <constraint firstAttribute="bottom" secondItem="BRN-bY-jmn" secondAttribute="bottom" id="dQD-lb-eI0"/>
+                        <constraint firstItem="BRN-bY-jmn" firstAttribute="top" secondItem="RKP-8v-kcs" secondAttribute="top" id="fS2-Lr-7Id"/>
+                        <constraint firstAttribute="centerX" secondItem="BRN-bY-jmn" secondAttribute="centerX" multiplier="2" id="txH-nR-PDv"/>
+                        <constraint firstAttribute="height" constant="69" id="wrZ-3W-fvT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWZ-EQ-CWd">
+                    <rect key="frame" x="0.0" y="530" width="600" height="1"/>
+                    <color key="backgroundColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="uV0-tJ-ZSt"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-4J-roG">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="87d-BE-D8S"/>
+                        <outlet property="delegate" destination="-1" id="ENE-cC-8Oo"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CWZ-EQ-CWd" firstAttribute="top" secondItem="FeI-4J-roG" secondAttribute="bottom" id="6GD-LS-J7S"/>
+                <constraint firstItem="FeI-4J-roG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JOX-LI-PdL"/>
+                <constraint firstItem="RKP-8v-kcs" firstAttribute="top" secondItem="CWZ-EQ-CWd" secondAttribute="bottom" id="Qdz-lt-yW1"/>
+                <constraint firstAttribute="trailing" secondItem="RKP-8v-kcs" secondAttribute="trailing" id="Raj-4f-MuC"/>
+                <constraint firstItem="FeI-4J-roG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sb6-1r-bFD"/>
+                <constraint firstItem="RKP-8v-kcs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sc5-Nr-vxI"/>
+                <constraint firstAttribute="trailing" secondItem="FeI-4J-roG" secondAttribute="trailing" id="WwM-9K-4Q4"/>
+                <constraint firstItem="CWZ-EQ-CWd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eah-Ny-RBc"/>
+                <constraint firstAttribute="bottom" secondItem="RKP-8v-kcs" secondAttribute="bottom" id="hJj-EQ-ez5"/>
+                <constraint firstAttribute="trailing" secondItem="CWZ-EQ-CWd" secondAttribute="trailing" id="o8s-8c-5ej"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="exhibition_call_us" width="27" height="27"/>
+        <image name="exhibition_enlist" width="27" height="27"/>
+    </resources>
+</document>

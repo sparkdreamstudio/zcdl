@@ -16,6 +16,7 @@
 #import "AddressViewController.h"
 #import "ProductInfo.h"
 #import "SelectAddressViewController.h"
+#import "ConfirmOrderContainerViewController.h"
 @implementation ConfirmOrderItem
 -(id)init
 {
@@ -42,7 +43,7 @@
 
 @end
 
-@interface ConfirmOrderTableViewController ()<ConfirmOrderBottomCellDelegate>
+@interface ConfirmOrderTableViewController ()<ConfirmOrderBottomCellDelegate,ConfirmOrderCellDelegate>
 
 @end
 
@@ -70,8 +71,8 @@
         orderItem.productImage = self.qianGouProduct.smallImg;
         orderItem.num = @(30);
         orderItem.name  = self.qianGouProduct.name;
-        orderItems.totalPrice = self.qianGouProduct.salePrice;
-        orderItems.totalNumber = 1;
+        orderItems.totalPrice = self.qianGouProduct.salePrice*30;
+        orderItems.totalNumber = 30;
         orderItems.enterpriseKeyId = @(self.qianGouProduct.enterprise.keyId);
         orderItems.enterpriseName = self.qianGouProduct.enterprise.name;
         [orderItems.itemlist addObject:orderItem];
@@ -126,6 +127,50 @@
     }
 }
 
+-(void)confirmOrderCell:(ConfirmOrderCell *)cell SetNum:(NSInteger)num
+{
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    ConfirmOrderItem* item = [self.arrayProduct[indexPath.section-1] itemlist][indexPath.row-1];
+    ConfirmOrderItems *items = self.arrayProduct[indexPath.section - 1];
+    if (num >= 1 && num <= 9999) {
+        item.num = @(num);
+        items.totalNumber = num;
+        items.totalPrice = num*item.salePrice.integerValue;
+        [self.confirmOrdController reloadQiangGouPrice:item.num.integerValue*item.salePrice.integerValue];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+}
+
+-(void)confirmOrderCellDecrease:(ConfirmOrderCell *)cell
+{
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    ConfirmOrderItem* item = [self.arrayProduct[indexPath.section-1] itemlist][indexPath.row-1];
+    ConfirmOrderItems *items = self.arrayProduct[indexPath.section - 1];
+    if (item.num.integerValue == 1) {
+        return;
+    }
+    item.num = [NSNumber numberWithInteger:item.num.integerValue-1];
+    items.totalNumber = item.num.integerValue;
+    items.totalPrice = item.num.integerValue*item.salePrice.integerValue;
+    [self.confirmOrdController reloadQiangGouPrice:item.num.integerValue*item.salePrice.integerValue];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+}
+-(void)confirmOrderCellIncrease:(ConfirmOrderCell *)cell
+{
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    ConfirmOrderItem* item = [self.arrayProduct[indexPath.section-1] itemlist][indexPath.row-1];
+    ConfirmOrderItems *items = self.arrayProduct[indexPath.section - 1];
+    if (item.num.integerValue == 9999) {
+        return;
+    }
+    item.num = [NSNumber numberWithInteger:item.num.integerValue+1];
+    items.totalNumber = item.num.integerValue;
+    items.totalPrice = item.num.integerValue*item.salePrice.integerValue;
+    [self.confirmOrdController reloadQiangGouPrice:item.num.integerValue*item.salePrice.integerValue];
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
@@ -176,6 +221,7 @@
             }
             ConfirmOrderCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
             [cell loadItem:[self.arrayProduct[indexPath.section-1] itemlist][indexPath.row-1]];
+            cell.delegate = self;
             return cell;
         }
     }

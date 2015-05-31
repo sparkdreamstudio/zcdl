@@ -112,6 +112,7 @@
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view
 {
     if (progressHUD.tag == JG_LOGIN_SUCCESS_TAG) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }

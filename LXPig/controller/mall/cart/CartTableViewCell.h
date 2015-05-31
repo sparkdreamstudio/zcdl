@@ -16,6 +16,7 @@
 -(void)cartTableViewCell:(CartTableViewCell*)cell isCheck:(BOOL)check;
 -(void)cartTableViewCellDecrease:(CartTableViewCell *)cell;
 -(void)cartTableViewCellIncrease:(CartTableViewCell *)cell;
+-(void)cartTableViewCell:(CartTableViewCell *)cell SetNum:(NSInteger)num;
 @end
 
 @interface CartTableViewCell : UITableViewCell

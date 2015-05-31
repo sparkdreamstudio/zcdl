@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     NSInteger price = 0;
     if (self.qianGouProduct) {
-        price = self.qianGouProduct.salePrice;
+        price = self.qianGouProduct.salePrice*30;
     }
     else
     {
@@ -40,6 +40,13 @@
     }
     
     self.totalPrice.text  =[NSString stringWithFormat:@"%ld",(long)price];
+}
+
+-(void)reloadQiangGouPrice:(NSInteger)price
+{
+    if (self.qianGouProduct) {
+        self.totalPrice.text  =[NSString stringWithFormat:@"%ld",(long)price];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +119,7 @@
     if ([segue.identifier isEqualToString:@"confirm_order_table"]) {
         self.controller = [segue destinationViewController];
         self.controller.qianGouProduct = self.qianGouProduct;
+        self.controller.confirmOrdController = self;
     }
     
 }

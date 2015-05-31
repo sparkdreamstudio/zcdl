@@ -58,21 +58,20 @@
     self.signInEnterprise.layer.masksToBounds = YES;
     self.signInEnterprise.layer.cornerRadius = 3;
     
+    NSString* username = [[NSUserDefaults standardUserDefaults]objectForKey:@"USERNAME"];
+    NSString* password = [[NSUserDefaults standardUserDefaults]objectForKey:@"PASSWORD"];
+    if (username != nil && password != nil) {
+        self.userNameInput.text = username;
+        self.passwordInput.text = password;
+        [self showNormalHudDimissWithString:@"登录超时，请重新登陆"];
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-//    UIGraphicsBeginImageContext(self.userBgView.bounds.size);
-//    [self.userBgView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    self.userBgImageView.image = [image applyBlurWithRadius: 20
-//                                           tintColor: nil
-//                               saturationDeltaFactor: 1.5
-//                                           maskImage: nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -99,7 +98,6 @@
         hud.tag = JG_LOGIN_SUCCESS_TAG;
         [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
         [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
-        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
         [self dismissHUD:hud WithSuccessString:@"登陆成功"];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;
@@ -125,7 +123,6 @@
     [[UserManagerObject shareInstance]loginOtherWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
         hud.tag = JG_LOGIN_SUCCESS_TAG;
         [self dismissHUD:hud WithSuccessString:@"登陆成功"];
-        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;
         if (responseObj) {
@@ -143,6 +140,7 @@
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view
 {
     if (progressHUD.tag == JG_LOGIN_SUCCESS_TAG) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }

@@ -50,6 +50,19 @@
 		D03CECA31B05039D00DD73B7 /* SetListInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CECA21B05039D00DD73B7 /* SetListInfoTableViewController.m */; };
 		D0541FE01AF3EFBC00D4FFD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06DA1FA1AD2647B00430A00 /* Main.storyboard */; };
 		D0541FE31AF3FCA100D4FFD3 /* SearchEnterpriseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0541FE21AF3FCA100D4FFD3 /* SearchEnterpriseController.m */; };
+		D05EE5D81B1B324500D3FBA5 /* ExhibitionListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5D61B1B324500D3FBA5 /* ExhibitionListTableViewCell.m */; };
+		D05EE5D91B1B324500D3FBA5 /* ExhibitionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5D71B1B324500D3FBA5 /* ExhibitionListTableViewCell.xib */; };
+		D05EE5DC1B1B356C00D3FBA5 /* ExhibitionListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5DB1B1B356C00D3FBA5 /* ExhibitionListTableViewController.m */; };
+		D05EE5E01B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5DE1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.m */; };
+		D05EE5E11B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5DF1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.xib */; };
+		D05EE5E51B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5E31B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.m */; };
+		D05EE5E61B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5E41B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.xib */; };
+		D05EE5EA1B1B44A500D3FBA5 /* WebCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5E81B1B44A500D3FBA5 /* WebCellTableViewCell.m */; };
+		D05EE5EB1B1B44A500D3FBA5 /* WebCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5E91B1B44A500D3FBA5 /* WebCellTableViewCell.xib */; };
+		D05EE5EF1B1B523200D3FBA5 /* EnListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5ED1B1B523200D3FBA5 /* EnListTableViewController.m */; };
+		D05EE5F01B1B523200D3FBA5 /* EnListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5EE1B1B523200D3FBA5 /* EnListTableViewController.xib */; };
+		D05EE5F41B1B52A400D3FBA5 /* EnListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05EE5F21B1B52A400D3FBA5 /* EnListTableViewCell.m */; };
+		D05EE5F51B1B52A400D3FBA5 /* EnListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05EE5F31B1B52A400D3FBA5 /* EnListTableViewCell.xib */; };
 		D06DA1F31AD2647A00430A00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D06DA1F21AD2647A00430A00 /* main.m */; };
 		D06DA1F61AD2647A00430A00 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D06DA1F51AD2647A00430A00 /* AppDelegate.m */; };
 		D06DA1FE1AD2647B00430A00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D06DA1FD1AD2647B00430A00 /* Images.xcassets */; };
@@ -258,6 +271,26 @@
 		D0541FDD1AF3ECCB00D4FFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D0541FE11AF3FCA100D4FFD3 /* SearchEnterpriseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchEnterpriseController.h; path = controller/mall/SearchEnterpriseController.h; sourceTree = "<group>"; };
 		D0541FE21AF3FCA100D4FFD3 /* SearchEnterpriseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchEnterpriseController.m; path = controller/mall/SearchEnterpriseController.m; sourceTree = "<group>"; };
+		D05EE5D51B1B324500D3FBA5 /* ExhibitionListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExhibitionListTableViewCell.h; path = controller/set/ExhibitionListTableViewCell.h; sourceTree = "<group>"; };
+		D05EE5D61B1B324500D3FBA5 /* ExhibitionListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExhibitionListTableViewCell.m; path = controller/set/ExhibitionListTableViewCell.m; sourceTree = "<group>"; };
+		D05EE5D71B1B324500D3FBA5 /* ExhibitionListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExhibitionListTableViewCell.xib; path = controller/set/ExhibitionListTableViewCell.xib; sourceTree = "<group>"; };
+		D05EE5DA1B1B356C00D3FBA5 /* ExhibitionListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExhibitionListTableViewController.h; path = controller/set/ExhibitionListTableViewController.h; sourceTree = "<group>"; };
+		D05EE5DB1B1B356C00D3FBA5 /* ExhibitionListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExhibitionListTableViewController.m; path = controller/set/ExhibitionListTableViewController.m; sourceTree = "<group>"; };
+		D05EE5DD1B1B3C5E00D3FBA5 /* ExhibitionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExhibitionDetailViewController.h; path = controller/set/ExhibitionDetailViewController.h; sourceTree = "<group>"; };
+		D05EE5DE1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExhibitionDetailViewController.m; path = controller/set/ExhibitionDetailViewController.m; sourceTree = "<group>"; };
+		D05EE5DF1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExhibitionDetailViewController.xib; path = controller/set/ExhibitionDetailViewController.xib; sourceTree = "<group>"; };
+		D05EE5E21B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EhibitionDetailTitleTableViewCell.h; path = controller/set/EhibitionDetailTitleTableViewCell.h; sourceTree = "<group>"; };
+		D05EE5E31B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EhibitionDetailTitleTableViewCell.m; path = controller/set/EhibitionDetailTitleTableViewCell.m; sourceTree = "<group>"; };
+		D05EE5E41B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EhibitionDetailTitleTableViewCell.xib; path = controller/set/EhibitionDetailTitleTableViewCell.xib; sourceTree = "<group>"; };
+		D05EE5E71B1B44A500D3FBA5 /* WebCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebCellTableViewCell.h; path = controller/set/WebCellTableViewCell.h; sourceTree = "<group>"; };
+		D05EE5E81B1B44A500D3FBA5 /* WebCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebCellTableViewCell.m; path = controller/set/WebCellTableViewCell.m; sourceTree = "<group>"; };
+		D05EE5E91B1B44A500D3FBA5 /* WebCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebCellTableViewCell.xib; path = controller/set/WebCellTableViewCell.xib; sourceTree = "<group>"; };
+		D05EE5EC1B1B523200D3FBA5 /* EnListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnListTableViewController.h; path = controller/set/EnListTableViewController.h; sourceTree = "<group>"; };
+		D05EE5ED1B1B523200D3FBA5 /* EnListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnListTableViewController.m; path = controller/set/EnListTableViewController.m; sourceTree = "<group>"; };
+		D05EE5EE1B1B523200D3FBA5 /* EnListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EnListTableViewController.xib; path = controller/set/EnListTableViewController.xib; sourceTree = "<group>"; };
+		D05EE5F11B1B52A400D3FBA5 /* EnListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnListTableViewCell.h; path = controller/set/EnListTableViewCell.h; sourceTree = "<group>"; };
+		D05EE5F21B1B52A400D3FBA5 /* EnListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnListTableViewCell.m; path = controller/set/EnListTableViewCell.m; sourceTree = "<group>"; };
+		D05EE5F31B1B52A400D3FBA5 /* EnListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EnListTableViewCell.xib; path = controller/set/EnListTableViewCell.xib; sourceTree = "<group>"; };
 		D06DA1ED1AD2647A00430A00 /* LXPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06DA1F11AD2647A00430A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D06DA1F21AD2647A00430A00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -588,6 +621,26 @@
 				D0DF77371B1A1F3500A18DE5 /* PSYImproveViewController.h */,
 				D0DF77381B1A1F3500A18DE5 /* PSYImproveViewController.m */,
 				D0DF77391B1A1F3500A18DE5 /* PSYImproveViewController.xib */,
+				D05EE5D51B1B324500D3FBA5 /* ExhibitionListTableViewCell.h */,
+				D05EE5D61B1B324500D3FBA5 /* ExhibitionListTableViewCell.m */,
+				D05EE5D71B1B324500D3FBA5 /* ExhibitionListTableViewCell.xib */,
+				D05EE5DA1B1B356C00D3FBA5 /* ExhibitionListTableViewController.h */,
+				D05EE5DB1B1B356C00D3FBA5 /* ExhibitionListTableViewController.m */,
+				D05EE5DD1B1B3C5E00D3FBA5 /* ExhibitionDetailViewController.h */,
+				D05EE5DE1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.m */,
+				D05EE5DF1B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.xib */,
+				D05EE5E21B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.h */,
+				D05EE5E31B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.m */,
+				D05EE5E41B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.xib */,
+				D05EE5E71B1B44A500D3FBA5 /* WebCellTableViewCell.h */,
+				D05EE5E81B1B44A500D3FBA5 /* WebCellTableViewCell.m */,
+				D05EE5E91B1B44A500D3FBA5 /* WebCellTableViewCell.xib */,
+				D05EE5EC1B1B523200D3FBA5 /* EnListTableViewController.h */,
+				D05EE5ED1B1B523200D3FBA5 /* EnListTableViewController.m */,
+				D05EE5EE1B1B523200D3FBA5 /* EnListTableViewController.xib */,
+				D05EE5F11B1B52A400D3FBA5 /* EnListTableViewCell.h */,
+				D05EE5F21B1B52A400D3FBA5 /* EnListTableViewCell.m */,
+				D05EE5F31B1B52A400D3FBA5 /* EnListTableViewCell.xib */,
 			);
 			name = set;
 			sourceTree = "<group>";
@@ -1266,11 +1319,15 @@
 			files = (
 				D00474E11AFF299E00F9C461 /* PostQuestionViewController.xib in Resources */,
 				D00474F31AFF4E4A00F9C461 /* MyQuestionTableViewCell.xib in Resources */,
+				D05EE5D91B1B324500D3FBA5 /* ExhibitionListTableViewCell.xib in Resources */,
 				D0B167DC1B08322D00B410B9 /* AdWebViewController.xib in Resources */,
 				D0C4AD551B0B84B5008295E8 /* LimitEndTableViewCell.xib in Resources */,
 				D06DA2011AD2647B00430A00 /* LaunchScreen.xib in Resources */,
 				D00474E61AFF3CB000F9C461 /* MyQuestionTableViewController.xib in Resources */,
+				D05EE5EB1B1B44A500D3FBA5 /* WebCellTableViewCell.xib in Resources */,
+				D05EE5E11B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.xib in Resources */,
 				D07639001B00F227008763B1 /* InfoViewTableViewCell.xib in Resources */,
+				D05EE5E61B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.xib in Resources */,
 				F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */,
 				D00474DA1AFF24A400F9C461 /* QAndQSearchUsefulCell.xib in Resources */,
 				D00474DC1AFF250100F9C461 /* QAndASearchCell.xib in Resources */,
@@ -1290,7 +1347,9 @@
 				D00474D81AFF219D00F9C461 /* Q&ASearchViewController.xib in Resources */,
 				D02323211B077E1C0064E93E /* PSYResultViewController.xib in Resources */,
 				D0BF56721AE957B800D5CDAF /* demo_head.jpg in Resources */,
+				D05EE5F01B1B523200D3FBA5 /* EnListTableViewController.xib in Resources */,
 				D023230D1B0728E80064E93E /* PSYCounterHeaderAndFooter.xib in Resources */,
+				D05EE5F51B1B52A400D3FBA5 /* EnListTableViewCell.xib in Resources */,
 				D00474FA1AFF899C00F9C461 /* MyQuestionDetailReplyCnt.xib in Resources */,
 				F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */,
 				D02323151B072D1E0064E93E /* PSYButtonTableViewCell.xib in Resources */,
@@ -1356,6 +1415,7 @@
 				D0CA1BED1AF92C9300D0E7D4 /* QAndATableViewController.m in Sources */,
 				D08BFD6D1AFBC62700608D3C /* OrderServiceTableViewController.m in Sources */,
 				D023230B1B0728B90064E93E /* PSYCounterTableViewController.m in Sources */,
+				D05EE5E51B1B42B900D3FBA5 /* EhibitionDetailTitleTableViewCell.m in Sources */,
 				D0B522A21AF13D2900E809AA /* ProductInfoTableViewCell.m in Sources */,
 				D0B522F21AF13EEC00E809AA /* FilterView.m in Sources */,
 				D09553CF1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m in Sources */,
@@ -1396,6 +1456,8 @@
 				D0B522FA1AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m in Sources */,
 				D0B522FB1AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m in Sources */,
 				D09553C91AFDEDDF00E3BB3D /* QAndADetailTableViewController.m in Sources */,
+				D05EE5EF1B1B523200D3FBA5 /* EnListTableViewController.m in Sources */,
+				D05EE5D81B1B324500D3FBA5 /* ExhibitionListTableViewCell.m in Sources */,
 				D0790B8E1AF48AC400960BE0 /* MessageDetailViewController.m in Sources */,
 				D0B522B11AF13D7200E809AA /* UIViewController+LXPig.m in Sources */,
 				D0B5226D1AF1316C00E809AA /* ChangePasswordController.m in Sources */,
@@ -1412,12 +1474,14 @@
 				D0B522B31AF13D7200E809AA /* UITableViewController+LXPig.m in Sources */,
 				D0A21B0F1AF3AC7C00676487 /* ConfirmOrderBottomCell.m in Sources */,
 				D0790B8B1AF48AA800960BE0 /* MessageViewController.m in Sources */,
+				D05EE5E01B1B3C5F00D3FBA5 /* ExhibitionDetailViewController.m in Sources */,
 				D0A21B031AF3A13500676487 /* ConfirmOrderContainerViewController.m in Sources */,
 				D02323201B077E1C0064E93E /* PSYResultViewController.m in Sources */,
 				D0B522B01AF13D7200E809AA /* LxPigViewController.m in Sources */,
 				D0B5228F1AF13C7E00E809AA /* ProductDetailTableViewController.m in Sources */,
 				D0D6889A1AF35972006C8BA4 /* EditAddressViewController.m in Sources */,
 				D0B5226A1AF1222800E809AA /* ChangeInfoViewController.m in Sources */,
+				D05EE5DC1B1B356C00D3FBA5 /* ExhibitionListTableViewController.m in Sources */,
 				D0B522A11AF13D2900E809AA /* MallHomeController.m in Sources */,
 				D076FEDB1AEFE84500407B30 /* PersonalViewController.m in Sources */,
 				D0B522C31AF13E8900E809AA /* UserManagerObject.m in Sources */,
@@ -1425,6 +1489,7 @@
 				D0A21B121AF3AC9100676487 /* ConfirmOrderAddressCell.m in Sources */,
 				D0B522F51AF13EEC00E809AA /* SKTagButton.m in Sources */,
 				D02323191B0730380064E93E /* PSYCountIntputTableViewCell.m in Sources */,
+				D05EE5EA1B1B44A500D3FBA5 /* WebCellTableViewCell.m in Sources */,
 				D0A21B0C1AF3AC2F00676487 /* ConfirmOrderHeadCell.m in Sources */,
 				D01A65291AEE818400DA9034 /* CartTableViewController.m in Sources */,
 				D07638FF1B00F227008763B1 /* InfoViewTableViewCell.m in Sources */,
@@ -1466,6 +1531,7 @@
 				D0790B981AF5231A00960BE0 /* OrderListTableViewController.m in Sources */,
 				D0CA1BEA1AF923DC00D0E7D4 /* QAndAViewController.m in Sources */,
 				D02323141B072D1E0064E93E /* PSYButtonTableViewCell.m in Sources */,
+				D05EE5F41B1B52A400D3FBA5 /* EnListTableViewCell.m in Sources */,
 				D03CEC941B04E1EB00DD73B7 /* SetListTableViewCell.m in Sources */,
 				D09553CC1AFDEE4E00E3BB3D /* QAndADetailViewController.m in Sources */,
 				D0B522F61AF13EEC00E809AA /* SKTagView.m in Sources */,

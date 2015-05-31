@@ -38,11 +38,12 @@
     [super viewDidLoad];
     [self addBackButton];
     self.title = @"详情";
-    if ([[UserManagerObject shareInstance]userType] != 0) {
+    if ([[UserManagerObject shareInstance]userType] != 0 &&
+        [[UserManagerObject shareInstance]userType] != -1) {
         self.bottomViewHeight.constant = 0;
         self.bottomView.hidden = YES;
     }
-    if ([[UserManagerObject shareInstance]userType] != 0) {
+    if ([[UserManagerObject shareInstance]userType] != 0 && [[UserManagerObject shareInstance]userType] != -1) {
         self.navigationItem.rightBarButtonItem = nil;
     }
 
@@ -117,7 +118,7 @@
     animation.toValue = @(index*SCREEN_WIDTH/5);
     [self.imageLeft pop_addAnimation:animation forKey:@"animation"];
     [self.scrollView setContentOffset:CGPointMake(index*SCREEN_WIDTH, 0)];
-    if ([[UserManagerObject shareInstance]userType] == 0) {
+    if ([[UserManagerObject shareInstance]userType] == 0&&[[UserManagerObject shareInstance]userType] != -1) {
         if (index == 0 || index == 3 || index == 4) {
             self.bottomViewHeight.constant = 77;
             self.bottomView.hidden = NO;

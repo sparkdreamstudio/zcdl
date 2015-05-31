@@ -11,7 +11,7 @@
 
 
 #pragma mark -http server & api url-
-#define SERVER_URL @"http://112.74.98.66/api"
+#define SERVER_URL @"http://112.74.98.66:8080/api"
 #define SERVICE_USER    @"userservice.do"
 #define SERVICE_MEMBER @"memberservice.do"
 #define SERVICE_PRODUCT @"productservice.do"
@@ -37,6 +37,8 @@
 #define SERVICE_LIMITNUMB   @"limitnumservice.do"
 #define SERVICE_LIMITGROUP  @"limitgroupservice.do"
 #define SERVICE_OTHERSERVICE @"otherservice.do"
+#define SERVICE_EXHIBIT         @"exhibitservice.do"
+
 
 #pragma mark -ui value-
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
@@ -56,4 +58,5 @@
 #define NTF_REMOVE_ORDER        @"NTF_REMOVE_ORDER"
 #define NTF_SHOW_LOGIN  @"NTF_SHOW_LOGIN"
 #define NTF_LOGIN_OK    @"NTF_LOGIN_OK"
+#define NTF_LOGIN_TIMEOUT @"NTF_LOGIN_TIMEOUT"
 #endif

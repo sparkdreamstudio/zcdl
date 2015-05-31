@@ -60,6 +60,14 @@ static PigCart* singleton = nil;
     return nil;
 }
 
+-(id)init
+{
+    if (self = [super init]) {
+        self.itemsArray = [NSMutableArray array];
+    }
+    return self;
+}
+
 -(void)refreshCartListSuccess:(void(^)(void))sucess failure:(void(^)(NSString* message))failure
 {
     if (self.itemsArray) {

@@ -97,7 +97,15 @@
 
 -(void)loadNews
 {
-    [[NetWorkClient shareInstance]postUrl:SERVICE_FOCUSNEWS With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"type":@"1"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    NSDictionary* params;
+    if ([[UserManagerObject shareInstance]sessionid]&&[[UserManagerObject shareInstance]sessionid].length!=0) {
+        params = @{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid]};
+    }
+    else
+    {
+        params = @{@"action":@"list"};
+    }
+    [[NetWorkClient shareInstance]postUrl:SERVICE_FOCUSNEWS With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.newsView = [responseObj objectForKey:@"data"];
         [self loadNewsView];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {

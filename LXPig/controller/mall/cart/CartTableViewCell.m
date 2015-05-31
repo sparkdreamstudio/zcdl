@@ -10,13 +10,13 @@
 #import "LPLabel.h"
 #import "PigCart.h"
 
-@interface CartTableViewCell()
+@interface CartTableViewCell()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
 @property (weak, nonatomic) IBOutlet UIImageView *productImage;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *salePrice;
 @property (weak, nonatomic) IBOutlet LPLabel *marketPrice;
-@property (weak, nonatomic) IBOutlet UILabel *count;
+@property (weak, nonatomic) IBOutlet UIButton *countBtn;
 @property (weak, nonatomic) IBOutlet UIButton *decreaseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *increasBtn;
 
@@ -41,7 +41,7 @@
     self.name.text =item.name;
     self.salePrice.text = [item.salePrice stringValue];
     self.marketPrice.text = [NSString stringWithFormat:@"￥%@",item.marketPrice];
-    self.count.text = [item.num stringValue];
+    [self.countBtn setTitle:[item.num stringValue] forState:UIControlStateNormal];
 }
 
 -(IBAction)btnClick:(id)sender
@@ -69,8 +69,34 @@
             }
             break;
         }
+        case 3:
+        {
+            UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"修改数量" message:@"购买数量最小为1，最大为9999" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [alertView textFieldAtIndex:0].keyboardType = UIKeyboardTypeDecimalPad;
+            [alertView show];
+        }
         default:
             break;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        
+        UITextField* textField = [alertView textFieldAtIndex:0];
+        if (textField.text.length > 0) {
+            NSScanner* scan = [NSScanner scannerWithString:textField.text];
+            int val;
+            if ([scan scanInt:&val] && [scan isAtEnd]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(cartTableViewCell:SetNum:)]) {
+                    [self.delegate cartTableViewCell:self SetNum:[textField.text integerValue]];
+                }
+            }
+        }
+        
+        
     }
 }
 

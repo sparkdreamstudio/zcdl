@@ -10,6 +10,7 @@
 
 @class ProductInfo;
 @class Address;
+@class ConfirmOrderContainerViewController;
 @interface ConfirmOrderItem : NSObject
 
 @property (assign,nonatomic) long long keyId;
@@ -34,4 +35,5 @@
 @property (strong,nonatomic) NSMutableArray* arrayProduct;
 @property (assign,nonatomic) ProductInfo* qianGouProduct;
 @property (assign,nonatomic) Address *address;
+@property (weak,nonatomic) ConfirmOrderContainerViewController* confirmOrdController;
 @end

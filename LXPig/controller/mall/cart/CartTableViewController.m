@@ -146,9 +146,32 @@
     NSInteger count = [item.num integerValue];
     NSInteger price = [item.salePrice integerValue];
     NSInteger totoalPrice = [items.totalPrice integerValue];
-    
+    if (count == 9999) {
+        return;
+    }
     item.num = [NSNumber numberWithInteger:++count];
     items.totalPrice = [NSNumber numberWithInteger:totoalPrice+price];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath,[NSIndexPath indexPathForRow:[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
+
+    if (!self.editModel) {
+        [self.cartViewController loadTotalPrice];
+    }
+}
+
+-(void)cartTableViewCell:(CartTableViewCell *)cell SetNum:(NSInteger)num
+{
+    if (num < 1 || num > 9999) {
+        return;
+    }
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    CartItem* item = [[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist] objectAtIndex:indexPath.row-1];
+    CartItems* items = [[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section];
+
+    NSInteger price = [item.salePrice integerValue];
+
+    
+    item.num = [NSNumber numberWithInteger:num];
+    items.totalPrice = [NSNumber numberWithInteger:price*num];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath,[NSIndexPath indexPathForRow:[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
     if (!self.editModel) {
         [self.cartViewController loadTotalPrice];

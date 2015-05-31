@@ -10,6 +10,7 @@
 #import "NetWorkClient.h"
 #import "SetListTableViewController.h"
 #import "PSYCounterTableViewController.h"
+#import "ExhibitionListTableViewController.h"
 @interface SettingViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -59,7 +60,7 @@
 
 - (IBAction)showZhanhui:(id)sender
 {
-    
+    [self.navigationController pushViewController:[[ExhibitionListTableViewController alloc]init] animated:YES];
 }
 /*
 #pragma mark - Navigation

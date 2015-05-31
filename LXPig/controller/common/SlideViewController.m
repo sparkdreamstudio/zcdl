@@ -8,6 +8,8 @@
 
 #import "SlideViewController.h"
 #import "UserManagerObject.h"
+#import "AddressManager.h"
+#import "PigCart.h"
 #define MAX_RIGHT_TRAIL (-SCREEN_WIDTH*0.25)
 #define MAX_SCALE       (0.75f)
 
@@ -25,7 +27,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewCenter;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
-
+@property (assign,nonatomic) BOOL showLoginController;
 @property (nonatomic, assign) SlideViewState      slideViewState;
 -(void) showRightView;
 -(void) showCenterView;
@@ -37,21 +39,43 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     [super viewDidLoad];
     _slideViewState = SlideViewStateCenterShow;
     _tapGesture.delegate =self;
+    self.showLoginController = NO;
     // Do any additional setup after loading the view.
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLogIn:) name:NTF_SHOW_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_TIMEOUT object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_OK object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (![[UserManagerObject shareInstance] sessionid]) {
-        [self performSegueWithIdentifier:@"ShowLogin" sender:self];
-    }
 }
 
--(void)showLogIn:(NSNotification*)ntf
+-(void)processNtf:(NSNotification*)ntf
 {
-    [self performSegueWithIdentifier:@"ShowLogin" sender:self];
+    if ([ntf.name isEqualToString:NTF_SHOW_LOGIN]) {
+        if (self.showLoginController == NO) {
+            self.showLoginController = YES;
+            [self performSegueWithIdentifier:@"ShowLogin" sender:self];
+        }
+        
+    }
+    else if([ntf.name isEqualToString:NTF_LOGIN_TIMEOUT])
+    {
+        if (self.showLoginController == NO) {
+            self.showLoginController = YES;
+            [self performSegueWithIdentifier:@"ShowLogin" sender:self];
+        }
+    }
+    else if([ntf.name isEqualToString:NTF_LOGIN_OK])
+    {
+        self.showLoginController = NO;
+        if ([[UserManagerObject shareInstance]userType]==0) {
+            [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+            [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

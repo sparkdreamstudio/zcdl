@@ -11,5 +11,5 @@
 @interface ConfirmOrderContainerViewController : LxPigViewController
 
 @property (assign,nonatomic) ProductInfo* qianGouProduct;
-
+-(void)reloadQiangGouPrice:(NSInteger)price;
 @end

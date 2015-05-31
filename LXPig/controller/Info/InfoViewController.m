@@ -19,6 +19,7 @@
 @property (strong,nonatomic)UISegmentedControl* segmentedControll;
 @property (strong,nonatomic)NSMutableArray* controllerArray;
 @property (strong,nonatomic)NSMutableArray* infoArray;
+@property (strong,nonatomic)NSLayoutConstraint* topScrollHeightConstraint;
 @end
 
 @implementation InfoViewController
@@ -114,6 +115,7 @@
     for (NSDictionary* dic in self.newsView) {
         [array addObject:dic[@"name"]];
     }
+    
     self.segmentedControll = [[UISegmentedControl alloc]initWithItems:array];
     [self.segmentedControll addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControll setBackgroundImage:[UIImage imageNamed:@"segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -136,7 +138,9 @@
     [self.topScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_segmentedControll]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_segmentedControll)]];
     [self.topScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_segmentedControll]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_segmentedControll)]];
     [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
-    
+    if (self.segmentedControll.frame.size.width < SCREEN_WIDTH) {
+        [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+    }
     for (InfoListTableViewController* controller in self.controllerArray) {
         [controller.view removeFromSuperview];
     }

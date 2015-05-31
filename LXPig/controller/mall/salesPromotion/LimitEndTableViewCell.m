@@ -31,6 +31,7 @@
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];
         self.salePrice.text = [dic[@"product"][@"salePrice"] stringValue];
         self.descriptionCount.text = [NSString stringWithFormat:@"仅剩%@",dic[@"surplusNum"]];
+        self.description4.text = @"抢购结束";
     }
     else if(type == 1){
         self.description1.text = @"已销售";
@@ -40,6 +41,7 @@
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];
         self.salePrice.text = [dic[@"product"][@"salePrice"] stringValue];
         self.descriptionCount.text = @"";
+        self.description4.text = @"抢购结束";
     }
     else{
         self.description1.text = @"还需";
@@ -49,6 +51,13 @@
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];
         self.salePrice.text = [dic[@"product"][@"salePrice"] stringValue];
         self.descriptionCount.text = [NSString stringWithFormat:@"最低%@份成团",dic[@"num"]];
+        if ([dic[@"needNum"] integerValue] < 1) {
+            self.description4.text= @"组团成功";
+        }
+        else
+        {
+            self.description4.text = @"组团失败";
+        }
     }
 }
 

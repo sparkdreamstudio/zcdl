@@ -10,7 +10,7 @@
 #import "NetWorkClient.h"
 #import "UserManagerObject.h"
 #import "OrderDetailViewController.h"
-
+#import "LPLabel.h"
 @interface OrderListTableViewController ()
 @property (assign,nonatomic)NSInteger currentPage;
 @property (strong,nonatomic)NSMutableArray * orderArray;
@@ -232,6 +232,8 @@
         label.text = [[product objectForKey:@"salePrice"] stringValue];
         label = (UILabel*)[cell viewWithTag:4];
         label.text = [NSString stringWithFormat:@"x%@",[dic objectForKey:@"num"]];
+        LPLabel* lplabel = (LPLabel*)[cell viewWithTag:5];
+        lplabel.text = [NSString stringWithFormat:@"￥%@",[product objectForKey:@"marketPrice"]];
         return cell;
     }
 }

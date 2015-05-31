@@ -10,7 +10,7 @@
 #import "SKTagView.h"
 #import "NetWorkClient.h"
 #import "LPLabel.h"
-
+#import "ProductDetailViewController.h"
 @interface ProductDetailTableViewController ()<UIWebViewDelegate,ImagePlayerViewDelegate>
 {
     CGFloat labelheight;
@@ -51,7 +51,7 @@
     
     self.urlArray = [NSMutableArray array];
     __weak ProductDetailTableViewController* weakself = self;
-    UIView* view = [self showNormalHudNoDimissWithString:@"加载中"];
+    UIView* view = [self.detailViewController showNormalHudNoDimissWithString:@"加载中"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_PRODUCT With:@{@"action":@"detail",
                @"id":[NSNumber numberWithLongLong:self.productId]}
         success:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -61,7 +61,7 @@
             weakself.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@", dic[@"marketPrice"]];
             [weakself.introWebView loadHTMLString:dic[@"intro"] baseURL:nil];
             
-            [weakself dismissHUD:view];
+            [weakself.detailViewController dismissHUD:view];
             
             
             weakself.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
@@ -102,7 +102,7 @@
             loaded = YES;
             [weakself.tableView reloadData];
         } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-            [weakself dismissHUD:view];
+            [weakself.detailViewController dismissHUD:view];
         }];
 }
 

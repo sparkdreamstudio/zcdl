@@ -12,6 +12,7 @@
 @interface OrderViewController ()
 {
     CGFloat flagCount;
+    BOOL loaded;
 }
 @property (strong,nonatomic) UISegmentedControl* segmentcontrol;
 @property (strong,nonatomic) NSMutableArray* controllerArray;
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
+    loaded = NO;
     switch ([[UserManagerObject shareInstance] userType]) {
         case 0:
         {
@@ -125,19 +127,23 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    switch ([[UserManagerObject shareInstance]userType]) {
-        case 0:
-            [self.scrollView setContentOffset:CGPointMake(0, 0)];
-            break;
-        case 2:
-            [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*3, 0)];
-            break;
-        case 3:
-            [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*1, 0)];
-            break;
-        default:
-            break;
-    };
+    if (loaded == NO) {
+        switch ([[UserManagerObject shareInstance]userType]) {
+            case 0:
+                [self.scrollView setContentOffset:CGPointMake(0, 0)];
+                break;
+            case 2:
+                [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*3, 0)];
+                break;
+            case 3:
+                [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*1, 0)];
+                break;
+            default:
+                break;
+        };
+        loaded = YES;
+    }
+    
 }
 
 -(void)makeContraint:(NSArray*)array

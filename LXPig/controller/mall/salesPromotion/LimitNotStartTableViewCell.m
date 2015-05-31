@@ -50,6 +50,15 @@
         self.salePrice.text = [dic[@"product"][@"salePrice"] stringValue];
         self.descriptionCount.text = [NSString stringWithFormat:@"最低%@份成团",dic[@"num"]];
     }
+    NSString* startTimeStr = dic[@"beginTime"];
+    NSArray* dateArray = [startTimeStr componentsSeparatedByString:@" "];
+    NSString* dateString = dateArray[0];
+    NSArray *sDateArray = [dateString componentsSeparatedByString:@"-"];
+    
+    self.startDate.text = [NSString stringWithFormat:@"%@月%@日",sDateArray[1],sDateArray[2]];
+    NSString *timeStr = dateArray[1];
+    NSArray *timeArray = [timeStr componentsSeparatedByString:@":"];
+    self.startTime.text = [NSString stringWithFormat:@"%@:%@",timeArray[0],timeArray[1]];
 }
 
 @end

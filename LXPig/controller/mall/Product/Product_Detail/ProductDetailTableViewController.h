@@ -7,9 +7,9 @@
 //
 
 #import "LXPigTableVIewController.h"
-
+@class ProductDetailViewController;
 @interface ProductDetailTableViewController : LXPigTableVIewController
 
 @property (nonatomic,assign)long long productId;
-
+@property (nonatomic,weak) ProductDetailViewController *detailViewController;
 @end

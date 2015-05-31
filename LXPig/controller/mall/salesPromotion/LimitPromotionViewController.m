@@ -145,29 +145,33 @@
 //    controller.htmlString = dic[@"newstext"];
 //    [self.controller.navigationController pushViewController:controller animated:YES];
     NSDictionary* dic = self.productList[indexPath.row][@"product"];
-    ProductInfo* info = [[ProductInfo alloc]init];
-    info.keyId = [[dic objectForKey:@"id"]longLongValue];
-    info.enterprise = [[EnterpriseInfo alloc]init];
-    info.enterprise.keyId = [[[dic objectForKey:@"enterprise"] objectForKey:@"id"]longLongValue];
-    info.enterprise.name = [[dic objectForKey:@"enterprise"] objectForKey:@"name"];
-    info.enterprise.tel = [[dic objectForKey:@"enterprise"] objectForKey:@"tel"];
-    info.enterprise.fax = [[dic objectForKey:@"enterprise"] objectForKey:@"fax"];
-    info.enterprise.address = [[dic objectForKey:@"enterprise"] objectForKey:@"address"];
-    info.enterprise.intro = [[dic objectForKey:@"enterprise"] objectForKey:@"intro"];
-    info.name = [dic objectForKey:@"name"];
-    info.marketPrice = [[dic objectForKey:@"marketPrice"] integerValue];
-    info.salePrice = [[dic objectForKey:@"salePrice"]integerValue];
-    info.smallImg = [dic objectForKey:@"smallImg"];
-    info.unit = [dic objectForKey:@"unit"];
-    info.intro = [dic objectForKey:@"intro"];
-    info.status = [[dic objectForKey:@"status"] integerValue];
-    info.seq = [[dic objectForKey:@"seq"] integerValue];
-    info.praise =[dic objectForKey:@"praise"];
-    info.orderCnt = [[dic objectForKey:@"orderCnt"] integerValue];
-    ProductDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"product_detail"];
-    controller.type = 1;
-    controller.info = info;
-    [self.navigationController pushViewController:controller animated:YES];
+    NSInteger status = [dic[@"status"] integerValue];
+    if (status == 2) {
+        ProductInfo* info = [[ProductInfo alloc]init];
+        info.keyId = [[dic objectForKey:@"id"]longLongValue];
+        info.enterprise = [[EnterpriseInfo alloc]init];
+        info.enterprise.keyId = [[[dic objectForKey:@"enterprise"] objectForKey:@"id"]longLongValue];
+        info.enterprise.name = [[dic objectForKey:@"enterprise"] objectForKey:@"name"];
+        info.enterprise.tel = [[dic objectForKey:@"enterprise"] objectForKey:@"tel"];
+        info.enterprise.fax = [[dic objectForKey:@"enterprise"] objectForKey:@"fax"];
+        info.enterprise.address = [[dic objectForKey:@"enterprise"] objectForKey:@"address"];
+        info.enterprise.intro = [[dic objectForKey:@"enterprise"] objectForKey:@"intro"];
+        info.name = [dic objectForKey:@"name"];
+        info.marketPrice = [[dic objectForKey:@"marketPrice"] integerValue];
+        info.salePrice = [[dic objectForKey:@"salePrice"]integerValue];
+        info.smallImg = [dic objectForKey:@"smallImg"];
+        info.unit = [dic objectForKey:@"unit"];
+        info.intro = [dic objectForKey:@"intro"];
+        info.status = [[dic objectForKey:@"status"] integerValue];
+        info.seq = [[dic objectForKey:@"seq"] integerValue];
+        info.praise =[dic objectForKey:@"praise"];
+        info.orderCnt = [[dic objectForKey:@"orderCnt"] integerValue];
+        ProductDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"product_detail"];
+        controller.type = 1;
+        controller.info = info;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 @end

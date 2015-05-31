@@ -33,6 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.userNameInput.tintColor = [UIColor whiteColor];
+    self.userNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"手机号即为会员号" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.userNameInput.textColor = [UIColor whiteColor];
+    self.passwordInput.textColor = [UIColor whiteColor];
+    self.passwordInput.tintColor = [UIColor whiteColor];
+    self.passwordInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"输入密码" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [imageView setImage:[UIImage imageNamed:@"login_bg.jpg"]];
     UIImageView* title = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-166)/2, 75, 166, 106)];
@@ -93,6 +99,7 @@
         hud.tag = JG_LOGIN_SUCCESS_TAG;
         [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
         [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
         [self dismissHUD:hud WithSuccessString:@"登陆成功"];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;
@@ -118,6 +125,7 @@
     [[UserManagerObject shareInstance]loginOtherWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
         hud.tag = JG_LOGIN_SUCCESS_TAG;
         [self dismissHUD:hud WithSuccessString:@"登陆成功"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_OK object:nil];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         NSString* message;
         if (responseObj) {

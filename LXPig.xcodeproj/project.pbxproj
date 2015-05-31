@@ -157,6 +157,7 @@
 		D0CA1BE61AF9116800D0E7D4 /* ViewPaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CA1BE51AF9116800D0E7D4 /* ViewPaperViewController.m */; };
 		D0CA1BEA1AF923DC00D0E7D4 /* QAndAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CA1BE91AF923DC00D0E7D4 /* QAndAViewController.m */; };
 		D0CA1BED1AF92C9300D0E7D4 /* QAndATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CA1BEC1AF92C9300D0E7D4 /* QAndATableViewController.m */; };
+		D0CC20701B1AF39000B1574F /* PersonalContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC206F1B1AF39000B1574F /* PersonalContainerViewController.m */; };
 		D0D6889A1AF35972006C8BA4 /* EditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688991AF35972006C8BA4 /* EditAddressViewController.m */; };
 		D0D6889D1AF3599C006C8BA4 /* EditAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D6889C1AF3599C006C8BA4 /* EditAddressTableViewController.m */; };
 		D0D688A11AF37449006C8BA4 /* LocationNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D688A01AF37449006C8BA4 /* LocationNaviViewController.m */; };
@@ -465,6 +466,8 @@
 		D0CA1BE91AF923DC00D0E7D4 /* QAndAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndAViewController.m; path = "controller/q&a/QAndAViewController.m"; sourceTree = "<group>"; };
 		D0CA1BEB1AF92C9300D0E7D4 /* QAndATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QAndATableViewController.h; path = "controller/q&a/QAndATableViewController.h"; sourceTree = "<group>"; };
 		D0CA1BEC1AF92C9300D0E7D4 /* QAndATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QAndATableViewController.m; path = "controller/q&a/QAndATableViewController.m"; sourceTree = "<group>"; };
+		D0CC206E1B1AF39000B1574F /* PersonalContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalContainerViewController.h; path = controller/personal/PersonalContainerViewController.h; sourceTree = "<group>"; };
+		D0CC206F1B1AF39000B1574F /* PersonalContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalContainerViewController.m; path = controller/personal/PersonalContainerViewController.m; sourceTree = "<group>"; };
 		D0D688981AF35972006C8BA4 /* EditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditAddressViewController.h; path = controller/Address/EditAddressViewController.h; sourceTree = "<group>"; };
 		D0D688991AF35972006C8BA4 /* EditAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditAddressViewController.m; path = controller/Address/EditAddressViewController.m; sourceTree = "<group>"; };
 		D0D6889B1AF3599C006C8BA4 /* EditAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditAddressTableViewController.h; path = controller/Address/EditAddressTableViewController.h; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				D0DF77411B1A226C00A18DE5 /* AboutViewController.h */,
 				D0DF77421B1A226C00A18DE5 /* AboutViewController.m */,
 				D0DF77431B1A226C00A18DE5 /* AboutViewController.xib */,
+				D0CC206E1B1AF39000B1574F /* PersonalContainerViewController.h */,
+				D0CC206F1B1AF39000B1574F /* PersonalContainerViewController.m */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -1436,6 +1441,7 @@
 				D0B5230A1AF1494B00E809AA /* AddressManager.m in Sources */,
 				D0D6889D1AF3599C006C8BA4 /* EditAddressTableViewController.m in Sources */,
 				D0B522AF1AF13D7200E809AA /* LXPigTableVIewController.m in Sources */,
+				D0CC20701B1AF39000B1574F /* PersonalContainerViewController.m in Sources */,
 				D0B523061AF1473E00E809AA /* AddressManageTableViewCell.m in Sources */,
 				D0A21B001AF3A0A200676487 /* ConfirmOrdViewController.m in Sources */,
 				D0B5227A1AF13B6400E809AA /* LoginTableViewController.m in Sources */,

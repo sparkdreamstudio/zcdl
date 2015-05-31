@@ -154,6 +154,15 @@
         [view addSubview:label];
         [view addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
         [view addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeading multiplier:1 constant:15]];
+        label = [[UILabel alloc]init];
+        label.text = @"长按删除栏目";
+        label.font = [UIFont systemFontOfSize:13];
+        label.textColor = NavigationBarColor;
+        label.translatesAutoresizingMaskIntoConstraints = NO;
+        [view addSubview:label];
+        [view addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [view addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailing multiplier:1 constant:-15]];
+        label = [[UILabel alloc]init];
         return view;
     }
     else

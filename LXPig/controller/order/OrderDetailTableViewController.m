@@ -219,8 +219,6 @@
                 label = (UILabel*)[cell viewWithTag:4];
                 label.text = [NSString stringWithFormat:@"x%@",[dic objectForKey:@"num"]];
                 
-                LPLabel *lpLabel = (LPLabel*)[cell viewWithTag:5];
-                lpLabel.text = [[product objectForKey:@"marketPrice"] stringValue];
                 return cell;
             }
         }

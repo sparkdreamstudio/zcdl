@@ -174,6 +174,7 @@
     if ([segue.identifier isEqualToString:@"product_detail_tag"]) {
         ProductDetailTableViewController* controller = [segue destinationViewController];
         controller.productId = self.info.keyId;
+        controller.detailViewController = self;
     }
     else if ([segue.identifier isEqualToString:@"enterprise_detail_tag"]) {
         EnterpriseDetailController* controller = [segue destinationViewController];

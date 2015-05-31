@@ -31,7 +31,7 @@
 
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 35;
-    
+    self.tableView.backgroundColor = HEXCOLOR(@"f3f3f3");
     // Do any additional setup after loading the view.
     self.adImageView.imagePlayerViewDelegate = self;
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36);
@@ -73,23 +73,24 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.view.frame = CGRectMake(0, -20, SCREEN_WIDTH, self.view.frame.size.height+20);
-}
-
-
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 4) {
-        [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
+    if ([[UserManagerObject shareInstance]userType] == 0) {
+        if (indexPath.row == 4) {
+            [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
+        }
+        else if (indexPath.row  == 6)
+        {
+            [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
+        }
     }
-    else if (indexPath.row  == 6)
+    else
     {
-        [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
+        if (indexPath.row == 3) {
+            [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
+        }
     }
+    
 }
 -(IBAction)logOut:(id)sender
 {

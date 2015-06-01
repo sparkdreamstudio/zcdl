@@ -164,7 +164,7 @@
     }
     else
     {
-        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, 1) AndSystemFontSize:14].height;
+        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height;
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

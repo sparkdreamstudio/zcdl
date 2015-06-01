@@ -172,11 +172,11 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     else if (status == 1){
-        [self showNormalHudDimissWithString:@"该抢购还没有开始"];
+        [self showNormalHudDimissWithString:@"活动尚未开始，请耐心等待…"];
     }
     else
     {
-        [self showNormalHudDimissWithString:@"该抢购已经结束"];
+        [self showNormalHudDimissWithString:@"活动已结束，您可选择参与其他活动"];
     }
     
 }

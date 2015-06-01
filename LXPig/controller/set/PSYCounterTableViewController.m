@@ -113,6 +113,7 @@
 
 -(void)getResult:(UIButton*)btn
 {
+    [self.tableView endEditing:YES];
     if (param0 == -1) {
         [self showNormalHudDimissWithString:@"请选择测定周期"];
         return;

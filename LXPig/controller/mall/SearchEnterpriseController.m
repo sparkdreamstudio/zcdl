@@ -40,7 +40,7 @@
     self.emptyLabel = [[UILabel alloc]init];
     self.emptyLabel.textColor = HEXCOLOR(@"848484");
     self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.emptyLabel.text = @"没有找到您想要的商品";
+    self.emptyLabel.text = @"暂无数据";
     [self.view addSubview:self.emptyLabel];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterY multiplier:2 constant:0]];

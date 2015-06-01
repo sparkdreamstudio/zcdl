@@ -117,10 +117,12 @@
 -(void)loadTotalPrice
 {
     NSInteger total = 0;
+    NSInteger totalNum = 0;
     for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
         for (CartItem *item in items.itemlist) {
             if (item.selected) {
                 total += item.salePrice.integerValue*item.num.integerValue;
+                totalNum += item.num.integerValue;
             }
         }
     }
@@ -128,10 +130,12 @@
     {
         [self.button setEnabled:NO];
         [self.button setBackgroundColor:[UIColor lightGrayColor]];
+        [self.button setTitle:@"结算" forState:UIControlStateNormal];
     }
     else
     {
         [self.button setEnabled:YES];
+        [self.button setTitle:[NSString stringWithFormat:@"结算(%ld)",totalNum] forState:UIControlStateNormal];
         [self.button setBackgroundColor:NavigationBarColor];
     }
     self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];

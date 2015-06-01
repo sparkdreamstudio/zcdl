@@ -10,7 +10,7 @@
 #import "UserManagerObject.h"
 #import "AddressManager.h"
 #import "PigCart.h"
-#define MAX_RIGHT_TRAIL (-SCREEN_WIDTH*0.25)
+#define MAX_RIGHT_TRAIL (-SCREEN_WIDTH/3)
 #define MAX_SCALE       (0.75f)
 
 typedef NS_ENUM(NSUInteger, SlideViewState) {
@@ -98,18 +98,18 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
         case SlideViewStateCenterShow:
         {
             self.tapGesture.enabled = NO;
-            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-            animation.fromValue = [NSValue valueWithCGSize:CGSizeMake(MAX_SCALE, MAX_SCALE)];
-            animation.toValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
-            animation.duration = 0.2;
-            animation.completionBlock = ^(POPAnimation *anim, BOOL finished)
-            {
-                if (finished) {
-                    self.mainViewContainer.transform = CGAffineTransformIdentity;
-                }
-            };
-            [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
-            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
+//            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+//            animation.fromValue = [NSValue valueWithCGSize:CGSizeMake(MAX_SCALE, MAX_SCALE)];
+//            animation.toValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
+//            animation.duration = 0.2;
+//            animation.completionBlock = ^(POPAnimation *anim, BOOL finished)
+//            {
+//                if (finished) {
+//                    self.mainViewContainer.transform = CGAffineTransformIdentity;
+//                }
+//            };
+//            [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
+            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
             animation.duration = 0.2;
             animation.fromValue = @(self.mainViewCenter.constant);
             animation.toValue = @(0);
@@ -117,6 +117,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
             {
                 if (finished) {
                     self.mainViewCenter.constant = 0;
+                    self.mainViewContainer.userInteractionEnabled = YES;
                 }
             };
             [self.mainViewCenter pop_addAnimation:animation forKey:@"show_main_trail"];
@@ -130,14 +131,15 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
             POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
             animation.duration = 0.2;
             animation.fromValue = @(self.mainViewCenter.constant);
-            animation.toValue = @(-MAX_RIGHT_TRAIL/2);
+            animation.toValue = @(-MAX_RIGHT_TRAIL);
             [self.mainViewCenter pop_addAnimation:animation forKey:@"show_main_trail"];
+            self.mainViewContainer.userInteractionEnabled = NO;
             
-            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-            animation.duration = 0.2;
-            animation.fromValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
-            animation.toValue = [NSValue valueWithCGSize:CGSizeMake(MAX_SCALE, MAX_SCALE)];
-            [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
+//            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+//            animation.duration = 0.2;
+//            animation.fromValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
+//            animation.toValue = [NSValue valueWithCGSize:CGSizeMake(MAX_SCALE, MAX_SCALE)];
+//            [self.mainViewContainer pop_addAnimation:animation forKey:@"show_main_scale"];
             
         }
             

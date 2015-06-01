@@ -115,6 +115,7 @@ bool gMark = false;
     }
     if (self.codeId.integerValue == -1) {
         [self showNormalHudDimissWithString:@"请选择标签"];
+        return;
     }
     UIView* hud = [self showNormalHudNoDimissWithString:@"提交中，请稍等"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"codeId":self.codeId,@"content":self.textView.text} success:^(NSDictionary *responseObj, NSString *timeSp) {

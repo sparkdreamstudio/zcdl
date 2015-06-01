@@ -115,18 +115,22 @@
 {
     if (param0 == -1) {
         [self showNormalHudDimissWithString:@"请选择测定周期"];
+        return;
     }
     if (param1 == -1) {
         [self showNormalHudDimissWithString:@"请填写存栏母猪数"];
     }
     if (param2 == -1) {
         [self showNormalHudDimissWithString:@"请填写产活仔数"];
+        return;
     }
     if (param3 == -1) {
         [self showNormalHudDimissWithString:@"请填写产仔窝数"];
+        return;
     }
     if (param4 == -1) {
         [self showNormalHudDimissWithString:@"请填写断奶仔猪数"];
+        return;
     }
     NSInteger count = 0;
     switch (param0) {

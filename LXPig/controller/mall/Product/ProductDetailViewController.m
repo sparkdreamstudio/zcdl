@@ -120,7 +120,7 @@
     [self.scrollView setContentOffset:CGPointMake(index*SCREEN_WIDTH, 0)];
     if ([[UserManagerObject shareInstance]userType] == 0&&[[UserManagerObject shareInstance]userType] != -1) {
         if (index == 0 || index == 3 || index == 4) {
-            self.bottomViewHeight.constant = 77;
+            self.bottomViewHeight.constant = 65;
             self.bottomView.hidden = NO;
         }
         else
@@ -179,6 +179,7 @@
     }
     else if ([segue.identifier isEqualToString:@"enterprise_detail_tag"]) {
         EnterpriseDetailController* controller = [segue destinationViewController];
+        self.enterPriseController =controller;
         controller.info = self.info.enterprise;
     }
     else if ([segue.identifier isEqualToString:@"product_related"]) {

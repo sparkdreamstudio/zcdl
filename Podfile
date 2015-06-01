@@ -10,3 +10,4 @@ pod 'ImagePlayerView'
 pod "UIViewController-KeyboardAdditions"
 pod 'VIPhotoView', '~> 0.1'
 pod 'EDStarRating'
+pod 'UIViewController+KeyboardAnimation', '~> 1.2'

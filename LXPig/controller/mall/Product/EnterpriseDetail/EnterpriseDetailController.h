@@ -10,4 +10,5 @@
 @class EnterpriseInfo;
 @interface EnterpriseDetailController : LXPigTableVIewController
 @property (nonatomic,weak)EnterpriseInfo* info;
+-(void)reloadHtml;
 @end

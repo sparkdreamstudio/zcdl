@@ -11,6 +11,7 @@
 @interface SetDetailInfoViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* webViewHeight;
+@property (strong,nonatomic) UIView* hud;
 @end
 
 @implementation SetDetailInfoViewController
@@ -25,7 +26,8 @@
     self.webView.scrollView.scrollEnabled = false;
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    [self.webView loadHTMLString:self.htmlString baseURL:nil];
+    self.webView.hidden = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,11 +35,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.webViewHeight.constant = 0;
+    
+    [self.webView loadHTMLString:self.htmlString baseURL:nil];
+    self.hud = [self showNormalHudNoDimissWithString:@"加载"];
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self dismissHUD:self.hud];
+    self.hud = nil;
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
     NSInteger height = [height_str integerValue];
     self.webViewHeight.constant = height+20;
+    self.webView.hidden = NO;
 }
 
 /*

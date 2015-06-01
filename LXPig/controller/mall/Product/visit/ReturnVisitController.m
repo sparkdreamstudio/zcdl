@@ -88,7 +88,7 @@
 {
     CGFloat height = 0;
     NSDictionary* dic = self.infoArray[indexPath.row];
-    height = 53 + [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH - 22, 1) AndSystemFontSize:15].height;
+    height = 53 + [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH - 22, NSIntegerMax) AndSystemFontSize:15].height;
     return height;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -120,7 +120,7 @@
 {
     cell.time.text = [data objectForKey:@"createTime"];
     cell.content.text = [data objectForKey:@"content"];
-    cell.contentHeight.constant = [Utils getSizeOfString:[data objectForKey:@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, 1) AndSystemFontSize:15].height;
+    cell.contentHeight.constant = [Utils getSizeOfString:[data objectForKey:@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:15].height;
     return cell;
 }
 

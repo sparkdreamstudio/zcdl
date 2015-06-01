@@ -132,10 +132,14 @@
     MyQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
     NSString* type = @"";
     for (NSDictionary* typeObject in self.qAndAType) {
-        if ([[[dic objectForKey:@"code"] objectForKey:@"id"]integerValue] == [[typeObject objectForKey:@"id"] integerValue]) {
-            type = [typeObject objectForKey:@"name"];
-            break;
+        if([[dic objectForKey:@"code"] isKindOfClass:[NSDictionary class]])
+        {
+            if ([[[dic objectForKey:@"code"] objectForKey:@"id"]integerValue] == [[typeObject objectForKey:@"id"] integerValue]) {
+                type = [typeObject objectForKey:@"name"];
+                break;
+            }
         }
+        
     }
     cell.typeLabel.text = [NSString stringWithFormat:@" %@ ",type];
     [cell loadCell:dic];

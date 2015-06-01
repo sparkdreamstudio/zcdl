@@ -215,7 +215,10 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
         UILabel* label = (UILabel*)[cell viewWithTag:1];
-        label.text = [[self.orderArray[indexPath.section] objectForKey:@"enterprise"] objectForKey:@"name"];
+        if ([[self.orderArray[indexPath.section] objectForKey:@"enterprise"] isKindOfClass:[NSDictionary class]]) {
+            label.text = [[self.orderArray[indexPath.section] objectForKey:@"enterprise"] objectForKey:@"name"];
+        }
+        
         
         return cell;
     }

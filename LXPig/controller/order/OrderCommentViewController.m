@@ -8,8 +8,10 @@
 
 #import "OrderCommentViewController.h"
 #import "OrderCommentTableViewController.h"
+#import "UIViewController+KeyboardAdditions.h"
 
 @interface OrderCommentViewController ()<JGProgressHUDDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 
 @end
 
@@ -27,6 +29,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self ka_startObservingKeyboardNotifications];
+}
+
+-(void)ka_keyboardWillShowOrHideWithHeight:(CGFloat)height animationDuration:(NSTimeInterval)animationDuration animationCurve:(UIViewAnimationCurve)animationCurve
+{
+    self.bottomSpace.constant = height;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self ka_stopObservingKeyboardNotifications];
+}
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view
 {
     if (progressHUD.tag == 1) {

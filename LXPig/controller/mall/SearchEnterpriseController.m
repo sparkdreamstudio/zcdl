@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic,assign)    NSInteger currentPage;
 @property (nonatomic,strong)    NSMutableArray* infos;
+@property (nonatomic,strong)    UILabel* emptyLabel;
 @end
 
 @implementation SearchEnterpriseController
@@ -35,6 +36,15 @@
     self.navigationItem.hidesBackButton = YES;
     [self.searchBar setImage:[UIImage imageNamed:@"searchIcon"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     
+    
+    self.emptyLabel = [[UILabel alloc]init];
+    self.emptyLabel.textColor = HEXCOLOR(@"848484");
+    self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.emptyLabel.text = @"没有找到您想要的商品";
+    [self.view addSubview:self.emptyLabel];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterY multiplier:2 constant:0]];
+    self.emptyLabel.hidden = YES;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -101,6 +111,13 @@
         else
         {
             [weakself setInfinitScorllHidden:YES];
+        }
+        if (weakself.infos.count == 0) {
+            self.emptyLabel.hidden = NO;
+        }
+        else
+        {
+            self.emptyLabel.hidden = YES;
         }
         [weakself.tableView reloadData];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {

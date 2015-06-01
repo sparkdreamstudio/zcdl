@@ -24,13 +24,39 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self initModel];
     [self setApperanceAndFlatWithIos6];
+    UIImageView* launchView = [[UIImageView alloc]init];
+    if (SCREEN_HEIGHT == 480) {
+        launchView.image = [UIImage imageNamed:@"iphone4"];
+    }
+    else if (SCREEN_HEIGHT == 568)
+    {
+        launchView.image = [UIImage imageNamed:@"iphone5"];
+    }
+    else if(SCREEN_HEIGHT == 667)
+    {
+        launchView.image = [UIImage imageNamed:@"iphone6"];
+    }
+    else
+    {
+        launchView.image = [UIImage imageNamed:@"iphone6plus"];
+    }
+    launchView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.window addSubview:launchView];
+    [self.window bringSubviewToFront:launchView];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
+        POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        animation.toValue = @(0);
+        animation.duration = 1;
+        [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+            if (finished) {
+                [launchView removeFromSuperview];
+            }
+        }];
+        [launchView pop_addAnimation:animation forKey:@"launchView"];
         if (islogin && [[UserManagerObject shareInstance]userType]==0) {
             [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
             [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         }
-
-        
         UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = [storyboad instantiateInitialViewController];
         self.mainController = (SlideViewController*)self.window.rootViewController;

@@ -82,26 +82,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+//{
+//    NSMutableString *tempString = [NSMutableString stringWithString:textField.text];
+//    [tempString replaceCharactersInRange:range withString:string];
+//    if (textField == self.contact) {
+//        self.temp.contact = tempString;
+//    }
+//    else if (textField == self.moble)
+//    {
+//        self.temp.tel = tempString;
+//    }
+//    else if (textField == self.detailAddress)
+//    {
+//        self.temp.address = tempString;
+//    }
+//    else if (textField == self.code)
+//    {
+//        self.temp.zipcode = tempString;
+//    }
+//    return YES;
+//}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSMutableString *tempString = [NSMutableString stringWithString:textField.text];
-    [tempString replaceCharactersInRange:range withString:string];
     if (textField == self.contact) {
-        self.temp.contact = tempString;
+        self.temp.contact = textField.text;
     }
     else if (textField == self.moble)
     {
-        self.temp.tel = tempString;
+        self.temp.tel = textField.text;
     }
     else if (textField == self.detailAddress)
     {
-        self.temp.address = tempString;
+        self.temp.address = textField.text;
     }
     else if (textField == self.code)
     {
-        self.temp.zipcode = tempString;
+        self.temp.zipcode = textField.text;
     }
-    return YES;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

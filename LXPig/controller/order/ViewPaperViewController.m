@@ -17,7 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-    if (self.orderTag != 3 && self.orderTag == 4) {
+    self.title = @"票据";
+    if (self.orderTag != 3 && self.orderTag != 4) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteImage:)];
     }
     
@@ -41,7 +42,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    JGProgressHUD *hud = [self showProgressHudNoDimissWithString:@"下载图片中"];
+    JGProgressHUD *hud = [self showProgressHudNoDimissWithString:@"下载票据中"];
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.paperInfo[@"img"]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         hud.progress = receivedSize/((CGFloat)expectedSize);
         

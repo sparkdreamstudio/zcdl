@@ -13,20 +13,23 @@
 @interface OrderCommentTableViewController ()<OrderCommentTableViewCellDelegate,UIActionSheetDelegate,JGProgressHUDDelegate,UITextViewDelegate>
 @property (strong,nonatomic)NSMutableArray *commentArray;
 @property (strong,nonatomic)NSArray* labelArray;
+@property (strong,nonatomic) IBOutlet UIButton* button;
 @end
 
 @implementation OrderCommentTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.tableFooterView = nil;
-    self.tableView.tableFooterView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 65);
+    self.tableView.tableFooterView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 85);
+    self.button.layer.masksToBounds = YES;
+    self.button.layer.cornerRadius = 4;
     [self initCommentObjects];
     [[NetWorkClient shareInstance]postUrl:SERVICE_CODESERVICE With:@{@"action":@"listByParentId",@"parentId":@"2"} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.labelArray = [responseObj objectForKey:@"data"];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];
+
 }
 
 
@@ -46,6 +49,7 @@
     [self.tableView reloadData];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -55,6 +59,7 @@
 
 -(void)orderCommentCell:(OrderCommentTableViewCell *)cell WithRatingTag:(NSInteger)tag AndRating:(CGFloat)rating
 {
+    [self.tableView endEditing:YES];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     CommentObject* object = [self.commentArray objectAtIndex:indexPath.row];
     switch (tag) {
@@ -80,6 +85,7 @@
 
 -(void)orderCommentCell:(OrderCommentTableViewCell *)cell WithTagButtonClick:(UIButton *)button
 {
+    [self.tableView endEditing:YES];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"选择标签" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles: nil];
     [self.labelArray enumerateObjectsUsingBlock:^(NSDictionary* obj, NSUInteger idx, BOOL *stop) {
@@ -147,14 +153,14 @@
             [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请对%@的售后服务进行评价",object.name]];
             return;
         }
-        if (object.content.length == 0 || object.content == nil) {
-            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请填写对%@的评论",object.name]];
-            return;
-        }
-//        if (object.label.length == 0 || object.label == nil) {
-//            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的评论标签",object.name]];
+//        if (object.content.length == 0 || object.content == nil) {
+//            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请填写对%@的评论",object.name]];
 //            return;
 //        }
+        if (object.label.length == 0 || object.label == nil) {
+            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的快速评论",object.name]];
+            return;
+        }
         
     }
     UIView* hud = [self.controller showNormalHudNoDimissWithString:@"提交评论"];

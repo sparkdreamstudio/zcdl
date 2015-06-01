@@ -499,7 +499,16 @@
         showMenus = 0;
         menuSelected = indexPath.row;
         self.subTableViewArray = [self.menuArray[0][indexPath.row] objectForKey:@"Children"];
-        [self.subTableView reloadData];
+        if(self.subTableViewArray.count == 0)
+        {
+            [self setCodeId:nil];
+            changeButtonIndex = 1;
+            changeButtonString = @"品种";
+        }
+        else{
+            [self.subTableView reloadData];
+        }
+        
     }
     else if (tableView.tag == 2)
     {

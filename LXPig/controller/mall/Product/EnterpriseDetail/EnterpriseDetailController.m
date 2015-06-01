@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *fax;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UIWebView *infoWebView;
-
 @end
 
 @implementation EnterpriseDetailController
@@ -37,6 +36,11 @@
     self.fax.text = self.info.fax;
     self.address.text = self.info.address;
     self.infoWebView.scrollView.scrollEnabled = NO;
+}
+
+-(void)reloadHtml
+{
+    [self.infoWebView loadHTMLString:self.info.intro baseURL:nil];
 }
 -(void)viewDidAppear:(BOOL)animated
 {

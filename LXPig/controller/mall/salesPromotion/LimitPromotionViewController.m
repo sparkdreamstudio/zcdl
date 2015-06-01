@@ -144,32 +144,39 @@
 //    InfoDetailViewController* controller = [[InfoDetailViewController alloc]initWithNibName:@"InfoDetailViewController" bundle:nil];
 //    controller.htmlString = dic[@"newstext"];
 //    [self.controller.navigationController pushViewController:controller animated:YES];
-    NSDictionary* dic = self.productList[indexPath.row][@"product"];
+    NSDictionary* dic = self.productList[indexPath.row];
     NSInteger status = [dic[@"status"] integerValue];
     if (status == 2) {
         ProductInfo* info = [[ProductInfo alloc]init];
         info.keyId = [[dic objectForKey:@"id"]longLongValue];
         info.enterprise = [[EnterpriseInfo alloc]init];
-        info.enterprise.keyId = [[[dic objectForKey:@"enterprise"] objectForKey:@"id"]longLongValue];
-        info.enterprise.name = [[dic objectForKey:@"enterprise"] objectForKey:@"name"];
-        info.enterprise.tel = [[dic objectForKey:@"enterprise"] objectForKey:@"tel"];
-        info.enterprise.fax = [[dic objectForKey:@"enterprise"] objectForKey:@"fax"];
-        info.enterprise.address = [[dic objectForKey:@"enterprise"] objectForKey:@"address"];
+        info.enterprise.keyId = [[[[dic objectForKey:@"product"] objectForKey:@"enterprise"] objectForKey:@"id"]longLongValue];
+        info.enterprise.name = [[[dic objectForKey:@"product"] objectForKey:@"enterprise"] objectForKey:@"name"];
+        info.enterprise.tel = [[[dic objectForKey:@"product"] objectForKey:@"enterprise"] objectForKey:@"tel"];
+        info.enterprise.fax = [[[dic objectForKey:@"product"] objectForKey:@"enterprise"] objectForKey:@"fax"];
+        info.enterprise.address = [[[dic objectForKey:@"product"] objectForKey:@"enterprise"] objectForKey:@"address"];
         info.enterprise.intro = [[dic objectForKey:@"enterprise"] objectForKey:@"intro"];
-        info.name = [dic objectForKey:@"name"];
-        info.marketPrice = [[dic objectForKey:@"marketPrice"] integerValue];
-        info.salePrice = [[dic objectForKey:@"salePrice"]integerValue];
-        info.smallImg = [dic objectForKey:@"smallImg"];
-        info.unit = [dic objectForKey:@"unit"];
-        info.intro = [dic objectForKey:@"intro"];
+        info.name = [[dic objectForKey:@"product"] objectForKey:@"name"];
+        info.marketPrice = [[[dic objectForKey:@"product"] objectForKey:@"marketPrice"] integerValue];
+        info.salePrice = [[[dic objectForKey:@"product"] objectForKey:@"salePrice"]integerValue];
+        info.smallImg = [[dic objectForKey:@"product"] objectForKey:@"smallImg"];
+        info.unit = [[dic objectForKey:@"product"] objectForKey:@"unit"];
+        info.intro = [[dic objectForKey:@"product"] objectForKey:@"intro"];
         info.status = [[dic objectForKey:@"status"] integerValue];
-        info.seq = [[dic objectForKey:@"seq"] integerValue];
-        info.praise =[dic objectForKey:@"praise"];
-        info.orderCnt = [[dic objectForKey:@"orderCnt"] integerValue];
+        info.seq = [[[dic objectForKey:@"product"] objectForKey:@"seq"] integerValue];
+        info.praise =[[dic objectForKey:@"product"] objectForKey:@"praise"];
+        info.orderCnt = [[[dic objectForKey:@"product"] objectForKey:@"orderCnt"] integerValue];
         ProductDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"product_detail"];
         controller.type = 1;
         controller.info = info;
         [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (status == 1){
+        [self showNormalHudDimissWithString:@"该抢购还没有开始"];
+    }
+    else
+    {
+        [self showNormalHudDimissWithString:@"该抢购已经结束"];
     }
     
 }

@@ -122,13 +122,8 @@
     UITableViewCell* cell = nil;
     NSDictionary* dic = self.problemArray[indexPath.row];
     NSInteger isSolve = [dic[@"isSolve"] integerValue];
-    if (isSolve == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
-    }
-    else
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
-    }
+    cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
+    
     UIView* view = [cell viewWithTag:5];
     view.layer.borderWidth = 1;
     view.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
@@ -153,6 +148,17 @@
     label.text = dic[@"createTime"];
     label = (UILabel*)[cell viewWithTag:4];
     label.text = [NSString stringWithFormat:@"有用 %@ | 回复 %@",dic[@"usefulCnt"],dic[@"replyCnt"]];
+    if (isSolve == 0) {
+        label = (UILabel*)[cell viewWithTag:6];
+        label.text = @"未解决";
+        label.textColor = NavigationBarColor;
+    }
+    else
+    {
+        label = (UILabel*)[cell viewWithTag:6];
+        label.text = @"已解决";
+        label.textColor = HEXCOLOR(@"01CC1A");
+    }
     return cell;
 }
 

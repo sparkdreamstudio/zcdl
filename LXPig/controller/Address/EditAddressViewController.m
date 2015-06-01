@@ -56,6 +56,7 @@
     switch (sender.tag) {
         case 0:
         {
+            [self.controller.tableView endEditing:YES];
             if (self.controller.temp.contact.length == 0) {
                 [self showNormalHudDimissWithString:@"请输入联系人"];
                 return;

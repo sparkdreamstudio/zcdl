@@ -11,6 +11,8 @@
 #import "NetWorkClient.h"
 #import "LPLabel.h"
 #import "ProductDetailViewController.h"
+#import "EnterpriseDetailController.h"
+#import "ProductInfo.h"
 @interface ProductDetailTableViewController ()<UIWebViewDelegate,ImagePlayerViewDelegate>
 {
     CGFloat labelheight;
@@ -60,7 +62,8 @@
             weakself.salePriceLabel.text = [dic[@"salePrice"] stringValue];
             weakself.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@", dic[@"marketPrice"]];
             [weakself.introWebView loadHTMLString:dic[@"intro"] baseURL:nil];
-            
+            weakself.detailViewController.enterPriseController.info.intro = dic[@"enterprise"][@"intro"];
+            [weakself.detailViewController.enterPriseController reloadHtml];
             [weakself.detailViewController dismissHUD:view];
             
             

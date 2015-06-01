@@ -117,9 +117,12 @@
         QAndAProblemTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
         NSString* type = @"";
         for (NSDictionary* typeObject in self.qAndAType) {
-            if ([[[self.problem objectForKey:@"code"] objectForKey:@"id"]integerValue] == [[typeObject objectForKey:@"id"] integerValue]) {
-                type = [typeObject objectForKey:@"name"];
-                break;
+            if([[self.problem objectForKey:@"code"] isKindOfClass:[NSDictionary class]])
+            {
+                if ([[[self.problem objectForKey:@"code"] objectForKey:@"id"]integerValue] == [[typeObject objectForKey:@"id"] integerValue]) {
+                    type = [typeObject objectForKey:@"name"];
+                    break;
+                }
             }
         }
         cell.delegate = self;

@@ -188,7 +188,7 @@
             [str replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             cell.name.text = str;
         }
-        
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[dic[@"members"] objectForKey:@"photoPath"]] placeholderImage:[UIImage imageNamed:@"user_default"]];
         cell.date.text = dic[@"date"];
         cell.comment.text = dic[@"content"];
         NSInteger star = [dic[@"star"] integerValue];

@@ -69,14 +69,15 @@
         orderItem.marketPrice = @(self.qianGouProduct.marketPrice);
         orderItem.salePrice = @(self.qianGouProduct.salePrice);
         orderItem.productImage = self.qianGouProduct.smallImg;
-        orderItem.num = @(30);
+        orderItem.num = @(1);
         orderItem.name  = self.qianGouProduct.name;
-        orderItems.totalPrice = self.qianGouProduct.salePrice*30;
-        orderItems.totalNumber = 30;
+        orderItems.totalPrice = self.qianGouProduct.salePrice*1;
+        orderItems.totalNumber = 1;
         orderItems.enterpriseKeyId = @(self.qianGouProduct.enterprise.keyId);
         orderItems.enterpriseName = self.qianGouProduct.enterprise.name;
         [orderItems.itemlist addObject:orderItem];
         [self.arrayProduct addObject:orderItems];
+        
     }
     else
     {
@@ -103,6 +104,7 @@
             }
         }
     }
+    [self.tableView reloadData];
 }
 
 -(void)dealloc

@@ -542,6 +542,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
+                            <tableViewSection headerTitle="Section-4" id="GeV-PS-fNX">
+                                <cells>
+                                    <tableViewCell opaque="NO" alpha="0.0" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="D7U-d2-MkD" userLabel="登陆按钮">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D7U-d2-MkD" id="P8S-7A-1qH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fM-J0-50X">
+                                                    <rect key="frame" x="120" y="6" width="61" height="88"/>
+                                                    <state key="normal" image="personal_login">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="personal_login_selected"/>
+                                                    <connections>
+                                                        <action selector="changeLoginModel:" destination="7A4-HB-aLZ" eventType="touchUpInside" id="eLM-V8-CGA"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP6-E7-mW9">
+                                                    <rect key="frame" x="420" y="6" width="61" height="88"/>
+                                                    <state key="normal" image="entprise_login">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="entprise_login_selected"/>
+                                                    <connections>
+                                                        <action selector="changeLoginModel:" destination="7A4-HB-aLZ" eventType="touchUpInside" id="dPv-qJ-DpB"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="1fM-J0-50X" secondAttribute="centerY" id="LZu-L4-t7c"/>
+                                                <constraint firstAttribute="centerY" secondItem="aP6-E7-mW9" secondAttribute="centerY" id="mOu-XT-VCy"/>
+                                                <constraint firstAttribute="centerX" secondItem="1fM-J0-50X" secondAttribute="centerX" multiplier="2" id="qKs-5x-JQ0"/>
+                                                <constraint firstAttribute="centerX" secondItem="aP6-E7-mW9" secondAttribute="centerX" multiplier="0.666" id="r3W-9w-nqc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Section-1" id="tYg-BT-dWe">
                                 <cells>
                                     <tableViewCell opaque="NO" alpha="0.0" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="pdy-ZU-Pq2" userLabel="用户名">
@@ -559,9 +598,10 @@
                                                                 <constraint firstAttribute="width" constant="30" id="IYQ-lv-MPJ"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nd3-Xr-IIj" userLabel="用户名输入">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nd3-Xr-IIj" userLabel="用户名输入">
                                                             <rect key="frame" x="45" y="0.0" width="462" height="45"/>
-                                                            <attributedString key="attributedText"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                         </textField>
                                                     </subviews>
@@ -604,9 +644,10 @@
                                                                 <constraint firstAttribute="width" constant="30" id="Maq-Kj-ZzU"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nvb-co-b8z" userLabel="密码输入">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nvb-co-b8z" userLabel="密码输入">
                                                             <rect key="frame" x="45" y="0.0" width="462" height="45"/>
-                                                            <attributedString key="attributedText"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="7A4-HB-aLZ" id="2me-P6-KdZ"/>
@@ -645,40 +686,24 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4o-3r-84a">
                                                     <rect key="frame" x="47" y="0.0" width="505" height="49"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj4-Ih-QLc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="245" height="49"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                            <state key="normal" title="会员登录">
-                                                                <color key="titleColor" red="0.81176470590000005" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="memberLogin:" destination="7A4-HB-aLZ" eventType="touchUpInside" id="QHX-0w-Qqv"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-7T-Eee">
-                                                            <rect key="frame" x="261" y="0.0" width="244" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="505" height="49"/>
                                                             <color key="backgroundColor" red="0.81176470590000005" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                            <state key="normal" title="企业登录">
+                                                            <state key="normal" title="登录">
                                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="userLogin:" destination="7A4-HB-aLZ" eventType="touchUpInside" id="dxD-2T-dzA"/>
+                                                                <action selector="login:" destination="7A4-HB-aLZ" eventType="touchUpInside" id="yC7-4s-PPj"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="zkE-7T-Eee" firstAttribute="leading" secondItem="A4o-3r-84a" secondAttribute="leading" id="3QT-49-gQ2"/>
                                                         <constraint firstAttribute="trailing" secondItem="zkE-7T-Eee" secondAttribute="trailing" id="Vhx-vs-Pqo"/>
-                                                        <constraint firstItem="zkE-7T-Eee" firstAttribute="leading" secondItem="qj4-Ih-QLc" secondAttribute="trailing" constant="16" id="bAa-gv-mgZ"/>
-                                                        <constraint firstItem="qj4-Ih-QLc" firstAttribute="top" secondItem="A4o-3r-84a" secondAttribute="top" id="g6o-MK-d4h"/>
                                                         <constraint firstItem="zkE-7T-Eee" firstAttribute="top" secondItem="A4o-3r-84a" secondAttribute="top" id="geB-BY-xZk"/>
-                                                        <constraint firstItem="qj4-Ih-QLc" firstAttribute="leading" secondItem="A4o-3r-84a" secondAttribute="leading" id="nhf-gv-V01"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qj4-Ih-QLc" secondAttribute="bottom" id="oPs-QQ-G7W"/>
                                                         <constraint firstAttribute="bottom" secondItem="zkE-7T-Eee" secondAttribute="bottom" id="oUZ-gb-q4F"/>
-                                                        <constraint firstItem="zkE-7T-Eee" firstAttribute="width" secondItem="qj4-Ih-QLc" secondAttribute="width" id="ytg-NQ-FbG"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -757,10 +782,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="oz5-f3-amZ"/>
                     <connections>
+                        <outlet property="enterpriseBtn" destination="aP6-E7-mW9" id="Db6-Sl-nrM"/>
+                        <outlet property="forgetPassword" destination="7CO-hD-ZqR" id="IDO-X6-pcP"/>
                         <outlet property="passwordBgView" destination="ld7-wQ-i7o" id="MK0-Fk-Skv"/>
                         <outlet property="passwordInput" destination="Nvb-co-b8z" id="phc-nO-7WJ"/>
-                        <outlet property="signInEnterprise" destination="zkE-7T-Eee" id="u1y-Vl-8pH"/>
-                        <outlet property="signInPersonal" destination="qj4-Ih-QLc" id="nc1-30-v2E"/>
+                        <outlet property="personalBtn" destination="1fM-J0-50X" id="FvI-bj-iVj"/>
+                        <outlet property="seperatorLine" destination="exQ-Rx-7v5" id="5Bx-UY-dtB"/>
+                        <outlet property="signInEnterprise" destination="zkE-7T-Eee" id="9qi-yX-XvU"/>
+                        <outlet property="signUpBtn" destination="Bxi-IV-mpO" id="8ic-FO-mUH"/>
                         <outlet property="userBgView" destination="IVj-UM-LYs" id="1gL-Hk-spg"/>
                         <outlet property="userNameInput" destination="nd3-Xr-IIj" id="JOD-nk-hLb"/>
                     </connections>
@@ -5287,7 +5316,7 @@
         <!--RightMenuController-->
         <scene sceneID="BUf-H8-CDB">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="6nO-rS-cln" userLabel="RightMenuController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="6nO-rS-cln" userLabel="RightMenuController" customClass="RightMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aUE-fb-3Av"/>
                         <viewControllerLayoutGuide type="bottom" id="kf5-yl-U2B"/>
@@ -5303,6 +5332,9 @@
                                 </state>
                                 <state key="selected" image="zixun_selected"/>
                                 <state key="highlighted" image="zixun_selected"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="6nO-rS-cln" eventType="touchUpInside" id="CQe-Oe-duY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-Y0-Nqy">
                                 <rect key="frame" x="524" y="163" width="66" height="83"/>
@@ -5311,6 +5343,9 @@
                                 </state>
                                 <state key="selected" image="shangchuan_selected"/>
                                 <state key="highlighted" image="shangchuan_selected"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="6nO-rS-cln" eventType="touchUpInside" id="hze-c6-Tbp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyr-qL-mcv">
                                 <rect key="frame" x="524" y="251" width="66" height="83"/>
@@ -5319,6 +5354,9 @@
                                 </state>
                                 <state key="selected" image="hotline_selected"/>
                                 <state key="highlighted" image="hotline_selected"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="6nO-rS-cln" eventType="touchUpInside" id="N8x-Oi-RYO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -8335,6 +8373,8 @@
         <image name="chart_location" width="20" height="20"/>
         <image name="decrease_item_count" width="30" height="30"/>
         <image name="demo_head.jpg" width="200" height="200"/>
+        <image name="entprise_login" width="61" height="88"/>
+        <image name="entprise_login_selected" width="61" height="88"/>
         <image name="hotline" width="66" height="83"/>
         <image name="hotline_selected" width="66" height="83"/>
         <image name="jiancefuwu" width="78" height="78"/>
@@ -8357,6 +8397,8 @@
         <image name="personal_address" width="30" height="30"/>
         <image name="personal_arrow" width="20" height="20"/>
         <image name="personal_info" width="30" height="30"/>
+        <image name="personal_login" width="61" height="88"/>
+        <image name="personal_login_selected" width="61" height="88"/>
         <image name="personal_order" width="30" height="30"/>
         <image name="personal_review" width="30" height="30"/>
         <image name="psy" width="78" height="78"/>

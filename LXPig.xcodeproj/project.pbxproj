@@ -187,6 +187,7 @@
 		F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */; };
 		F15603221B16F5B30099BCDE /* SelectAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */; };
 		F15603231B16F5B30099BCDE /* SelectAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */; };
+		F16A49721B1C6B1F0034E13A /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F16A49711B1C6B1F0034E13A /* RightMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -528,6 +529,8 @@
 		F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAddressTableViewCell.h; path = controller/Address/SelectAddressTableViewCell.h; sourceTree = "<group>"; };
 		F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAddressTableViewCell.m; path = controller/Address/SelectAddressTableViewCell.m; sourceTree = "<group>"; };
 		F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectAddressTableViewCell.xib; path = controller/Address/SelectAddressTableViewCell.xib; sourceTree = "<group>"; };
+		F16A49701B1C6B1F0034E13A /* RightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightMenuViewController.h; path = controller/common/RightMenuViewController.h; sourceTree = "<group>"; };
+		F16A49711B1C6B1F0034E13A /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = controller/common/RightMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -931,6 +934,8 @@
 				D0B167D81B08322D00B410B9 /* AdWebViewController.h */,
 				D0B167D91B08322D00B410B9 /* AdWebViewController.m */,
 				D0B167DA1B08322D00B410B9 /* AdWebViewController.xib */,
+				F16A49701B1C6B1F0034E13A /* RightMenuViewController.h */,
+				F16A49711B1C6B1F0034E13A /* RightMenuViewController.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -1420,6 +1425,7 @@
 				D0B522F21AF13EEC00E809AA /* FilterView.m in Sources */,
 				D09553CF1AFDFBFD00E3BB3D /* QAndAProblemTableViewCell.m in Sources */,
 				D00474F21AFF4E4A00F9C461 /* MyQuestionTableViewCell.m in Sources */,
+				F16A49721B1C6B1F0034E13A /* RightMenuViewController.m in Sources */,
 				D0C9B2661AF7A3E200829800 /* BillTableViewCell.m in Sources */,
 				D00474F61AFF51B000F9C461 /* MyQuestionDetailTableViewCell.m in Sources */,
 				D0B522FD1AF13EEC00E809AA /* VOContentLayer.m in Sources */,

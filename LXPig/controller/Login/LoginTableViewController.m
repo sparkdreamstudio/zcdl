@@ -27,12 +27,19 @@
 @property (weak, nonatomic) IBOutlet UIView *passwordBgView;
 
 @property (weak, nonatomic) IBOutlet UIView *userBgView;
+@property (assign, nonatomic) BOOL personalLogin;
+@property (weak,nonatomic) IBOutlet UIButton* signUpBtn;
+@property (weak,nonatomic) IBOutlet UIButton* forgetPassword;
+@property (weak,nonatomic) IBOutlet UIButton* enterpriseBtn;
+@property (weak,nonatomic) IBOutlet UIButton* personalBtn;
+@property (weak,nonatomic) IBOutlet UIView*   seperatorLine;
 @end
 
 @implementation LoginTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.personalLogin = YES;
     self.userNameInput.tintColor = [UIColor whiteColor];
     self.userNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"手机号即为会员号" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameInput.textColor = [UIColor whiteColor];
@@ -85,7 +92,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)memberLogin:(id)sender {
+- (IBAction)login:(id)sender {
     NSString* userName = self.userNameInput.text;
     NSString* password = self.passwordInput.text;
     
@@ -93,48 +100,81 @@
         [self showErrorHudDimissWithString:@"错误手机号码"];
         return;
     }
-    UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
-    [[UserManagerObject shareInstance]loginWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
-        hud.tag = JG_LOGIN_SUCCESS_TAG;
-        [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
-        [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
-        [self dismissHUD:hud WithSuccessString:@"登陆成功"];
-    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        NSString* message;
-        if (responseObj) {
-            message = [responseObj objectForKey:@"message"];
-        }
-        else
-        {
-            message = @"取消登录";
-        }
-        [self dismissHUD:hud WithErrorString:message];
-    }];
-}
-- (IBAction)userLogin:(id)sender {
-    NSString* userName = self.userNameInput.text;
-    NSString* password = self.passwordInput.text;
-    
-    if (![Utils validateMobile:userName]) {
-        [self showErrorHudDimissWithString:@"错误手机号码"];
+    if (self.passwordInput.text.length == 0) {
+        [self showErrorHudDimissWithString:@"请输入密码"];
         return;
     }
-    UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
-    [[UserManagerObject shareInstance]loginOtherWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
-        hud.tag = JG_LOGIN_SUCCESS_TAG;
-        [self dismissHUD:hud WithSuccessString:@"登陆成功"];
-    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        NSString* message;
-        if (responseObj) {
-            message = [responseObj objectForKey:@"message"];
-        }
-        else
-        {
-            message = @"取消登录";
-        }
-        [self dismissHUD:hud WithErrorString:message];
-    }];
+    if (self.personalLogin) {
+        UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
+
+        [[UserManagerObject shareInstance]loginWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
+            hud.tag = JG_LOGIN_SUCCESS_TAG;
+            [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+            [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+            [self dismissHUD:hud WithSuccessString:@"登陆成功"];
+        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+            NSString* message;
+            if (responseObj) {
+                message = [responseObj objectForKey:@"message"];
+            }
+            else
+            {
+                message = @"取消登录";
+            }
+            [self dismissHUD:hud WithErrorString:message];
+        }];
+        
+    }
+    else{
+        UIView* hud = [self showNormalHudNoDimissWithString:@"登录中"];
+        [[UserManagerObject shareInstance]loginOtherWithName:userName AndPassWord:password success:^(NSDictionary *responseObj, NSString *timeSp) {
+            hud.tag = JG_LOGIN_SUCCESS_TAG;
+            [self dismissHUD:hud WithSuccessString:@"登陆成功"];
+        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+            NSString* message;
+            if (responseObj) {
+                message = [responseObj objectForKey:@"message"];
+            }
+            else
+            {
+                message = @"取消登录";
+            }
+            [self dismissHUD:hud WithErrorString:message];
+        }];
+    }
+    
 }
+
+-(IBAction)changeLoginModel:(UIButton*)sender
+{
+    switch (sender.tag) {
+        case 0:
+            if (self.personalBtn.selected == NO) {
+                self.personalBtn.selected = YES;
+                self.enterpriseBtn.selected = NO;
+                self.personalLogin = YES;
+                self.signUpBtn.hidden = NO;
+                self.forgetPassword.hidden = NO;
+                self.seperatorLine.hidden = NO;
+            }
+            
+            break;
+        case 1:
+            if (self.enterpriseBtn.selected == NO) {
+                self.enterpriseBtn.selected = YES;
+                self.personalBtn.selected = NO;
+                self.personalLogin = NO;
+                self.signUpBtn.hidden = YES;
+                self.forgetPassword.hidden = YES;
+                self.seperatorLine.hidden = YES;
+            }
+            
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark jgpogress delegate
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view
@@ -165,10 +205,12 @@
 {
     switch (section) {
         case 0:
-            return self.view.bounds.size.height * (546.f/1334.f)-20;
+            return self.view.bounds.size.height * (546.f/1334.f)-40;
         case 1:
-            return 23;
+            return 1;
         case 2:
+            return 23;
+        case 3:
             return 27;
         default:
             break;
@@ -187,10 +229,12 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 45;
+            return 100;
         case 1:
             return 45;
         case 2:
+            return 45;
+        case 3:
         {
             switch (indexPath.row) {
                 case 0:
@@ -198,7 +242,7 @@
                 case 1:
                 {
                     CGFloat height = self.view.bounds.size.height;
-                    return height = (height - 90 - 49 - 50 - height*(546.f/1334.f))-20;
+                    return height = (height - 90 - 49 - 50 - height*(546.f/1334.f))-40;
                 }
                 default:
                     break;

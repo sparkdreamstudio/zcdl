@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *introWebView;
 @property (weak, nonatomic) IBOutlet ImagePlayerView* imagePlayer;
 @property (weak, nonatomic) IBOutlet SKTagView *tagView;
+@property (weak, nonatomic) IBOutlet UILabel  *tagLabel;
 @property (strong,nonatomic)NSMutableArray *urlArray;
 
 @end
@@ -48,6 +49,8 @@
     self.imagePlayer.imagePlayerViewDelegate = self;
     self.imagePlayer.pageControlPosition = ICPageControlPosition_BottomCenter;
     self.imagePlayer.hidePageControl = NO;
+    self.tagLabel.layer.masksToBounds = YES;
+    self.tagLabel.layer.cornerRadius = 2;
     
     [self initAshen];
     
@@ -62,6 +65,14 @@
             weakself.salePriceLabel.text = [dic[@"salePrice"] stringValue];
             weakself.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@", dic[@"marketPrice"]];
             [weakself.introWebView loadHTMLString:dic[@"intro"] baseURL:nil];
+            NSString* tag = [dic objectForKey:@"tag"];
+            if (tag && tag.length > 0) {
+                self.tagLabel.text = [NSString stringWithFormat:@" %@ ",tag];
+            }
+            else
+            {
+                self.tagLabel.hidden = YES;
+            }
             weakself.detailViewController.enterPriseController.info.intro = dic[@"enterprise"][@"intro"];
             [weakself.detailViewController.enterPriseController reloadHtml];
             [weakself.detailViewController dismissHUD:view];
@@ -69,8 +80,8 @@
             
             weakself.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
             weakself.tagView.backgroundColor = UIColor.whiteColor;
-            weakself.tagView.padding    = UIEdgeInsetsMake(1, 13, 15, 13);
-            weakself.tagView.insets    = 15;
+            weakself.tagView.padding    = UIEdgeInsetsMake(2, 13, 15, 13);
+            weakself.tagView.insets    = 8;
             weakself.tagView.lineSpace = 8;
             
             
@@ -86,11 +97,12 @@
              {
                  
                  SKTag *tag = [SKTag tagWithText:[obj objectForKey:@"val"]];
-                 tag.fontSize = 13;
+                 tag.fontSize = 10;
                  tag.textColor = TextGrayColor;
                  tag.selectedTextColor = TextGrayColor;
                  /*****************Ashen*************************/
-                 tag.padding = UIEdgeInsetsMake(7, 10, 7, 10);
+                 tag.padding = UIEdgeInsetsMake(8, 10, 8, 10);
+                 
                  /*****************Ashen*************************/
                  tag.bgImg = [Utils imageWithColor:[UIColor whiteColor]];
                  tag.selectedBgImg = [Utils imageWithColor:[UIColor whiteColor]];

@@ -35,6 +35,7 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:SCREEN_WIDTH*0.36]];
     self.controllerArray = [NSMutableArray array];
     self.topScrollView = [[UIScrollView alloc]init];
+    [self.topScrollView setBackgroundColor:HEXCOLOR(@"eeeeee")];
     self.topScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.topScrollView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topScrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_topScrollView)]];
@@ -146,9 +147,9 @@
     [self.topScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_segmentedControll]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_segmentedControll)]];
     [self.topScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_segmentedControll]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_segmentedControll)]];
     [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
-    if (self.segmentedControll.frame.size.width < SCREEN_WIDTH) {
-        [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    }
+//    if (self.segmentedControll. < SCREEN_WIDTH) {
+//        [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+//    }
     for (InfoListTableViewController* controller in self.controllerArray) {
         [controller.view removeFromSuperview];
     }

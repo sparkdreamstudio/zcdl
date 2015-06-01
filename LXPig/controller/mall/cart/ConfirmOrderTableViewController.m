@@ -264,7 +264,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 83;
+        return [Utils getSizeOfString:[NSString stringWithFormat:@"%@%@%@%@",self.address.province,self.address.city,self.address.district,self.address.address] WithSize:CGSizeMake(SCREEN_WIDTH-83, NSIntegerMax) AndSystemFontSize:14].height+66;
     }
     else
     {

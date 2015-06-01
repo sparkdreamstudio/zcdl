@@ -42,5 +42,12 @@
     self.salePriceLabel.text = [NSString stringWithFormat:@"%ld",(long)info.salePrice];
     self.saleCount.text = [NSString stringWithFormat:@"%ld",(long)info.orderCnt];
     self.praiseLabel.text = [NSString stringWithFormat:@"%.1f%%",info.praise.floatValue];
+    if (info.tag && info.tag.length > 0) {
+        self.zeroGetProduct.text = [NSString stringWithFormat:@" %@ ",info.tag];
+    }
+    else
+    {
+        self.zeroGetProduct.hidden = YES;
+    }
 }
 @end

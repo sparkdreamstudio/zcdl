@@ -136,6 +136,7 @@ static ProductInfoList* singleton = nil;
         info.status = [[dic objectForKey:@"status"] integerValue];
         info.seq = [[dic objectForKey:@"seq"] integerValue];
         info.praise =[dic objectForKey:@"praise"];
+        info.tag = [dic objectForKey:@"tag"];
         info.orderCnt = [[dic objectForKey:@"orderCnt"] integerValue];
         [array addObject:info];
     }

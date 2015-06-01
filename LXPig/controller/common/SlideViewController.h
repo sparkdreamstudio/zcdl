@@ -10,4 +10,6 @@
 
 @interface SlideViewController : UIViewController
 @property (weak,nonatomic) IBOutlet UIPanGestureRecognizer* panGesture;
+-(void)showCenterView;
+- (void)showRightView;
 @end

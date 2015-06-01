@@ -135,15 +135,15 @@
         [[UINavigationBar appearance]setBarTintColor:NavigationBarColor];
         [[UINavigationBar appearance] setTitleTextAttributes:
          @{ NSForegroundColorAttributeName: [UIColor whiteColor],
-            NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:17]}];
         
         [[UITabBar appearance] setSelectedImageTintColor:NavigationBarColor];
         [[UITabBarItem appearance] setTitleTextAttributes:
-         @{UITextAttributeTextColor: NavigationBarColor}
+         @{ NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}
                                                  forState:UIControlStateSelected];
         
         [[UIBarButtonItem appearance] setTitleTextAttributes:
-         @{ UITextAttributeTextColor:[UIColor whiteColor],UITextAttributeFont: [UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
+         @{ NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont boldSystemFontOfSize:15]} forState:UIControlStateNormal];
         
     }
     

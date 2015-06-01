@@ -126,7 +126,7 @@
     
     UIView* view = [cell viewWithTag:5];
     view.layer.borderWidth = 1;
-    view.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
+    view.layer.borderColor = HEXCOLOR(@"dddddd").CGColor;
     view.layer.masksToBounds = YES;
     UILabel* label = (UILabel*)[cell viewWithTag:1];
     if(dic[@"members"][@"nickName"] && [dic[@"members"][@"nickName"] length]>0 )

@@ -10,7 +10,8 @@
 #import "UserManagerObject.h"
 #import "AddressManager.h"
 #import "PigCart.h"
-#define MAX_RIGHT_TRAIL (-SCREEN_WIDTH/3)
+#import "RightMenuViewController.h"
+#define MAX_RIGHT_TRAIL (-123)
 #define MAX_SCALE       (0.75f)
 
 typedef NS_ENUM(NSUInteger, SlideViewState) {
@@ -44,6 +45,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_TIMEOUT object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_OK object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showRightMenu:) name:NTF_SHOW_RIGHT_MENU object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,6 +83,11 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)showRightMenu:(NSNotification*)ntf
+{
+    [self showRightView];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -211,7 +218,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     }
 }
 
-- (void)showRightView;
+- (void)showRightView
 {
     self.slideViewState = SlideViewStateRightShow;
 }
@@ -219,14 +226,18 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
 {
     self.slideViewState = SlideViewStateCenterShow;
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"rightMenu"]) {
+        RightMenuViewController* controller = [segue destinationViewController];
+        controller.slideController = self;
+    }
 }
-*/
+
 
 @end

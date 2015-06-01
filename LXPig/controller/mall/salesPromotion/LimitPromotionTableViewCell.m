@@ -24,8 +24,8 @@
 {
     [self.productImageView sd_setImageWithURL:[NSURL URLWithString:dic[@"product"][@"smallImg"]] placeholderImage:nil];
     if (type == 0) {
-        self.description1.text = @"已销售";
-        self.description2.text = @"单";
+        self.description1.text = @" 已销售";
+        self.description2.text = @"单 ";
         self.description3.text = dic[@"product"][@"name"];
         self.count.text = [dic[@"salesNum"] stringValue];
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];
@@ -33,8 +33,8 @@
         self.descriptionCount.text = [NSString stringWithFormat:@"仅剩%@",dic[@"surplusNum"]];
     }
     else if(type == 1){
-        self.description1.text = @"已销售";
-        self.description2.text = @"单";
+        self.description1.text = @" 已销售";
+        self.description2.text = @"单 ";
         self.description3.text = dic[@"product"][@"name"];
         self.count.text = [dic[@"salesNum"] stringValue];
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];
@@ -42,8 +42,8 @@
         self.descriptionCount.text = @"";
     }
     else{
-        self.description1.text = @"还需";
-        self.description2.text = @"份";
+        self.description1.text = @" 还需";
+        self.description2.text = @"份 ";
         self.description3.text = dic[@"product"][@"name"];
         self.count.text = [dic[@"needNum"] stringValue];
         self.marketPrice.text = [dic[@"product"][@"marketPrice"] stringValue];

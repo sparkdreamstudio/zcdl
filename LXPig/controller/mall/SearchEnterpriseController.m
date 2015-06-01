@@ -89,7 +89,10 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    self.emptyLabel.hidden = YES;
+}
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];

@@ -11,6 +11,8 @@
 #import "ProductDetailViewController.h"
 #import "AppDelegate.h"
 #import "SlideViewController.h"
+#import "PostQuestionViewController.h"
+#import "NetWorkClient.h"
 @interface LXPigTabBarController ()
 
 @end
@@ -19,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_ORDER object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_POST_QUESTION object:nil];
     for (int index = 0; index < self.viewControllers.count; ++index) {
         switch (index) {
             case 0:
@@ -103,6 +106,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)processNtf:(NSNotification*)ntf
+{
+    if ([ntf.name isEqualToString:NTF_SHOW_ORDER]) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"my_order"] animated:NO];
+    }
+    else if ([ntf.name isEqualToString:NTF_SHOW_POST_QUESTION])
+    {
+        if([[UserManagerObject shareInstance]userType]==-1)
+        {
+            [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
+            [[NetWorkClient shareInstance]postUrl:SERVICE_CODESERVICE With:@{@"action":@"listByParentId",@"parentId":@"4"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+                NSArray*  qAndAType = [responseObj objectForKey:@"data"];
+                PostQuestionViewController* controller = [[PostQuestionViewController alloc]initWithNibName:@"PostQuestionViewController" bundle:nil];
+                controller.qAndAType = qAndAType;
+                [self.navigationController pushViewController:controller animated:NO];
+            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+                
+            }];
+        }
+        else if ([[UserManagerObject shareInstance]userType]==0)
+        {
+            [[NetWorkClient shareInstance]postUrl:SERVICE_CODESERVICE With:@{@"action":@"listByParentId",@"parentId":@"4"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+                NSArray*  qAndAType = [responseObj objectForKey:@"data"];
+                PostQuestionViewController* controller = [[PostQuestionViewController alloc]initWithNibName:@"PostQuestionViewController" bundle:nil];
+                controller.qAndAType = qAndAType;
+                [self.navigationController pushViewController:controller animated:NO];
+            } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+                
+            }];
+        }
+    }
+}
 
 #pragma mark - Navigation
 

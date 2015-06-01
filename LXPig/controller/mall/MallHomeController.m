@@ -161,6 +161,11 @@
     [super viewWillDisappear:animated];
 }
 
+-(IBAction)showRightMenu:(id)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_RIGHT_MENU object:nil];
+}
+
 -(void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index
 {
     NSDictionary* dic = self.adArray[index];
@@ -535,6 +540,8 @@
         case 1:
         {
             [self performSegueWithIdentifier:@"go_enterprise_list" sender:self];
+            showMenus = 0;
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
             break;
         }
         case 3:
@@ -547,8 +554,6 @@
             {
                 showMenus = 0;
             }
-        
-            
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
             [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
             break;

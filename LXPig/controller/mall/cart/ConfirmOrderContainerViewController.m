@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     NSInteger price = 0;
     if (self.qianGouProduct) {
-        price = self.qianGouProduct.salePrice*30;
+        price = self.qianGouProduct.salePrice*1;
     }
     else
     {

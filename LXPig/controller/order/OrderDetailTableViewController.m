@@ -111,6 +111,7 @@
         }
         case 2:
         {
+            return [Utils getSizeOfString:[self.orderInfo objectForKey:@"address"] WithSize:CGSizeMake(SCREEN_WIDTH-50, NSIntegerMax) AndSystemFontSize:15].height+65;
             return 83;
         }
         case 3:

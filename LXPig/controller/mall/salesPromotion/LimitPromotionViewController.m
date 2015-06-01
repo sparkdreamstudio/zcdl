@@ -166,6 +166,7 @@
         info.seq = [[[dic objectForKey:@"product"] objectForKey:@"seq"] integerValue];
         info.praise =[[dic objectForKey:@"product"] objectForKey:@"praise"];
         info.orderCnt = [[[dic objectForKey:@"product"] objectForKey:@"orderCnt"] integerValue];
+        info.tag = [dic objectForKey:@"tag"];
         ProductDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"product_detail"];
         controller.type = 1;
         controller.info = info;

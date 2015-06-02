@@ -34,13 +34,24 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:SCREEN_WIDTH*0.36]];
     self.controllerArray = [NSMutableArray array];
+    
+    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    imageView.image = [[UIImage imageNamed:@"segment_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.view addSubview:imageView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
+    
+    
     self.topScrollView = [[UIScrollView alloc]init];
-    [self.topScrollView setBackgroundColor:HEXCOLOR(@"eeeeee")];
+    [self.topScrollView setBackgroundColor:[UIColor clearColor]];
     self.topScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.topScrollView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topScrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_topScrollView)]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
+    
     self.newsScrollView = [[UIScrollView alloc]init];
     self.newsScrollView.pagingEnabled = YES;
     self.newsScrollView.translatesAutoresizingMaskIntoConstraints = NO;

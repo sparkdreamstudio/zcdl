@@ -58,16 +58,17 @@
     
     if(dic[@"members"][@"nickName"] && [dic[@"members"][@"nickName"] length]>0)
     {
-        self.answerUser.text = [NSString stringWithFormat:@"%@ 回复",dic[@"members"][@"nickName"]];
+        self.answerUser.text = [NSString stringWithFormat:@"%@回复",dic[@"members"][@"nickName"]];
     }
     else
     {
         NSMutableString* userName = [NSMutableString stringWithString:self.answerUser.text = dic[@"members"][@"userName"]];
         [userName replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-        self.answerUser.text = [NSString stringWithFormat:@"%@ 回复",userName];
+        self.answerUser.text = [NSString stringWithFormat:@"%@回复",userName];
     }
     
     self.content.text = dic[@"content"];
-    self.time.text = dic[@"replyTime"];
+
+    self.time.text = [dic[@"replyTime"] substringWithRange:NSMakeRange(0, [dic[@"replyTime"] length]-3)];
 }
 @end

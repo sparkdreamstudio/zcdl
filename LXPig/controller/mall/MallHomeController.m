@@ -50,7 +50,13 @@
     //self.searchBar.frame = CGRectMake((1-0.778)*SCREEN_WIDTH/2, 2, 0.778*SCREEN_WIDTH, 44);
     //[self.searchBar setFrame:CGRectMake(0, 192, SCREEN_WIDTH, 44)];
     //self.searchBar.translatesAutoresizingMaskIntoConstraints = YES;
-    [self.fakeSearchBar setBackgroundImage:[[UIImage imageNamed:@"search_bg"]resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateNormal];
+//    [self.fakeSearchBar setBackgroundImage:[[UIImage imageNamed:@"search_bg"]resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateNormal];
+    [self.fakeSearchBar setImage:[self scaleToSize:[UIImage imageNamed:@"new_search_icon"] size:CGSizeMake(15, 15) ] forState:UIControlStateNormal];
+    [self.fakeSearchBar setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+    [self.fakeSearchBar setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    self.fakeSearchBar.layer.masksToBounds = YES;
+    self.fakeSearchBar.layer.cornerRadius = 13;
+    [self.fakeSearchBar setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     self.productInfoList = [[ProductInfoList alloc]init];
     [self.productInfoList setDelegate:self];
     [self addPullRefresh];
@@ -58,8 +64,9 @@
     
     [self getPicCode];
     
-    [self.headerBackView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, 158)];
+    [self.headerBackView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36)];
     self.adImageView.imagePlayerViewDelegate = self;
+    self.adImageView.hidePageControl = YES;
     [self startRefresh];
     
     
@@ -77,6 +84,20 @@
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];
+}
+
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    // 绘制改变大小的图片
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    // 返回新的改变大小后的图片
+    return scaledImage;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -161,7 +161,7 @@
     [self.topScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_segmentedControll]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_segmentedControll)]];
     [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.topScrollView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
 
-    [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:array.count*100]];
+    [self.topScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:array.count*75]];
 
     for (InfoListTableViewController* controller in self.controllerArray) {
         [controller.view removeFromSuperview];

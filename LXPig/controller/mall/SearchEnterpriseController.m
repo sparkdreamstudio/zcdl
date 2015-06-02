@@ -34,7 +34,7 @@
     flexSpacer.width = -10;
     self.navigationItem.leftBarButtonItems = @[flexSpacer,[[UIBarButtonItem alloc]initWithCustomView:self.searchBar]];
     self.navigationItem.hidesBackButton = YES;
-    [self.searchBar setImage:[UIImage imageNamed:@"searchIcon"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+
     
     
     self.emptyLabel = [[UILabel alloc]init];

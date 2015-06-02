@@ -84,6 +84,7 @@
                 break;
         }
     }
+    self.tabBar.tintColor = NavigationBarColor;
     // Do any additional setup after loading the view.
 }
 

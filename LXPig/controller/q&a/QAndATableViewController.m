@@ -123,7 +123,7 @@
     NSDictionary* dic = self.problemArray[indexPath.row];
     NSInteger isSolve = [dic[@"isSolve"] integerValue];
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIView* view = [cell viewWithTag:5];
     view.layer.borderWidth = 1;
     view.layer.borderColor = HEXCOLOR(@"dddddd").CGColor;

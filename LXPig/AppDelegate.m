@@ -137,10 +137,6 @@
          @{ NSForegroundColorAttributeName: [UIColor whiteColor],
             NSFontAttributeName: [UIFont boldSystemFontOfSize:17]}];
         
-        [[UITabBar appearance] setSelectedImageTintColor:NavigationBarColor];
-        [[UITabBarItem appearance] setTitleTextAttributes:
-         @{ NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}
-                                                 forState:UIControlStateSelected];
         
         [[UIBarButtonItem appearance] setTitleTextAttributes:
          @{ NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont boldSystemFontOfSize:15]} forState:UIControlStateNormal];

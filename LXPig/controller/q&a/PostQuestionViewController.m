@@ -46,12 +46,20 @@ bool gMark = false;
     self.textView.delegate = self;
 }
 
-- (void)viewDidLayoutSubviews {
-    //if (!gMark) {
-        [self initWithAshen];
-        //gMark = true;
-    //}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self initWithAshen];
 }
+
+//- (void)viewDidLayoutSubviews {
+//    //if (!gMark) {
+//
+//        [self initWithAshen];
+//        //gMark = true;
+//    //}
+//}
 
 /********************Ashen****************************/
 - (void) initWithAshen {

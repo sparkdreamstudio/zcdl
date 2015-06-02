@@ -1886,6 +1886,7 @@
                             <outlet property="delegate" destination="6cc-j4-rpY" id="95J-iS-rlD"/>
                         </connections>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="adImageView" destination="Iuo-9q-VcB" id="jt3-eq-HTn"/>
                         <outlet property="headImageView" destination="ib1-U4-Ntg" id="ZEA-Pn-tfq"/>
@@ -8241,6 +8242,7 @@
                             <outlet property="delegate" destination="oaL-nX-q3p" id="RWx-fx-ZZX"/>
                         </connections>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="adImageView" destination="suk-4o-KDs" id="TBt-iA-SYv"/>
                         <outlet property="headImageView" destination="y6F-Zh-onD" id="rdc-sa-TPf"/>
@@ -8312,11 +8314,11 @@
         <image name="zixun_selected" width="66" height="83"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HLf-5M-Cx5"/>
-        <segue reference="XQA-5j-Snt"/>
+        <segue reference="mjd-eK-6FU"/>
+        <segue reference="oHG-pv-hg1"/>
         <segue reference="jcN-Sz-6kN"/>
-        <segue reference="Eph-kB-Xat"/>
-        <segue reference="Aza-Rf-eN4"/>
         <segue reference="11D-dn-eOH"/>
+        <segue reference="XQA-5j-Snt"/>
+        <segue reference="HLf-5M-Cx5"/>
     </inferredMetricsTieBreakers>
 </document>

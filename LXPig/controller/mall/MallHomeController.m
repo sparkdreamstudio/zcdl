@@ -46,6 +46,7 @@
     showMenus = 0;
     menuSelected = 0;
     subSelected = 0;
+    
     self.menuArray = [NSMutableArray array];
     //self.searchBar.frame = CGRectMake((1-0.778)*SCREEN_WIDTH/2, 2, 0.778*SCREEN_WIDTH, 44);
     //[self.searchBar setFrame:CGRectMake(0, 192, SCREEN_WIDTH, 44)];

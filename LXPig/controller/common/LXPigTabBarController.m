@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_ORDER object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_POST_QUESTION object:nil];
     for (int index = 0; index < self.viewControllers.count; ++index) {
@@ -138,6 +139,11 @@
             }];
         }
     }
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    NSInteger index = [tabBar.items indexOfObject:item];
 }
 
 #pragma mark - Navigation

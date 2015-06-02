@@ -104,11 +104,16 @@ bool gMark = false;
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showType:(id)sender {
-    UIActionSheet* action =[[UIActionSheet alloc]initWithTitle:@"请选择标签" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    UIActionSheet* action =[[UIActionSheet alloc]initWithTitle:@"请选择问题类型" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     action.delegate = self;
     for (NSDictionary* dic in self.qAndAType) {
+        if (self.codeId == dic[@"id"]) {
+            action.destructiveButtonIndex = [self.qAndAType indexOfObject:dic];
+        }
         [action addButtonWithTitle:dic[@"name"]];
     }
+    [action addButtonWithTitle:@"取消"];
+    action.cancelButtonIndex = self.qAndAType.count;
     [action showInView:self.view];
 }
 
@@ -137,8 +142,8 @@ bool gMark = false;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex!=actionSheet.cancelButtonIndex) {
-        self.codeId = self.qAndAType[buttonIndex-1][@"id"];
-        [self.typeBtn setTitle:self.qAndAType[buttonIndex-1][@"name"] forState:UIControlStateNormal];
+        self.codeId = self.qAndAType[buttonIndex][@"id"];
+        [self.typeBtn setTitle:self.qAndAType[buttonIndex][@"name"] forState:UIControlStateNormal];
     }
 }
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view

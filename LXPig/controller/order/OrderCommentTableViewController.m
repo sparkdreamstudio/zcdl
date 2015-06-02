@@ -91,7 +91,9 @@
     [self.labelArray enumerateObjectsUsingBlock:^(NSDictionary* obj, NSUInteger idx, BOOL *stop) {
         [sheet addButtonWithTitle:[obj objectForKey:@"name"]];
     }];
+    [sheet addButtonWithTitle:@"取消"];
     sheet.tag = indexPath.row;
+    sheet.cancelButtonIndex = self.labelArray.count;
     [sheet showInView:self.controller.view];
 }
 
@@ -101,11 +103,11 @@
         CommentObject* object = self.commentArray[actionSheet.tag];
         if(object.label.length == 0)
         {
-            object.label = [self.labelArray[buttonIndex-1] objectForKey:@"name"];
+            object.label = [self.labelArray[buttonIndex] objectForKey:@"name"];
         }
         else
         {
-            object.label = [object.label stringByAppendingFormat:@",%@",[self.labelArray[buttonIndex-1] objectForKey:@"name"]];
+            object.label = [object.label stringByAppendingFormat:@",%@",[self.labelArray[buttonIndex] objectForKey:@"name"]];
         }
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:actionSheet.tag inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     }

@@ -105,7 +105,7 @@
     cell.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
     cell.tagView.padding    = UIEdgeInsetsMake(9, 8, 9, 8);
     cell.tagView.backgroundColor = [UIColor colorWithRed:0xf5/255.f green:0xf5/255.f blue:0xf5/255.f alpha:1];
-    cell.tagView.insets    = 8;
+    cell.tagView.insets    = 6;
     cell.tagView.lineSpace = 8;
     cell.tagView.didClickTagAtIndex = ^(NSUInteger index){
         
@@ -132,7 +132,7 @@
          tag.textColor = [UIColor colorWithRed:0x5a/255.f green:0x63/255.f blue:0x6c/255.f alpha:1];
          tag.fontSize = 10;
          tag.selectedTextColor = [UIColor whiteColor];;
-         tag.padding = UIEdgeInsetsMake(8, 10, 8, 10);
+         tag.padding = UIEdgeInsetsMake(7, 10, 7, 10);
          tag.bgImg = [Utils imageWithColor:[UIColor colorWithRed:0xfe/255.f green:0xfe/255.f blue:0xfe/255.f alpha:1]];
          tag.selectedBgImg = [Utils imageWithColor:NavigationBarColor];
          tag.borderColor = [UIColor colorWithRed:0xd5/255.f green:0xd5/255.f blue:0xd5/255.f alpha:1];
@@ -164,7 +164,11 @@
     }
     else
     {
-        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height+20;
+//<<<<<<< Updated upstream
+        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height+10;
+//=======
+//        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height;
+//>>>>>>> Stashed changes
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

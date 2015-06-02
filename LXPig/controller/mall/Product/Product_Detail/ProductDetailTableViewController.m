@@ -80,9 +80,15 @@
             
             weakself.tagView.preferredMaxLayoutWidth = SCREEN_WIDTH;
             weakself.tagView.backgroundColor = UIColor.whiteColor;
+//<<<<<<< Updated upstream
             weakself.tagView.padding    = UIEdgeInsetsMake(2, 13, 15, 13);
-            weakself.tagView.insets    = 8;
+            weakself.tagView.insets    = 6;
             weakself.tagView.lineSpace = 8;
+//=======
+//            weakself.tagView.padding    = UIEdgeInsetsMake(1, 13, 15, 13);
+//            weakself.tagView.insets    = 5;
+//            weakself.tagView.lineSpace = 5;
+//>>>>>>> Stashed changes
             
             
             
@@ -101,7 +107,7 @@
                  tag.textColor = TextGrayColor;
                  tag.selectedTextColor = TextGrayColor;
                  /*****************Ashen*************************/
-                 tag.padding = UIEdgeInsetsMake(8, 10, 8, 10);
+                 tag.padding = UIEdgeInsetsMake(7, 10, 7, 10);
                  
                  /*****************Ashen*************************/
                  tag.bgImg = [Utils imageWithColor:[UIColor whiteColor]];
@@ -206,10 +212,15 @@
 //    frame.size = webView.scrollView.contentSize;
 //    webView.frame = frame;
 //    NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
-    NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '230%'";
-    [webView stringByEvaluatingJavaScriptFromString:str];
-    
+    if (SCREEN_WIDTH >= 375) {
+        NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '100%'";
+        [webView stringByEvaluatingJavaScriptFromString:str];
+    } else if (SCREEN_WIDTH <= 320) {
+        NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '90%'";
+        [webView stringByEvaluatingJavaScriptFromString:str];
+    }
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
+    
 
     NSString *width_str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth"];
     int height = [height_str intValue];

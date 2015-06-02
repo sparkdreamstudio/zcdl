@@ -22,6 +22,7 @@ bool gMark = false;
     [super viewDidLoad];
     [self addBackButton];
     self.title =@"我要提问";
+    self.typeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     self.typeBtn.layer.masksToBounds = YES;
     self.typeBtn.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
     self.typeBtn.layer.borderWidth = 0.5;

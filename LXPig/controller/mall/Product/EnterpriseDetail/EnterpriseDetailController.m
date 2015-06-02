@@ -92,9 +92,14 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '230%'";
-    [webView stringByEvaluatingJavaScriptFromString:str];
+    if (SCREEN_WIDTH >= 375) {
+        NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '100%'";
+        [webView stringByEvaluatingJavaScriptFromString:str];
+    } else if (SCREEN_WIDTH <= 320) {
+        NSString *str = @"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '90%'";
+        [webView stringByEvaluatingJavaScriptFromString:str];
+    }
+
 
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
     

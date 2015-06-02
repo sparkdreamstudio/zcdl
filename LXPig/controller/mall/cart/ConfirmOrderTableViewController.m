@@ -52,7 +52,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setAddressNtf:) name:NTF_SETORDERADDRESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setOrderAddress:) name:NTF_SETORDERADDRESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setOrderAddress:) name:NTF_DELETEADDRESS object:nil];
     self.arrayProduct = [NSMutableArray array];
     if([[[AddressManager shareInstance] addressArray] count] == 0)
     {
@@ -112,11 +113,6 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
--(void)setAddressNtf:(NSNotification*)ntf
-{
-    self.address = ntf.object;
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -125,7 +121,15 @@
 {
     if ([ntf.name isEqualToString:NTF_SETORDERADDRESS]) {
         self.address = ntf.object;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else if ([ntf.name isEqualToString:NTF_DELETEADDRESS])
+    {
+        Address* ntfAdderess = ntf.object;
+        if (self.address.keyId == ntfAdderess.keyId) {
+            self.address = nil;
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t46-bE-wCp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t46-bE-wCp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -7435,9 +7435,6 @@
                                             <color key="textColor" red="0.23921568630000001" green="0.28235294119999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="CIb-jb-2ak" id="obG-2B-0bt"/>
-                                            </connections>
                                         </textView>
                                     </subviews>
                                     <constraints>
@@ -7494,7 +7491,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="comment" destination="ADe-B8-wi6" id="ynR-eP-CRI"/>
+                                    <outlet property="comment" destination="ADe-B8-wi6" id="HTH-i2-vHs"/>
                                     <outlet property="faqingRating" destination="Wgp-41-ZOU" id="KOg-hr-UJV"/>
                                     <outlet property="faqingRatingLabel" destination="BAA-dp-z01" id="uVo-lS-wH2"/>
                                     <outlet property="orderCnt" destination="sVP-SQ-BdD" id="nhy-Cy-U7i"/>
@@ -8314,12 +8311,10 @@
         <image name="zixun_selected" width="66" height="83"/>
     </resources>
     <inferredMetricsTieBreakers>
-
         <segue reference="mjd-eK-6FU"/>
         <segue reference="oHG-pv-hg1"/>
         <segue reference="jcN-Sz-6kN"/>
         <segue reference="11D-dn-eOH"/>
-
         <segue reference="XQA-5j-Snt"/>
         <segue reference="HLf-5M-Cx5"/>
     </inferredMetricsTieBreakers>

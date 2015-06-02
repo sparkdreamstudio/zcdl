@@ -34,6 +34,6 @@
 @interface ConfirmOrderTableViewController : LXPigTableVIewController
 @property (strong,nonatomic) NSMutableArray* arrayProduct;
 @property (assign,nonatomic) ProductInfo* qianGouProduct;
-@property (assign,nonatomic) Address *address;
+@property (strong,nonatomic) Address *address;
 @property (weak,nonatomic) ConfirmOrderContainerViewController* confirmOrdController;
 @end

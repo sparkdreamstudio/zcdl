@@ -93,6 +93,7 @@
             UIView* hud = [self showNormalHudNoDimissWithString:@"正在删除"];
             [[AddressManager shareInstance] deleteAddress:self.controller.address Success:^(NSDictionary *responseObj, NSString *timeSp) {
                 hud.tag = 1;
+                [[NSNotificationCenter defaultCenter]postNotificationName:NTF_DELETEADDRESS object:self.controller.address];
                 [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
             } failure:^(NSDictionary *responseObj, NSString *timeSp) {
                 [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];

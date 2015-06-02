@@ -943,25 +943,25 @@
 		D0B5226E1AF1393500E809AA /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				D0B5226F1AF1395A00E809AA /* AddressViewController.h */,
-				D0B522701AF1395A00E809AA /* AddressViewController.m */,
-				D0B522721AF13A8300E809AA /* AddressTableViewController.h */,
-				D0B522731AF13A8300E809AA /* AddressTableViewController.m */,
 				D0B523041AF1473E00E809AA /* AddressManageTableViewCell.h */,
 				D0B523051AF1473E00E809AA /* AddressManageTableViewCell.m */,
-				D0D688981AF35972006C8BA4 /* EditAddressViewController.h */,
-				D0D688991AF35972006C8BA4 /* EditAddressViewController.m */,
+				D0B522721AF13A8300E809AA /* AddressTableViewController.h */,
+				D0B522731AF13A8300E809AA /* AddressTableViewController.m */,
+				D0B5226F1AF1395A00E809AA /* AddressViewController.h */,
+				D0B522701AF1395A00E809AA /* AddressViewController.m */,
 				D0D6889B1AF3599C006C8BA4 /* EditAddressTableViewController.h */,
 				D0D6889C1AF3599C006C8BA4 /* EditAddressTableViewController.m */,
+				D0D688981AF35972006C8BA4 /* EditAddressViewController.h */,
+				D0D688991AF35972006C8BA4 /* EditAddressViewController.m */,
+				F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */,
+				F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */,
+				F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */,
 				F15603151B16F3E90099BCDE /* SelectAddressViewController.h */,
 				F15603161B16F3E90099BCDE /* SelectAddressViewController.m */,
 				F15603171B16F3E90099BCDE /* SelectAddressViewController.xib */,
 				F156031A1B16F5110099BCDE /* SelectedTableViewController.h */,
 				F156031B1B16F5110099BCDE /* SelectedTableViewController.m */,
 				F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */,
-				F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */,
-				F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */,
-				F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */,
 			);
 			name = Address;
 			sourceTree = "<group>";

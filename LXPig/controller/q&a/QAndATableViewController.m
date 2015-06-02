@@ -22,6 +22,8 @@
     [self addInfinitScorll];
     [self startRefresh];
     [self.tableView setBackgroundColor:HEXCOLOR(@"f3f3f3")];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(startRefresh) name:NTF_REFRESH_QA object:nil];
     // Do any additional setup after loading the view.
 }
 

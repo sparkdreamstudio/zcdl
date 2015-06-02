@@ -134,6 +134,7 @@ bool gMark = false;
     UIView* hud = [self showNormalHudNoDimissWithString:@"提交中，请稍等"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"codeId":self.codeId,@"content":self.textView.text} success:^(NSDictionary *responseObj, NSString *timeSp) {
         hud.tag = 1;
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_REFRESH_QA object:nil];
         [self dismissHUD:hud WithSuccessString:@"完成"];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:hud WithSuccessString:@"失败"];

@@ -33,7 +33,13 @@
 @property (nonatomic,strong)    ProductInfoList* productInfoList;
 @property (nonatomic,strong)    NSMutableArray* menuArray;
 @property (nonatomic,weak)    NSMutableArray* subTableViewArray;
-@property (nonatomic,weak)    UITableView* subTableView;
+@property (nonatomic,strong)    UITableView* subTableView;
+@property (nonatomic,strong)    UITableView* mainTableView;
+@property (nonatomic,strong)    UIButton* topHideBtn;
+@property (nonatomic,strong)    UIButton* bottomHideBtn;
+@property (nonatomic,strong)    UIButton* pingZhongBtn;
+@property (nonatomic,strong)    UIButton* paiHangBtn;
+@property (nonatomic,strong)    UIButton* huodongBtn;
 
 @property (strong, nonatomic) NSArray* adArray;
 
@@ -48,10 +54,6 @@
     subSelected = 0;
     
     self.menuArray = [NSMutableArray array];
-    //self.searchBar.frame = CGRectMake((1-0.778)*SCREEN_WIDTH/2, 2, 0.778*SCREEN_WIDTH, 44);
-    //[self.searchBar setFrame:CGRectMake(0, 192, SCREEN_WIDTH, 44)];
-    //self.searchBar.translatesAutoresizingMaskIntoConstraints = YES;
-//    [self.fakeSearchBar setBackgroundImage:[[UIImage imageNamed:@"search_bg"]resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateNormal];
     [self.fakeSearchBar setImage:[self scaleToSize:[UIImage imageNamed:@"new_search_icon"] size:CGSizeMake(15, 15) ] forState:UIControlStateNormal];
     [self.fakeSearchBar setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
     [self.fakeSearchBar setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
@@ -85,6 +87,16 @@
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self hideMenu:nil];
+    showMenus = 0;
+    self.pingZhongBtn.selected = NO;
+    self.paiHangBtn.selected = NO;
+    self.huodongBtn.selected = NO;
 }
 
 - (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
@@ -176,11 +188,6 @@
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
 }
 
 -(IBAction)showRightMenu:(id)sender
@@ -307,115 +314,63 @@
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:button];
         
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4, 44);
-        [button setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        self.pingZhongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4, 44);
+        [self.pingZhongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
+        [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
+        [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
+        [self.pingZhongBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
         if (changeButtonIndex == 1) {
-            [button setTitle:changeButtonString forState:UIControlStateNormal];
+            [self.pingZhongBtn setTitle:changeButtonString forState:UIControlStateNormal];
         }
         else
         {
-            [button setTitle:@"品种" forState:UIControlStateNormal];
+            [self.pingZhongBtn setTitle:@"品种" forState:UIControlStateNormal];
         }
         
-        [button setTitleColor:TextGrayColor forState:UIControlStateNormal];
-        [button setTitleColor:NavigationBarColor forState:UIControlStateSelected];
-        button.tag = 2;
-        [button setSelected:showMenus == 2?YES:NO];
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:button];
+        [self.pingZhongBtn setTitleColor:TextGrayColor forState:UIControlStateNormal];
+        [self.pingZhongBtn setTitleColor:NavigationBarColor forState:UIControlStateSelected];
+        self.pingZhongBtn.tag = 2;
+        [self.pingZhongBtn setSelected:showMenus == 2?YES:NO];
+        [self.pingZhongBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:self.pingZhongBtn];
         
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/4, 44);
-        [button setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        self.paiHangBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.paiHangBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/4, 44);
+        [self.paiHangBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
+        [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
+        [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
+        [self.paiHangBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
         if (changeButtonIndex == 2) {
-            [button setTitle:changeButtonString forState:UIControlStateNormal];
+            [self.paiHangBtn setTitle:changeButtonString forState:UIControlStateNormal];
         }
         else
         {
-            [button setTitle:@"排行" forState:UIControlStateNormal];
+            [self.paiHangBtn setTitle:@"排行" forState:UIControlStateNormal];
         }
         
-        [button setTitleColor:TextGrayColor forState:UIControlStateNormal];
-        [button setTitleColor:NavigationBarColor forState:UIControlStateSelected];
-        [button setSelected:showMenus == 1?YES:NO];
-        button.tag = 3;
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:button];
+        [self.paiHangBtn setTitleColor:TextGrayColor forState:UIControlStateNormal];
+        [self.paiHangBtn setTitleColor:NavigationBarColor forState:UIControlStateSelected];
+        [self.paiHangBtn setSelected:showMenus == 1?YES:NO];
+        self.paiHangBtn.tag = 3;
+        [self.paiHangBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:self.paiHangBtn];
         
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 44);
-        [button setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [button setTitle:@"最新活动" forState:UIControlStateNormal];
-        [button setTitleColor:TextGrayColor forState:UIControlStateNormal];
-        [button setTitleColor:NavigationBarColor forState:UIControlStateSelected];
-        button.tag = 4;
-        [button setSelected:showMenus == 3?YES:NO];
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:button];
+        self.huodongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.huodongBtn.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 44);
+        [self.huodongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
+        [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
+        [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
+        [self.huodongBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.huodongBtn setTitle:@"最新活动" forState:UIControlStateNormal];
+        [self.huodongBtn setTitleColor:TextGrayColor forState:UIControlStateNormal];
+        [self.huodongBtn setTitleColor:NavigationBarColor forState:UIControlStateSelected];
+        self.huodongBtn.tag = 4;
+        [self.huodongBtn setSelected:showMenus == 3?YES:NO];
+        [self.huodongBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:self.huodongBtn];
         self.tableView.scrollEnabled = YES;
-        if (showMenus==1) {
-            UITableView* view = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-            view.tag = 3;
-            view.delegate = self;
-            view.dataSource = self;
-            view.translatesAutoresizingMaskIntoConstraints = NO;
-            [view setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)]];
-            [headerView addSubview:view];
-            self.tableView.scrollEnabled = NO;
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-44-[view]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
-        }
-        else if (showMenus == 2)
-        {
-            self.tableView.scrollEnabled = NO;
-            UITableView* view1 = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-            view1.tag = 1;
-            view1.delegate = self;
-            view1.dataSource = self;
-            view1.translatesAutoresizingMaskIntoConstraints = NO;
-            [view1 setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)]];
-            [headerView addSubview:view1];
-            
-            UITableView* subTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-            subTableView.tag = 2;
-            subTableView.delegate = self;
-            subTableView.dataSource = self;
-            subTableView.translatesAutoresizingMaskIntoConstraints = NO;
-            [subTableView setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)]];
-            [headerView addSubview:subTableView];
-            self.subTableView = subTableView;
-            
-            self.subTableViewArray = [self.menuArray[0][menuSelected] objectForKey:@"Children"];
-            
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-44-[view1]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view1)]];
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-44-[subTableView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(subTableView)]];
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view1]-0-[subTableView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view1,subTableView)]];
-            [headerView addConstraint:[NSLayoutConstraint constraintWithItem:subTableView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view1 attribute:NSLayoutAttributeWidth multiplier:2 constant:0]];
-            [view1 selectRowAtIndexPath:[NSIndexPath indexPathForRow:menuSelected inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-        }
-        else if (showMenus==3)
-        {
-            UITableView* view = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-            view.tag = 4;
-            view.delegate = self;
-            view.dataSource = self;
-            view.translatesAutoresizingMaskIntoConstraints = NO;
-            [view setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)]];
-            [headerView addSubview:view];
-            self.tableView.scrollEnabled = NO;
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-44-[view]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
-            [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
-        }
+        
         return headerView;
     }
     else{
@@ -515,11 +470,17 @@
     }
     else if (tableView.tag == 3)
     {
-        showMenus = 0;
-        [self setOrderList:[NSNumber numberWithInteger:indexPath.row+1]];
         UITableViewCell*cell = [tableView cellForRowAtIndexPath:indexPath];
         changeButtonIndex = 2;
         changeButtonString = cell.textLabel.text;
+        NSInteger row = indexPath.row+1;
+        [self hideMenu:^{
+            showMenus = 0;
+            [self setOrderList:[NSNumber numberWithInteger:row]];
+            self.paiHangBtn.selected = NO;
+        }];
+        
+
     }
     else if (tableView.tag == 1)
     {
@@ -528,9 +489,14 @@
         self.subTableViewArray = [self.menuArray[0][indexPath.row] objectForKey:@"Children"];
         if(self.subTableViewArray.count == 0)
         {
-            [self setCodeId:nil];
-            changeButtonIndex = 1;
-            changeButtonString = @"品种";
+            
+            [self hideMenu:^{
+                [self setCodeId:nil];
+                changeButtonIndex = 1;
+                changeButtonString = @"品种";
+                [self setCodeId:nil];
+                self.pingZhongBtn.selected = NO;
+            }];
         }
         else{
             [self.subTableView reloadData];
@@ -539,20 +505,28 @@
     }
     else if (tableView.tag == 2)
     {
-        showMenus = 0;
-        subSelected = indexPath.row;
-        [self setCodeId:[self.subTableViewArray[indexPath.row] objectForKey:@"ID"]];
         UITableViewCell*cell = [tableView cellForRowAtIndexPath:indexPath];
         changeButtonIndex = 1;
         changeButtonString = cell.textLabel.text;
+        NSInteger row = indexPath.row;
+        [self hideMenu:^{
+            showMenus = 0;
+            subSelected = indexPath.row;
+            [self setCodeId:[self.subTableViewArray[row] objectForKey:@"ID"]];
+            self.pingZhongBtn.selected = NO;
+        }];
     }
     else if (tableView.tag == 4)
     {
         showMenus = 0;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
-        LimitPromotionViewController *controller = [[LimitPromotionViewController alloc]init];
-        controller.type = indexPath.row ;
-        [self.tabBarController.navigationController pushViewController:controller animated:YES];
+        NSInteger type = indexPath.row;
+        self.huodongBtn.selected = NO;
+        [self hideMenu:^{
+            LimitPromotionViewController *controller = [[LimitPromotionViewController alloc]init];
+            controller.type = type;
+            [self.tabBarController.navigationController pushViewController:controller animated:YES];
+        }];
+        
     }
     
 }
@@ -563,7 +537,8 @@
         {
             [self performSegueWithIdentifier:@"go_enterprise_list" sender:self];
             showMenus = 0;
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            
             break;
         }
         case 3:
@@ -571,13 +546,20 @@
             sender.selected = !sender.selected;
             if (sender.selected) {
                 showMenus = 1;
+                [self showMenuWithView:sender];
+                self.pingZhongBtn.selected = NO;
+                self.huodongBtn.selected = NO;
             }
             else
             {
-                showMenus = 0;
+                [self hideMenu:^{
+                    showMenus = 0;
+                    [self.tableView reloadData];
+                }];
             }
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+            
             break;
             //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         }
@@ -587,13 +569,20 @@
 //            sender.selected = !sender.selected;
             if (sender.selected) {
                 showMenus = 2;
+                [self showMenuWithView:sender];
+                self.paiHangBtn.selected = NO;
+                self.huodongBtn.selected = NO;
             }
             else
             {
-                showMenus = 0;
+                [self hideMenu:^{
+                    showMenus = 0;
+                    [self.tableView reloadData];
+                }];
             }
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+            
             break;
         }
         case 4:
@@ -601,12 +590,19 @@
             sender.selected = !sender.selected;
             if (sender.selected) {
                 showMenus = 3;
+                [self showMenuWithView:sender];
+                self.pingZhongBtn.selected = NO;
+                self.paiHangBtn.selected = NO;
             }
             else{
-                showMenus = 0;
+                [self hideMenu:^{
+                    showMenus = 0;
+                    [self.tableView reloadData];
+                }];
             }
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView setContentOffset:CGPointMake(0, 158) animated:NO];
+            
             break;
         }
         default:
@@ -614,6 +610,152 @@
     }
 }
 
+-(void)showMenuWithView:(UIView*)viewbtn
+{
+    self.tableView.scrollEnabled = NO;
+    if (self.topHideBtn) {
+        [self.topHideBtn removeFromSuperview];
+        [self.bottomHideBtn removeFromSuperview];
+        [self.mainTableView removeFromSuperview];
+        [self.subTableView removeFromSuperview];
+        self.topHideBtn = nil;
+        self.bottomHideBtn = nil;
+        self.mainTableView = nil;
+        self.subTableView = nil;
+    }
+    CGRect orginRect = [viewbtn convertRect:viewbtn.frame toView:self.view];
+    CGFloat topheight = orginRect.origin.y;
+    CGFloat bottomY = orginRect.origin.y+orginRect.size.height;
+    CGFloat bottomHeight = self.view.frame.size.height-(orginRect.origin.y+orginRect.size.height);
+    self.topHideBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.topHideBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, orginRect.origin.y);
+    [self.topHideBtn addTarget:self action:@selector(hideBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.topHideBtn.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.topHideBtn];
+    self.bottomHideBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.bottomHideBtn.frame = CGRectMake(0, orginRect.origin.y+orginRect.size.height, SCREEN_WIDTH, bottomHeight);
+    [self.bottomHideBtn addTarget:self action:@selector(hideBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.bottomHideBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [self.view addSubview:self.bottomHideBtn];
+    if (showMenus==1) {
+        self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, bottomY, SCREEN_WIDTH, 0.01) style:UITableViewStylePlain];
+        self.mainTableView.tag = 3;
+        self.mainTableView.delegate = self;
+        self.mainTableView.dataSource = self;
+        self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:self.mainTableView];
+
+        POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+        animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, bottomY, SCREEN_WIDTH, 132)];
+        [self.mainTableView pop_addAnimation:animation forKey:@"animation"];
+    }
+    else if (showMenus == 2)
+    {
+        self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, bottomY, SCREEN_WIDTH/3, 0.01) style:UITableViewStylePlain];
+        self.mainTableView.tag = 1;
+        self.mainTableView.delegate = self;
+        self.mainTableView.dataSource = self;
+        self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:self.mainTableView];
+        
+        POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+        animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, bottomY, SCREEN_WIDTH/3, 132)];
+        [self.mainTableView pop_addAnimation:animation forKey:@"animation"];
+        
+        self.subTableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3, bottomY, SCREEN_WIDTH/3*2, 0.01) style:UITableViewStylePlain];
+        self.subTableView.tag = 2;
+        self.subTableView.delegate = self;
+        self.subTableView.dataSource = self;
+        self.subTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:self.subTableView];
+        
+        self.subTableViewArray = [self.menuArray[0][menuSelected] objectForKey:@"Children"];
+        
+        animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+        animation.toValue = [NSValue valueWithCGRect:CGRectMake(SCREEN_WIDTH/3, bottomY, SCREEN_WIDTH/3*2, 132)];
+        [self.subTableView pop_addAnimation:animation forKey:@"animation"];
+    }
+    else if (showMenus==3)
+    {
+        self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, bottomY, SCREEN_WIDTH, 0.01) style:UITableViewStylePlain];
+        self.mainTableView.tag = 4;
+        self.mainTableView.delegate = self;
+        self.mainTableView.dataSource = self;
+        self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        [self.view addSubview:self.mainTableView];
+        
+        POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+        animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, bottomY, SCREEN_WIDTH, 132)];
+        [self.mainTableView pop_addAnimation:animation forKey:@"animation"];
+    }
+}
+
+-(void)hideBtnClick:(UIButton*)btn
+{
+    [self hideMenu:^{
+        showMenus = 0;
+        [self.tableView reloadData];
+    }];
+}
+-(void)hideMenu:(void(^)(void))block
+{
+    if (self.mainTableView) {
+        if (self.subTableView) {
+            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+            animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, self.mainTableView.frame.origin.y, SCREEN_WIDTH/3, 0.01)];
+            [animation setCompletionBlock:^(POPAnimation *an, BOOL finished) {
+                if (finished) {
+                    if (block) {
+                        block();
+                    }
+                    [self.topHideBtn removeFromSuperview];
+                    [self.bottomHideBtn removeFromSuperview];
+                    [self.mainTableView removeFromSuperview];
+                    [self.subTableView removeFromSuperview];
+                    self.subTableView = nil;
+                    self.topHideBtn = nil;
+                    self.bottomHideBtn = nil;
+                    self.mainTableView = nil;
+                    self.tableView.scrollEnabled = YES;
+                }
+            }];
+            [self.mainTableView pop_addAnimation:animation forKey:@"animation"];
+            
+            animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+            animation.toValue = [NSValue valueWithCGRect:CGRectMake(SCREEN_WIDTH/3, self.mainTableView.frame.origin.y, SCREEN_WIDTH/3*2, 0.01)];
+            [self.subTableView pop_addAnimation:animation forKey:@"animation"];
+        }
+        else{
+            POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+            animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, self.mainTableView.frame.origin.y, SCREEN_WIDTH, 0.01)];
+            [animation setCompletionBlock:^(POPAnimation *an, BOOL finished) {
+                if (finished) {
+                    if (block) {
+                        block();
+                    }
+                    [self.topHideBtn removeFromSuperview];
+                    [self.bottomHideBtn removeFromSuperview];
+                    [self.mainTableView removeFromSuperview];
+                    self.topHideBtn = nil;
+                    self.bottomHideBtn = nil;
+                    self.mainTableView = nil;
+                    self.tableView.scrollEnabled = YES;
+                }
+            }];
+            [self.mainTableView pop_addAnimation:animation forKey:@"animation"];
+        }
+    }
+    else
+    {
+        self.topHideBtn = nil;
+        self.bottomHideBtn = nil;
+        self.mainTableView = nil;
+        self.subTableView = nil;
+        self.tableView.scrollEnabled = YES;
+    }
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

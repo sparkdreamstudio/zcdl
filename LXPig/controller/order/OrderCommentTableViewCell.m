@@ -25,7 +25,7 @@
 
 @end
 
-@interface OrderCommentTableViewCell () <EDStarRatingProtocol,UITextViewDelegate,UITextFieldDelegate>
+@interface OrderCommentTableViewCell () <EDStarRatingProtocol,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *productImgView;
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *salePrice;
@@ -102,15 +102,6 @@
     
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-//    NSMutableString *theText = [NSMutableString stringWithString:textView.text];
-//    [theText replaceCharactersInRange:range withString:text];
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(orderCommentCell:WithContent:)]) {
-//        [self.delegate orderCommentCell:self WithContent:theText];
-//    }
-    return YES;
-}
 
 - (void)textViewDidChange:(UITextView *)textView
 {

@@ -85,9 +85,9 @@
 
 -(void)orderCommentCell:(OrderCommentTableViewCell *)cell WithTagButtonClick:(UIButton *)button
 {
-    [self.tableView endEditing:YES];
+    [cell endEditing:YES];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-    UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"选择标签" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles: nil];
+    UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"选择标签" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles: nil];
     [self.labelArray enumerateObjectsUsingBlock:^(NSDictionary* obj, NSUInteger idx, BOOL *stop) {
         [sheet addButtonWithTitle:[obj objectForKey:@"name"]];
     }];
@@ -101,6 +101,10 @@
 {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         CommentObject* object = self.commentArray[actionSheet.tag];
+        if([object.label containsString:[self.labelArray[buttonIndex] objectForKey:@"name"]])
+        {
+            return;
+        }
         if(object.label.length == 0)
         {
             object.label = [self.labelArray[buttonIndex] objectForKey:@"name"];
@@ -135,13 +139,13 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     [cell loadData:[self.commentArray objectAtIndex:indexPath.row]];
-    cell.comment.delegate = self;
     return cell;
 }
 
 #pragma mark - commit comment
 -(IBAction)commitComment:(id)sender
 {
+    [self.tableView endEditing:YES] ;
     for (CommentObject* object in self.commentArray) {
         if (object.priceStar == 0) {
             [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请对%@的商品价格进行评价",object.name]];
@@ -194,10 +198,7 @@
     return str;
 }
 
--(void)textViewDidEndEditing:(UITextView *)textView
-{
-    [self.tableView reloadData];
-}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

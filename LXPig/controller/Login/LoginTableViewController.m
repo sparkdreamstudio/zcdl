@@ -33,6 +33,9 @@
 @property (weak,nonatomic) IBOutlet UIButton* enterpriseBtn;
 @property (weak,nonatomic) IBOutlet UIButton* personalBtn;
 @property (weak,nonatomic) IBOutlet UIView*   seperatorLine;
+@property (weak,nonatomic) IBOutlet UIButton* iphone4PersonalSign;
+@property (weak,nonatomic) IBOutlet UIButton* iphone4SignUp;
+@property (weak,nonatomic) IBOutlet UIButton* iphone4ForgetBtn;
 @end
 
 @implementation LoginTableViewController
@@ -49,6 +52,9 @@
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [imageView setImage:[UIImage imageNamed:@"login_bg.jpg"]];
     UIImageView* title = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-166)/2, 75, 166, 106)];
+    if (SCREEN_HEIGHT == 480) {
+        title.frame  = CGRectMake((SCREEN_WIDTH-166)/2, 50, 166, 106);
+    }
     [title setImage:[UIImage imageNamed:@"login_title"]];
     [imageView addSubview:title];
     [self.tableView setBackgroundView:imageView];
@@ -64,6 +70,12 @@
     
     self.signInEnterprise.layer.masksToBounds = YES;
     self.signInEnterprise.layer.cornerRadius = 3;
+    self.iphone4PersonalSign.layer.masksToBounds = YES;
+    self.iphone4SignUp.layer.masksToBounds = YES;
+    self.iphone4PersonalSign.layer.cornerRadius = 3;
+    self.iphone4SignUp.layer.cornerRadius = 3;
+
+    [self showPersonalBtn];
     
     NSString* username = [[NSUserDefaults standardUserDefaults]objectForKey:@"USERNAME"];
     NSString* password = [[NSUserDefaults standardUserDefaults]objectForKey:@"PASSWORD"];
@@ -73,6 +85,43 @@
         [self showNormalHudDimissWithString:@"登录超时，请重新登陆"];
     }
     
+}
+
+-(void)showPersonalBtn
+{
+    if (SCREEN_HEIGHT == 480) {
+        self.signInEnterprise.hidden = YES;
+        self.iphone4SignUp.hidden = NO;
+        self.iphone4PersonalSign.hidden = NO;
+        self.iphone4ForgetBtn.hidden = NO;
+        self.forgetPassword.hidden = YES;
+        self.signUpBtn.hidden = YES;
+        self.seperatorLine.hidden = YES;
+        [self.tableView reloadData];
+    }
+    else{
+        self.signInEnterprise.hidden = NO;
+        self.iphone4SignUp.hidden = YES;
+        self.iphone4PersonalSign.hidden = YES;
+        self.iphone4ForgetBtn.hidden = YES;
+        self.forgetPassword.hidden = NO;
+        self.signUpBtn.hidden = NO;
+        self.seperatorLine.hidden = NO;
+    }
+}
+
+-(void)hiddenPersonalBtn
+{
+//    self.signInEnterprise.hidden = YES;
+    self.iphone4SignUp.hidden = YES;
+    self.iphone4PersonalSign.hidden = YES;
+    self.iphone4ForgetBtn.hidden = YES;
+    self.forgetPassword.hidden = YES;
+    self.signUpBtn.hidden = YES;
+    self.seperatorLine.hidden = YES;
+    if (SCREEN_HEIGHT == 480) {
+        [self.tableView reloadData];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -156,6 +205,7 @@
                 self.signUpBtn.hidden = NO;
                 self.forgetPassword.hidden = NO;
                 self.seperatorLine.hidden = NO;
+                [self showPersonalBtn];
             }
             
             break;
@@ -165,8 +215,10 @@
                 self.personalBtn.selected = NO;
                 self.personalLogin = NO;
                 self.signUpBtn.hidden = YES;
+                self.signInEnterprise.hidden = NO;
                 self.forgetPassword.hidden = YES;
                 self.seperatorLine.hidden = YES;
+                [self hiddenPersonalBtn];
             }
             
             break;
@@ -205,12 +257,21 @@
 {
     switch (section) {
         case 0:
+        {
+
             return self.view.bounds.size.height * (546.f/1334.f)-40;
+
+        }
+            
         case 1:
             return 1;
         case 2:
             return 23;
         case 3:
+            if(SCREEN_HEIGHT == 480&&self.personalLogin)
+            {
+                return 0;
+            }
             return 27;
         default:
             break;
@@ -238,11 +299,16 @@
         {
             switch (indexPath.row) {
                 case 0:
+                    if(SCREEN_HEIGHT == 480&&self.personalLogin)
+                    {
+                        return 76;
+                    }
                     return 49;
                 case 1:
                 {
-                    CGFloat height = self.view.bounds.size.height;
-                    return height = (height - 90 - 49 - 50 - height*(546.f/1334.f))-40;
+//                    CGFloat height = self.view.bounds.size.height;
+//                    return height = (height - 90 - 49 - 50 - height*(546.f/1334.f))-40;
+                    return 49;
                 }
                 default:
                     break;

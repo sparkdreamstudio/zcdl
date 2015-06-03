@@ -22,6 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
     [self initModel];
     [self setApperanceAndFlatWithIos6];
     UIImageView* launchView = [[UIImageView alloc]init];
@@ -44,6 +45,15 @@
     [self.window addSubview:launchView];
     [self.window bringSubviewToFront:launchView];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
+        
+        if (islogin && [[UserManagerObject shareInstance]userType]==0) {
+            [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
+            [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
+        }
+        UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = [storyboad instantiateInitialViewController];
+        self.mainController = (SlideViewController*)self.window.rootViewController;
+        [self.window bringSubviewToFront:launchView];
         POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
         animation.toValue = @(0);
         animation.duration = 1;
@@ -53,14 +63,6 @@
             }
         }];
         [launchView pop_addAnimation:animation forKey:@"launchView"];
-        if (islogin && [[UserManagerObject shareInstance]userType]==0) {
-            [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
-            [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
-        }
-        UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.window.rootViewController = [storyboad instantiateInitialViewController];
-        self.mainController = (SlideViewController*)self.window.rootViewController;
-        [self.window makeKeyAndVisible];
     }];
 
     return YES;

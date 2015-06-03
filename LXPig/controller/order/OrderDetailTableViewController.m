@@ -111,7 +111,7 @@
         }
         case 2:
         {
-            return [Utils getSizeOfString:[self.orderInfo objectForKey:@"address"] WithSize:CGSizeMake(SCREEN_WIDTH-50, NSIntegerMax) AndSystemFontSize:15].height+65;
+            return [Utils getSizeOfString:[self.orderInfo objectForKey:@"address"] WithSize:CGSizeMake(SCREEN_WIDTH-50, NSIntegerMax) AndSystemFontSize:12].height+57;
             return 83;
         }
         case 3:
@@ -161,7 +161,13 @@
                 }
                 case 3:
                 {
-                    label.text = @"已交易";
+                    if ([[UserManagerObject shareInstance]userType] == 2) {
+                        label.text = @"未服务";
+                    }
+                    else
+                    {
+                        label.text = @"已交易";
+                    }
                     break;
                 }
                 case 4:

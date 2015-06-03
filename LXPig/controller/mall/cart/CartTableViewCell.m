@@ -26,6 +26,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.countBtn.layer.masksToBounds = YES;
+    self.countBtn.layer.borderWidth = 1;
+    self.countBtn.layer.borderColor = HEXCOLOR(@"DDDDDD").CGColor;
+    self.countBtn.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -41,7 +45,7 @@
     self.name.text =item.name;
     self.salePrice.text = [item.salePrice stringValue];
     self.marketPrice.text = [NSString stringWithFormat:@"￥%@",item.marketPrice];
-    [self.countBtn setTitle:[item.num stringValue] forState:UIControlStateNormal];
+    [self.countBtn setTitle:[NSString stringWithFormat:@"  %@  ",item.num] forState:UIControlStateNormal];
 }
 
 -(IBAction)btnClick:(id)sender

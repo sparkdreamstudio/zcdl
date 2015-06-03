@@ -24,6 +24,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.countBtn.layer.masksToBounds = YES;
+    self.countBtn.layer.borderColor = HEXCOLOR(@"DDDDDD").CGColor;
+    self.countBtn.layer.borderWidth = 1;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

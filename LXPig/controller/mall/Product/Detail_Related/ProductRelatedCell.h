@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *salePrice;
 @property (weak, nonatomic) IBOutlet LPLabel *marketPrice;
 @property (weak, nonatomic) IBOutlet UILabel *orderCount;
+@property (weak, nonatomic) IBOutlet UILabel *zeroProductLabel;
 
 -(void)loadProductInfo:(ProductInfo*)info;
 

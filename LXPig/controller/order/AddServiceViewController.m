@@ -102,6 +102,7 @@
     [self.textView resignFirstResponder];
     if (self.serviceContent == nil || self.serviceContent.length == 0) {
         [self showNormalHudDimissWithString:@"请填写服务内容"];
+        return;
     }
     UIView* hud = [self showNormalHudNoDimissWithString:@"提交服务"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"save",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"orderNum":[self.orderInfo objectForKey:@"orderNum"],@"content":self.serviceContent} success:^(NSDictionary *responseObj, NSString *timeSp) {

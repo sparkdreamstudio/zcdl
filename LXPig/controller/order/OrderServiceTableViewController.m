@@ -35,7 +35,7 @@
 -(void)pullRfresh
 {
     self.currentPage = 1;
-    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":@"1",@"pageSize":@"20",@"oderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":@"1",@"pageSize":@"20",@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         self.serviceArray = [responseObj objectForKey:@"data"];
         if (self.serviceArray.count < 20) {
@@ -54,7 +54,7 @@
 -(void)infinitScorll
 {
     self.currentPage++;
-    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+    [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20",@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
         NSArray* array = [responseObj objectForKey:@"data"];
         if(array.count == 0)

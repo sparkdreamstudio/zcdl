@@ -9,6 +9,7 @@
 #import "OrderCommentTableViewCell.h"
 #import "EDStarRating.h"
 
+#define PLACE_HOLDER @"请填写您的宝贵意见..."
 @implementation CommentObject
 
 -(id)init
@@ -55,6 +56,8 @@
     self.comment.layer.borderWidth =1;
     self.comment.layer.cornerRadius = 5;
     self.comment.delegate = self;
+    self.comment.text = PLACE_HOLDER;
+    self.comment.textColor = HEXCOLOR(@"CDCDCD");
     //[self.tagBtn setTitle:@"请选择" forState:UIControlStateNormal];
 }
 
@@ -73,6 +76,7 @@
     self.tagBtn.layer.borderColor = [UIColor colorWithRed:0xcd/255.f green:0xcd/255.f blue:0xcd/255.f alpha:1].CGColor;
     self.tagBtn.layer.borderWidth = 1;
     self.tagBtn.layer.cornerRadius = 2;
+
     
 }
 
@@ -95,18 +99,40 @@
     self.serviceRating.rating = object.serviceStar;
     self.serviceRatingLable.text = [NSString stringWithFormat:@"%ld分",(long)object.serviceStar];
     self.comment.text = object.content;
+    if ([self.comment.text isEqualToString:@""]) {
+        self.comment.text = PLACE_HOLDER;
+        self.comment.textColor = HEXCOLOR(@"CDCDCD");
+    }
     //[self.tagBtn setTitle:object.label forState:UIControlStateNormal];
     if (object.label && object.label.length > 0) {
         [self.tagBtn setTitle:object.label forState:UIControlStateNormal];
     }
+    else{
+        [self.tagBtn setTitle:@"请选择" forState:UIControlStateNormal];
+    }
     
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:PLACE_HOLDER]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+}
 
 - (void)textViewDidChange:(UITextView *)textView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(orderCommentCell:WithContent:)]) {
         [self.delegate orderCommentCell:self WithContent:textView.text];
+    }
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = PLACE_HOLDER;
+        textView.textColor = HEXCOLOR(@"dddddd");
     }
 }
 

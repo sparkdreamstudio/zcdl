@@ -29,7 +29,7 @@
 
 -(void)loadItem:(ConfirmOrderItems *)items
 {
-    self.itemCount.text = [NSString stringWithFormat:@"%ld",(long)items.totalNumber];
+    self.itemCount.text = [NSString stringWithFormat:@"共%ld件商品",(long)items.totalNumber];
     self.totalPrice.text = [NSString stringWithFormat:@"￥%ld",(long)items.totalPrice];
     [self.testButton setSelected:items.isTestService];
 }

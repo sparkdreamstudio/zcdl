@@ -100,7 +100,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return [Utils getSizeOfString:self.problem[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-40, NSIntegerMax) AndSystemFontSize:14].height + 132;
+        return [Utils getSizeOfString:self.problem[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-40, NSIntegerMax) AndSystemFontSize:13].height + 134;
     }
     else if (indexPath.row == 1)
     {
@@ -108,7 +108,7 @@
     }
     else
     {
-        return [Utils getSizeOfString:self.replyArray[indexPath.row-2][@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height+70;
+        return [Utils getSizeOfString:self.replyArray[indexPath.row-2][@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height+50;
     }
 }
 

@@ -103,6 +103,28 @@
         CommentObject* object = self.commentArray[actionSheet.tag];
         if([object.label containsString:[self.labelArray[buttonIndex] objectForKey:@"name"]])
         {
+            NSRange range = [object.label rangeOfString:[self.labelArray[buttonIndex] objectForKey:@"name"]];
+            NSMutableString* string = [NSMutableString stringWithString:object.label];
+            [string replaceCharactersInRange:range withString:@"" ];
+            NSArray* strArray = [string componentsSeparatedByString:@","];
+            object.label = @"";
+            for (NSString* str in strArray) {
+                if(object.label.length == 0)
+                {
+                    if (str.length > 0) {
+                        object.label = str;
+                    }
+                    
+                }
+                else
+                {
+                    if (str.length > 0) {
+                        object.label = [object.label stringByAppendingFormat:@",%@",str];
+                    }
+                    
+                }
+            }
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:actionSheet.tag inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             return;
         }
         if(object.label.length == 0)
@@ -164,7 +186,7 @@
 //            return;
 //        }
         if (object.label.length == 0 || object.label == nil) {
-            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的快速评论",object.name]];
+            [self.controller showNormalHudDimissWithString:[NSString stringWithFormat:@"请选择对%@的标签",object.name]];
             return;
         }
         

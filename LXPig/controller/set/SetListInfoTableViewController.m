@@ -95,7 +95,7 @@
 {
 //    NSDictionary *dic = self.listArray[indexPath.row];
 //    return [Utils getSizeOfString:dic[@"overview"] WithSize:CGSizeMake(SCREEN_WIDTH-23, NSIntegerMax) AndSystemFontSize:13].height + 57;
-    return 100;
+    return 90;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

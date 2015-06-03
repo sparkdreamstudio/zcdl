@@ -165,7 +165,7 @@
     else
     {
 //<<<<<<< Updated upstream
-        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height+10;
+        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height;
 //=======
 //        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height;
 //>>>>>>> Stashed changes

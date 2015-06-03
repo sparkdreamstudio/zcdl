@@ -92,6 +92,8 @@
     }
     else if (indexPath.row == count+1)
     {
+        NSInteger count =[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count;
+        CartItems* items = [[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section];
         CartTableViewCellBottom* cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
         NSInteger price = 0;
         for (CartItem *item in items.itemlist) {

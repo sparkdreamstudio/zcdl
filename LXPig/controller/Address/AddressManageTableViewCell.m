@@ -34,7 +34,7 @@
     }
     else
     {
-        [self setBackgroundColor:[UIColor colorWithRed:0xf3/255.f green:0xf3/255.f blue:0xf3/255.f alpha:1]];
+        [self setBackgroundColor:HEXCOLOR(@"dddddd")];
     }
 }
 

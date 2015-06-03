@@ -109,7 +109,7 @@
     }
     else{
         NSDictionary* dic = self.replyArray[indexPath.row - 1];
-        return [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height+76;
+        return [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height+51;
     }
 }
 

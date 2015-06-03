@@ -22,7 +22,7 @@
 
 - (void)awakeFromNib {
     self.backView.layer.masksToBounds = YES;
-    self.backView.layer.borderColor = HEXCOLOR(@"cdcdcd").CGColor;
+    self.backView.layer.borderColor = HEXCOLOR(@"eaeaea").CGColor;
     self.backView.layer.borderWidth = 1;
     
     self.typeLabel.layer.masksToBounds = YES;

@@ -197,7 +197,13 @@
             }
             case 3:
             {
-                label.text = @"已交易";
+                if ([[UserManagerObject shareInstance]userType] == 2) {
+                    label.text = @"未服务";
+                }
+                else
+                {
+                    label.text = @"已交易";
+                }
                 break;
             }
             case 4:

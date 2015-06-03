@@ -15,7 +15,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-wW-Ifg">
                         <rect key="frame" x="12" y="98" width="296" height="1"/>
-                        <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="6FY-p2-Eh2"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR6-K3-lgp">
-                        <rect key="frame" x="12" y="44" width="296" height="40"/>
+                        <rect key="frame" x="12" y="41" width="296" height="49"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QR6-K3-lgp" firstAttribute="top" secondItem="1iB-fX-iW0" secondAttribute="bottom" constant="15" id="5np-nT-urM"/>
+                    <constraint firstItem="QR6-K3-lgp" firstAttribute="top" secondItem="1iB-fX-iW0" secondAttribute="bottom" constant="12" id="5np-nT-urM"/>
                     <constraint firstItem="MyB-mC-ou1" firstAttribute="centerY" secondItem="v1H-dE-j4B" secondAttribute="centerY" id="6fI-4a-YBz"/>
                     <constraint firstItem="1iB-fX-iW0" firstAttribute="centerY" secondItem="FaI-nk-kh0" secondAttribute="centerY" id="EpZ-tG-mEN"/>
                     <constraint firstItem="rj1-wW-Ifg" firstAttribute="leading" secondItem="Ce9-nH-VAX" secondAttribute="leading" constant="12" id="R4H-g9-YO8"/>
@@ -74,7 +74,7 @@
                     <constraint firstItem="v1H-dE-j4B" firstAttribute="centerY" secondItem="1iB-fX-iW0" secondAttribute="centerY" id="Vf1-vh-Sjm"/>
                     <constraint firstItem="1iB-fX-iW0" firstAttribute="leading" secondItem="Ce9-nH-VAX" secondAttribute="leading" constant="12" id="cIi-ew-fFa"/>
                     <constraint firstAttribute="trailing" secondItem="v1H-dE-j4B" secondAttribute="trailing" constant="12" id="gGn-wa-O8F"/>
-                    <constraint firstItem="rj1-wW-Ifg" firstAttribute="top" secondItem="QR6-K3-lgp" secondAttribute="bottom" constant="14" id="o1X-2y-fPo"/>
+                    <constraint firstItem="rj1-wW-Ifg" firstAttribute="top" secondItem="QR6-K3-lgp" secondAttribute="bottom" constant="8" id="o1X-2y-fPo"/>
                     <constraint firstItem="QR6-K3-lgp" firstAttribute="leading" secondItem="Ce9-nH-VAX" secondAttribute="leading" constant="12" id="pPf-Cu-MFA"/>
                     <constraint firstAttribute="trailing" secondItem="QR6-K3-lgp" secondAttribute="trailing" constant="12" id="pUU-nj-jKN"/>
                     <constraint firstItem="FaI-nk-kh0" firstAttribute="leading" secondItem="1iB-fX-iW0" secondAttribute="trailing" constant="20" id="w8s-hQ-s4w"/>

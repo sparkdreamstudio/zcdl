@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t46-bE-wCp">
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1510,6 +1509,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="我的" id="2dn-Ek-Vwn"/>
+                    <connections>
+                        <segue destination="oaL-nX-q3p" kind="show" id="dgF-BG-20u"/>
+                        <segue destination="6cc-j4-rpY" kind="show" id="GLM-5t-6v1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHH-zJ-2hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1520,7 +1523,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="person_individual" id="6cc-j4-rpY" customClass="PersonalViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CPE-kI-uwV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Iuo-9q-VcB" customClass="ImagePlayerView">
@@ -1611,7 +1614,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sIG-jV-Zhi" kind="show" id="oHG-pv-hg1"/>
+                                            <segue destination="sIG-jV-Zhi" kind="show" id="I1p-Ah-oe6"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell2" rowHeight="58" id="J31-3y-BzV">
@@ -1656,7 +1659,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="EXJ-VG-YSc" kind="show" id="mjd-eK-6FU"/>
+                                            <segue destination="EXJ-VG-YSc" kind="show" id="Pxv-x1-ZZ6"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell3" rowHeight="58" id="fqI-yD-xIh">
@@ -1701,7 +1704,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="0K1-JV-lsX" kind="show" id="mk4-Ac-70f"/>
+                                            <segue destination="0K1-JV-lsX" kind="show" id="D4p-W2-yhA"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell4" rowHeight="58" id="aOr-HZ-WOG">
@@ -1754,7 +1757,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8qX-uk-iv1" kind="show" id="ERo-Br-2wk"/>
+                                            <segue destination="8qX-uk-iv1" kind="show" id="Rfn-Qb-kcU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell5" rowHeight="58" id="yZe-Ia-SbM">
@@ -1887,7 +1890,6 @@
                             <outlet property="delegate" destination="6cc-j4-rpY" id="95J-iS-rlD"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="adImageView" destination="Iuo-9q-VcB" id="jt3-eq-HTn"/>
                         <outlet property="headImageView" destination="ib1-U4-Ntg" id="ZEA-Pn-tfq"/>
@@ -1909,11 +1911,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nFx-3F-TOe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4l7-FX-auD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WT4-6C-oR4">
-                                <rect key="frame" x="0.0" y="535" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="486" width="600" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-Xd-jbL">
                                         <rect key="frame" x="237" y="13" width="127" height="39"/>
@@ -2217,9 +2219,9 @@
         <!--站内消息-->
         <scene sceneID="trw-LW-XVY">
             <objects>
-                <tableViewController title="站内消息" id="8qX-uk-iv1" customClass="MessageViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="show_message_info" title="站内消息" id="8qX-uk-iv1" customClass="MessageViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Yzc-HW-Llg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2330,7 +2332,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qia-zR-Iui"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KDY-nF-kUB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGw-po-oLr">
@@ -2367,9 +2369,9 @@
         <!--个人信息-->
         <scene sceneID="nMw-rE-8j1">
             <objects>
-                <tableViewController title="个人资料" id="sIG-jV-Zhi" userLabel="个人信息" customClass="PersonalInfoViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="show_personal_info" title="个人资料" id="sIG-jV-Zhi" userLabel="个人信息" customClass="PersonalInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NE8-CU-bg7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -2848,7 +2850,7 @@
             <objects>
                 <tableViewController id="c97-cz-8xi" userLabel="修改个人信息" customClass="ChangeInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="rSg-5K-1lZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="YwK-8j-GNt" userLabel="footerView">
@@ -2942,7 +2944,7 @@
             <objects>
                 <tableViewController title="修改密码" id="fHg-33-Jwm" userLabel="修改密码" customClass="ChangePasswordController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yj6-oY-Boz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="mfE-yT-e0v" userLabel="footerView">
@@ -3161,11 +3163,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jFn-ea-5AC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Elr-5j-Ud2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="387"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5S-zp-eAq">
-                                <rect key="frame" x="0.0" y="321" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="485" width="600" height="66"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cv-xx-16G">
                                         <rect key="frame" x="20" y="17" width="64" height="32"/>
@@ -3220,7 +3222,7 @@
                                     <constraint firstAttribute="height" constant="66" id="tKi-d5-i52"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-Zb-8AW">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-Zb-8AW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="321"/>
                                 <connections>
                                     <segue destination="iwR-Vf-ES0" kind="embed" identifier="edit_address_table" id="jJP-1Q-Kzs"/>
@@ -3498,40 +3500,40 @@
                         <viewControllerLayoutGuide type="bottom" id="ddd-EY-2ws"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9DT-iq-68Z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYw-6V-DVJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYw-6V-DVJ">
                                 <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-rx-UZw">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-rx-UZw">
                                         <rect key="frame" x="0.0" y="49" width="600" height="458"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u36-Xc-kdw">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u36-Xc-kdw">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="458"/>
                                                 <connections>
                                                     <segue destination="Ruu-CT-ZvT" kind="embed" identifier="showorder_list1" id="KlG-Um-swe"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2KO-sA-cgH">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KO-sA-cgH">
                                                 <rect key="frame" x="600" y="0.0" width="600" height="458"/>
                                                 <connections>
                                                     <segue destination="jpN-D5-lcM" kind="embed" identifier="showorder_list2" id="1oB-Mh-8ty"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqg-fg-37k">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqg-fg-37k">
                                                 <rect key="frame" x="1200" y="0.0" width="600" height="458"/>
                                                 <connections>
                                                     <segue destination="9Zy-Vy-wBO" kind="embed" identifier="showorder_list3" id="sKE-K5-KlE"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Bc-C2-ddr">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Bc-C2-ddr">
                                                 <rect key="frame" x="1800" y="0.0" width="600" height="458"/>
                                                 <connections>
                                                     <segue destination="Y4R-yT-OSw" kind="embed" identifier="showorder_list4" id="Y7z-HW-jmk"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-4j-lek">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-4j-lek">
                                                 <rect key="frame" x="2400" y="0.0" width="600" height="458"/>
                                                 <connections>
                                                     <segue destination="dFl-LU-PLo" kind="embed" identifier="showorder_list5" id="5bi-Ne-Utq"/>
@@ -8017,7 +8019,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="person_enterprise" id="oaL-nX-q3p" userLabel="我的(企业)" customClass="PersonalViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="S6J-kI-sN9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="suk-4o-KDs" customClass="ImagePlayerView">
@@ -8240,7 +8242,6 @@
                             <outlet property="delegate" destination="oaL-nX-q3p" id="RWx-fx-ZZX"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="adImageView" destination="suk-4o-KDs" id="TBt-iA-SYv"/>
                         <outlet property="headImageView" destination="y6F-Zh-onD" id="rdc-sa-TPf"/>
@@ -8312,11 +8313,11 @@
         <image name="zixun_selected" width="66" height="83"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mjd-eK-6FU"/>
-        <segue reference="oHG-pv-hg1"/>
-        <segue reference="jcN-Sz-6kN"/>
-        <segue reference="11D-dn-eOH"/>
-        <segue reference="XQA-5j-Snt"/>
         <segue reference="HLf-5M-Cx5"/>
+        <segue reference="XQA-5j-Snt"/>
+        <segue reference="Pxv-x1-ZZ6"/>
+        <segue reference="I1p-Ah-oe6"/>
+        <segue reference="RHN-yS-f0V"/>
+        <segue reference="jcN-Sz-6kN"/>
     </inferredMetricsTieBreakers>
 </document>

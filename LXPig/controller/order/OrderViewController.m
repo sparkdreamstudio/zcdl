@@ -61,6 +61,7 @@
             break;
     }
     [self.parentView addSubview:self.segmentcontrol];
+    [self.parentView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentcontrol attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.parentView attribute:NSLayoutAttributeLeading multiplier:1 constant:0]];
     [self.parentView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentcontrol attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.parentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
     [self.parentView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentcontrol attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:49]];
     [self.parentView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentcontrol attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.parentView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];

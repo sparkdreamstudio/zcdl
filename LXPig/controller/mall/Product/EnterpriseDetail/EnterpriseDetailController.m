@@ -36,6 +36,7 @@
     self.fax.text = self.info.fax;
     self.address.text = self.info.address;
     self.infoWebView.scrollView.scrollEnabled = NO;
+    self.infoWebView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1);
 }
 
 -(void)reloadHtml

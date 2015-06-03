@@ -55,7 +55,7 @@
 {
     self.currentPage++;
     [[NetWorkClient shareInstance]postUrl:SERVICE_SERVICE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"currentPageNo":[NSNumber numberWithInteger:self.currentPage],@"pageSize":@"20",@"orderNum":[self.orderInfo objectForKey:@"orderNum"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
-        [self stopPull];
+        [self stopInfinitScorll];
         NSArray* array = [responseObj objectForKey:@"data"];
         if(array.count == 0)
         {
@@ -79,7 +79,7 @@
         [self.tableView endUpdates];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         self.currentPage--;
-        [self stopPull];
+        [self stopInfinitScorll];
     }];
 }
 

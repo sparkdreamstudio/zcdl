@@ -144,6 +144,7 @@
             break;
         }
     }
+    cell.textLabel.font = [UIFont systemFontOfSize:13];
     return cell;
 }
 

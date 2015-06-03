@@ -100,7 +100,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return [Utils getSizeOfString:self.problem[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-40, NSIntegerMax) AndSystemFontSize:13].height + 134;
+        return [Utils getSizeOfString:self.problem[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-40, NSIntegerMax) AndSystemFontSize:13].height + 140;
     }
     else if (indexPath.row == 1)
     {

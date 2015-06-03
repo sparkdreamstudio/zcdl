@@ -59,6 +59,9 @@
 {
     NSInteger count =[[[[PigCart shareInstance] itemsArray]objectAtIndex:indexPath.section] itemlist].count;
     if (indexPath.row == 0) {
+        if (indexPath.section ==0) {
+            return 42;
+        }
         return 50;
     }
     else if (indexPath.row == count+1)
@@ -87,7 +90,14 @@
         {
             cell.checkBtn.selected = items.selected;
         }
-        
+        if (indexPath.section == 0) {
+            cell.headLineViewHeight.constant = 0;
+            cell.headTitleCenter.constant = 0;
+        }
+        else{
+            cell.headLineViewHeight.constant = 8;
+            cell.headTitleCenter.constant = -5;
+        }
         return cell;
     }
     else if (indexPath.row == count+1)
@@ -115,6 +125,12 @@
         }
         else{
             [cell loadData:item WithSelected:item.selected];
+        }
+        if (indexPath.row == 1) {
+            cell.topLineView.hidden = YES;
+        }
+        else{
+            cell.topLineView.hidden = NO;
         }
         
         return cell ;

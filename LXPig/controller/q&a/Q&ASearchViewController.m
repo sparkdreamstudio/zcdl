@@ -77,7 +77,7 @@
     [params setValue:[[UserManagerObject shareInstance]sessionid] forKey:@"sessionid"];
     [params setValue:self.key forKey:@"keyword"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_PROBLEM With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
-        [self stopPull];
+        [self stopInfinitScorll];
         NSMutableArray* array = [NSMutableArray arrayWithArray:[responseObj objectForKey:@"data"]];
         if(array.count == 0)
         {
@@ -101,7 +101,7 @@
         [self.tableView insertRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView endUpdates];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        [self stopPull];
+        [self stopInfinitScorll];
         self.currentPage--;
     }];
 }

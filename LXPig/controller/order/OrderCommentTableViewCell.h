@@ -35,6 +35,7 @@
 
 @interface OrderCommentTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *comment;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* headBlankViewheight;
 @property (weak,nonatomic) id<OrderCommentTableViewCellDelegate> delegate;
 
 -(void)loadData:(CommentObject*)object;

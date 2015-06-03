@@ -152,7 +152,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 440;
+    if (indexPath.row == 0) {
+        return 432;
+    }
+    else
+    {
+        return 440;
+    }
+    
 }
 
 
@@ -161,6 +168,13 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     [cell loadData:[self.commentArray objectAtIndex:indexPath.row]];
+    if (indexPath.row == 0) {
+        cell.headBlankViewheight.constant = 0;
+    }
+    else
+    {
+        cell.headBlankViewheight.constant = 8;
+    }
     return cell;
 }
 

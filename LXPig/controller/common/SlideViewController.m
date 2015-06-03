@@ -11,7 +11,7 @@
 #import "AddressManager.h"
 #import "PigCart.h"
 #import "RightMenuViewController.h"
-#define MAX_RIGHT_TRAIL (-123)
+#define MAX_RIGHT_TRAIL (-96)
 #define MAX_SCALE       (0.75f)
 
 typedef NS_ENUM(NSUInteger, SlideViewState) {

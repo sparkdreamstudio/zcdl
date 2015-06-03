@@ -39,7 +39,7 @@
 {
     [super viewWillAppear:animated];
     self.webViewHeight.constant = 0;
-    
+    self.webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1);
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
     self.hud = [self showNormalHudNoDimissWithString:@"加载"];
 }

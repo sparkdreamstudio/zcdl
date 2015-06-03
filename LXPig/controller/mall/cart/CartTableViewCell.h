@@ -23,5 +23,5 @@
 
 @property (weak, nonatomic) id<CartTableViewCellDelegate> delegate;
 -(void)loadData:(CartItem*)item WithSelected:(BOOL)selected;
-
+@property (weak,nonatomic) IBOutlet UIView* topLineView;
 @end

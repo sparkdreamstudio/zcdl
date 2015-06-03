@@ -23,5 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headLineViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headTitleCenter;
 
 @end

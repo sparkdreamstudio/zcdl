@@ -225,7 +225,10 @@
                 label.text = [[product objectForKey:@"salePrice"] stringValue];
                 label = (UILabel*)[cell viewWithTag:4];
                 label.text = [NSString stringWithFormat:@"x%@",[dic objectForKey:@"num"]];
-                
+                UIView* bottomLineView = [cell viewWithTag:6];
+                if (indexPath.row ==  [[self.orderInfo objectForKey:@"detailList"] count]) {
+                    bottomLineView.hidden = NO;
+                }
                 return cell;
             }
         }

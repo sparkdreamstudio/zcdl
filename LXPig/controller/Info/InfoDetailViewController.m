@@ -36,6 +36,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1);
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
     self.webView.hidden = YES;
     self.hud = [self showNormalHudNoDimissWithString:@"加载"];
@@ -47,7 +48,7 @@
     self.hud = nil;
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
     NSInteger height = [height_str integerValue];
-    self.webViewHeight.constant = height+20;
+    self.webViewHeight.constant = height;
     self.webView.hidden = NO;
     
 }

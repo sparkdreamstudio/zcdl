@@ -49,6 +49,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (IOS_SYSTEM_VERSION < 8.0f) {
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+    }
     showMenus = 0;
     menuSelected = 0;
     subSelected = 0;

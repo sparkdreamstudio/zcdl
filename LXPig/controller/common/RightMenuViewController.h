@@ -11,5 +11,5 @@
 @interface RightMenuViewController : UIViewController
 
 @property (weak,nonatomic)SlideViewController* slideController;
-
+@property (weak,nonatomic) IBOutlet UIImageView* blurImageView;
 @end

@@ -5269,8 +5269,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="mIL-tM-14H">
+                                <rect key="frame" x="52" y="50" width="500" height="500"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcz-c5-eXs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26Y-PT-HrD">
-                                <rect key="frame" x="514" y="103" width="66" height="83"/>
+                                <rect key="frame" x="524" y="103" width="56" height="73"/>
                                 <state key="normal" image="zixun">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -5281,7 +5288,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-Y0-Nqy">
-                                <rect key="frame" x="514" y="206" width="66" height="83"/>
+                                <rect key="frame" x="524" y="196" width="56" height="73"/>
                                 <state key="normal" image="shangchuan">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -5292,7 +5299,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyr-qL-mcv">
-                                <rect key="frame" x="514" y="309" width="66" height="83"/>
+                                <rect key="frame" x="524" y="289" width="56" height="73"/>
                                 <state key="normal" image="hotline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -5303,7 +5310,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnH-WX-Z5n">
-                                <rect key="frame" x="527" y="412" width="40" height="40"/>
+                                <rect key="frame" x="532" y="382" width="40" height="40"/>
                                 <state key="normal" image="left_back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -5314,21 +5321,32 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="mIL-tM-14H" secondAttribute="centerY" id="BIJ-Yq-6xX"/>
                             <constraint firstItem="OnH-WX-Z5n" firstAttribute="top" secondItem="Jyr-qL-mcv" secondAttribute="bottom" constant="20" id="CxK-cF-Nu5"/>
+                            <constraint firstItem="wcz-c5-eXs" firstAttribute="width" secondItem="mIL-tM-14H" secondAttribute="width" multiplier="1.2" id="Kw9-rg-hoi"/>
                             <constraint firstItem="6F7-Y0-Nqy" firstAttribute="centerX" secondItem="Jyr-qL-mcv" secondAttribute="centerX" id="Mo3-by-eRT"/>
+                            <constraint firstItem="wcz-c5-eXs" firstAttribute="top" secondItem="aUE-fb-3Av" secondAttribute="bottom" id="Mrb-rZ-Lgt"/>
                             <constraint firstItem="6F7-Y0-Nqy" firstAttribute="top" secondItem="26Y-PT-HrD" secondAttribute="bottom" constant="20" id="N4W-pc-SuG"/>
                             <constraint firstItem="Jyr-qL-mcv" firstAttribute="top" secondItem="6F7-Y0-Nqy" secondAttribute="bottom" constant="20" id="R4L-ci-Dgu"/>
                             <constraint firstItem="26Y-PT-HrD" firstAttribute="centerX" secondItem="6F7-Y0-Nqy" secondAttribute="centerX" id="X75-zr-CTN"/>
                             <constraint firstItem="26Y-PT-HrD" firstAttribute="top" secondItem="EyQ-NT-PZM" secondAttribute="bottom" multiplier="0.172" id="YNP-hs-kH4"/>
                             <constraint firstItem="26Y-PT-HrD" firstAttribute="centerX" secondItem="OnH-WX-Z5n" secondAttribute="centerX" id="bB6-3g-kRV"/>
+                            <constraint firstItem="26Y-PT-HrD" firstAttribute="centerX" secondItem="mIL-tM-14H" secondAttribute="trailing" id="bQP-bv-LCw"/>
+                            <constraint firstItem="wcz-c5-eXs" firstAttribute="height" secondItem="mIL-tM-14H" secondAttribute="height" multiplier="1.2" id="gLw-L7-uXo"/>
+                            <constraint firstItem="wcz-c5-eXs" firstAttribute="leading" secondItem="EyQ-NT-PZM" secondAttribute="leading" id="hsk-wh-yaJ"/>
+                            <constraint firstAttribute="trailing" secondItem="wcz-c5-eXs" secondAttribute="trailing" id="lEg-A4-G7g"/>
                             <constraint firstAttribute="trailing" secondItem="26Y-PT-HrD" secondAttribute="trailing" constant="20" id="piC-gW-Pky"/>
+                            <constraint firstItem="kf5-yl-U2B" firstAttribute="top" secondItem="wcz-c5-eXs" secondAttribute="bottom" id="zVw-bM-kTg"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="blurImageView" destination="mIL-tM-14H" id="rxS-kq-bU6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYu-gh-yCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2400" y="566.25"/>
+            <point key="canvasLocation" x="-2400" y="566"/>
         </scene>
         <!--结算完成-->
         <scene sceneID="sLx-B5-6Wn">
@@ -8360,8 +8378,8 @@
         <image name="demo_head.jpg" width="200" height="200"/>
         <image name="entprise_login" width="61" height="88"/>
         <image name="entprise_login_selected" width="61" height="88"/>
-        <image name="hotline" width="66" height="83"/>
-        <image name="hotline_selected" width="66" height="83"/>
+        <image name="hotline" width="56" height="73"/>
+        <image name="hotline_selected" width="56" height="73"/>
         <image name="jiancefuwu" width="78" height="78"/>
         <image name="jishiPYS" width="78" height="78"/>
         <image name="left_back" width="40" height="40"/>
@@ -8397,14 +8415,14 @@
         <image name="segment_bg" width="1" height="48"/>
         <image name="segment_divider" width="1" height="48"/>
         <image name="select_chart_item" width="25" height="25"/>
-        <image name="shangchuan" width="66" height="83"/>
-        <image name="shangchuan_selected" width="66" height="83"/>
+        <image name="shangchuan" width="56" height="73"/>
+        <image name="shangchuan_selected" width="56" height="73"/>
         <image name="unselect_chart_item" width="25" height="25"/>
         <image name="yangzhubaodian" width="78" height="78"/>
         <image name="zhanhui" width="78" height="78"/>
         <image name="zhongzhucankao" width="78" height="78"/>
-        <image name="zixun" width="66" height="83"/>
-        <image name="zixun_selected" width="66" height="83"/>
+        <image name="zixun" width="56" height="73"/>
+        <image name="zixun_selected" width="56" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HLf-5M-Cx5"/>

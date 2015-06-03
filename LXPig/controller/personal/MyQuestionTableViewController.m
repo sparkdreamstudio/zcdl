@@ -123,7 +123,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary* dic = self.problemArray[indexPath.row];
-    return 130+[Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-30, NSIntegerMax) AndSystemFontSize:13].height;
+    return 137+[Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-30, NSIntegerMax) AndSystemFontSize:13].height;
 }
 
 

@@ -38,7 +38,7 @@ static UserManagerObject* singleton = nil;
 {
     self = [super init];
     if (self) {
-        self.userType = 0;
+        self.userType = -1;
         self.sessionid = @"";
     }
     return self;
@@ -111,6 +111,7 @@ static UserManagerObject* singleton = nil;
     self.sex = nil;
     self.userName = nil;
     self.sessionid = @"";
+    self.userType = -1;
     [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
 }
 

@@ -13,15 +13,21 @@
 #import "SlideViewController.h"
 #import "PostQuestionViewController.h"
 #import "NetWorkClient.h"
+#import "SettingViewController.h"
 @interface LXPigTabBarController ()
-
+@property (assign,nonatomic) BOOL selectHasNavigator;
+@property (assign,nonatomic) BOOL selectThirdDirect;
 @end
 
 @implementation LXPigTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.selectHasNavigator = NO;
+    self.selectThirdDirect = NO;
+    if (IOS_SYSTEM_VERSION >=8.0) {
+        self.navigationController.navigationBar.translucent = YES;
+    }
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_ORDER object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_SHOW_POST_QUESTION object:nil];
     for (int index = 0; index < self.viewControllers.count; ++index) {
@@ -144,6 +150,38 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
     NSInteger index = [tabBar.items indexOfObject:item];
+//    if (IOS_SYSTEM_VERSION >=8.0f) {
+//        SettingViewController* controller = [self.viewControllers objectAtIndex:3];
+//        if (index == 3) {
+//            
+//            if (self.selectHasNavigator == NO || controller.pushView == YES) {
+//                controller.topContraint.constant = 0;
+//                controller.topContraintHeight = 0;
+//                self.selectThirdDirect = YES;
+//            }
+//            else if (self.selectThirdDirect == NO && controller.pushView == NO)
+//            {
+//                controller.topContraint.constant = 44;
+//                controller.topContraintHeight = 44;
+//            }
+//        }
+//        else if (index == 0 || index == 4)
+//        {
+//            self.selectHasNavigator = NO;
+//            if(self.selectHasNavigator == YES)
+//            {
+//                self.selectThirdDirect = NO;
+//            }
+//            controller.pushView = NO;
+//        }
+//        else
+//        {
+//            if (self.selectHasNavigator == NO) {
+//                self.selectHasNavigator = YES;
+//            }
+//        }
+//        
+//    }
 }
 
 #pragma mark - Navigation

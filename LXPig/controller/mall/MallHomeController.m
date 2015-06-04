@@ -70,7 +70,7 @@
     
     [self getPicCode];
     
-    [self.headerBackView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36)];
+    [self.headerBackView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.44)];
     self.adImageView.imagePlayerViewDelegate = self;
     self.adImageView.hidePageControl = YES;
     [self startRefresh];

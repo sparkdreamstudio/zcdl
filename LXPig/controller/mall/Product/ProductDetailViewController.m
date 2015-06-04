@@ -142,9 +142,16 @@
 //    } failure:^(NSString *message) {
 //        [weakself dismissHUD:hud WithErrorString:message];
 //    }];
-    ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
-    controller.qianGouProduct =self.info;
-    [self.navigationController pushViewController:controller animated:YES];
+    if ([[UserManagerObject shareInstance]userType]==-1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
+    }
+    else
+    {
+        ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
+        controller.qianGouProduct =self.info;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
     
 }
 
@@ -161,9 +168,16 @@
 
 -(IBAction)buyImmediatelyBtnClick:(id)sender
 {
-    ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
-    controller.qianGouProduct =self.info;
-    [self.navigationController pushViewController:controller animated:YES];
+    if ([[UserManagerObject shareInstance]userType]==-1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
+    }
+    else
+    {
+        ConfirmOrdViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrdViewController"];
+        controller.qianGouProduct =self.info;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 #pragma mark - Navigation

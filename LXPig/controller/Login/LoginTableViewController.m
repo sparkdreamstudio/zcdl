@@ -36,6 +36,8 @@
 @property (weak,nonatomic) IBOutlet UIButton* iphone4PersonalSign;
 @property (weak,nonatomic) IBOutlet UIButton* iphone4SignUp;
 @property (weak,nonatomic) IBOutlet UIButton* iphone4ForgetBtn;
+@property (weak,nonatomic) IBOutlet UIImageView* titleImageView;
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint* titleTop;
 @end
 
 @implementation LoginTableViewController
@@ -51,12 +53,16 @@
     self.passwordInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"输入密码" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [imageView setImage:[UIImage imageNamed:@"login_bg.jpg"]];
-    UIImageView* title = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-166)/2, 75, 166, 106)];
+//    UIImageView* title = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-166)/2, 75, 166, 106)];
+//    if (SCREEN_HEIGHT == 480) {
+//        title.frame  = CGRectMake((SCREEN_WIDTH-166)/2, 50, 166, 106);
+//    }
+//    [title setImage:[UIImage imageNamed:@"login_title"]];
+//    [imageView addSubview:title];
     if (SCREEN_HEIGHT == 480) {
-        title.frame  = CGRectMake((SCREEN_WIDTH-166)/2, 50, 166, 106);
+        self.titleImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        self.titleTop.constant = 50;
     }
-    [title setImage:[UIImage imageNamed:@"login_title"]];
-    [imageView addSubview:title];
     [self.tableView setBackgroundView:imageView];
     
     self.passwordBgView.layer.masksToBounds = YES;
@@ -258,8 +264,8 @@
     switch (section) {
         case 0:
         {
-
-            return self.view.bounds.size.height * (546.f/1334.f)-40;
+            return 0;
+//            return self.view.bounds.size.height * (546.f/1334.f)-40;
 
         }
             
@@ -290,7 +296,7 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 100;
+            return 100 + self.view.bounds.size.height * (546.f/1334.f)-40;
         case 1:
             return 45;
         case 2:

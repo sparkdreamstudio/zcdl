@@ -43,10 +43,8 @@
                                                   NSFontAttributeName: [UIFont systemFontOfSize:13]
                                                   }
                                        forState:UIControlStateSelected];
-    if ([[UserManagerObject shareInstance]userType]==0) {
-        UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithTitle:@"提问" style:UIBarButtonItemStylePlain target:self action:@selector(showPostQestion:)];
-        self.navigationItem.rightBarButtonItem = item;
-    }
+    UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithTitle:@"提问" style:UIBarButtonItemStylePlain target:self action:@selector(showPostQestion:)];
+    self.navigationItem.rightBarButtonItem = item;
     
     [[NetWorkClient shareInstance]postUrl:SERVICE_CODESERVICE With:@{@"action":@"listByParentId",@"parentId":@"4"} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.qAndAType = [responseObj objectForKey:@"data"];
@@ -60,14 +58,15 @@
 {
     [super viewWillAppear:animated];
     
-    if([[UserManagerObject shareInstance]userType]==0)
-    {
+    if ([[UserManagerObject shareInstance]userType]!=2 && [[UserManagerObject shareInstance]userType]!=2) {
+        
         self.tabBarController.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
     }
     else
     {
         self.tabBarController.navigationItem.rightBarButtonItem = nil;
     }
+    
     self.tabBarController.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem;
     self.tabBarController.title = self.title;
 }
@@ -81,9 +80,16 @@
 
 -(void)showPostQestion:(id)sender
 {
-    PostQuestionViewController* controller = [[PostQuestionViewController alloc]initWithNibName:@"PostQuestionViewController" bundle:nil];
-    controller.qAndAType = self.qAndAType;
-    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    if ([[UserManagerObject shareInstance]userType]==-1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
+    }
+    else
+    {
+        PostQuestionViewController* controller = [[PostQuestionViewController alloc]initWithNibName:@"PostQuestionViewController" bundle:nil];
+        controller.qAndAType = self.qAndAType;
+        [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 -(IBAction)showTypeTable

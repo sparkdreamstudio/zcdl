@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.userType = -1;
+    self.userType = -2;
     [self loadPersonView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadPersonView:) name:NTF_LOGIN_OK object:nil];
 }

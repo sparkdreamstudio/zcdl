@@ -20,19 +20,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    if (IOS_SYSTEM_VERSION < 8.0f) {
+        self.topContraint.constant = 20;
+    }
     // Do any additional setup after loading the view.
-    if(IOS_SYSTEM_VERSION >= 8.f)
-    {
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-    }
-    else
-    {
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:44]];
-    }
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_scrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_scrollView)]];
-    
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+//    if(IOS_SYSTEM_VERSION >= 8.f)
+//    {
+//        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+//        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+//    }
+//    else
+//    {
+//        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:44]];
+//    }
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_scrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_scrollView)]];
+//    
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -43,8 +47,9 @@
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
     self.tabBarController.navigationItem.leftBarButtonItem = nil;
     self.tabBarController.title = @"工具";
+    
+    [self.tabBarController.navigationController.view setNeedsLayout];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

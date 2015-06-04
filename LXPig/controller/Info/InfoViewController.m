@@ -146,6 +146,9 @@
     }
     
     self.segmentedControll = [[UISegmentedControl alloc]initWithItems:array];
+    if (array.count > 0) {
+        self.segmentedControll.selectedSegmentIndex = 0;
+    }
     [self.segmentedControll addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControll setBackgroundImage:[UIImage imageNamed:@"segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.segmentedControll setBackgroundImage:[UIImage imageNamed:@"segment_bg"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];

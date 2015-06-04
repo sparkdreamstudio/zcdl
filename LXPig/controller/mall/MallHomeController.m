@@ -307,7 +307,7 @@
     if (tableView == self.tableView) {
         UIView* headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_HEIGHT, 44)];
         UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, SCREEN_WIDTH/4, 44);
+        button.frame = CGRectMake(0, 0, SCREEN_WIDTH/4+1, 44);
         [button setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [button setTitle:@"种猪企业" forState:UIControlStateNormal];
@@ -318,7 +318,7 @@
         [headerView addSubview:button];
         
         self.pingZhongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4, 44);
+        self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4+1, 44);
         [self.pingZhongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
@@ -339,7 +339,7 @@
         [headerView addSubview:self.pingZhongBtn];
         
         self.paiHangBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.paiHangBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/4, 44);
+        self.paiHangBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/4+1, 44);
         [self.paiHangBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
@@ -360,7 +360,7 @@
         [headerView addSubview:self.paiHangBtn];
         
         self.huodongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.huodongBtn.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 44);
+        self.huodongBtn.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4+1, 44);
         [self.huodongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
@@ -629,7 +629,7 @@
     CGRect orginRect = [viewbtn convertRect:viewbtn.frame toView:self.view];
     CGFloat topheight = orginRect.origin.y;
     CGFloat bottomY = orginRect.origin.y+orginRect.size.height;
-    CGFloat bottomHeight = self.view.frame.size.height-(orginRect.origin.y+orginRect.size.height);
+    CGFloat bottomHeight = self.view.frame.size.height;
     self.topHideBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.topHideBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, orginRect.origin.y);
     [self.topHideBtn addTarget:self action:@selector(hideBtnClick:) forControlEvents:UIControlEventTouchUpInside];

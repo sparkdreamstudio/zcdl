@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LXPig/controller/set/SettingViewController.m"
-            timestampString = "454930963.76671"
+            filePath = "LXPig/controller/order/AddServiceViewController.m"
+            timestampString = "455014254.059078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-addService:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

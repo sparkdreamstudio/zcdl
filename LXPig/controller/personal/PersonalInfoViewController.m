@@ -134,10 +134,13 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
+    UIView* hud = [self showNormalHudNoDimissWithString:@"正在上传"];
     [[UserManagerObject shareInstance]changeHeadImage:[Utils imageWithImage:[info objectForKey:UIImagePickerControllerOriginalImage] scaledToSize:CGSizeMake(100, 100)] Success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self.tableView reloadData];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[[UserManagerObject shareInstance]photoFile]] placeholderImage:[UIImage imageNamed:@"user_default"]];
+        [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        
+        [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
     }];
 }
 

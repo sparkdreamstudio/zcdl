@@ -131,7 +131,7 @@ static UserManagerObject* singleton = nil;
     self.regTime = [dic objectForKey:@"regTime"];
     self.sex = [dic objectForKey:@"sex"];
     self.userName = [dic objectForKey:@"userName"];
-    if([dic objectForKey:@"sessionid"])
+    if([dic objectForKey:@"sessionid"]&&[[dic objectForKey:@"sessionid"] length] > 0)
     {
         self.sessionid = [dic objectForKey:@"sessionid"];
     }

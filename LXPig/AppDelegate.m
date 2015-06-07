@@ -53,16 +53,11 @@
         UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = [storyboad instantiateInitialViewController];
         self.mainController = (SlideViewController*)self.window.rootViewController;
+        
         [self.window bringSubviewToFront:launchView];
-        POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-        animation.toValue = @(0);
-        animation.duration = 1;
-        [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
-            if (finished) {
-                [launchView removeFromSuperview];
-            }
-        }];
-        [launchView pop_addAnimation:animation forKey:@"launchView"];
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
+        launchView.userInteractionEnabled = YES;
+        [launchView addGestureRecognizer:tap];
     }];
 
     return YES;
@@ -93,6 +88,21 @@
 -(void)initModel
 {
     [NetWorkClient shareInstance];
+}
+
+-(void)tapGesture:(UITapGestureRecognizer*)tap
+{
+    UIView* view = tap.view;
+    [view removeGestureRecognizer:tap];
+    POPBasicAnimation* animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    animation.toValue = @(0);
+    animation.duration = 1;
+    [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+        if (finished) {
+            [view removeFromSuperview];
+        }
+    }];
+    [view pop_addAnimation:animation forKey:@"launchView"];
 }
 
 -(void)setApperanceAndFlatWithIos6

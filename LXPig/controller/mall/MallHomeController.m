@@ -84,12 +84,7 @@
     tablebackView.backgroundColor = [UIColor colorWithRed:0xe6/255.f green:0xe6/255.f blue:0xe6/255.f alpha:1];
     [self.tableView setBackgroundView:tablebackView];
     
-    [[NetWorkClient shareInstance]postUrl:SERVICE_AD With:@{@"action":@"advlist",@"type":@"1"} success:^(NSDictionary *responseObj, NSString *timeSp) {
-        self.adArray = [responseObj objectForKey:@"data"];
-        [self.adImageView reloadData];
-    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        
-    }];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -219,6 +214,12 @@
 
 -(void)pullRfresh
 {
+    [[NetWorkClient shareInstance]postUrl:SERVICE_AD With:@{@"action":@"advlist",@"type":@"1"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        self.adArray = [responseObj objectForKey:@"data"];
+        [self.adImageView reloadData];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        
+    }];
     [self.productInfoList refreshProductWithSearchKeyWord:_keyWord enterpriseId:_enterpriseId codeId:_codeId orderList:_orderList];
 }
 

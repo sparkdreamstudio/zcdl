@@ -164,8 +164,15 @@
     }
     else
     {
+        if ([[self.commentArray[indexPath.row - 1] valueForKey: @"replyContent"] length] > 0) {
+            return 123+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height + [Utils getSizeOfString:[NSString stringWithFormat:@"【客服回复】%@",[self.commentArray[indexPath.row - 1] valueForKey: @"replyContent"]] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:12].height;
+        }
+        else
+        {
+            return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height;
+        }
 //<<<<<<< Updated upstream
-        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height;
+        
 //=======
 //        return 110+[Utils getSizeOfString:[self.commentArray[indexPath.row - 1] valueForKey: @"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:14].height;
 //>>>>>>> Stashed changes
@@ -195,6 +202,18 @@
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[dic[@"members"] objectForKey:@"photoPath"]] placeholderImage:[UIImage imageNamed:@"user_default"]];
         cell.date.text = dic[@"date"];
         cell.comment.text = dic[@"content"];
+        cell.commentHeight.constant = [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height;
+        if ([dic[@"replyContent"] length] > 0) {
+            cell.replyContent.text = [NSString stringWithFormat:@"【客服回复】%@",dic[@"replyContent"]];
+            cell.replyContentHeight.constant = [Utils getSizeOfString:[NSString stringWithFormat:@"【客服回复】%@",dic[@"replyContent"]] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:12].height;
+            cell.seperatorHeight.constant = 13;
+        }
+        else
+        {
+            cell.replyContent.text = @"";
+            cell.replyContentHeight.constant = 0;
+            cell.seperatorHeight.constant = 0;
+        }
         NSInteger star = [dic[@"star"] integerValue];
         for (int i = 0; i < 5; i++) {
             switch (i) {

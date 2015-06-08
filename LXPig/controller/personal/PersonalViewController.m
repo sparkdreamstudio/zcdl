@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel* unReadLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIButton* logOutBtn;
+@property (weak, nonatomic) IBOutlet UIButton* jifenBtn;
 @property (strong, nonatomic) NSArray* adArray;
 
 @end
@@ -63,7 +64,20 @@
     }
     else
     {
-        self.userName.text = [[UserManagerObject shareInstance]userName];
+       self.userName.text = [[UserManagerObject shareInstance]userName];
+    }
+    
+    if ([[UserManagerObject shareInstance] userType] == 0) {
+        NSString * integralString = [NSString stringWithFormat:@"%ld",[[UserManagerObject shareInstance] integral]];
+        NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"当前积分：%@分",integralString]];
+        [AttributedStr addAttribute:NSFontAttributeName
+                              value:[UIFont systemFontOfSize:13.0]
+                              range:NSMakeRange(5, integralString.length)];
+        
+        [AttributedStr addAttribute:NSForegroundColorAttributeName
+                              value:NavigationBarColor
+                              range:NSMakeRange(5, integralString.length)];
+        [self.jifenBtn setAttributedTitle:AttributedStr forState:UIControlStateNormal];
     }
     
     [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"total",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -92,6 +106,11 @@
     }
     
 }
+-(IBAction)jifenClick:(id)sender
+{
+    [self showNormalHudDimissWithString:@"积分兑换活动即将推出，敬请关注！"];
+}
+
 -(IBAction)logOut:(id)sender
 {
     [[UserManagerObject shareInstance]logOut];

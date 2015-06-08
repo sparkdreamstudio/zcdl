@@ -19,5 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *comment;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *pigclass;
-
+@property (weak, nonatomic) IBOutlet UILabel *replyContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* commentHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* replyContentHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* seperatorHeight;
 @end

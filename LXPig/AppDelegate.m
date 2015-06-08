@@ -45,21 +45,19 @@
     [self.window addSubview:launchView];
     [self.window bringSubviewToFront:launchView];
     [[UserManagerObject shareInstance] autoLoginResult:^(BOOL islogin) {
-        
         if (islogin && [[UserManagerObject shareInstance]userType]==0) {
             [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
             [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         }
-        UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.window.rootViewController = [storyboad instantiateInitialViewController];
-        self.mainController = (SlideViewController*)self.window.rootViewController;
-        
-        [self.window bringSubviewToFront:launchView];
-        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
-        launchView.userInteractionEnabled = YES;
-        [launchView addGestureRecognizer:tap];
     }];
-
+    UIStoryboard* storyboad = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.window.rootViewController = [storyboad instantiateInitialViewController];
+    self.mainController = (SlideViewController*)self.window.rootViewController;
+    
+    [self.window bringSubviewToFront:launchView];
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
+    launchView.userInteractionEnabled = YES;
+    [launchView addGestureRecognizer:tap];
     return YES;
 }
 

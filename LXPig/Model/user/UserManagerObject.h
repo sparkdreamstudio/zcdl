@@ -27,6 +27,7 @@
 @property (strong,nonatomic) NSString* sessionid;
 @property (strong,nonatomic) NSString* password;
 @property (assign,nonatomic) NSInteger userType;
+//@property (assign,nonatomic) NSInteger integral;
 
 
 +(id)shareInstance;

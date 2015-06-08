@@ -112,6 +112,7 @@ static UserManagerObject* singleton = nil;
     self.userName = nil;
     self.sessionid = @"";
     self.userType = -1;
+    self.integral = 0;
     [[NSNotificationCenter defaultCenter]postNotificationName:NTF_SHOW_LOGIN object:nil];
 }
 

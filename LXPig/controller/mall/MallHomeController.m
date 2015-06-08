@@ -307,7 +307,7 @@
     if (tableView == self.tableView) {
         UIView* headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_HEIGHT, 44)];
         UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, SCREEN_WIDTH/4+1, 44);
+        button.frame = CGRectMake(0, 0, SCREEN_WIDTH/4, 44);
         [button setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [button setTitle:@"种猪企业" forState:UIControlStateNormal];
@@ -316,9 +316,11 @@
         button.tag = 1;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:button];
-        
+        UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4, 0, 1, 44)];
+        imageView.image = [UIImage imageNamed:@"segment_divider"];
+        [headerView addSubview:imageView];
         self.pingZhongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4+1, 44);
+        self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4, 44);
         [self.pingZhongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.pingZhongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
@@ -337,9 +339,13 @@
         [self.pingZhongBtn setSelected:showMenus == 2?YES:NO];
         [self.pingZhongBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:self.pingZhongBtn];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 0, 1, 44)];
+        imageView.image = [UIImage imageNamed:@"segment_divider"];
+        [headerView addSubview:imageView];
+        
         
         self.paiHangBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.paiHangBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/4+1, 44);
+        self.paiHangBtn.frame = CGRectMake(SCREEN_WIDTH/2+1, 0, SCREEN_WIDTH/4, 44);
         [self.paiHangBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.paiHangBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];
@@ -358,9 +364,13 @@
         self.paiHangBtn.tag = 3;
         [self.paiHangBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:self.paiHangBtn];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4*3, 0, 1, 44)];
+        imageView.image = [UIImage imageNamed:@"segment_divider"];
+        [headerView addSubview:imageView];
+        
         
         self.huodongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.huodongBtn.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4+1, 44);
+        self.huodongBtn.frame = CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 44);
         [self.huodongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
         [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_normal"] forState:UIControlStateNormal];
         [self.huodongBtn setImage:[UIImage imageNamed:@"mall_main_menu_selected"] forState:UIControlStateSelected];

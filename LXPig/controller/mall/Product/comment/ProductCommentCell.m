@@ -14,7 +14,9 @@
     // Initialization code
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 25;
+    self.replyContent.numberOfLines = 0;
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

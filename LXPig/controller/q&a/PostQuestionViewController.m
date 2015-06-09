@@ -42,7 +42,7 @@ bool gMark = false;
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapDismissKeyboard:)];
     [self.view addGestureRecognizer:gesture];
     
-    self.textView.text = @"请输入服务内容...";
+    self.textView.text = @"请输入服务反馈...";
     self.textView.delegate = self;
 }
 
@@ -83,7 +83,7 @@ bool gMark = false;
 
 #pragma mark - UITextViewDelegate Method
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    if ([self.textView.text  isEqual: @"请输入服务内容..."]) {
+    if ([self.textView.text  isEqual: @"请输入服务反馈..."]) {
         self.textView.text = @"";
         self.textView.textColor = [UIColor blackColor];
     }
@@ -93,7 +93,7 @@ bool gMark = false;
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
     if ([self.textView.text  isEqual: @""]) {
         self.textView.textColor = [UIColor colorWithRed:156.0/255.0f green:156.0/255.0f blue:156.0/255.0f alpha:1.000];
-        self.textView.text = @"请请输入服务内容...";
+        self.textView.text = @"请输入服务反馈...";
     }
     return YES;
 }

@@ -80,12 +80,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return self.messagesArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 62;
+    NSDictionary* message = self.messagesArray[indexPath.row];
+    return [Utils getSizeOfString:[message objectForKey:@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-22, NSIntegerMax) AndSystemFontSize:13].height+46;
+//    return 62;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,7 +111,7 @@
         UILabel* label = (UILabel*)[cell.contentView viewWithTag:1];
         label.text = [message objectForKey:@"createTime"];
         label = (UILabel*)[cell.contentView viewWithTag:2];
-        label.text = [message objectForKey:@"createTime"];
+        label.text = [message objectForKey:@"content"];
         return cell;
     }
     

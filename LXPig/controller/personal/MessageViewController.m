@@ -10,8 +10,9 @@
 #import "NetWorkClient.h"
 #import "MessageDetailViewController.h"
 #import "UserManagerObject.h"
-
-@interface MessageViewController ()
+#import "MessageTableViewCell.h"
+#import "NetWorkClient.h"
+@interface MessageViewController ()<MessageTableViewCellDelegate>
 @property (strong,nonatomic) NSMutableArray* messagesArray;
 @property (assign,nonatomic) NSInteger currentPage;
 @end
@@ -44,7 +45,7 @@
     _currentPage = 1;
     [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"pageSize":@"20",@"currentPageNo":[NSNumber numberWithInteger:_currentPage]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopPull];
-        self.messagesArray = [responseObj objectForKey:@"data"];
+        self.messagesArray = [NSMutableArray arrayWithArray:[responseObj objectForKey:@"data"]];
         if (self.messagesArray.count < 20) {
             [self setInfinitScorllHidden:YES];
         }
@@ -64,7 +65,7 @@
     [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"pageSize":@"20",@"currentPageNo":[NSNumber numberWithInteger:_currentPage]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopInfinitScorll];
         NSArray* array = [responseObj objectForKey:@"data"];
-        [self.messagesArray addObjectsFromArray:array];
+        [self.messagesArray addObjectsFromArray:[NSMutableArray arrayWithArray:[responseObj objectForKey:@"data"]]];
         if (array.count < 20) {
             [self setInfinitScorllHidden:YES];
         }
@@ -95,23 +96,16 @@
 {
     NSDictionary* message = self.messagesArray[indexPath.row];
     if ([[message objectForKey:@"isRead"] integerValue]==0) {
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
-        UIView* unreadView = [cell.contentView viewWithTag:3];
-        unreadView.layer.masksToBounds = YES;
-        unreadView.layer.cornerRadius = 5;
-        UILabel* label = (UILabel*)[cell.contentView viewWithTag:1];
-        label.text = [message objectForKey:@"createTime"];
-        label = (UILabel*)[cell.contentView viewWithTag:2];
-        label.text = [message objectForKey:@"content"];
+        MessageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell0" forIndexPath:indexPath];
+        [cell loadData:message];
+        cell.delegate = self;
         return cell;
     }
     else
     {
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
-        UILabel* label = (UILabel*)[cell.contentView viewWithTag:1];
-        label.text = [message objectForKey:@"createTime"];
-        label = (UILabel*)[cell.contentView viewWithTag:2];
-        label.text = [message objectForKey:@"content"];
+        MessageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
+        [cell loadData:message];
+        cell.delegate = self;
         return cell;
     }
     
@@ -119,6 +113,22 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"message_detail" sender:self.messagesArray[indexPath.row]];
+}
+
+-(void)messageTableViewCellDelete:(MessageTableViewCell *)cell
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSDictionary* message = self.messagesArray[indexPath.row];
+    UIView* hud = [self showNormalHudNoDimissWithString:@"正在删除消息"];
+    [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"delete",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"id":[message objectForKey:@"id"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self.messagesArray removeObject:message];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+        [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];
+    }];
 }
 #pragma mark - Navigation
 

@@ -61,7 +61,7 @@
 
 -(void)infinitScorll
 {
-    _currentPage = 1;
+    _currentPage++;
     [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"list",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"pageSize":@"20",@"currentPageNo":[NSNumber numberWithInteger:_currentPage]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         [self stopInfinitScorll];
         NSArray* array = [responseObj objectForKey:@"data"];
@@ -125,6 +125,7 @@
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView endUpdates];
+        [self setInfinitScorllHidden:[self showInfinitScorll]];
         [self dismissHUD:hud WithSuccessString:[responseObj objectForKey:@"message"]];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         [self dismissHUD:hud WithErrorString:[responseObj objectForKey:@"message"]];

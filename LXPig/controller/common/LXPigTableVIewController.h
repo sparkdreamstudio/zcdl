@@ -27,4 +27,5 @@
 -(void)startRefresh;
 -(void)setPullViewHidden:(BOOL)hidden;
 -(void)setInfinitScorllHidden:(BOOL)hidden;
+-(BOOL)showInfinitScorll;
 @end

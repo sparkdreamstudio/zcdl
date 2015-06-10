@@ -17,6 +17,8 @@
 @property (weak,nonatomic) IBOutlet UILabel* result2;
 @property (weak,nonatomic) IBOutlet UILabel* result3;
 @property (weak,nonatomic) IBOutlet UILabel* result4;
+
+@property (weak,nonatomic) IBOutlet UILabel* changeLabel;
 @end
 
 @implementation PSYResultViewController
@@ -29,12 +31,12 @@
     }
     [self addBackButton];
     self.title = @"您的计算结果";
-    self.result1.text = [NSString stringWithFormat:@"%ld",(long)self.r1];
-    self.result2.text = [NSString stringWithFormat:@"%ld",(long)self.r2];
-    self.result3.text = [NSString stringWithFormat:@"%.1f%%",self.r3*100];
-    self.result4.text = [NSString stringWithFormat:@"%ld",(long)self.r4];
+    self.result1.text = [NSString stringWithFormat:@"%.2f",self.r1];
+    self.result2.text = [NSString stringWithFormat:@"%.2f",self.r2];
+    self.result3.text = [NSString stringWithFormat:@"%.2f%%",self.r3*100];
+    self.result4.text = [NSString stringWithFormat:@"%.2f",self.r4];
     self.upOne.hidden = self.r1>=12;
-    self.upTwo.hidden = self.r2>=40;
+    self.upTwo.hidden = self.r2<40;
     self.upThree.hidden = self.r3>=0.96;
     self.upOne.layer.masksToBounds = YES;
     self.upOne.layer.cornerRadius = 3;
@@ -42,6 +44,13 @@
     self.upTwo.layer.cornerRadius = 3;
     self.upThree.layer.masksToBounds = YES;
     self.upThree.layer.cornerRadius = 3;
+    if (SCREEN_WIDTH == 320) {
+        self.changeLabel.font = [UIFont systemFontOfSize:9];
+    }
+    else
+    {
+        self.changeLabel.font = [UIFont systemFontOfSize:12];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -154,9 +154,9 @@
             break;
     }
     CGFloat result1 = ((CGFloat)param2)/((CGFloat)param3);
-    CGFloat result2 = 365.f/(((CGFloat)param3*count)/((CGFloat)param1))-114-25;
+    CGFloat result2 = 365.f/(((CGFloat)param3)/((CGFloat)param1))-114-25;
     CGFloat result3 = ((CGFloat)param4)/((CGFloat)param2);
-    CGFloat result4 = ((CGFloat)param3*count)/((CGFloat)param1)*result1*result3;
+    CGFloat result4 = ((CGFloat)param3)/((CGFloat)param1)*result1*result3;
     PSYResultViewController* controller = [[PSYResultViewController alloc]initWithNibName:@"PSYResultViewController" bundle:nil];
     controller.r1 = result1;
     controller.r2 = result2;

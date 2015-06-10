@@ -39,12 +39,22 @@
     
     self.emptyLabel = [[UILabel alloc]init];
     self.emptyLabel.textColor = HEXCOLOR(@"848484");
-    self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.emptyLabel.textAlignment = NSTextAlignmentCenter;
     self.emptyLabel.text = @"暂无数据";
     [self.view addSubview:self.emptyLabel];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterY multiplier:2 constant:0]];
+
     self.emptyLabel.hidden = YES;
+    
+    if(IOS_SYSTEM_VERSION >= 8.0f)
+    {
+        self.emptyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.emptyLabel attribute:NSLayoutAttributeCenterY multiplier:2 constant:0]];
+    }
+    else{
+        self.emptyLabel.frame = CGRectMake(0, 0, 100, 44);
+        self.emptyLabel.center = CGPointMake(160, 120);
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

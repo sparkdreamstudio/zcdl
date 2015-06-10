@@ -129,7 +129,10 @@
 {
     [self.tableView setShowsInfiniteScrolling:!hidden];
 }
-
+-(BOOL)showInfinitScorll
+{
+    return [self.tableView showsInfiniteScrolling];
+}
 
 
 @end

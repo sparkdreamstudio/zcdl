@@ -317,9 +317,10 @@
         button.tag = 1;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:button];
-        UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4, 0, 1, 44)];
+        UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4-1, 0, 1, 44)];
         imageView.image = [UIImage imageNamed:@"segment_divider"];
         [headerView addSubview:imageView];
+        
         self.pingZhongBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.pingZhongBtn.frame = CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4, 44);
         [self.pingZhongBtn setBackgroundImage:[UIImage imageNamed:@"mall_tab_bg"] forState:UIControlStateNormal];
@@ -365,7 +366,7 @@
         self.paiHangBtn.tag = 3;
         [self.paiHangBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:self.paiHangBtn];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4*3, 0, 1, 44)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4*3-1, 0, 1, 44)];
         imageView.image = [UIImage imageNamed:@"segment_divider"];
         [headerView addSubview:imageView];
         

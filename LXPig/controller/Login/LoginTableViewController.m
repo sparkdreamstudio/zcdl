@@ -44,6 +44,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(10, 20, 44, 44);
+    [button setImage:[UIImage imageNamed:BackButtomImageName] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(dismissSelf:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
     self.personalLogin = YES;
     self.userNameInput.tintColor = [UIColor whiteColor];
     self.userNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"手机号即为会员号" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
@@ -53,12 +60,7 @@
     self.passwordInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"输入密码" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [imageView setImage:[UIImage imageNamed:@"login_bg.jpg"]];
-//    UIImageView* title = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-166)/2, 75, 166, 106)];
-//    if (SCREEN_HEIGHT == 480) {
-//        title.frame  = CGRectMake((SCREEN_WIDTH-166)/2, 50, 166, 106);
-//    }
-//    [title setImage:[UIImage imageNamed:@"login_title"]];
-//    [imageView addSubview:title];
+
     if (SCREEN_HEIGHT == 480) {
         self.titleImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
         self.titleTop.constant = 50;
@@ -233,6 +235,11 @@
     }
 }
 
+-(void)dismissSelf:(UIButton*)btn
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NTF_DISMISS_LOGIN object:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark jgpogress delegate
 -(void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view

@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_TIMEOUT object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_LOGIN_OK object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showRightMenu:) name:NTF_SHOW_RIGHT_MENU object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(processNtf:) name:NTF_DISMISS_LOGIN object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,6 +80,10 @@ typedef NS_ENUM(NSUInteger, SlideViewState) {
             [[PigCart shareInstance] refreshCartListSuccess:nil failure:nil];
             [[AddressManager shareInstance]getAddressArraySuccess:nil failure:nil];
         }
+    }
+    else if ([ntf.name isEqualToString:NTF_DISMISS_LOGIN])
+    {
+        self.showLoginController = NO;
     }
     
 }

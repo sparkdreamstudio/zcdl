@@ -20,35 +20,55 @@
 @property (strong,nonatomic)NSMutableArray* controllerArray;
 @property (strong,nonatomic)NSMutableArray* infoArray;
 @property (strong,nonatomic)NSLayoutConstraint* topScrollHeightConstraint;
+
+@property (strong,nonatomic) UIButton* reloadButton;
+@property (strong,nonatomic) ImagePlayerView* playerView;
+@property (strong,nonatomic) UIImageView* topScrollBackImageView;
 @end
 
 @implementation InfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ImagePlayerView* playerView = [[ImagePlayerView alloc]init];
-    playerView.translatesAutoresizingMaskIntoConstraints = NO;
-    playerView.imagePlayerViewDelegate = self;
-    [self.view addSubview:playerView];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[playerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(playerView)]];
+    
+    self.reloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.reloadButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.reloadButton addTarget:self action:@selector(reloadButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.reloadButton.layer.masksToBounds = YES;
+    self.reloadButton.layer.cornerRadius = 4;
+    [self.reloadButton setBackgroundColor:NavigationBarColor];
+    [self.reloadButton setTitle:@"重新加载" forState:UIControlStateNormal];
+    [self.reloadButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    self.reloadButton.hidden = YES;
+    [self.view addSubview:self.reloadButton];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.reloadButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.reloadButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:44]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.reloadButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.reloadButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    
+    self.playerView = [[ImagePlayerView alloc]init];
+    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.playerView.imagePlayerViewDelegate = self;
+    [self.view addSubview:self.playerView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_playerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_playerView)]];
     if (IOS_SYSTEM_VERSION<8.0) {
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:44]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:44]];
     }
     else
     {
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     }
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:SCREEN_WIDTH*0.36]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:SCREEN_WIDTH*0.36]];
     self.controllerArray = [NSMutableArray array];
     
-    UIImageView *imageView = [[UIImageView alloc]init];
-    imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    imageView.image = [[UIImage imageNamed:@"segment_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.view addSubview:imageView];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
+    self.topScrollBackImageView = [[UIImageView alloc]init];
+    self.topScrollBackImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.topScrollBackImageView.image = [[UIImage imageNamed:@"segment_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.view addSubview:self.topScrollBackImageView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topScrollBackImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_topScrollBackImageView)]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollBackImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollBackImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
     
     
     self.topScrollView = [[UIScrollView alloc]init];
@@ -58,7 +78,7 @@
     self.topScrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.topScrollView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topScrollView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_topScrollView)]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.playerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:48]];
     
     self.newsScrollView = [[UIScrollView alloc]init];
@@ -74,7 +94,7 @@
     
     [[NetWorkClient shareInstance]postUrl:SERVICE_WEBNEWS With:@{@"action":@"list",} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.infoArray = [responseObj objectForKey:@"data"];
-        [playerView reloadData];
+        [self.playerView reloadData];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
 
     }];
@@ -126,9 +146,33 @@
     {
         params = @{@"action":@"list"};
     }
+    UIView* hud = [self showNormalHudNoDimissWithString:@"加载新闻列表"];
     [[NetWorkClient shareInstance]postUrl:SERVICE_FOCUSNEWS With:params success:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self dismissHUD:hud];
         self.newsView = [responseObj objectForKey:@"data"];
         [self loadNewsView];
+        self.playerView.hidden = NO;
+        self.topScrollView.hidden = NO;
+        self.newsScrollView.hidden = NO;
+        self.topScrollBackImageView.hidden = NO;
+        self.reloadButton.hidden = YES;
+    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+        [self dismissHUD:hud WithErrorString:@"加载失败"];
+        self.playerView.hidden = YES;
+        self.topScrollView.hidden = YES;
+        self.newsScrollView.hidden = YES;
+        self.topScrollBackImageView.hidden =YES;
+        self.reloadButton.hidden = NO;
+    }];
+}
+
+-(void)reloadButtonClick:(UIButton*)button
+{
+    [self loadNews];
+    
+    [[NetWorkClient shareInstance]postUrl:SERVICE_WEBNEWS With:@{@"action":@"list",} success:^(NSDictionary *responseObj, NSString *timeSp) {
+        self.infoArray = [responseObj objectForKey:@"data"];
+        [self.playerView reloadData];
     } failure:^(NSDictionary *responseObj, NSString *timeSp) {
         
     }];

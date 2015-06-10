@@ -78,13 +78,15 @@
                               value:NavigationBarColor
                               range:NSMakeRange(5, integralString.length)];
         [self.jifenBtn setAttributedTitle:AttributedStr forState:UIControlStateNormal];
+        
+        [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"total",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
+            self.unReadLabel.text = [NSString stringWithFormat:@"%@条未读",[[responseObj objectForKey:@"data"]objectForKey:@"cnt"]];
+        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+            
+        }];
     }
     
-    [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"total",@"sessionid":[[UserManagerObject shareInstance]sessionid]} success:^(NSDictionary *responseObj, NSString *timeSp) {
-        self.unReadLabel.text = [NSString stringWithFormat:@"%@条未读",[[responseObj objectForKey:@"data"]objectForKey:@"cnt"]];
-    } failure:^(NSDictionary *responseObj, NSString *timeSp) {
-        
-    }];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

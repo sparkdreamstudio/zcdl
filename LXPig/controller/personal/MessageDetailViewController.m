@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
+    self.time.text = @"";
+    self.content.text = @"";
     [[NetWorkClient shareInstance]postUrl:SERVICE_MESSAGE With:@{@"action":@"view",@"sessionid":[[UserManagerObject shareInstance]sessionid],@"id":self.message[@"id"]} success:^(NSDictionary *responseObj, NSString *timeSp) {
         NSDictionary* data= [responseObj objectForKey:@"data"];
         self.time.text = data[@"createTime"];

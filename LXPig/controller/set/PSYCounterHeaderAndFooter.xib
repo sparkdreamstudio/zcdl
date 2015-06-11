@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-b0-dmE">
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-b0-dmE">
                     <rect key="frame" x="12" y="20" width="351" height="130"/>
                     <string key="text">PYS---母猪每年提供断奶仔猪头数，是衡量猪场的管理水平和盈利能力的一个关键指标。随着养猪的发展进步，品种的改良，配种进步和饲养管理水平的提高，良种母猪的平均窝仔数已经达到了较高的水平（12头左右），但在养猪过程中，发现很多猪场母猪难产、产程过长等情况非常普通，产死胎率明显偏高，达到10%以上，部分严重的猪场达到30%，这就大大影响了母猪应有的生产力，提高了肥猪的单位成本，使猪场盈利能力大大下降</string>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>

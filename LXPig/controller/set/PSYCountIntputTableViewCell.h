@@ -20,4 +20,5 @@
 
 @property (weak,nonatomic) id<PSYCountIntputTableViewCellDelegate> delegate;
 @property (weak,nonatomic) IBOutlet UILabel* title;
+@property (weak,nonatomic) IBOutlet UITextField* textField;
 @end

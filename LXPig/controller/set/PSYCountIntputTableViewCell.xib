@@ -16,7 +16,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ar-RN-ePa">
                         <rect key="frame" x="12" y="65" width="296" height="1"/>
-                        <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="nfx-85-drw"/>
                         </constraints>
@@ -49,6 +49,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="textField" destination="Xs1-iN-Mco" id="5Ba-gh-n2g"/>
                 <outlet property="title" destination="3VU-Kg-4wt" id="eNJ-Fp-V3N"/>
             </connections>
             <point key="canvasLocation" x="257" y="323.5"/>

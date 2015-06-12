@@ -123,7 +123,7 @@ bool gMark = false;
 }
 
 - (IBAction)commitQuestion:(id)sender {
-    if (self.textView.text.length == 0) {
+    if (self.textView.text.length == 0 || [self.textView.text isEqualToString:@"请输入服务反馈..."]) {
         [self showNormalHudDimissWithString:@"请填写问题"];
         return;
     }

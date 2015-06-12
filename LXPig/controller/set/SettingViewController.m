@@ -22,7 +22,7 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     if (IOS_SYSTEM_VERSION < 8.0f) {
-        self.topContraint.constant = 20;
+        self.topContraint.constant = 44;
     }
     // Do any additional setup after loading the view.
 //    if(IOS_SYSTEM_VERSION >= 8.f)

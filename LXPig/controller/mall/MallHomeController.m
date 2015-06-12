@@ -95,6 +95,7 @@
     self.pingZhongBtn.selected = NO;
     self.paiHangBtn.selected = NO;
     self.huodongBtn.selected = NO;
+    
 }
 
 - (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{

@@ -199,7 +199,7 @@
             [str replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             cell.name.text = str;
         }
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[dic[@"members"] objectForKey:@"photoPath"]] placeholderImage:[UIImage imageNamed:@"user_default"]];
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http:/112.74.98.66:8080%@",[dic[@"members"] objectForKey:@"photoPath"]]] placeholderImage:[UIImage imageNamed:@"user_default"]];
         cell.date.text = dic[@"date"];
         cell.comment.text = dic[@"content"];
         cell.commentHeight.constant = [Utils getSizeOfString:dic[@"content"] WithSize:CGSizeMake(SCREEN_WIDTH-24, NSIntegerMax) AndSystemFontSize:13].height;

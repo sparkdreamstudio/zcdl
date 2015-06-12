@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"展会活动";
+    self.title = @"活动报名";
     [self addBackButton];
     [self addPullRefresh];
     [self addInfinitScorll];

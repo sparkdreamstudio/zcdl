@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
-    self.title =@"展会详情";
+    self.title =@"活动详情";
     self.loadedWeb = NO;
     // Do any additional setup after loading the view from its nib.
     self.webHeight = 0;

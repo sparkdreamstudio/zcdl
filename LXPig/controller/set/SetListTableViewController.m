@@ -22,7 +22,7 @@
     [self addPullRefresh];
     [self addBackButton];
     [self.tableView registerNib:[UINib nibWithNibName:@"SetListTableViewCell" bundle:nil] forCellReuseIdentifier:@"SetListTableViewCell"];
-    self.title = @"选择类型";
+//    self.title = @"选择类型";
     [self startRefresh];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }

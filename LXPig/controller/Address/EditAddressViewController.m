@@ -74,10 +74,10 @@
                 [self showNormalHudDimissWithString:@"请输入详细地址"];
                 return;
             }
-            if (self.controller.temp.zipcode.length != 6) {
-                [self showNormalHudDimissWithString:@"请输入6位邮政编码"];
-                return;
-            }
+//            if (self.controller.temp.zipcode.length != 6) {
+//                [self showNormalHudDimissWithString:@"请输入6位邮政编码"];
+//                return;
+//            }
             
             UIView* hud = [self showNormalHudNoDimissWithString:@"提交信息"];
             [[AddressManager shareInstance]setAddressInfo:self.controller.temp Success:^(NSDictionary *responseObj, NSString *timeSp) {

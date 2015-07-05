@@ -60,6 +60,31 @@
 {
     SetListTableViewController *controller = [[SetListTableViewController alloc]init];
     controller.codeId = btn.tag;
+    switch (btn.tag) {
+        case 5:
+        {
+            controller.title =@"养猪宝典";
+        }
+            break;
+        case 6:
+        {
+            controller.title =@"PSY应用研究学院";
+        }
+            break;
+        case 7:
+        {
+            controller.title =@"种猪参考标准";
+        }
+            break;
+        case 8:
+        {
+            controller.title =@"检测服务";
+        }
+            break;
+            
+        default:
+            break;
+    }
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
 }
 

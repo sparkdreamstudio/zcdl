@@ -43,18 +43,18 @@
                 }
                 break;
             }
+//            case 1:
+//            {
+//                if (IOS_SYSTEM_VERSION < 7.0f) {
+//                    [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_info"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_info_selected"]];
+//                }
+//                else
+//                {
+//                    [[self.viewControllers[index] tabBarItem] setImage:[UIImage imageNamed:@"tab_info"]];
+//                }
+//                break;
+//            }
             case 1:
-            {
-                if (IOS_SYSTEM_VERSION < 7.0f) {
-                    [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_info"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_info_selected"]];
-                }
-                else
-                {
-                    [[self.viewControllers[index] tabBarItem] setImage:[UIImage imageNamed:@"tab_info"]];
-                }
-                break;
-            }
-            case 2:
             {
                 if (IOS_SYSTEM_VERSION < 7.0f) {
                     [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_q&a"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_q&a_selected"]];
@@ -65,7 +65,7 @@
                 }
                 break;
             }
-            case 3:
+            case 2:
             {
                 if (IOS_SYSTEM_VERSION < 7.0f) {
                     [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_set_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_set"]];
@@ -76,7 +76,7 @@
                 }
                 break;
             }
-            case 4:
+            case 3:
             {
                 if (IOS_SYSTEM_VERSION < 7.0f) {
                     [[self.viewControllers[index] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"tab_person_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_person"]];

@@ -35,7 +35,7 @@
     self.tableView.backgroundColor = HEXCOLOR(@"f3f3f3");
     // Do any additional setup after loading the view.
     self.adImageView.imagePlayerViewDelegate = self;
-    self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.44);
+    self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.5);
     //self.adImageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.36);
     [[NetWorkClient shareInstance]postUrl:SERVICE_AD With:@{@"action":@"advlist",@"type":@"2"} success:^(NSDictionary *responseObj, NSString *timeSp) {
         self.adArray = [responseObj objectForKey:@"data"];

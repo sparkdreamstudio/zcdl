@@ -12,6 +12,9 @@
 #import "PigCart.h"
 #import "AddressManager.h"
 #import "SlideViewController.h"
+#import "UMSocial.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
 @interface AppDelegate ()
 
 @end
@@ -21,6 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self initUmeng];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     [self initModel];
@@ -154,6 +158,14 @@
     }
     
     
+}
+
+-(void)initUmeng
+{
+    [UMSocialData setAppKey:@"559f8b4f67e58ed786003993"];
+    [UMSocialQQHandler setSupportWebView:YES];
+    [UMSocialQQHandler setQQWithAppId:@"1104674913" appKey:@"dEYLcVwuLWJmorvU" url:@"http://www.umeng.com/"];
+    [UMSocialWechatHandler setWXAppId:@"wx0d16ba0810ca5a8c" appSecret:@"1fa57f69e0f97b38e730208d4afdc6e9" url:@"http://www.umeng.com/"];
 }
 
 @end

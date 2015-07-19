@@ -30,6 +30,14 @@
 				<string>zhuChangDongLi</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent1104674913</string>
+				<string>wx0d16ba0810ca5a8c</string>
+				<string>QQ41D80061</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

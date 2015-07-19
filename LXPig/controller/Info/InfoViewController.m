@@ -227,7 +227,7 @@
         NSInteger index = [self.newsView indexOfObject:dic];
         InfoListTableViewController* controller = [[InfoListTableViewController alloc]init];
         controller.controller = self;
-        controller.val = [dic objectForKey:@"val"];
+        controller.val = [dic objectForKey:@"id"];
         [self.controllerArray addObject:controller];
         [self.newsScrollView addSubview:controller.view];
         controller.view.translatesAutoresizingMaskIntoConstraints = NO;

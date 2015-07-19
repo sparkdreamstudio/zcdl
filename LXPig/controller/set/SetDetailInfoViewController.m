@@ -7,8 +7,8 @@
 //
 
 #import "SetDetailInfoViewController.h"
-
-@interface SetDetailInfoViewController ()<UIWebViewDelegate>
+#import "UMSocial.h"
+@interface SetDetailInfoViewController ()<UIWebViewDelegate,UMSocialUIDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* webViewHeight;
 @property (strong,nonatomic) UIView* hud;
@@ -27,12 +27,40 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.webView.hidden = YES;
-    
+    if([self.dic[@"shareurl"] length]>0)
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)shareAction:(UIBarButtonItem*)sender
+{
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"559f8b4f67e58ed786003993"
+        shareText:self.dic[@"title"]
+        shareImage:[UIImage imageNamed:@"shareImg"]
+        shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+                                       delegate:self];
+}
+
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+    if ([platformName isEqualToString:UMShareToQQ]) {
+        socialData.extConfig.qqData.url = self.dic[@"shareurl"];
+    }
+    else if ([platformName isEqualToString:UMShareToQzone]) {
+        socialData.extConfig.qzoneData.url = self.dic[@"shareurl"];
+    }
+    else if ([platformName isEqualToString:UMShareToWechatSession]) {
+        socialData.extConfig.wechatSessionData.url = self.dic[@"shareurl"];
+    }
+    else if ([platformName isEqualToString:UMShareToWechatTimeline]) {
+        socialData.extConfig.wechatTimelineData.url = self.dic[@"shareurl"];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated

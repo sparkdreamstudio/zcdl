@@ -10,6 +10,7 @@
 #import "NetWorkClient.h"
 #import "SetListInfoTableViewCell.h"
 #import "SetDetailInfoViewController.h"
+
 @interface SetListInfoTableViewController ()
 @property (nonatomic,strong) NSMutableArray* listArray;
 @property (assign,nonatomic) NSInteger currentPage;
@@ -26,12 +27,15 @@
     self.title = self.info[@"name"];
     [self startRefresh];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 -(void)pullRfresh
 {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoDetailViewController">
             <connections>
+                <outlet property="authorLabel" destination="iLv-pS-c0x" id="WvH-ZU-KWO"/>
+                <outlet property="sourceLabel" destination="DZG-K0-vDd" id="RmD-R5-nta"/>
                 <outlet property="timeLabel" destination="6zP-83-GZV" id="NDh-bQ-9pP"/>
                 <outlet property="titleLabel" destination="c33-Pc-aEp" id="PWU-FY-Ctb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,15 +24,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1S-fw-6SV">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <webView contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ng3-sW-Nwe">
-                            <rect key="frame" x="0.0" y="84" width="600" height="600"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="600" id="ZI8-Ly-o0D"/>
-                            </constraints>
-                        </webView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-83-GZV">
-                            <rect key="frame" x="8" y="50" width="584" height="14"/>
+                            <rect key="frame" x="8" y="74" width="584" height="14"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -41,16 +36,39 @@
                             <color key="textColor" red="0.23921568627450981" green="0.28235294117647058" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-pS-c0x">
+                            <rect key="frame" x="8" y="50" width="29" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-K0-vDd">
+                            <rect key="frame" x="8" y="718" width="29" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <webView contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ng3-sW-Nwe">
+                            <rect key="frame" x="0.0" y="108" width="600" height="600"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="600" id="ZI8-Ly-o0D"/>
+                            </constraints>
+                        </webView>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="c33-Pc-aEp" secondAttribute="trailing" constant="8" id="09o-NY-RPh"/>
                         <constraint firstAttribute="trailing" secondItem="6zP-83-GZV" secondAttribute="trailing" constant="8" id="2i6-hC-9Xm"/>
                         <constraint firstItem="c33-Pc-aEp" firstAttribute="top" secondItem="f1S-fw-6SV" secondAttribute="top" constant="20" id="3HV-kF-Psw"/>
-                        <constraint firstAttribute="bottom" secondItem="Ng3-sW-Nwe" secondAttribute="bottom" id="PPf-g8-Vtn"/>
+                        <constraint firstItem="6zP-83-GZV" firstAttribute="top" secondItem="iLv-pS-c0x" secondAttribute="bottom" constant="10" id="DdC-8K-P38"/>
+                        <constraint firstAttribute="bottom" secondItem="DZG-K0-vDd" secondAttribute="bottom" constant="10" id="LbR-QT-ueH"/>
+                        <constraint firstItem="iLv-pS-c0x" firstAttribute="top" secondItem="c33-Pc-aEp" secondAttribute="bottom" constant="10" id="Lwt-Rh-veE"/>
+                        <constraint firstItem="c33-Pc-aEp" firstAttribute="leading" secondItem="iLv-pS-c0x" secondAttribute="leading" id="NS5-S3-uyp"/>
                         <constraint firstItem="6zP-83-GZV" firstAttribute="leading" secondItem="f1S-fw-6SV" secondAttribute="leading" constant="8" id="WYc-NY-F1R"/>
-                        <constraint firstItem="6zP-83-GZV" firstAttribute="top" secondItem="c33-Pc-aEp" secondAttribute="bottom" constant="10" id="WbT-Y1-T8h"/>
+                        <constraint firstItem="c33-Pc-aEp" firstAttribute="leading" secondItem="DZG-K0-vDd" secondAttribute="leading" id="blD-ef-LoV"/>
                         <constraint firstItem="Ng3-sW-Nwe" firstAttribute="leading" secondItem="f1S-fw-6SV" secondAttribute="leading" id="fGP-fb-EhL"/>
                         <constraint firstItem="Ng3-sW-Nwe" firstAttribute="width" secondItem="f1S-fw-6SV" secondAttribute="width" id="fpC-jg-Gxu"/>
+                        <constraint firstItem="DZG-K0-vDd" firstAttribute="top" secondItem="Ng3-sW-Nwe" secondAttribute="bottom" constant="10" id="nev-LR-Ahz"/>
                         <constraint firstAttribute="trailing" secondItem="Ng3-sW-Nwe" secondAttribute="trailing" id="oK1-KD-xqJ"/>
                         <constraint firstItem="Ng3-sW-Nwe" firstAttribute="top" secondItem="6zP-83-GZV" secondAttribute="bottom" constant="20" id="sx5-Um-7Qu"/>
                         <constraint firstItem="c33-Pc-aEp" firstAttribute="leading" secondItem="f1S-fw-6SV" secondAttribute="leading" constant="8" id="uaU-U7-pJw"/>

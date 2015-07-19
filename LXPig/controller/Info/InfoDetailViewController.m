@@ -7,12 +7,14 @@
 //
 
 #import "InfoDetailViewController.h"
-
-@interface InfoDetailViewController ()<UIWebViewDelegate>
+#import "UMSocial.h"
+@interface InfoDetailViewController ()<UIWebViewDelegate,UMSocialUIDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* webViewHeight;
 @property (strong,nonatomic) UIView* hud;
-
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
+@property (strong, nonatomic) UIImage* shareImg;
 @end
 
 @implementation InfoDetailViewController
@@ -23,14 +25,63 @@
     self.title =@"资讯详情";
     self.titleLabel.text = self.dic[@"title"];
     self.timeLabel.text = self.dic[@"newstime"];
+    self.authorLabel.text = [NSString stringWithFormat:@"作者:%@",self.dic[@"author"]];
+    self.sourceLabel.text = [NSString stringWithFormat:@"来源:%@",self.dic[@"source"]];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.webView.delegate = self;
-    
+    if([self.dic[@"shareurl"] length]>0)
+    {
+        SDWebImageManager* manager = [SDWebImageManager sharedManager];
+        [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:self.dic[@"titlepic"]] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+            if (error) {
+                self.shareImg = [UIImage imageNamed:@"shareImg"];
+            }
+            else
+            {
+                self.shareImg = image;
+            }
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
+        }];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)shareAction:(UIBarButtonItem*)sender
+{
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"559f8b4f67e58ed786003993"
+                                      shareText:self.dic[@"title"]
+                                     shareImage:self.shareImg
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+                                       delegate:self];
+}
+
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+    if ([platformName isEqualToString:UMShareToQQ]) {
+        socialData.extConfig.qqData.url = self.dic[@"shareurl"];
+        socialData.extConfig.qqData.shareImage = self.shareImg;
+        socialData.extConfig.qqData.shareText = self.dic[@"smalltext"];
+    }
+    else if ([platformName isEqualToString:UMShareToQzone]) {
+        socialData.extConfig.qzoneData.url = self.dic[@"shareurl"];
+        socialData.extConfig.qzoneData.shareImage = self.shareImg;
+        socialData.extConfig.qzoneData.shareText = self.dic[@"smalltext"];
+    }
+    else if ([platformName isEqualToString:UMShareToWechatSession]) {
+        socialData.extConfig.wechatSessionData.url = self.dic[@"shareurl"];
+        socialData.extConfig.wechatSessionData.shareImage = self.shareImg;
+        socialData.extConfig.wechatSessionData.shareText = self.dic[@"smalltext"];
+    }
+    else if ([platformName isEqualToString:UMShareToWechatTimeline]) {
+        socialData.extConfig.wechatTimelineData.url = self.dic[@"shareurl"];
+        socialData.extConfig.wechatTimelineData.shareImage = self.shareImg;
+        socialData.extConfig.wechatTimelineData.shareText = self.dic[@"smalltext"];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -50,7 +50,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -68,20 +68,21 @@
         }
         case 2:
         {
-            height = 50;
+            height = ([Utils getSizeOfString:self.info.address WithSize:CGSizeMake(SCREEN_WIDTH-76, NSIntegerMax) AndSystemFontSize:13].height+34);
+//            height = 50;
             break;
         }
+//        case 3:
+//        {
+//            height = 50;
+//            break;
+//        }
         case 3:
-        {
-            height = 50;
-            break;
-        }
-        case 4:
         {
             height = 59;
             break;
         }
-        case 5:
+        case 4:
         {
             height = self.infoWebView.frame.size.height;
             break;

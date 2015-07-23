@@ -1109,11 +1109,11 @@
 		D0B522C51AF13EEC00E809AA /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				D0B522D11AF13EEC00E809AA /* SKTagView */,
 				D0D0BF151B5B368C00067BBD /* umeng_ios_social_sdk_4.2.3_arm64_custom */,
 				D0B522C61AF13EEC00E809AA /* ImageEffect */,
 				D0B522C91AF13EEC00E809AA /* LPLabel */,
 				D0B522CC1AF13EEC00E809AA /* Menu */,
-				D0B522D11AF13EEC00E809AA /* SKTagView */,
 				D0B522D81AF13EEC00E809AA /* SVPullToRefresh */,
 				D0B522DE1AF13EEC00E809AA /* TPKeyboardAvoiding */,
 				D0B522E71AF13EEC00E809AA /* VOSegmentedControl */,
@@ -1975,7 +1975,7 @@
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de4ae2d7-39fb-442b-99fe-953d03126bc6";
+				PROVISIONING_PROFILE = "5bfb5f37-a24b-420f-b8e7-9abf3e6ff252";
 			};
 			name = Release;
 		};

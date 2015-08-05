@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet SKTagView *tagView;
 @property (weak, nonatomic) IBOutlet UILabel  *tagLabel;
 @property (strong,nonatomic)NSMutableArray *urlArray;
+@property (weak, nonatomic) IBOutlet UILabel *kefuMobile;
+@property (weak, nonatomic) IBOutlet UILabel *kefuQQ;
 
 @end
 
@@ -137,7 +139,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return loaded?6:0;
+    return loaded?7:0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -166,10 +168,15 @@
         }
         case 4:
         {
-            height = 40;
+            height = 60;
             break;
         }
         case 5:
+        {
+            height = 40;
+            break;
+        }
+        case 6:
         {
             height = webViewHeight;
             

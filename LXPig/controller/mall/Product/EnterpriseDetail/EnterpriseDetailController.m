@@ -66,6 +66,11 @@
             height = 54;
             break;
         }
+//        case 2:
+//        {
+//            height = 50;
+//            break;
+//        }
         case 2:
         {
             height = ([Utils getSizeOfString:self.info.address WithSize:CGSizeMake(SCREEN_WIDTH-76, NSIntegerMax) AndSystemFontSize:13].height+34);

@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *detailAddress;
 @property (weak, nonatomic) IBOutlet UILabel *city;
-@property (weak, nonatomic) IBOutlet UITextField *code;
+//@property (weak, nonatomic) IBOutlet UITextField *code;
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 @property (strong,nonatomic) Location* location;
 @end
@@ -36,7 +36,7 @@
         self.temp.keyId = self.address.keyId;
         self.temp.contact = self.address.contact;
         self.temp.tel  = self.address.tel;
-        self.temp.zipcode = self.address.zipcode;
+//        self.temp.zipcode = self.address.zipcode;
         self.temp.province = self.address.province;
         self.temp.city = self.address.city;
         self.temp.district = self.address.district;
@@ -73,7 +73,7 @@
     self.moble.text = self.temp.tel;
     self.detailAddress.text = self.temp.address;
     self.city.text = [NSString stringWithFormat:@"%@%@%@",self.temp.province,self.temp.city,self.temp.district];
-    self.code.text = self.temp.zipcode;
+//    self.code.text = self.temp.zipcode;
     self.checkBtn.selected = self.temp.isDefault;
 }
 
@@ -117,15 +117,15 @@
     {
         self.temp.address = textField.text;
     }
-    else if (textField == self.code)
-    {
-        self.temp.zipcode = textField.text;
-    }
+//    else if (textField == self.code)
+//    {
+//        self.temp.zipcode = textField.text;
+//    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         if (self.checkBtn.isSelected) {
             [self.checkBtn setSelected:NO];
         }

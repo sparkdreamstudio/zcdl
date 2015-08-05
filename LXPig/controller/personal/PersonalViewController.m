@@ -92,10 +92,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UserManagerObject shareInstance]userType] == 0) {
-        if (indexPath.row == 4) {
+        if (indexPath.row == 5) {
             [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
         }
-        else if (indexPath.row  == 6)
+        else if (indexPath.row  == 7)
         {
             [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
         }

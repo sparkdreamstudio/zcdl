@@ -17,7 +17,7 @@
         self.keyId = -1;
         self.contact = @"";
         self.tel = @"";
-        self.zipcode = @"";
+//        self.zipcode = @"";
         self.province = @"";
         self.city = @"";
         self.district =@"";
@@ -87,7 +87,7 @@ static AddressManager* singleton = nil;
     }
     [params setValue:address.contact forKey:@"contact"];
     [params setValue:address.tel forKey:@"tel"];
-    [params setValue:address.zipcode forKey:@"zipcode"];
+//    [params setValue:address.zipcode forKey:@"zipcode"];
     [params setValue:address.province forKey:@"province"];
     [params setValue:address.city forKey:@"city"];
     [params setValue:address.district forKey:@"district"];
@@ -182,7 +182,7 @@ static AddressManager* singleton = nil;
         address.keyId = [[obj valueForKey:@"id"]longLongValue];
         address.contact = [obj valueForKey:@"contact"];
         address.tel = [obj valueForKey:@"tel"];
-        address.zipcode = [obj valueForKey:@"zipcode"];
+//        address.zipcode = [obj valueForKey:@"zipcode"];
         address.province = [obj valueForKey:@"province"];
         address.city = [obj valueForKey:@"city"];
         address.district = [obj valueForKey:@"district"];

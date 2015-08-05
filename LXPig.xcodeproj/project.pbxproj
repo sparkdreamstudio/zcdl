@@ -160,7 +160,6 @@
 		D0B5230A1AF1494B00E809AA /* AddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B523091AF1494B00E809AA /* AddressManager.m */; };
 		D0BF11C31B08E1C3007A879D /* ForgetPasswordFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BF11C21B08E1C3007A879D /* ForgetPasswordFirstViewController.m */; };
 		D0BF11C61B08E1ED007A879D /* ForgetPasswordSecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BF11C51B08E1ED007A879D /* ForgetPasswordSecViewController.m */; };
-		D0BF56721AE957B800D5CDAF /* demo_head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0BF56711AE957B800D5CDAF /* demo_head.jpg */; };
 		D0C4AD461B0B78C4008295E8 /* LimitPromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C4AD451B0B78C4008295E8 /* LimitPromotionViewController.m */; };
 		D0C4AD4A1B0B7A2A008295E8 /* LimitPromotionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C4AD481B0B7A2A008295E8 /* LimitPromotionTableViewCell.m */; };
 		D0C4AD4B1B0B7A2A008295E8 /* LimitPromotionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C4AD491B0B7A2A008295E8 /* LimitPromotionTableViewCell.xib */; };
@@ -514,7 +513,6 @@
 		D0BF11C21B08E1C3007A879D /* ForgetPasswordFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPasswordFirstViewController.m; path = controller/Login/ForgetPasswordFirstViewController.m; sourceTree = "<group>"; };
 		D0BF11C41B08E1ED007A879D /* ForgetPasswordSecViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPasswordSecViewController.h; path = controller/Login/ForgetPasswordSecViewController.h; sourceTree = "<group>"; };
 		D0BF11C51B08E1ED007A879D /* ForgetPasswordSecViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPasswordSecViewController.m; path = controller/Login/ForgetPasswordSecViewController.m; sourceTree = "<group>"; };
-		D0BF56711AE957B800D5CDAF /* demo_head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_head.jpg; sourceTree = "<group>"; };
 		D0C4AD441B0B78C4008295E8 /* LimitPromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LimitPromotionViewController.h; path = controller/mall/salesPromotion/LimitPromotionViewController.h; sourceTree = "<group>"; };
 		D0C4AD451B0B78C4008295E8 /* LimitPromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LimitPromotionViewController.m; path = controller/mall/salesPromotion/LimitPromotionViewController.m; sourceTree = "<group>"; };
 		D0C4AD471B0B7A2A008295E8 /* LimitPromotionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LimitPromotionTableViewCell.h; path = controller/mall/salesPromotion/LimitPromotionTableViewCell.h; sourceTree = "<group>"; };
@@ -861,7 +859,6 @@
 			isa = PBXGroup;
 			children = (
 				D0B522C51AF13EEC00E809AA /* 3rd */,
-				D0BF56711AE957B800D5CDAF /* demo_head.jpg */,
 				D0D7A5B21ADBF79500600DDA /* Model */,
 				D0735A5A1ADA0D5C00C0BC74 /* Segue */,
 				D058F16F1AD9844400AE3580 /* util */,
@@ -1591,7 +1588,6 @@
 				D0D0BF4C1B5B368C00067BBD /* UMSCommentDetailController.xib in Resources */,
 				D0D0BF4E1B5B368C00067BBD /* UMSCommentInputControlleriPad.xib in Resources */,
 				D02323211B077E1C0064E93E /* PSYResultViewController.xib in Resources */,
-				D0BF56721AE957B800D5CDAF /* demo_head.jpg in Resources */,
 				D05EE5F01B1B523200D3FBA5 /* EnListTableViewController.xib in Resources */,
 				D023230D1B0728E80064E93E /* PSYCounterHeaderAndFooter.xib in Resources */,
 				D05EE5F51B1B52A400D3FBA5 /* EnListTableViewCell.xib in Resources */,

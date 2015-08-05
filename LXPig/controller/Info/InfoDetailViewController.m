@@ -14,7 +14,7 @@
 @property (strong,nonatomic) UIView* hud;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
-@property (strong, nonatomic) UIImage* shareImg;
+@property (weak, nonatomic) UIImage* shareImg;
 @end
 
 @implementation InfoDetailViewController
@@ -40,7 +40,8 @@
             {
                 self.shareImg = image;
             }
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share_button"] style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
+            self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
         }];
         
     }
@@ -56,7 +57,7 @@
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"559f8b4f67e58ed786003993"
                                       shareText:self.dic[@"title"]
                                      shareImage:self.shareImg
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline,UMShareToSina,UMShareToQQ,nil]
                                        delegate:self];
 }
 
@@ -66,11 +67,6 @@
         socialData.extConfig.qqData.url = self.dic[@"shareurl"];
         socialData.extConfig.qqData.shareImage = self.shareImg;
         socialData.extConfig.qqData.shareText = self.dic[@"smalltext"];
-    }
-    else if ([platformName isEqualToString:UMShareToQzone]) {
-        socialData.extConfig.qzoneData.url = self.dic[@"shareurl"];
-        socialData.extConfig.qzoneData.shareImage = self.shareImg;
-        socialData.extConfig.qzoneData.shareText = self.dic[@"smalltext"];
     }
     else if ([platformName isEqualToString:UMShareToWechatSession]) {
         socialData.extConfig.wechatSessionData.url = self.dic[@"shareurl"];
@@ -82,13 +78,19 @@
         socialData.extConfig.wechatTimelineData.shareImage = self.shareImg;
         socialData.extConfig.wechatTimelineData.shareText = self.dic[@"smalltext"];
     }
+    else if ([platformName isEqualToString:UMShareToSina])
+    {
+        socialData.extConfig.sinaData.shareImage = self.shareImg;
+        socialData.extConfig.sinaData.shareText = [NSString stringWithFormat:@"%@ %@",self.dic[@"smalltext"],self.dic[@"shareurl"]];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1);
-    [self.webView loadHTMLString:self.htmlString baseURL:nil];
+
+    [self.webView loadHTMLString:self.htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]bundlePath]]];
     self.webView.hidden = YES;
     self.hud = [self showNormalHudNoDimissWithString:@"加载"];
 }

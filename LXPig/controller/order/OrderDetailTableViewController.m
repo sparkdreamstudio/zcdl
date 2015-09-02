@@ -210,6 +210,11 @@
                 UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell3" forIndexPath:indexPath];
                 UILabel* label = (UILabel*)[cell viewWithTag:1];
                 label.text = [[self.orderInfo objectForKey:@"enterprise"] objectForKey:@"name"];
+                
+                UIButton* button = (UIButton*)[cell viewWithTag:2];
+                [button addTarget:self action:@selector(showTip:) forControlEvents:UIControlEventTouchUpInside];
+                button.layer.masksToBounds = YES;
+                button.layer.cornerRadius = 4;
                 return cell;
             }
             else
@@ -244,8 +249,18 @@
     }
 }
 
+-(void)showTip:(UIButton*)sender
+{
+    [self showNormalHudDimissWithString:@"没有要上传票据的订单"];
+}
+
 -(void)billCellClick:(BillTableViewCell *)cell WithAddButton:(UIButton *)button
 {
+//    NSInteger flag =  [[self.orderInfo objectForKey:@"flag"] integerValue];
+//    if (flag == 1 || flag ==3) {
+//        [self showNormalHudDimissWithString:@"没有要上传票据的订单"];
+//        return;
+//    }
     UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:@"上传票据" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"照片库",@"相机", nil];
     sheet.tag = 2;
     [sheet showInView:self.view];

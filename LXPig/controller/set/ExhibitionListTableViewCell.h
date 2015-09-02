@@ -10,9 +10,6 @@
 
 @interface ExhibitionListTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *exhibitionImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+-(void)loadData:(NSDictionary*)data;
 
 @end

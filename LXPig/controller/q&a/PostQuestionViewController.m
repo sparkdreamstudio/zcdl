@@ -50,7 +50,7 @@ bool gMark = false;
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self initWithAshen];
+//    [self initWithAshen];
 }
 
 //- (void)viewDidLayoutSubviews {

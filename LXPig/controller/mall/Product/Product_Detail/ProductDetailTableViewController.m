@@ -13,7 +13,8 @@
 #import "ProductDetailViewController.h"
 #import "EnterpriseDetailController.h"
 #import "ProductInfo.h"
-@interface ProductDetailTableViewController ()<UIWebViewDelegate,ImagePlayerViewDelegate>
+#import "UserManagerObject.h"
+@interface ProductDetailTableViewController ()<UIWebViewDelegate,ImagePlayerViewDelegate,UIAlertViewDelegate>
 {
     CGFloat labelheight;
     BOOL loaded;
@@ -61,6 +62,26 @@
     self.urlArray = [NSMutableArray array];
     __weak ProductDetailTableViewController* weakself = self;
     UIView* view = [self.detailViewController showNormalHudNoDimissWithString:@"加载中"];
+    if([[UserManagerObject shareInstance] serviceMobile].length != 0 && [[UserManagerObject shareInstance] serviceQQ].length != 0)
+    {
+        self.kefuMobile.text = [NSString stringWithFormat:@"客服电话：%@",[[UserManagerObject shareInstance] serviceMobile]];
+        self.kefuQQ.text = [NSString stringWithFormat:@"客服QQ：%@",[[UserManagerObject shareInstance] serviceQQ]];
+        [self addCallGesture];
+    }
+    else
+    {
+        self.kefuMobile.text = @"客服电话：--";
+        self.kefuQQ.text = @"客服QQ：--";
+        [[NetWorkClient shareInstance]postUrl:SERVICE_CONTACT With:@{@"action":@"detail"} success:^(NSDictionary *responseObj, NSString *timeSp) {
+            [[UserManagerObject shareInstance] setServiceMobile:[[responseObj objectForKey:@"data"] objectForKey:@"tel"]];
+            [[UserManagerObject shareInstance] setServiceQQ:[[responseObj objectForKey:@"data"] objectForKey:@"qq"]];
+            self.kefuMobile.text = [NSString stringWithFormat:@"客服电话：%@",[[UserManagerObject shareInstance] serviceMobile]];
+            self.kefuQQ.text = [NSString stringWithFormat:@"客服QQ：%@",[[UserManagerObject shareInstance] serviceQQ]];
+            [self addCallGesture];
+        } failure:^(NSDictionary *responseObj, NSString *timeSp) {
+            
+        }];
+    }
     [[NetWorkClient shareInstance]postUrl:SERVICE_PRODUCT With:@{@"action":@"detail",
                                                                  @"id":[NSNumber numberWithLongLong:self.productId]}
                                   success:^(NSDictionary *responseObj, NSString *timeSp) {
@@ -135,6 +156,29 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addCallGesture
+{
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(callGesture:)];
+    [self.kefuMobile addGestureRecognizer:gesture];
+    self.kefuMobile.userInteractionEnabled = YES;
+}
+
+-(void)callGesture:(UITapGestureRecognizer*)tap
+{
+//    if (tap.state == UIGestureRecognizerStateBegan) {
+    
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"拨打客服电话:%@",[[UserManagerObject shareInstance] serviceMobile]] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+        [alert show];
+//    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.cancelButtonIndex != buttonIndex) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",[[UserManagerObject shareInstance] serviceMobile]]]];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

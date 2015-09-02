@@ -147,10 +147,6 @@
 		D0B522F61AF13EEC00E809AA /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522D71AF13EEC00E809AA /* SKTagView.m */; };
 		D0B522F71AF13EEC00E809AA /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522DB1AF13EEC00E809AA /* UIScrollView+SVInfiniteScrolling.m */; };
 		D0B522F81AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522DD1AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.m */; };
-		D0B522F91AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522E01AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.m */; };
-		D0B522FA1AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522E21AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m */; };
-		D0B522FB1AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522E41AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m */; };
-		D0B522FC1AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522E61AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		D0B522FD1AF13EEC00E809AA /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522E91AF13EEC00E809AA /* VOContentLayer.m */; };
 		D0B522FE1AF13EEC00E809AA /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522EB1AF13EEC00E809AA /* VOIndicatorAnimation.m */; };
 		D0B522FF1AF13EEC00E809AA /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B522ED1AF13EEC00E809AA /* VOSegment.m */; };
@@ -215,6 +211,10 @@
 		F156031E1B16F5110099BCDE /* SelectedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F156031C1B16F5110099BCDE /* SelectedTableViewController.xib */; };
 		F15603221B16F5B30099BCDE /* SelectAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */; };
 		F15603231B16F5B30099BCDE /* SelectAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */; };
+		F15873B31B73052B00970D8A /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15873B11B73052B00970D8A /* libSocialSina.a */; };
+		F15873C21B7305DA00970D8A /* libSocialSinaSSO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15873B51B7305DA00970D8A /* libSocialSinaSSO.a */; };
+		F15873C31B7305DA00970D8A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15873B61B7305DA00970D8A /* libWeiboSDK.a */; };
+		F15873C41B7305DA00970D8A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F15873BF1B7305DA00970D8A /* WeiboSDK.bundle */; };
 		F16A49721B1C6B1F0034E13A /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F16A49711B1C6B1F0034E13A /* RightMenuViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -487,14 +487,6 @@
 		D0B522DB1AF13EEC00E809AA /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		D0B522DC1AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		D0B522DD1AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		D0B522DF1AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
-		D0B522E01AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
-		D0B522E11AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
-		D0B522E21AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-		D0B522E31AF13EEC00E809AA /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
-		D0B522E41AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
-		D0B522E51AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
-		D0B522E61AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		D0B522E81AF13EEC00E809AA /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
 		D0B522E91AF13EEC00E809AA /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
 		D0B522EA1AF13EEC00E809AA /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
@@ -617,6 +609,21 @@
 		F156031F1B16F5B30099BCDE /* SelectAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAddressTableViewCell.h; path = controller/Address/SelectAddressTableViewCell.h; sourceTree = "<group>"; };
 		F15603201B16F5B30099BCDE /* SelectAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAddressTableViewCell.m; path = controller/Address/SelectAddressTableViewCell.m; sourceTree = "<group>"; };
 		F15603211B16F5B30099BCDE /* SelectAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectAddressTableViewCell.xib; path = controller/Address/SelectAddressTableViewCell.xib; sourceTree = "<group>"; };
+		F15873B11B73052B00970D8A /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
+		F15873B21B73052B00970D8A /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		F15873B51B7305DA00970D8A /* libSocialSinaSSO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSinaSSO.a; sourceTree = "<group>"; };
+		F15873B61B7305DA00970D8A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		F15873B71B7305DA00970D8A /* UMSocialSinaSSOHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaSSOHandler.h; sourceTree = "<group>"; };
+		F15873B81B7305DA00970D8A /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
+		F15873B91B7305DA00970D8A /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
+		F15873BA1B7305DA00970D8A /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
+		F15873BB1B7305DA00970D8A /* WBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHttpRequest.h; sourceTree = "<group>"; };
+		F15873BC1B7305DA00970D8A /* WBSDKBasicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKBasicButton.h; sourceTree = "<group>"; };
+		F15873BD1B7305DA00970D8A /* WBSDKCommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKCommentButton.h; sourceTree = "<group>"; };
+		F15873BE1B7305DA00970D8A /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKRelationshipButton.h; sourceTree = "<group>"; };
+		F15873BF1B7305DA00970D8A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		F15873C01B7305DA00970D8A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		F15873C11B7305DA00970D8A /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
 		F16A49701B1C6B1F0034E13A /* RightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightMenuViewController.h; path = controller/common/RightMenuViewController.h; sourceTree = "<group>"; };
 		F16A49711B1C6B1F0034E13A /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = controller/common/RightMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -628,7 +635,10 @@
 			files = (
 				D0D0BF751B5B373800067BBD /* libz.dylib in Frameworks */,
 				D0D0BF731B5B373000067BBD /* libstdc++.dylib in Frameworks */,
+				F15873B31B73052B00970D8A /* libSocialSina.a in Frameworks */,
+				F15873C21B7305DA00970D8A /* libSocialSinaSSO.a in Frameworks */,
 				D0D0BF711B5B372800067BBD /* CoreTelephony.framework in Frameworks */,
+				F15873C31B7305DA00970D8A /* libWeiboSDK.a in Frameworks */,
 				D0D0BF6F1B5B371F00067BBD /* libsqlite3.dylib in Frameworks */,
 				D0D0BF6D1B5B371400067BBD /* CoreGraphics.framework in Frameworks */,
 				D0D0BF6B1B5B370B00067BBD /* SystemConfiguration.framework in Frameworks */,
@@ -1112,7 +1122,6 @@
 				D0B522C91AF13EEC00E809AA /* LPLabel */,
 				D0B522CC1AF13EEC00E809AA /* Menu */,
 				D0B522D81AF13EEC00E809AA /* SVPullToRefresh */,
-				D0B522DE1AF13EEC00E809AA /* TPKeyboardAvoiding */,
 				D0B522E71AF13EEC00E809AA /* VOSegmentedControl */,
 			);
 			path = 3rd;
@@ -1170,21 +1179,6 @@
 				D0B522DD1AF13EEC00E809AA /* UIScrollView+SVPullToRefresh.m */,
 			);
 			path = SVPullToRefresh;
-			sourceTree = "<group>";
-		};
-		D0B522DE1AF13EEC00E809AA /* TPKeyboardAvoiding */ = {
-			isa = PBXGroup;
-			children = (
-				D0B522DF1AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.h */,
-				D0B522E01AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.m */,
-				D0B522E11AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.h */,
-				D0B522E21AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m */,
-				D0B522E31AF13EEC00E809AA /* TPKeyboardAvoidingTableView.h */,
-				D0B522E41AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m */,
-				D0B522E51AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
-				D0B522E61AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
-			);
-			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		D0B522E71AF13EEC00E809AA /* VOSegmentedControl */ = {
@@ -1364,6 +1358,8 @@
 		D0D0BF311B5B368C00067BBD /* UMSocial_Sdk_Extra_Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F15873B41B7305DA00970D8A /* SinaSSO */,
+				F15873B01B73052B00970D8A /* Sina */,
 				D0D0BF321B5B368C00067BBD /* TencentOpenAPI */,
 				D0D0BF371B5B368C00067BBD /* Wechat */,
 			);
@@ -1463,6 +1459,35 @@
 				D0B522B71AF13DEC00E809AA /* ProductInfoList.m */,
 			);
 			name = mall;
+			sourceTree = "<group>";
+		};
+		F15873B01B73052B00970D8A /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				F15873B11B73052B00970D8A /* libSocialSina.a */,
+				F15873B21B73052B00970D8A /* UMSocialSinaHandler.h */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		F15873B41B7305DA00970D8A /* SinaSSO */ = {
+			isa = PBXGroup;
+			children = (
+				F15873B51B7305DA00970D8A /* libSocialSinaSSO.a */,
+				F15873B61B7305DA00970D8A /* libWeiboSDK.a */,
+				F15873B71B7305DA00970D8A /* UMSocialSinaSSOHandler.h */,
+				F15873B81B7305DA00970D8A /* WBHttpRequest+WeiboShare.h */,
+				F15873B91B7305DA00970D8A /* WBHttpRequest+WeiboToken.h */,
+				F15873BA1B7305DA00970D8A /* WBHttpRequest+WeiboUser.h */,
+				F15873BB1B7305DA00970D8A /* WBHttpRequest.h */,
+				F15873BC1B7305DA00970D8A /* WBSDKBasicButton.h */,
+				F15873BD1B7305DA00970D8A /* WBSDKCommentButton.h */,
+				F15873BE1B7305DA00970D8A /* WBSDKRelationshipButton.h */,
+				F15873BF1B7305DA00970D8A /* WeiboSDK.bundle */,
+				F15873C01B7305DA00970D8A /* WeiboSDK.h */,
+				F15873C11B7305DA00970D8A /* WeiboUser.h */,
+			);
+			path = SinaSSO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1595,6 +1620,7 @@
 				F15603191B16F3E90099BCDE /* SelectAddressViewController.xib in Resources */,
 				D02323151B072D1E0064E93E /* PSYButtonTableViewCell.xib in Resources */,
 				D07639081B0106A1008763B1 /* InfoDetailViewController.xib in Resources */,
+				F15873C41B7305DA00970D8A /* WeiboSDK.bundle in Resources */,
 				D0DF77451B1A226C00A18DE5 /* AboutViewController.xib in Resources */,
 				D03888B91B17555B00FA2FDC /* SetDetailInfoViewController.xib in Resources */,
 				D0D0BF511B5B368C00067BBD /* UMSLoginViewController.xib in Resources */,
@@ -1697,8 +1723,6 @@
 				D0B522F31AF13EEC00E809AA /* PullDownMenu.m in Sources */,
 				D02447111AFA876600FFD55F /* OrderCommentTableViewController.m in Sources */,
 				D0B522F41AF13EEC00E809AA /* SKTag.m in Sources */,
-				D0B522FA1AF13EEC00E809AA /* TPKeyboardAvoidingScrollView.m in Sources */,
-				D0B522FB1AF13EEC00E809AA /* TPKeyboardAvoidingTableView.m in Sources */,
 				D09553C91AFDEDDF00E3BB3D /* QAndADetailTableViewController.m in Sources */,
 				D05EE5EF1B1B523200D3FBA5 /* EnListTableViewController.m in Sources */,
 				D05EE5D81B1B324500D3FBA5 /* ExhibitionListTableViewCell.m in Sources */,
@@ -1770,7 +1794,6 @@
 				D09553D21AFDFC1800E3BB3D /* QAndAReplyCntTableViewCell.m in Sources */,
 				D0C4AD461B0B78C4008295E8 /* LimitPromotionViewController.m in Sources */,
 				D0B522B21AF13D7200E809AA /* SlideViewController.m in Sources */,
-				D0B522FC1AF13EEC00E809AA /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				D0B522891AF13C3900E809AA /* ReturnVisitCell.m in Sources */,
 				D07639071B0106A1008763B1 /* InfoDetailViewController.m in Sources */,
 				D024470E1AFA874D00FFD55F /* OrderCommentViewController.m in Sources */,
@@ -1789,7 +1812,6 @@
 				D03CEC991B04E44800DD73B7 /* SetListInfoTableViewCell.m in Sources */,
 				D0D688A71AF37936006C8BA4 /* CityViewController.m in Sources */,
 				D03342761B29E60000BA20A8 /* PSYCountHeadTableViewCell.m in Sources */,
-				D0B522F91AF13EEC00E809AA /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				D0B522BC1AF13DEC00E809AA /* ProductInfo.m in Sources */,
 				D09F647B1AFFA7970005AE19 /* InfoViewCustomTableViewCell.m in Sources */,
 			);
@@ -1941,9 +1963,11 @@
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_4.2.3",
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Sina",
+					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e3ad09b-6542-48af-889b-3b28eaaadd3a";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1969,9 +1993,11 @@
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_4.2.3",
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Sina",
+					"$(PROJECT_DIR)/LXPig/3rd/umeng_ios_social_sdk_4.2.3_arm64_custom/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5bfb5f37-a24b-420f-b8e7-9abf3e6ff252";
+				PROVISIONING_PROFILE = "9fcfb16a-65b9-464d-b9f2-f74e09e1c8c8";
 			};
 			name = Release;
 		};

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderViewController : LxPigViewController
-
+@property (assign,nonatomic) BOOL selected;
 @end

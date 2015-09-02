@@ -29,6 +29,8 @@
 @property (assign,nonatomic) NSInteger userType;
 //@property (assign,nonatomic) NSInteger integral;
 
+@property (strong,nonatomic) NSString* serviceMobile;
+@property (strong,nonatomic) NSString* serviceQQ;
 
 +(id)shareInstance;
 

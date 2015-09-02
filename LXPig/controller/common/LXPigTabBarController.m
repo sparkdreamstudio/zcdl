@@ -14,6 +14,7 @@
 #import "PostQuestionViewController.h"
 #import "NetWorkClient.h"
 #import "SettingViewController.h"
+#import "OrderViewController.h"
 @interface LXPigTabBarController ()
 @property (assign,nonatomic) BOOL selectHasNavigator;
 @property (assign,nonatomic) BOOL selectThirdDirect;
@@ -117,7 +118,9 @@
 -(void)processNtf:(NSNotification*)ntf
 {
     if ([ntf.name isEqualToString:NTF_SHOW_ORDER]) {
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"my_order"] animated:NO];
+        OrderViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"my_order"];
+        controller.selected = YES;
+        [self.navigationController pushViewController:controller animated:NO];
     }
     else if ([ntf.name isEqualToString:NTF_SHOW_POST_QUESTION])
     {

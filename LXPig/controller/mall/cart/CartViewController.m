@@ -19,6 +19,7 @@
 @property (weak,nonatomic) IBOutlet UIButton* button;
 
 @property (weak,nonatomic) CartTableViewController * tableController;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (strong, nonatomic) UIBarButtonItem* editButton;
 @property (strong, nonatomic) UIBarButtonItem* doneButton;
@@ -49,6 +50,11 @@
     [[PigCart shareInstance ]refreshCartListSuccess:^{
         [weakself dismissHUD:hud];
         [weakself loadTotalPrice];
+        if ([[PigCart shareInstance]itemsArray].count == 0) {
+            self.tableController.view.hidden = YES;
+            self.bottomView.hidden = YES;
+            self.navigationItem.rightBarButtonItem = nil;
+        }
     } failure:^(NSString *message) {
         [weakself dismissHUD:hud WithErrorString:@"加载失败"];
     }];
@@ -116,29 +122,39 @@
 
 -(void)loadTotalPrice
 {
-    NSInteger total = 0;
-    NSInteger totalNum = 0;
-    for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
-        for (CartItem *item in items.itemlist) {
-            if (item.selected) {
-                total += item.salePrice.integerValue*item.num.integerValue;
-                totalNum += item.num.integerValue;
+    
+    if (self.tableController.editModel == NO) {
+        NSInteger total = 0;
+        NSInteger totalNum = 0;
+        for (CartItems* items in [[PigCart shareInstance]itemsArray]) {
+            for (CartItem *item in items.itemlist) {
+                if (item.selected) {
+                    total += item.salePrice.integerValue*item.num.integerValue;
+                    totalNum += item.num.integerValue;
+                }
             }
         }
+        if(total == 0)
+        {
+            [self.button setEnabled:NO];
+            [self.button setBackgroundColor:[UIColor lightGrayColor]];
+            [self.button setTitle:@"结算" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [self.button setEnabled:YES];
+            [self.button setTitle:[NSString stringWithFormat:@"结算(%ld)",totalNum] forState:UIControlStateNormal];
+            [self.button setBackgroundColor:NavigationBarColor];
+        }
+        self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
     }
-    if(total == 0)
-    {
-        [self.button setEnabled:NO];
-        [self.button setBackgroundColor:[UIColor lightGrayColor]];
-        [self.button setTitle:@"结算" forState:UIControlStateNormal];
+    
+    
+    if ([[PigCart shareInstance]itemsArray].count == 0) {
+        self.tableController.view.hidden = YES;
+        self.bottomView.hidden = YES;
+        self.navigationItem.rightBarButtonItem = nil;
     }
-    else
-    {
-        [self.button setEnabled:YES];
-        [self.button setTitle:[NSString stringWithFormat:@"结算(%ld)",totalNum] forState:UIControlStateNormal];
-        [self.button setBackgroundColor:NavigationBarColor];
-    }
-    self.allItemPrice.text =[NSString stringWithFormat:@"%ld",(long)total];
 }
 -(void)loadDelete
 {
@@ -161,6 +177,7 @@
         [self.button setEnabled:YES];
         [self.button setBackgroundColor:NavigationBarColor];
     }
+    
 }
 #pragma mark - Navigation
 

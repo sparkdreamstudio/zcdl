@@ -12,9 +12,9 @@
 
 #pragma mark -http server & api url-
 #ifdef DEBUG
-#define SERVER_URL @"http://112.74.98.66:9504/api"
+#define SERVER_URL @"http://112.74.98.66:8080/api"
 #else
-#define SERVER_URL @"http://112.74.98.66:9504/api"
+#define SERVER_URL @"http://112.74.98.66:8080/api"
 #endif
 
 #define SERVICE_USER    @"userservice.do"
@@ -43,6 +43,7 @@
 #define SERVICE_LIMITGROUP  @"limitgroupservice.do"
 #define SERVICE_OTHERSERVICE @"otherservice.do"
 #define SERVICE_EXHIBIT         @"exhibitservice.do"
+#define SERVICE_CONTACT     @"contactservice.do"
 
 
 #pragma mark -ui value-

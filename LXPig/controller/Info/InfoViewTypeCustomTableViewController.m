@@ -118,7 +118,7 @@
          SKTag *tag = [SKTag tagWithText:obj];
          tag.textColor = HEXCOLOR(@"3d4852");
          tag.fontSize = 15;
-         tag.padding = UIEdgeInsetsMake(8, 8, 8, 8);
+         tag.padding = UIEdgeInsetsMake(8, 20, 8, 20);
          tag.bgImg = [Utils imageWithColor:HEXCOLOR(@"f3f3f3")];
          tag.borderColor = HEXCOLOR(@"cdcdcd");
          tag.borderWidth = 1;
@@ -197,7 +197,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     InfoViewCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell0"];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configureCell:cell atIndexPath:indexPath];
     return [cell.tagView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }

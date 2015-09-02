@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -33,6 +33,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>wb3245851541</string>
 				<string>tencent1104674913</string>
 				<string>wx0d16ba0810ca5a8c</string>
 				<string>QQ41D80061</string>
@@ -40,7 +41,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>35</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

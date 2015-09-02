@@ -9,6 +9,7 @@
 #import "OrderViewController.h"
 #import "UserManagerObject.h"
 #import "OrderListTableViewController.h"
+#import "UserManagerObject.h"
 @interface OrderViewController ()
 {
     CGFloat flagCount;
@@ -19,10 +20,24 @@
 @property (strong,nonatomic) IBOutlet UIScrollView* scrollView;
 @property (strong,nonatomic) NSLayoutConstraint* bottomImageLeft;
 @property (weak,nonatomic) IBOutlet UIView* parentView;
+
 @end
 
 @implementation OrderViewController
-
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.selected = NO;
+    }
+    return self;
+}
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+         self.selected = NO;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addBackButton];
@@ -122,18 +137,33 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    for (OrderListTableViewController* controller in self.controllerArray) {
-        [controller startRefresh];
+    if (loaded == NO) {
+        for (OrderListTableViewController* controller in self.controllerArray) {
+            [controller startRefresh];
+        }
+        loaded = YES;
     }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     if (loaded == NO) {
+        
         switch ([[UserManagerObject shareInstance]userType]) {
             case 0:
-                [self.scrollView setContentOffset:CGPointMake(0, 0)];
+                if ([[UserManagerObject shareInstance]userType] == 0 &&self.selected) {
+                    [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*2, 0)];
+                    self.segmentcontrol.selectedSegmentIndex = 2;
+                    self.bottomImageLeft.constant = 2*SCREEN_WIDTH/flagCount;
+                }
+                else
+                {
+                    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+                    self.segmentcontrol.selectedSegmentIndex = 0;
+                }
+                
                 break;
             case 2:
                 [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH*3, 0)];

@@ -91,8 +91,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([[UserManagerObject shareInstance] userType] == -1 && indexPath.row == 1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NTF_LOGIN_TIMEOUT object:nil];
+        return; 
+    }
     if ([[UserManagerObject shareInstance]userType] == 0) {
-        if (indexPath.row == 5) {
+        if (indexPath.row == 1) {
+            [self performSegueWithIdentifier:@"show_my_order" sender:nil];
+        }
+        else if (indexPath.row == 5) {
             [self.tabBarController.navigationController pushViewController:[[MyQuestionTableViewController alloc]initWithNibName:@"MyQuestionTableViewController" bundle:nil] animated:YES];
         }
         else if (indexPath.row  == 7)
@@ -102,10 +109,14 @@
     }
     else
     {
-        if (indexPath.row == 3) {
+        if (indexPath.row == 1) {
+            [self performSegueWithIdentifier:@"show_my_order" sender:nil];
+        }
+        else if (indexPath.row == 3) {
             [self.tabBarController.navigationController pushViewController:[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil] animated:YES];
         }
     }
+
     
 }
 -(IBAction)jifenClick:(id)sender

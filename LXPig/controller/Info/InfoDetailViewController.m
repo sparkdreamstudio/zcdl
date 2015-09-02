@@ -14,7 +14,7 @@
 @property (strong,nonatomic) UIView* hud;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
-@property (weak, nonatomic) UIImage* shareImg;
+@property (strong, nonatomic) UIImage* shareImg;
 @end
 
 @implementation InfoDetailViewController
@@ -32,16 +32,17 @@
     if([self.dic[@"shareurl"] length]>0)
     {
         SDWebImageManager* manager = [SDWebImageManager sharedManager];
+        __weak InfoDetailViewController* weakself = self;
         [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:self.dic[@"titlepic"]] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
             if (error) {
-                self.shareImg = [UIImage imageNamed:@"shareImg"];
+                weakself.shareImg = [UIImage imageNamed:@"shareImg"];
             }
             else
             {
-                self.shareImg = image;
+                weakself.shareImg = image;
             }
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share_button"] style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
-            self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+            weakself.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share_button"] style:UIBarButtonItemStylePlain target:weakself action:@selector(shareAction:)];
+            weakself.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
         }];
         
     }
@@ -67,6 +68,7 @@
         socialData.extConfig.qqData.url = self.dic[@"shareurl"];
         socialData.extConfig.qqData.shareImage = self.shareImg;
         socialData.extConfig.qqData.shareText = self.dic[@"smalltext"];
+//        socialData.extConfig.qqData.qqMessageType = UMSocialQQMessageTypeDefault
     }
     else if ([platformName isEqualToString:UMShareToWechatSession]) {
         socialData.extConfig.wechatSessionData.url = self.dic[@"shareurl"];

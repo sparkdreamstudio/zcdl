@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign,nonatomic) NSInteger webHeight;
 @property (assign,nonatomic) BOOL loadedWeb;
-@property (weak, nonatomic) UIImage* shareImg;
+@property (strong, nonatomic) UIImage* shareImg;
 @end
 
 @implementation ExhibitionDetailViewController
@@ -29,16 +29,17 @@
     self.webHeight = 0;
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.544)];
     [imageView sd_setImageWithURL:[NSURL URLWithString:self.info[@"img"]] placeholderImage:[UIImage imageNamed:@"info_null"]];
+    __weak ExhibitionDetailViewController* weakself = self;
     [imageView sd_setImageWithURL:[NSURL URLWithString:self.info[@"img"]] placeholderImage:[UIImage imageNamed:@"info_null"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (error) {
-            self.shareImg = [UIImage imageNamed:@"shareImg"];
+            weakself.shareImg = [UIImage imageNamed:@"shareImg"];
         }
         else
         {
-            self.shareImg = image;
+            weakself.shareImg = image;
         }
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share_button"] style:UIBarButtonItemStylePlain target:self action:@selector(shareAction:)];
-        self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+        weakself.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share_button"] style:UIBarButtonItemStylePlain target:weakself action:@selector(shareAction:)];
+        weakself.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     }];
     self.tableView.tableHeaderView = imageView;
     [self.tableView registerNib:[UINib nibWithNibName:@"EhibitionDetailTitleTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell0"];

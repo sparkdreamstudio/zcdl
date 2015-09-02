@@ -224,7 +224,28 @@
         if ([[self.orderArray[indexPath.section] objectForKey:@"enterprise"] isKindOfClass:[NSDictionary class]]) {
             label.text = [[self.orderArray[indexPath.section] objectForKey:@"enterprise"] objectForKey:@"name"];
         }
-        
+        NSInteger flag = [[self.orderArray[indexPath.section] objectForKey:@"flag"] integerValue];
+        if(flag == 1)
+        {
+            UIButton* button = (UIButton*)[cell viewWithTag:2];
+            button.layer.masksToBounds = YES;
+            button.layer.cornerRadius = 2;
+            [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (flag == 3)
+        {
+            UIButton* button = (UIButton*)[cell viewWithTag:2];
+            if ([[UserManagerObject shareInstance]userType] == 2) {
+                button.hidden = YES;
+            }
+            else
+            {
+                button.hidden = NO;
+                button.layer.masksToBounds = YES;
+                button.layer.cornerRadius = 2;
+                [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
         
         return cell;
     }
@@ -245,6 +266,11 @@
         lplabel.text = [NSString stringWithFormat:@"￥%@",[product objectForKey:@"marketPrice"]];
         return cell;
     }
+}
+
+-(void)btnClick:(UIButton*)btn
+{
+    [self showNormalHudDimissWithString:@"没有要上传票据的订单"];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
